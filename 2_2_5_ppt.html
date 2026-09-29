@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반 (23~25)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --canvas-bg: #ffffff;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #d1fae5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #ede9fe;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-canvas: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 초록색 핵심 하이라이트 (요청 디자인 표준 반영) */
+    .hl-green,
+    u,
+    .u-highlight {
+      text-decoration: none;
+      background-color: #dcfce7 !important;
+      color: #15803d !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      border-bottom: 2.5px solid #22c55e;
+      box-shadow: 0 1px 2px rgba(34, 197, 94, 0.12);
+      display: inline-block;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .header-bar {
+      height: 54px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--accent-blue-light);
+      border: 1px solid #bae6fd;
+      color: var(--accent-blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .slide-counter span {
+      color: var(--accent-blue);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    /* Main Slide Stage */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      position: relative;
+      background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+    }
+
+    /* 좌우 대형 플로팅 내비게이션 화살표 */
+    .side-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 76px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      color: #334155;
+      font-size: 36px;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      user-select: none;
+    }
+
+    .side-nav-arrow:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
+    }
+
+    .side-nav-arrow:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    .side-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .side-nav-arrow.next {
+      right: 14px;
+    }
+
+    .slide-canvas {
+      width: 100%;
+      max-width: 1440px;
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 200px);
+      background: var(--canvas-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      box-shadow: var(--shadow-canvas);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 44px;
+    }
+
+    /* 슬라이드 전환 스타일 */
+    .slide {
+      display: none !important;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      display: flex !important;
+      animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Animations */
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .anim-left {
+      animation: fadeInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Slide Tag: 24px Bold (2_2_2_ppt 디자인 표준) */
+    .slide-tag {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 22px;
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    /* 50% : 50% Split Layout */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      flex: 1;
+      height: 100%;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .right-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Info Cards in Left Col */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      border-color: #93c5fd;
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+      background: var(--accent-blue);
+    }
+
+    .info-card.warning::before {
+      background: var(--accent-rose);
+    }
+
+    .info-card.success::before {
+      background: var(--accent-emerald);
+    }
+
+    .info-card.amber::before {
+      background: var(--accent-amber);
+    }
+
+    .info-card.purple::before {
+      background: var(--accent-purple);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card.warning .card-title {
+      color: var(--accent-rose);
+    }
+
+    .info-card.success .card-title {
+      color: var(--accent-emerald);
+    }
+
+    .info-card.amber .card-title {
+      color: var(--accent-amber);
+    }
+
+    .info-card.purple .card-title {
+      color: var(--accent-purple);
+    }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    .card-desc .warn-text {
+      color: #e11d48;
+      font-weight: 800;
+      background: #fff1f2;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Key Badge */
+    .key-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14.5px;
+      color: #0369a1;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+
+    /* Visual Mockups & Morph Cards in Right Col */
+    .morph-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+    }
+
+    .morph-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .morph-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .morph-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .morph-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: scale(1.02);
+    }
+
+    .morph-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    /* 모핑 엑셀 시뮬레이터 그리드 */
+    .excel-morph-grid {
+      display: grid;
+      gap: 1px;
+      background: #cbd5e1;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .e-cell {
+      background: #ffffff;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .e-cell.header {
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 12px;
+      justify-content: center;
+    }
+
+    .e-cell.selected {
+      outline: 2px solid var(--accent-blue);
+      background: #f0f7ff;
+      font-weight: 700;
+      color: var(--accent-blue);
+      z-index: 2;
+    }
+
+    .e-cell.active-green {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+      outline: 2px solid #22c55e;
+      z-index: 3;
+    }
+
+    /* 표 스타일 */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .styled-table th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .styled-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 3D 플립 카드 */
+    .flip-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-container.flipped .flipper {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
+
+    /* Slide 1 - Title Slide (No Split) */
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
+      border-radius: 16px;
+    }
+
+    .title-badge {
+      padding: 8px 26px;
+      background: var(--accent-emerald-light);
+      border: 1.5px solid #86efac;
+      color: var(--accent-emerald);
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .title-h1 {
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
+    .title-sub {
+      font-size: 24px;
+      color: #64748b;
+      font-weight: 600;
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    /* Bottom Speaker Notes Drawer */
+    .notes-drawer {
+      height: 140px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .notes-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-content {
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .notes-content strong {
+      color: #047857;
+      background: #ecfdf5;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle-notes {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Bar -->
+    <header class="header-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-subject" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">컴퓨터활용능력 2급
+          필기</span>
+        <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (23~25)</span>
+      </div>
+      <!-- 슬라이드 번호 카운터 -->
+      <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">18</span></div>
+    </header>
+
+    <!-- Slide Canvas Stage -->
+    <main class="slide-stage">
+      <!-- 좌우 사이드 플로팅 내비게이션 화살표 -->
+      <button class="side-nav-arrow prev" onclick="prevSlide()" title="이전 슬라이드 (◀ / Backspace)">‹</button>
+      <button class="side-nav-arrow next" onclick="nextSlide()" title="다음 슬라이드 (▶ / Space / Enter)">›</button>
+
+      <div class="slide-canvas" id="slideCanvas">
+
+        <!-- ========================================================
+             SLIDE 1 : Title Slide
+             ======================================================== -->
+        <section class="slide active title-slide"
+          data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반에서 수식 계산 및 조건부 서식 문제의 필수 베이스가 되는 23번 셀 이름 정의, 24번 6대 수식 오류 코드(#VALUE!, #DIV/0!, #NAME?, #REF!, #NUM!, #NULL!), 그리고 25번 셀 참조 공식(상대·절대·구구단 혼합참조 및 다른 시트/통합문서 외부참조)까지 총 18개 슬라이드로 완벽 정리합니다. 실기와 필기 시험 모두에서 매회 직결되는 단원이니 집중해서 시청해 주시기 바랍니다.">
+          <div class="title-badge">컴활 2급 필기 • 핵심 요약 23~25</div>
+          <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
+          <p class="title-sub">조건부 서식 실전 수식, 셀 이름 정의, 6대 수식 오류, 셀 참조(구구단·외부참조) 완전 정복</p>
+          <div
+            style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+
+            <button onclick="nextSlide()"
+              style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              🚀 강의 시작하기 (Next ➔)
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 2 : Table of Contents (Agenda)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="전체 18개 슬라이드 목차입니다. 23번 조건부 서식 실전 수식과 셀 이름 정의 규칙, 24번 6대 수식 오류 코드의 발생 원인과 해결법, 25번 상대/절대/혼합 참조의 구구단 수식과 외부 참조, 그리고 3초 판별 킬러 함정 플립카드까지 체계적으로 정복해 보겠습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TABLE OF CONTENTS</div>
+                <h2 class="slide-title">핵심 학습 목차</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">23. 조건부 서식 수식 & 셀 이름 정의</div>
+                <div class="card-desc">합계 평균 이상 행 전체 수식, 짝수 행(MOD, ROW), 셀 이름 작성 5대 규칙, 선택 영역 이름 만들기</div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">24. 6대 수식 오류 코드 분석</div>
+                <div class="card-desc">#VALUE!, #DIV/0!, #NAME?, #REF!, #NUM!, #NULL! 오류의 발생 원인과 대표 기출 예시 판별</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">25. 셀 참조 공식 & 킬러 함정</div>
+                <div class="card-desc">상대 참조 vs 절대 참조(F4), 출제 1위 구구단 혼합 참조(=B$2*$A3), 다른 시트(!)/통합문서([]) 참조, 플립카드</div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 20px; width: 100%;">
+                <div
+                  style="font-size: 15px; font-weight: 800; color: #0284c7; margin-bottom: 12px; letter-spacing: 0.5px;">
+                  ⚡ 원하는 토픽으로 즉시 이동 (Click Jump)
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <button class="morph-btn" onclick="goTo(2)" style="justify-content: flex-start;">조건부 서식 실전 ①</button>
+                  <button class="morph-btn" onclick="goTo(3)" style="justify-content: flex-start;">조건부 서식 실전 ②</button>
+                  <button class="morph-btn" onclick="goTo(4)" style="justify-content: flex-start;">23. 셀 이름 정의
+                    규칙</button>
+                  <button class="morph-btn" onclick="goTo(5)" style="justify-content: flex-start;">23. 선택 영역 이름</button>
+                  <button class="morph-btn" onclick="goTo(6)" style="justify-content: flex-start;">24. #VALUE! &
+                    #DIV/0!</button>
+                  <button class="morph-btn" onclick="goTo(7)" style="justify-content: flex-start;">24. #NAME? &
+                    #REF!</button>
+                  <button class="morph-btn" onclick="goTo(8)" style="justify-content: flex-start;">24. #NUM! &
+                    #NULL!</button>
+                  <button class="morph-btn" onclick="goTo(9)" style="justify-content: flex-start;">24. 수식 오류
+                    매트릭스</button>
+                  <button class="morph-btn" onclick="goTo(10)" style="justify-content: flex-start;">25. 상대 vs 절대
+                    참조</button>
+                  <button class="morph-btn active" onclick="goTo(11)" style="justify-content: flex-start;">25. 구구단 혼합
+                    참조</button>
+                  <button class="morph-btn" onclick="goTo(12)" style="justify-content: flex-start;">25. 외부 참조
+                    수식</button>
+                  <button class="morph-btn" onclick="goTo(13)" style="justify-content: flex-start;">🎯 킬러 함정
+                    플립카드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 3 : 조건부 서식 실전 예제 1 (평균 이상 행 전체)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="조건부 서식 실전 기출 1위 예제입니다. '합계가 합계의 평균 이상인 행 전체에 서식을 적용하라'는 문제입니다. 수식은 =$E2>=AVERAGE($E$2:$E$9) 입니다. 첫째, 각 행의 합계를 비교해야 하므로 기준 필드의 첫 번째 셀인 E2를 지정하되 열 알파벳 앞에만 달러를 붙여 $E2로 열고정해야 합니다. 둘째, 평균을 구할 전체 범위 $E$2:$E$9는 모든 셀에서 비교할 때 움직이면 안 되므로 반드시 절대참조로 고정해야 합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">예시 01 ★ 출제 1위</div>
+                <h2 class="slide-title">합계가 평균 이상인 <span class="hl-green">행 전체 </span>서식</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 필수 공식 수식</div>
+                <div class="card-desc">
+                  <code><span class="hl-green">=$E2</strong></span> &gt;= AVERAGE<span class="hl-green">($E$2:$E$9)</span></code><br>
+                  • <strong>기준 셀 열 고정</strong>: <span class="hl-green">검색할 필드의 첫 번째 셀($E2)</span>을 선택하고 열 문자 앞에
+                  <code>$</code> 부착<br>
+                  • <strong>평균 범위 절대 고정</strong>: 전체 비교 대상 범위는 <span class="hl-green">절대 참조($E$2:$E$9)</span>로 고정 필수!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">판정 결과 분석 (합계 평균 = 247.5점)</div>
+                <div class="card-desc">
+                  • 248점 이상인 <strong>유재신(256), 정수리(278), 장시호(248), 정성애(265)</strong> 4명의 행 전체에 노란색 강조 서식이 자동 적용됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>📊 8명 성적 데이터 시뮬레이션</span>
+                </div>
+                <table class="styled-table" style="font-size: 15pxpx; margin-top: 10px;">
+                  <thead>
+                    <tr>
+                      <th>행</th>
+                      <th>A(이름)</th>
+                      <th>B(Ex)</th>
+                      <th>C(Ac)</th>
+                      <th>D(Wd)</th>
+                      <th>E(합계)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2</td>
+                      <td>홍길동</td>
+                      <td>75</td>
+                      <td>87</td>
+                      <td>73</td>
+                      <td>235</td>
+                    </tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;">
+                      <td>3</td>
+                      <td>유재신</td>
+                      <td>85</td>
+                      <td>86</td>
+                      <td>85</td>
+                      <td>256 ★</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>서장호</td>
+                      <td>78</td>
+                      <td>65</td>
+                      <td>74</td>
+                      <td>217</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>이유리</td>
+                      <td>94</td>
+                      <td>80</td>
+                      <td>68</td>
+                      <td>242</td>
+                    </tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;">
+                      <td>6</td>
+                      <td>정수리</td>
+                      <td>86</td>
+                      <td>97</td>
+                      <td>95</td>
+                      <td>278 ★</td>
+                    </tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;">
+                      <td>7</td>
+                      <td>장시호</td>
+                      <td>76</td>
+                      <td>85</td>
+                      <td>87</td>
+                      <td>248 ★</td>
+                    </tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;">
+                      <td>8</td>
+                      <td>정성애</td>
+                      <td>82</td>
+                      <td>95</td>
+                      <td>88</td>
+                      <td>265 ★</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>김유시</td>
+                      <td>84</td>
+                      <td>77</td>
+                      <td>78</td>
+                      <td>239</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 8px;">
+                  💡 <code>=$E2>=AVERAGE($E$2:$E$9)</code> 수식에 의해 평균 이상 4개 행 전체가 하이라이트됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 4 : 조건부 서식 실전 예제 2 (짝수 행 & 열 전체)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="두 번째 조건부 서식 실전 수식입니다. '짝수 행 전체에 서식을 적용하라'는 문제입니다. 수식은 =MOD(ROW(), 2)=0 입니다. ROW() 함수는 현재 셀의 행 번호를 반환하고, MOD(숫자, 2)는 2로 나눈 나머지를 구하므로 나머지가 0이면 짝수 행이 됩니다. 홀수 행은 =MOD(ROW(), 2)=1 입니다. 열 전체 서식은 반대로 행을 고정하여 =A$2>=50 또는 COLUMN() 함수를 사용합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">예시 02</div>
+                <h2 class="slide-title">짝수 행 서식 & 열 전체 서식 공식</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 짝수 행 전체 서식 적용 수식</div>
+                <div class="card-desc">
+                  • 짝수 행 수식: <code>=MOD(ROW(), 2) = 0</code><br>
+                  • <span class="hl-green">ROW()</span>: 현재 셀의 행 번호 반환 (2행이면 2)<br>
+                  • <span class="hl-green">MOD(값, 2)</span>: 2로 나눈 나머지 (0이면 짝수, 1이면 홀수)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">2. 열 전체 vs 셀 서식 적용 수식</div>
+                <div class="card-desc">
+                  • <strong>열 전체 서식 적용</strong>: <span class="hl-green">행 고정(=A$2 &gt;= 50)</span> 또는
+                  <code>=COLUMN()</code><br>
+                  • <strong>단일 셀 서식 적용</strong>: <span class="hl-green">상대 참조(=A2 &gt;= 50)</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>⚡ 짝수행 vs 홀수행 실시간 모핑</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 8px;">
+                  <button class="morph-btn active" id="btn-row-even" onclick="toggleRowParity('even')">짝수 행
+                    (=MOD(ROW(),2)=0)</button>
+                  <button class="morph-btn" id="btn-row-odd" onclick="toggleRowParity('odd')">홀수 행
+                    (=MOD(ROW(),2)=1)</button>
+                </div>
+                <table class="styled-table" id="row-parity-table" style="font-size: 13px; margin-top: 10px;">
+                  <thead>
+                    <tr>
+                      <th>행번호</th>
+                      <th>이름</th>
+                      <th>Excel</th>
+                      <th>Access</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="rp-2" class="p-even" style="background:#fef08a; font-weight:700;">
+                      <td>2행 (짝수)</td>
+                      <td>김유시</td>
+                      <td>95</td>
+                      <td>87</td>
+                    </tr>
+                    <tr id="rp-3" class="p-odd">
+                      <td>3행 (홀수)</td>
+                      <td>박순복</td>
+                      <td>77</td>
+                      <td>79</td>
+                    </tr>
+                    <tr id="rp-4" class="p-even" style="background:#fef08a; font-weight:700;">
+                      <td>4행 (짝수)</td>
+                      <td>서장호</td>
+                      <td>85</td>
+                      <td>86</td>
+                    </tr>
+                    <tr id="rp-5" class="p-odd">
+                      <td>5행 (홀수)</td>
+                      <td>유재신</td>
+                      <td>63</td>
+                      <td>65</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 8px;"
+                  id="rp-explain">
+                  💡 짝수 행 번호(2행, 4행) 전체에 조건부 서식이 적용되었습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 5 : 23 셀 이름 정의 규칙 5선
+             ======================================================== -->
+        <section class="slide"
+          data-notes="23번 셀 이름 정의 5대 규칙입니다. 시험에서 가장 많이 나오는 오답 지문은 '공백을 사용할 수 있다' 또는 '숫자로 시작할 수 있다'입니다. 이름의 첫 글자는 반드시 문자나 밑줄(_)로 시작해야 하며, 숫자로 시작할 수 없습니다. 공백과 특수문자는 절대 사용할 수 없습니다. 대소문자를 구분하지 않으며 최대 255자까지 가능하고, 시트가 아닌 통합 문서 전체에서 중복된 이름을 쓸 수 없습니다. 정의된 이름은 기본적으로 절대 참조 방식으로 작동합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 23 ★ 기출 1위</div>
+                <h2 class="slide-title">셀 이름 정의 5대 규칙</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. 첫 글자 규칙 & 금지 문자 (★출제 1위)</div>
+                <div class="card-desc">
+                  • <strong>첫 글자</strong>: 반드시 <span class="hl-green">문자 또는 밑줄(_)</span>로 시작! (숫자 시작 불가)<br>
+                  • <strong>나머지</strong>: 문자, 숫자, 마침표(.), 밑줄(_), 역슬래시(\) 사용 가능<br>
+                  • <span class="warn-text">금지</span>: <span class="hl-green">공백(띄어쓰기)과 특수문자는 절대 사용 불가!</span>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 대소문자 & 중복 & 참조 방식</div>
+                <div class="card-desc">
+                  • <span class="hl-green">대/소문자를 구분하지 않음</span> (최대 255자)<br>
+                  • 통합 문서 내에서 <span class="hl-green">동일한 이름 중복 사용 불가</span><br>
+                  • 정의된 이름은 기본적으로 <span class="hl-green">절대 참조($A$1) 방식</span>으로 등록됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🔍 셀 이름 유효성 실시간 판정기</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" onclick="testNameValid('n1')">_합격률</button>
+                  <button class="morph-btn" onclick="testNameValid('n2')">2026매출</button>
+                  <button class="morph-btn" onclick="testNameValid('n3')">생산 원가</button>
+                  <button class="morph-btn" onclick="testNameValid('n4')">단가\1</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 90px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">검사 이름</div>
+                  <div class="e-cell selected" id="name-input-disp">_합격률</div>
+                  <div class="e-cell header">판정 결과</div>
+                  <div class="e-cell active-green" id="name-result-disp" style="font-size: 16px;">사용 가능 (Valid)</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
+                  id="name-explain">
+                  💡 밑줄(_)로 시작하므로 첫 글자 규칙을 완벽하게 만족합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 6 : 23 선택 영역으로 이름 만들기
+             ======================================================== -->
+        <section class="slide"
+          data-notes="선택 영역으로 일괄 이름 만들기 기능입니다. 표 범위를 잡고 단축키 Ctrl+Shift+F3을 누르면 첫 행이나 왼쪽 열을 기준으로 이름이 한 번에 자동 정의됩니다. 이때 첫 행이나 왼쪽 열의 제목 텍스트에 공백이나 특수문자가 들어있으면 어떻게 될까요? 이름 규칙상 공백이 금지되어 있으므로, 엑셀은 자동으로 공백과 특수문자를 '밑줄(_)'로 자동 치환합니다. 예를 들어 '생산 원가'는 '생산_원가'로 등록됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 23</div>
+                <h2 class="slide-title">선택 영역으로 이름 만들기 (<span class="key-badge">Ctrl</span>+<span
+                    class="key-badge">Shift</span>+<span class="key-badge">F3</span>)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 첫 행 & 왼쪽 열 기준 생성</div>
+                <div class="card-desc">
+                  • <strong>첫 행</strong>: 범위의 첫 행에 있는 텍스트가 <span class="hl-green">각 열의 이름</span>으로 일괄 정의됨<br>
+                  • <strong>왼쪽 열</strong>: 범위의 왼쪽 열에 있는 텍스트가 <span class="hl-green">각 행의 이름</span>으로 일괄 정의됨
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 공백·특수문자의 밑줄(_) 자동 치환 ★출제 1위</div>
+                <div class="card-desc">
+                  첫 행이나 왼쪽 열에 공백이나 특수문자가 포함된 경우, 엑셀은 이를 <span class="hl-green">밑줄( _ )로 자동 변경</span>하여 등록함!<br>
+                  • 예시: <code>'생산 원가'</code> → <span class="hl-green">'생산_원가'</span><br>
+                  • 예시: <code>'할인율(%)'</code> → <span class="hl-green">'할인율__'</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📑 공백 밑줄 자동 변환 모핑 시뮬레이션</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 1fr 1fr; margin-top: 14px;">
+                  <div class="e-cell header">표 제목 텍스트 (원본)</div>
+                  <div class="e-cell header">자동 정의된 셀 이름</div>
+                  <div class="e-cell">생산 원가 (공백 포함)</div>
+                  <div class="e-cell active-green">생산_원가</div>
+                  <div class="e-cell">판매 수량 (공백 포함)</div>
+                  <div class="e-cell active-green">판매_수량</div>
+                  <div class="e-cell">달성율(%) (특수문자)</div>
+                  <div class="e-cell active-green">달성율__</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 이름 작성 규칙에 따라 공백과 괄호 기호가 밑줄( _ )로 자동 변환되었습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 7 : 24 수식 오류 1 (#VALUE! vs #DIV/0!)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수식 오류 첫 번째 묶음입니다. #VALUE!는 잘못된 인수나 피연산자를 사용했거나 함수의 인수로 엉뚱한 값을 넣었을 때 발생합니다. 예를 들어 =INDEX 범위에서 행 번호에 -1을 넣거나 VLOOKUP 열 번호에 문자를 넣었을 때입니다. #DIV/0!은 숫자를 0 또는 빈 셀로 나누려 할 때 발생합니다. =5/0을 입력하거나 분모 셀인 B1을 Delete 키로 지워버렸을 때 나타납니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 24</div>
+                <h2 class="slide-title">수식 오류 ①: #VALUE! vs #DIV/0!</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. #VALUE! — 값 / 인수 오류</div>
+                <div class="card-desc">
+                  • <span class="hl-green">잘못된 인수나 피연산자를 사용</span>했거나 함수의 인수로 잘못된 값을 넣은 경우<br>
+                  • 기출 예시: <code>=INDEX(A1:B5, -1, 2)</code> (행 번호가 음수)<br>
+                  • 기출 예시: <code>=VLOOKUP(A3, A3:D8, D3, 1)</code> (열 번호에 텍스트 셀 참조)
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="card-title">2. #DIV/0! — 0 나누기 오류</div>
+                <div class="card-desc">
+                  • 숫자를 <span class="hl-green">0 또는 빈 셀로 나누기 연산</span>을 시도한 경우<br>
+                  • 기출 예시: <code>=5 / 0</code><br>
+                  • 기출 예시: <code>=A1 / B1</code> 수식에서 <span class="hl-green">[B1] 셀을 [Delete]로 지웠을 때</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 분모 삭제 시 #DIV/0! 발생 모핑</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" id="btn-div-norm" onclick="simDivError('norm')">정상 상태 (B1=5)</button>
+                  <button class="morph-btn" id="btn-div-zero" onclick="simDivError('zero')">B1에 0 입력</button>
+                  <button class="morph-btn" id="btn-div-del" onclick="simDivError('del')">B1 셀 Delete 삭제</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr 1fr; margin-top: 14px;">
+                  <div class="e-cell header">A1(분자)</div>
+                  <div class="e-cell header">B1(분모)</div>
+                  <div class="e-cell header">C1(=A1/B1)</div>
+                  <div class="e-cell">100</div>
+                  <div class="e-cell" id="div-b1-cell">5</div>
+                  <div class="e-cell active-green" id="div-res-cell">20</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
+                  id="div-explain">
+                  💡 100 / 5 = 20 으로 정상 계산되었습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 8 : 24 수식 오류 2 (#NAME? vs #REF!)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="기출문제에 가장 많이 나오는 #NAME? 과 #REF! 입니다. #NAME? 은 엑셀이 이름이나 단어를 못 알아먹겠다는 뜻입니다. SUM을 SUMM으로 오타를 냈거나, 쉼표를 빼먹고 =SUM(A1B1)로 썼거나, 텍스트에 큰따옴표 없이 =가+5 처럼 썼을 때 발생합니다. 반면 #REF! 는 셀 참조가 유효하지 않을 때, 즉 참조하던 셀이나 열을 완전히 [삭제]해 버렸을 때 발생합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 24 • 빈출 1위</div>
+                <h2 class="slide-title">수식 오류 ②: #NAME? vs #REF!</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. #NAME? — 함수명 오타 / 이름 미정의</div>
+                <div class="card-desc">
+                  • 함수 이름 오타, <span class="hl-green">정의되지 않은 이름 사용</span>, 큰따옴표 없는 문자열 입력<br>
+                  • 기출 예시: <code>=SUM(A1B1)</code> (콜론이나 쉼표 누락으로 A1B1을 이름으로 오인)<br>
+                  • 기출 예시: <code>=가 + 5</code> (한글 '가'에 큰따옴표가 없음)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">2. #REF! — 참조 셀 삭제 (Reference)</div>
+                <div class="card-desc">
+                  • 수식이 참조하고 있던 <span class="hl-green">셀이나 행/열 자체를 삭제</span>한 경우<br>
+                  • 기출 예시: <code>=A1 + B1</code> 수식이 있는 상태에서 <span class="hl-green">[B열] 또는 [B1 셀]을 행/열 삭제</span>했을 때
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🗑️ 참조 셀 삭제 시 #REF! 변환 모핑</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" id="btn-ref-norm" onclick="simRefError('norm')">정상 수식
+                    (=A1+B1)</button>
+                  <button class="morph-btn" id="btn-ref-del" onclick="simRefError('del')">B열 삭제 실행!</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">A1 값</div>
+                  <div class="e-cell">50</div>
+                  <div class="e-cell header">B1 값</div>
+                  <div class="e-cell" id="ref-b1-disp">30</div>
+                  <div class="e-cell header">수식 표시</div>
+                  <div class="e-cell active-green" id="ref-res-disp" style="font-weight: 800;">80 (=A1+B1)</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
+                  id="ref-explain">
+                  💡 A1(50)과 B1(30)을 더해 정상적으로 80이 출력되고 있습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 9 : 24 수식 오류 3 (#NUM! vs #NULL!)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수식 오류 세 번째 묶음인 #NUM! 과 #NULL! 입니다. #NUM! 은 숫자가 들어가야 할 자리에 잘못된 값을 지정했거나 범위 내에 찾는 숫자가 없을 때 발생합니다. 예를 들어 =RANK.EQ(4, D3:D6, 0)에서 D3:D6 영역에 4라는 값이 존재하지 않을 때입니다. #NULL! 은 엑셀의 교차 연산자인 '공백(스페이스)'을 사용했을 때 두 범위 사이에 겹치는 교차 영역이 전혀 없는 경우에 발생합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 24</div>
+                <h2 class="slide-title">수식 오류 ③: #NUM! vs #NULL!</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. #NUM! — 숫자 값 오류 (Number)</div>
+                <div class="card-desc">
+                  • <span class="hl-green">숫자가 필요한 곳에 잘못된 값을 지정</span>했거나 수식 결과가 표현 가능한 숫자 범위를 벗어난 경우<br>
+                  • 기출 예시: <code>=RANK.EQ(4, D3:D6, 0)</code> (D3:D6 영역에 순위를 구할 '4'가 없음)
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">2. #NULL! — 교차 지점 없음 (Null)</div>
+                <div class="card-desc">
+                  • 공백(스페이스) 교차 연산자를 사용했으나 <span class="hl-green">두 범위 간의 교차 지점이 없는 경우</span><br>
+                  • 기출 예시: <code>=SUM(A1:C2 D3:F4)</code> (A1:C2 영역과 D3:F4 영역은 겹치는 셀이 전혀 없음)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📐 교차 연산자(공백) 오류 시각화</span>
+                </div>
+                <div style="font-size: 14px; color: #334155; line-height: 1.6; margin-top: 10px;">
+                  • <strong>정상 교차</strong>: <code>=SUM(A1:C3 B2:D4)</code> ➔ 교차 영역(B2:C3)이 존재하여 합계 계산<br>
+                  • <strong>#NULL! 발생</strong>: <code>=SUM(A1:B2 C3:D4)</code> ➔ 서로 떨어져 있어 교차점 없음!
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">입력 수식</div>
+                  <div class="e-cell" style="font-size: 13px;">=SUM(A1:B2 C3:D4)</div>
+                  <div class="e-cell header">출력 에러</div>
+                  <div class="e-cell active-green" style="color: #dc2626; font-size: 18px; font-weight: 800;">#NULL!
+                  </div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 두 범위 사이에 쉼표 대신 공백을 넣었는데 겹치는 셀이 없으므로 #NULL! 오류가 뜹니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 10 : 24 수식 오류 6총사 총정리 매트릭스
+             ======================================================== -->
+        <section class="slide"
+          data-notes="시험 직전 3초 판별용 6대 수식 오류 총정리 표입니다. 오류 메시지의 영단어 뜻만 떠올리면 정답을 즉시 맞힐 수 있습니다. VALUE는 값 문제, DIV는 나누기 0, NAME은 함수 이름 오타, REF는 참조 셀 삭제, NUM은 숫자 범위 문제, NULL은 교차점 부재입니다. 우측 버튼을 눌러 각각의 오류 지문을 매칭해 보시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">SUMMARY</div>
+                <h2 class="slide-title">6대 수식 오류 총정리 매트릭스</h2>
+              </div>
+              <table class="styled-table" style="font-size: 14px;">
+                <thead>
+                  <tr>
+                    <th>오류 코드</th>
+                    <th>핵심 발생 원인</th>
+                    <th>기출 대표 사례</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>#VALUE!</code></td>
+                    <td>잘못된 인수/피연산자</td>
+                    <td>=INDEX(A1:B5, -1, 2)</td>
+                  </tr>
+                  <tr>
+                    <td><code>#DIV/0!</code></td>
+                    <td>0 또는 빈 셀로 나누기</td>
+                    <td>=5/0, 분모 Delete</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NAME?</code></td>
+                    <td>함수명 오타, 큰따옴표 누락</td>
+                    <td>=SUM(A1B1), =가+5</td>
+                  </tr>
+                  <tr>
+                    <td><code>#REF!</code></td>
+                    <td>참조 셀/행/열 삭제</td>
+                    <td>=A1+B1에서 B열 삭제</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NUM!</code></td>
+                    <td>숫자값 오류, 찾는값 부재</td>
+                    <td>=RANK.EQ(4, D3:D6, 0)</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NULL!</code></td>
+                    <td>교차 연산자 교차점 없음</td>
+                    <td>=SUM(A1:C2 D3:F4)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🎯 기출 사례별 오류 코드 판정 퀴즈</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" onclick="quizErr('q1')">B열 삭제</button>
+                  <button class="morph-btn" onclick="quizErr('q2')">함수명 오타</button>
+                  <button class="morph-btn" onclick="quizErr('q3')">빈 셀 나누기</button>
+                  <button class="morph-btn" onclick="quizErr('q4')">행 번호 -1</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">문제 상황</div>
+                  <div class="e-cell selected" id="qe-situ" style="font-size: 14px;">수식 =A1+B1 상태에서 B열 삭제</div>
+                  <div class="e-cell header">발생 오류</div>
+                  <div class="e-cell active-green" id="qe-code"
+                    style="font-size: 18px; color: #dc2626; font-weight: 800;">#REF!</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
+                  id="qe-explain">
+                  💡 참조 대상 셀(B1)이 삭제되었으므로 유효하지 않은 참조(#REF!) 오류가 발생합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 11 : 25 셀 참조 1 (상대 참조 vs 절대 참조)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="25번 셀 참조의 기초인 상대 참조와 절대 참조입니다. 상대 참조는 수식이 복사되는 방향에 따라 참조하는 셀 주소가 비례하여 함께 움직입니다. E2=C2+D2 를 아래로 채우면 E3=C3+D3, E4=C4+D4 로 자동으로 바뀝니다. 반면 절대 참조는 수식을 어디로 복사하든 특정 셀 주소가 불변 고정됩니다. 상대 참조 상태에서 F4 키를 한 번 누르면 $B$10 처럼 열과 행에 모두 달러가 붙어 절대 참조로 전환됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 25</div>
+                <h2 class="slide-title">상대 참조 vs 절대 참조 (<span class="key-badge">F4</span>)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 상대 참조 (Relative Reference: A1)</div>
+                <div class="card-desc">
+                  • 수식 복사 위치에 따라 참조하는 셀이 <span class="hl-green">비례하여 함께 변경</span>되는 기본 방식<br>
+                  • 예시: <code>E2 = C2 + D2</code> 를 아래로 복사하면<br>
+                  &nbsp; ➔ <code>E3 = C3 + D3</code>, <code>E4 = C4 + D4</code> 로 자동 증가
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 절대 참조 (Absolute Reference: $A$1)</div>
+                <div class="card-desc">
+                  • 수식 복사 위치에 관계없이 <span class="hl-green">항상 고정된 단일 셀만 참조</span>하는 방식<br>
+                  • 단축키: 상대 참조 셀에서 <span class="hl-green"><span class="key-badge">F4</span> 키를 1번</span> 누르면 달러($)가 양쪽에
+                  부착됨<br>
+                  • 예시: <code>C5 = B5 / $B$10</code> ➔ 아래로 복사해도 <code>$B$10</code>은 불변!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🔄 F4 키 누름에 따른 달러($) 순환 시뮬레이터</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" id="btn-f4-step" onclick="cycleF4()">F4 키 누르기 (Click)</button>
+                  <button class="morph-btn" onclick="resetF4()">초기화 (A1)</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 90px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">F4 누른 횟수</div>
+                  <div class="e-cell" id="f4-count-disp">0회 (초기 상태)</div>
+                  <div class="e-cell header">참조 형태</div>
+                  <div class="e-cell active-green" id="f4-result-disp" style="font-size: 18px;">A1 (상대 참조)</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
+                  id="f4-explain">
+                  💡 F4 키를 누르면 [상대 A1] ➔ [절대 $A$1] ➔ [행고정 A$1] ➔ [열고정 $A1] 순으로 순환합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 12 : 25 셀 참조 2 (혼합 참조 구구단 공식)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="기출 출제율 99%인 혼합 참조 구구단 수식 완성 공식입니다. 위쪽 첫 행의 2, 3, 4, 5단과 왼쪽 열의 1, 2, 3, 4 곱하는 수를 곱해 구구단 표를 완성하려면 수식을 어떻게 세워야 할까요? 첫째, 위쪽 단(B2:E2)은 아래로 복사해도 항상 2행에 머물러야 하므로 행 고정인 =B$2 가 됩니다. 둘째, 왼쪽 열(A3:A6)은 오른쪽으로 복사해도 항상 A열에 머물러야 하므로 열 고정인 =$A3 이 됩니다. 따라서 완성 수식은 =B$2*$A3 입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 25 • 출제 1위</div>
+                <h2 class="slide-title">혼합 참조 구구단 완성 공식</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 구구단 B3 셀 수식 공식 (암기 필수)</div>
+                <div class="card-desc">
+                  <code>=B$2 * $A3</code><br>
+                  • <strong>첫 행(단 수)</strong>: 아래로 복사해도 2행에 고정 ➔ <span class="hl-green">행 고정(=B$2)</span><br>
+                  • <strong>왼쪽 열(곱할 수)</strong>: 오른쪽으로 복사해도 A열에 고정 ➔ <span class="hl-green">열 고정(=$A3)</span>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">자동 채우기 시 수식 변화 검증</div>
+                <div class="card-desc">
+                  • 아래로 복사: <code>B4 = B$2 * $A4</code>, <code>B5 = B$2 * $A5</code> (행번호만 증가)<br>
+                  • 오른쪽 복사: <code>C3 = C$2 * $A3</code>, <code>D3 = D$2 * $A3</code> (열문자만 증가)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>✖️ 구구단 인터랙티브 혼합참조 표</span>
+                </div>
+                <table class="styled-table" style="font-size: 13px; text-align: center; margin-top: 10px;">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>A</th>
+                      <th style="background:#e0f2fe; color:#0369a1;">B</th>
+                      <th style="background:#e0f2fe; color:#0369a1;">C</th>
+                      <th style="background:#e0f2fe; color:#0369a1;">D</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#f1f5f9;">
+                      <td>2</td>
+                      <td>단➔</td>
+                      <td style="font-weight:800; color:#0284c7;">2 (B$2)</td>
+                      <td style="font-weight:800; color:#0284c7;">3 (C$2)</td>
+                      <td style="font-weight:800; color:#0284c7;">4 (D$2)</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td style="background:#fef3c7; font-weight:800; color:#b45309;">1 ($A3)</td>
+                      <td style="background:#dcfce7; font-weight:800; color:#15803d;">=B$2*$A3 (2)</td>
+                      <td>3</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td style="background:#fef3c7; font-weight:800; color:#b45309;">2 ($A4)</td>
+                      <td>4</td>
+                      <td>6</td>
+                      <td>8</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td style="background:#fef3c7; font-weight:800; color:#b45309;">3 ($A5)</td>
+                      <td>6</td>
+                      <td>9</td>
+                      <td>12</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 8px 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 8px;">
+                  💡 위쪽 행고정(<code>B$2</code>)과 왼쪽 열고정(<code>$A3</code>)이 곱해져 전체 구구단이 완성됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 13 : 25 셀 참조 3 (다른 시트 및 다른 파일 외부 참조)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="외부 참조 수식 작성법입니다. 다른 워크시트의 셀을 가져올 때는 느낌표(!) 기호를 사용하여 =시트이름!셀 (예: =B1+견본!G1) 로 씁니다. 다른 엑셀 파일(통합 문서)의 셀을 가져올 때는 파일 이름을 대괄호[] 로 묶어서 ='경로[파일명.xlsx]시트명'!셀 (예: =B5+'[진료항목.xlsx]진료코드'!G1) 로 표기합니다. 시트명이나 파일명에 공백이 있으면 작은따옴표로 감싸주어야 합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 25</div>
+                <h2 class="slide-title">다른 시트 & 다른 통합 문서 외부 참조</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 다른 시트 셀 참조 수식 공식</div>
+                <div class="card-desc">
+                  구분 기호: <span class="hl-green">느낌표 ( ! )</span><br>
+                  • 수식 형식: <code>=시트이름!셀주소</code><br>
+                  • 기출 예시: <code>=B1 + 견본!G1</code> (현재 시트 B1과 '견본' 시트의 G1 셀을 더함)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">2. 다른 통합 문서 셀 참조 공식 (★출제 1위)</div>
+                <div class="card-desc">
+                  구분 기호: 파일 이름은 <span class="hl-green">대괄호 [ ]</span> 로 묶고, 시트명 뒤에 <span class="hl-green">느낌표 !</span>
+                  부착<br>
+                  • 수식 형식: <code>='[파일명.xlsx]시트명'!셀주소</code><br>
+                  • 기출 예시: <code>=B5 + '[진료항목.xlsx]진료코드'!G1</code><br>
+                  • 파일 경로나 시트 이름에 공백이 있으면 작은따옴표(<code>' '</code>)로 전체를 감쌈
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📂 외부 참조 수식 구조 해부기</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">파일명</div>
+                  <div class="e-cell" style="color: #0284c7; font-weight: 800;">[진료항목.xlsx] (대괄호 필수)</div>
+                  <div class="e-cell header">시트명</div>
+                  <div class="e-cell" style="color: #7c3aed; font-weight: 800;">진료코드! (느낌표 필수)</div>
+                  <div class="e-cell header">셀 주소</div>
+                  <div class="e-cell" style="color: #059669; font-weight: 800;">G1</div>
+                  <div class="e-cell header">전체 수식</div>
+                  <div class="e-cell active-green" style="font-size: 14px;">='[진료항목.xlsx]진료코드'!G1</div>
+                </div>
+                <div
+                  style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 다른 파일은 대괄호 <code>[ ]</code>, 다른 시트는 느낌표 <code>!</code> 로 구분합니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 14 : 킬러 함정 3D 플립 카드 1
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 1입니다. 카드를 클릭하면 180도 회전하면서 정답과 해설이 뒤집힙니다. 1번 문제는 조건부 서식 행 전체 수식의 달러 위치 함정, 2번 문제는 셀 이름에 공백과 특수문자를 허용하는지에 대한 기출 단골 오답 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 01</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ①</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">조건부 서식 & 셀 이름 기출 함정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 조건부 서식 행 전체
+                      서식 적용 수식</div>
+                    <div style="font-size: 14px;">"합계가 평균 이상인 행 전체에 서식을 줄 때는 수식 =E$2 >= AVERAGE(...) 을 사용한다." (O / X?)
+                    </div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (행고정이 아닌
+                      열고정!)</div>
+                    <div style="font-size: 14px;">행 전체 서식은 열만 고정되어야 하므로 <strong>=$E2</strong> (열고정)를 사용해야 합니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 셀 이름 정의 시 공백
+                      허용 여부</div>
+                    <div style="font-size: 14px;">"셀 이름을 정의할 때 단어 사이에 공백을 포함하여 '생산 원가'로 지정할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (공백 절대 사용
+                      불가!)</div>
+                    <div style="font-size: 14px;">셀 이름에는 <strong>공백과 특수문자를 절대 쓸 수 없으며</strong>, 밑줄(_)로 연결해야 합니다.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 15 : 킬러 함정 3D 플립 카드 2
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 2입니다. 1번 문제는 참조 셀 삭제 시 발생하는 오류와 분모를 지웠을 때 발생하는 오류의 구별, 2번 문제는 큰따옴표 없이 텍스트를 수식에 넣었을 때의 오류 판별입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 02</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ②</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">수식 오류 코드 기출 함정 판별</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 참조 셀 삭제 시
+                      #DIV/0! 오류?</div>
+                    <div style="font-size: 14px;">"=A1+B1 수식이 있는 상태에서 B1 셀을 완전히 삭제하면 #DIV/0! 오류가 발생한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (#REF! 오류
+                      발생!)</div>
+                    <div style="font-size: 14px;">참조 셀 자체가 삭제되면 <strong>#REF!</strong> 오류가 뜹니다. #DIV/0!은 0이나 빈 셀로 나눌
+                      때입니다.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 큰따옴표 없는 문자열
+                      수식 오류</div>
+                    <div style="font-size: 14px;">"수식 =가+5 를 입력하면 문자 데이터이므로 #VALUE! 오류가 발생한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (#NAME? 오류
+                      발생!)</div>
+                    <div style="font-size: 14px;">큰따옴표가 없으면 엑셀이 '가'를 정의되지 않은 이름으로 인식하여 <strong>#NAME?</strong> 오류를
+                      냅니다.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 16 : 킬러 함정 3D 플립 카드 3
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 3입니다. 1번 문제는 구구단 혼합 참조 수식에서 달러의 올바른 위치, 2번 문제는 다른 통합 문서 참조 시 파일 이름을 묶는 괄호 기호의 종류입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 03</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ③</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">구구단 혼합 참조 & 외부 참조 기출 함정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 구구단 B3 셀의
+                      올바른 수식</div>
+                    <div style="font-size: 14px;">"구구단을 채우기 위한 B3 셀의 수식은 =$B2 * A$3 이다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (달러 위치가
+                      정반대!)</div>
+                    <div style="font-size: 14px;">첫 행(단)은 행고정, 왼쪽 열(수)은 열고정이어야 하므로 <strong>=B$2 * $A3</strong> 입니다!
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 다른 통합 문서 파일명
+                      구분 기호</div>
+                    <div style="font-size: 14px;">"다른 통합 문서를 참조할 때는 파일 이름을 중괄호 { } 로 감싸서 표기한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (대괄호 [ ]
+                      사용!)</div>
+                    <div style="font-size: 14px;">다른 통합 문서 파일 이름은 반드시 <strong>대괄호 [파일명.xlsx]</strong> 로 묶어야 합니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 17 : 총정리 체크리스트 & 완강
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수고하셨습니다. 이것으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 23번부터 25번 단원까지의 모든 핵심 요약 강의를 마쳤습니다. 체크리스트 6개 항목을 완벽히 점검하셨다면 이번 단원에서 출제되는 4~5문항은 100% 다 맞히실 수 있습니다. 복습이 필요하시면 언제든 처음으로 가기 버튼을 눌러 다시 점검해 주시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag" style="color: #15803d;">COMPLETION</div>
+                <h2 class="slide-title">23~25단원 핵심 총정리 체크리스트</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">✅ 시험장 들어가기 전 최종 점검 6문항</div>
+                <div class="card-desc" style="line-height: 1.8;">
+                  [ ] 합계 평균 이상 행 전체 수식: <code>=$E2>=AVERAGE($E$2:$E$9)</code><br>
+                  [ ] 짝수 행 조건부 서식: <code>=MOD(ROW(), 2)=0</code><br>
+                  [ ] 셀 이름 첫 글자는 숫자 불가(문자/밑줄만), 공백/특수문자 절대 금지<br>
+                  [ ] #REF! 는 참조 셀 삭제, #NAME? 은 함수명 오타 또는 따옴표 누락<br>
+                  [ ] 구구단 혼합 참조 수식: <code>=B$2*$A3</code> (첫행 행고정 × 왼쪽열 열고정)<br>
+                  [ ] 다른 통합 문서 파일명은 대괄호 <code>[파일명.xlsx]</code> 로 묶는다.
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <div style="font-size: 64px;">🏆</div>
+                <h3 style="font-size: 26px; font-weight: 800; color: #0f172a;">23~25단원 완강을 축하합니다!</h3>
+                <p style="font-size: 16px; color: #64748b; line-height: 1.6; max-width: 400px;">
+                  조건부 서식 실전 수식, 셀 이름 정의, 수식 오류 6총사, 구구단 혼합 참조를 완벽하게 마스터하셨습니다.
+                </p>
+                <button onclick="goTo(0)"
+                  style="background:#0284c7; color:#fff; border:none; padding:12px 26px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(2,132,199,0.3); transition:all 0.2s;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                  🔄 처음 슬라이드로 돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 18 : [부록] 수식 오류 & 셀 참조 치트시트
+             ======================================================== -->
+        <section class="slide"
+          data-notes="마지막 부록 슬라이드입니다. 수식 오류 코드 6총사와 셀 참조 기호 치트시트를 한눈에 볼 수 있도록 정리했습니다. 강의 시연이나 자습 시 참고용으로 활용하시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">컴퓨터활용2급 7일 완성 부록 </div>
+                <h2 class="slide-title">수식 오류 & 셀 참조 치트시트</h2>
+              </div>
+              <table class="styled-table">
+                <thead>
+                  <tr>
+                    <th>오류 코드</th>
+                    <th>발생 원인</th>
+                    <th>기출 팁</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>#VALUE!</code></td>
+                    <td>잘못된 인수나 연산자</td>
+                    <td>=INDEX 행번호 음수</td>
+                  </tr>
+                  <tr>
+                    <td><code>#DIV/0!</code></td>
+                    <td>0 또는 빈 셀로 나누기</td>
+                    <td>분모 셀 Delete 삭제</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NAME?</code></td>
+                    <td>함수명 오타, 큰따옴표 누락</td>
+                    <td>=SUM(A1B1), =가+5</td>
+                  </tr>
+                  <tr>
+                    <td><code>#REF!</code></td>
+                    <td>참조 셀/행/열 삭제</td>
+                    <td>참조하던 B열 삭제</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NUM!</code></td>
+                    <td>숫자값 오류, 찾는값 없음</td>
+                    <td>=RANK.EQ 찾는값 부재</td>
+                  </tr>
+                  <tr>
+                    <td><code>#NULL!</code></td>
+                    <td>교차점 없는 공백 연산자</td>
+                    <td>=SUM(A1:B2 C3:D4)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="width: 100%;">
+                <div class="morph-title"><span>📑 셀 참조 공식 요약 표</span></div>
+                <table class="styled-table" style="font-size: 14px;">
+                  <thead>
+                    <tr>
+                      <th>구분</th>
+                      <th>수식 표기</th>
+                      <th>특징 및 기출</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>상대 참조</td>
+                      <td><code>A1</code></td>
+                      <td>복사 위치 따라 비례 변경</td>
+                    </tr>
+                    <tr>
+                      <td>절대 참조</td>
+                      <td><code>$A$1</code></td>
+                      <td>위치 무관 고정 (F4 1번)</td>
+                    </tr>
+                    <tr>
+                      <td>행 고정</td>
+                      <td><code>A$1</code></td>
+                      <td>열 전체 서식, 구구단 첫행(B$2)</td>
+                    </tr>
+                    <tr>
+                      <td>열 고정</td>
+                      <td><code>$A1</code></td>
+                      <td>행 전체 서식, 구구단 첫열($A3)</td>
+                    </tr>
+                    <tr>
+                      <td>다른 시트</td>
+                      <td><code>시트!셀</code></td>
+                      <td>=B1+견본!G1</td>
+                    </tr>
+                    <tr>
+                      <td>다른 파일</td>
+                      <td><code>'[파일]시트'!셀</code></td>
+                      <td>='[진료.xlsx]코드'!G1</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Speaker Notes Drawer -->
+    <footer class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️ 발표자 강의 대본 (Speaker Script)</span>
+          <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(단축키: N 또는 S 키로 대본창 접기/펼치기)</span>
+        </div>
+        <button class="btn-toggle-notes" onclick="toggleNotes()">대본창 접기/펼치기</button>
+      </div>
+      <div class="notes-content" id="notesContent"></div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let currentIndex = 0;
+    const total = slides.length;
+
+    function renderSlide(index) {
+      if (index < 0 || index >= total) return;
+      slides[currentIndex].classList.remove('active');
+      slides[index].classList.add('active');
+      currentIndex = index;
+
+      const counterEl = document.getElementById('curSlideNum');
+      const totalEl = document.getElementById('totalSlideNum');
+      const notesEl = document.getElementById('notesContent');
+
+      if (counterEl) counterEl.textContent = String(currentIndex + 1).padStart(2, '0');
+      if (totalEl) totalEl.textContent = String(total).padStart(2, '0');
+      if (notesEl) {
+        notesEl.innerHTML = slides[currentIndex].dataset.notes || '(대본 없음)';
+      }
+    }
+
+    function goTo(index) { renderSlide(index); }
+    function nextSlide() { if (currentIndex < total - 1) renderSlide(currentIndex + 1); }
+    function prevSlide() { if (currentIndex > 0) renderSlide(currentIndex - 1); }
+    function toggleNotes() {
+      const drawer = document.getElementById('notesDrawer');
+      if (drawer) drawer.classList.toggle('collapsed');
+    }
+
+    let lastKeyTime = 0;
+    window.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName) && document.activeElement.type !== 'range') return;
+      const now = Date.now();
+      const key = e.key;
+      const code = e.code;
+      const keyCode = e.keyCode;
+
+      if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' || code === 'KeyN' ||
+        key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+        keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        nextSlide();
+        return;
+      }
+
+      if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' || code === 'KeyP' ||
+        key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+        keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        prevSlide();
+        return;
+      }
+
+      if (key === 'Home') { e.preventDefault(); goTo(0); return; }
+      if (key === 'End') { e.preventDefault(); goTo(total - 1); return; }
+      if (code === 'KeyS' || key === 's' || key === 'S' || code === 'KeyN' || key === 'n' || key === 'N') {
+        toggleNotes();
+        return;
+      }
+    });
+
+    function ensureFocus() {
+      try { window.focus(); document.body.focus(); } catch (e) { }
+    }
+    window.addEventListener('DOMContentLoaded', ensureFocus);
+    window.addEventListener('load', ensureFocus);
+    window.addEventListener('click', ensureFocus);
+
+    // ==========================================
+    // 인터랙티브 조작 함수들
+    // ==========================================
+
+    // Slide 4: 짝수행 vs 홀수행 토글
+    function toggleRowParity(type) {
+      const btnEven = document.getElementById('btn-row-even');
+      const btnOdd = document.getElementById('btn-row-odd');
+      const exp = document.getElementById('rp-explain');
+      const r2 = document.getElementById('rp-2');
+      const r3 = document.getElementById('rp-3');
+      const r4 = document.getElementById('rp-4');
+      const r5 = document.getElementById('rp-5');
+
+      if (type === 'even') {
+        btnEven.classList.add('active');
+        btnOdd.classList.remove('active');
+        r2.style.background = '#fef08a';
+        r2.style.fontWeight = '700';
+        r4.style.background = '#fef08a';
+        r4.style.fontWeight = '700';
+        r3.style.background = 'transparent';
+        r3.style.fontWeight = 'normal';
+        r5.style.background = 'transparent';
+        r5.style.fontWeight = 'normal';
+        exp.innerHTML = '💡 짝수 행 번호(2행, 4행) 전체에 조건부 서식이 적용되었습니다.';
+      } else {
+        btnOdd.classList.add('active');
+        btnEven.classList.remove('active');
+        r3.style.background = '#fef08a';
+        r3.style.fontWeight = '700';
+        r5.style.background = '#fef08a';
+        r5.style.fontWeight = '700';
+        r2.style.background = 'transparent';
+        r2.style.fontWeight = 'normal';
+        r4.style.background = 'transparent';
+        r4.style.fontWeight = 'normal';
+        exp.innerHTML = '💡 홀수 행 번호(3행, 5행) 전체에 조건부 서식이 적용되었습니다.';
+      }
+    }
+
+    // Slide 5: 셀 이름 유효성 검사
+    function testNameValid(type) {
+      const disp = document.getElementById('name-input-disp');
+      const res = document.getElementById('name-result-disp');
+      const exp = document.getElementById('name-explain');
+
+      if (type === 'n1') {
+        disp.textContent = '_합격률';
+        res.textContent = '사용 가능 (Valid)';
+        res.className = 'e-cell active-green';
+        res.style.color = '#15803d';
+        exp.innerHTML = '💡 밑줄(_)로 시작하므로 첫 글자 규칙을 완벽하게 만족합니다.';
+      } else if (type === 'n2') {
+        disp.textContent = '2026매출';
+        res.textContent = '사용 불가 (Invalid)';
+        res.className = 'e-cell';
+        res.style.color = '#dc2626';
+        res.style.fontWeight = '800';
+        exp.innerHTML = '⚠️ <strong>오류:</strong> 첫 글자는 숫자로 시작할 수 없습니다!';
+      } else if (type === 'n3') {
+        disp.textContent = '생산 원가';
+        res.textContent = '사용 불가 (Invalid)';
+        res.className = 'e-cell';
+        res.style.color = '#dc2626';
+        res.style.fontWeight = '800';
+        exp.innerHTML = '⚠️ <strong>오류:</strong> 이름에 <strong>공백(띄어쓰기)</strong>을 포함할 수 없습니다!';
+      } else {
+        disp.textContent = '단가\\1';
+        res.textContent = '사용 가능 (Valid)';
+        res.className = 'e-cell active-green';
+        res.style.color = '#15803d';
+        exp.innerHTML = '💡 역슬래시(\\)는 통화 기호로 인식되어 이름 중간에 사용 가능합니다.';
+      }
+    }
+
+    // Slide 7: #DIV/0! 오류 시연
+    function simDivError(type) {
+      const b1 = document.getElementById('div-b1-cell');
+      const res = document.getElementById('div-res-cell');
+      const exp = document.getElementById('div-explain');
+      const bNorm = document.getElementById('btn-div-norm');
+      const bZero = document.getElementById('btn-div-zero');
+      const bDel = document.getElementById('btn-div-del');
+      [bNorm, bZero, bDel].forEach(b => b.classList.remove('active'));
+
+      if (type === 'norm') {
+        bNorm.classList.add('active');
+        b1.textContent = '5';
+        res.textContent = '20';
+        res.style.color = '#15803d';
+        exp.innerHTML = '💡 100 / 5 = 20 으로 정상 계산되었습니다.';
+      } else if (type === 'zero') {
+        bZero.classList.add('active');
+        b1.textContent = '0';
+        res.textContent = '#DIV/0!';
+        res.style.color = '#dc2626';
+        exp.innerHTML = '⚠️ <strong>#DIV/0! 발생:</strong> 숫자를 0으로 나눌 수 없습니다!';
+      } else {
+        bDel.classList.add('active');
+        b1.textContent = '(비어있음)';
+        res.textContent = '#DIV/0!';
+        res.style.color = '#dc2626';
+        exp.innerHTML = '⚠️ <strong>#DIV/0! 발생:</strong> 분모 셀(B1)을 Delete로 지워 빈 셀이 되었으므로 0으로 나눈 것으로 처리됩니다!';
+      }
+    }
+
+    // Slide 8: #REF! 오류 시연
+    function simRefError(type) {
+      const b1 = document.getElementById('ref-b1-disp');
+      const res = document.getElementById('ref-res-disp');
+      const exp = document.getElementById('ref-explain');
+      const bNorm = document.getElementById('btn-ref-norm');
+      const bDel = document.getElementById('btn-ref-del');
+
+      if (type === 'norm') {
+        bNorm.classList.add('active');
+        bDel.classList.remove('active');
+        b1.textContent = '30';
+        res.textContent = '80 (=A1+B1)';
+        res.style.color = '#15803d';
+        exp.innerHTML = '💡 A1(50)과 B1(30)을 더해 정상적으로 80이 출력되고 있습니다.';
+      } else {
+        bDel.classList.add('active');
+        bNorm.classList.remove('active');
+        b1.textContent = '(열 삭제됨)';
+        res.textContent = '#REF! (=A1+#REF!)';
+        res.style.color = '#dc2626';
+        exp.innerHTML = '⚠️ <strong>#REF! 발생:</strong> 참조하던 B열 전체가 삭제되어 셀 참조가 유효하지 않게 되었습니다!';
+      }
+    }
+
+    // Slide 10: 오류 퀴즈
+    function quizErr(q) {
+      const s = document.getElementById('qe-situ');
+      const c = document.getElementById('qe-code');
+      const exp = document.getElementById('qe-explain');
+
+      if (q === 'q1') {
+        s.textContent = '수식 =A1+B1 상태에서 B열 삭제';
+        c.textContent = '#REF!';
+        exp.innerHTML = '💡 참조 대상 셀(B1)이 삭제되었으므로 유효하지 않은 참조(#REF!) 오류가 발생합니다.';
+      } else if (q === 'q2') {
+        s.textContent = '수식 =SUM(A1B1) 쉼표 누락 또는 함수명 오타';
+        c.textContent = '#NAME?';
+        exp.innerHTML = '💡 엑셀이 함수 이름이나 단어를 식별하지 못해 #NAME? 오류가 발생합니다.';
+      } else if (q === 'q3') {
+        s.textContent = '수식 =A1/B1 상태에서 B1 셀을 Delete로 삭제';
+        c.textContent = '#DIV/0!';
+        exp.innerHTML = '💡 빈 셀로 나누기를 시도했으므로 0 나누기(#DIV/0!) 오류가 발생합니다.';
+      } else {
+        s.textContent = '수식 =INDEX(A1:B5, -1, 2) 행 번호 음수 지정';
+        c.textContent = '#VALUE!';
+        exp.innerHTML = '💡 함수의 인수로 잘못된 값(-1)을 전달했으므로 #VALUE! 오류가 발생합니다.';
+      }
+    }
+
+    // Slide 11: F4 순환
+    let f4Step = 0;
+    const f4States = [
+      { name: '0회 (초기 상태)', code: 'A1 (상대 참조)' },
+      { name: '1회 누름', code: '$A$1 (절대 참조)' },
+      { name: '2회 누름', code: 'A$1 (행 고정 혼합)' },
+      { name: '3회 누름', code: '$A1 (열 고정 혼합)' },
+      { name: '4회 누름 (원위치)', code: 'A1 (상대 참조)' }
+    ];
+    function cycleF4() {
+      f4Step = (f4Step + 1) % 5;
+      document.getElementById('f4-count-disp').textContent = f4States[f4Step].name;
+      document.getElementById('f4-result-disp').textContent = f4States[f4Step].code;
+    }
+    function resetF4() {
+      f4Step = 0;
+      document.getElementById('f4-count-disp').textContent = f4States[0].name;
+      document.getElementById('f4-result-disp').textContent = f4States[0].code;
+    }
+
+    renderSlide(0);
+  </script>
+
+</body>
+
+</html>
