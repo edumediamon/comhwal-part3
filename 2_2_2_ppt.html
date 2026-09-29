@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --canvas-bg: #ffffff;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #d1fae5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #ede9fe;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-canvas: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 초록색 핵심 하이라이트 (요청 디자인 표준 반영) */
+    .hl-green,
+    u,
+    .u-highlight {
+      text-decoration: none;
+      background-color: #dcfce7 !important;
+      color: #15803d !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      border-bottom: 2.5px solid #22c55e;
+      box-shadow: 0 1px 2px rgba(34, 197, 94, 0.12);
+      display: inline-block;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .header-bar {
+      height: 54px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--accent-blue-light);
+      border: 1px solid #bae6fd;
+      color: var(--accent-blue);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .slide-counter span {
+      color: var(--accent-blue);
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    /* Main Slide Stage */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px;
+      position: relative;
+      background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+    }
+
+    /* 좌우 대형 플로팅 내비게이션 화살표 */
+    .side-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 76px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      color: #334155;
+      font-size: 36px;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      user-select: none;
+    }
+    .side-nav-arrow:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
+    }
+    .side-nav-arrow:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+    .side-nav-arrow.prev { left: 14px; }
+    .side-nav-arrow.next { right: 14px; }
+
+    .slide-canvas {
+      width: 100%;
+      max-width: 1440px;
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 200px);
+      background: var(--canvas-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      box-shadow: var(--shadow-canvas);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 44px;
+    }
+
+    /* 슬라이드 전환 스타일 */
+    .slide {
+      display: none !important;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      display: flex !important;
+      animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Animations */
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .anim-left {
+      animation: fadeInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Slide Tag: 24px Bold */
+    .slide-tag {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 22px;
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    /* 50% : 50% Split Layout */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      flex: 1;
+      height: 100%;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .right-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Info Cards in Left Col */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      border-color: #93c5fd;
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+      background: var(--accent-blue);
+    }
+
+    .info-card.warning::before {
+      background: var(--accent-rose);
+    }
+
+    .info-card.success::before {
+      background: var(--accent-emerald);
+    }
+
+    .info-card.amber::before {
+      background: var(--accent-amber);
+    }
+
+    .info-card.purple::before {
+      background: var(--accent-purple);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    .card-desc .warn-text {
+      color: #e11d48;
+      font-weight: 800;
+      background: #fff1f2;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Key Badge */
+    .key-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14.5px;
+      color: #0369a1;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+
+    /* Visual Mockups & Morph Cards in Right Col */
+    .visual-mockup {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .morph-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+    }
+
+    .morph-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    .morph-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: scale(1.02);
+    }
+    .morph-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    /* 모핑 엑셀 시뮬레이터 그리드 */
+    .excel-morph-grid {
+      display: grid;
+      grid-template-columns: 45px 1fr 1fr;
+      gap: 1px;
+      background: #cbd5e1;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .e-cell {
+      background: #ffffff;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .e-cell.header {
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 12px;
+      justify-content: center;
+    }
+    .e-cell.selected {
+      outline: 2px solid var(--accent-blue);
+      background: #f0f7ff;
+      z-index: 2;
+    }
+    .e-cell.overflow-hidden {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: clip;
+    }
+
+    /* 표 스타일 */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .styled-table th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .styled-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 3D 플립 카드 */
+    .flip-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 100px;
+      cursor: pointer;
+    }
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-container.flipped .flipper {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-card);
+    }
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
+
+    /* Slide 1 - Title Slide (No Split) */
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
+      border-radius: 16px;
+    }
+
+    .title-badge {
+      padding: 8px 26px;
+      background: var(--accent-emerald-light);
+      border: 1.5px solid #86efac;
+      color: var(--accent-emerald);
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .title-h1 {
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
+    .title-sub {
+      font-size: 24px;
+      color: #64748b;
+      font-weight: 600;
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    /* Bottom Speaker Notes Drawer */
+    .notes-drawer {
+      height: 140px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .notes-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-content {
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .notes-content strong {
+      color: #047857;
+      background: #ecfdf5;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle-notes {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Bar -->
+    <header class="header-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-subject" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">컴퓨터활용능력 2급 필기</span>
+        <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (07~15)</span>
+      </div>
+      <!-- 슬라이드 번호 카운터 -->
+      <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">13</span></div>
+    </header>
+
+    <!-- Slide Canvas Stage -->
+    <main class="slide-stage">
+      <!-- 좌우 사이드 플로팅 내비게이션 화살표 -->
+      <button class="side-nav-arrow prev" onclick="prevSlide()" title="이전 슬라이드 (◀ / Backspace)">‹</button>
+      <button class="side-nav-arrow next" onclick="nextSlide()" title="다음 슬라이드 (▶ / Space / Enter)">›</button>
+
+      <div class="slide-canvas" id="slideCanvas">
+
+        <!-- ========================================================
+             SLIDE 1 : Title Slide
+             ======================================================== -->
+        <section class="slide active title-slide" data-notes="안녕하세요. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반에서 매회 4~5문항 이상 고정 출제되는 핵심 파트인 '데이터 입력 및 편집' 9대 핵심 요약을 완벽히 정리합니다. 시험에 나오는 모든 초록색 하이라이트 문구와 실제 엑셀 인터랙티브 모핑 시뮬레이션을 통해 3초 안에 정답을 골라내는 실전 감각을 길러보겠습니다.">
+          <div class="title-badge">컴활 2급 필기 • 핵심 요약 07~15</div>
+          <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
+          <p class="title-sub">데이터 입력 및 편집 (문자·숫자 정렬, 메모 vs 윗주, 지우기 4총사, 와일드카드) 완전 정복</p>
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <span class="key-badge">단축키: Space / Enter / 방향키</span>
+            <span class="key-badge" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0;">빈출 킬러 포인트 100% 반영</span>
+            <button onclick="nextSlide()" style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              🚀 강의 시작하기 (Next ➔)
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 2 : Table of Contents (Agenda)
+             ======================================================== -->
+        <section class="slide" data-notes="전체 9개 핵심 주제 목차입니다. 07번 문자 데이터부터 15번 찾기 및 바꾸기까지 순서대로 진행되며, 특히 11번 메모와 12번 윗주는 시험에 정반대로 출제되는 대표적 낚시 항목이므로 집중해서 살펴보겠습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TABLE OF CONTENTS</div>
+                <h2 class="slide-title">핵심 학습 목차</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">📌 기초 데이터 및 기호 입력</div>
+                <div class="card-desc">07 문자 데이터 & 08 숫자 데이터 기본 정렬, 09 날짜/시간 & 10 특수 문자/한자 입력 공식</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">⚖️ 메모 vs 윗주 핵심 비교</div>
+                <div class="card-desc">11 메모 (Shift+F2, Delete 보존) vs 12 윗주 삽입 (문자 전용, Delete 삭제)</div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">🔍 편집 및 검색 고급 기능</div>
+                <div class="card-desc">13 하이퍼링크 (Ctrl+K), 14 데이터 편집/지우기 4총사, 15 찾기 및 바꾸기 (와일드카드)</div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 20px; width: 100%;">
+                <div style="font-size: 15px; font-weight: 800; color: #0284c7; margin-bottom: 12px; letter-spacing: 0.5px;">
+                  ⚡ 클릭하면 해당 슬라이드로 즉시 이동
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <button class="morph-btn" onclick="goTo(2)" style="justify-content: flex-start;">07. 문자 데이터</button>
+                  <button class="morph-btn" onclick="goTo(3)" style="justify-content: flex-start;">08. 숫자 데이터</button>
+                  <button class="morph-btn" onclick="goTo(4)" style="justify-content: flex-start;">09. 날짜/시간</button>
+                  <button class="morph-btn" onclick="goTo(5)" style="justify-content: flex-start;">10. 특수문자/한자</button>
+                  <button class="morph-btn" onclick="goTo(6)" style="justify-content: flex-start;">11. 메모(Shift+F2)</button>
+                  <button class="morph-btn" onclick="goTo(7)" style="justify-content: flex-start;">12. 윗주 삽입</button>
+                  <button class="morph-btn" onclick="goTo(8)" style="justify-content: flex-start;">13. 하이퍼링크</button>
+                  <button class="morph-btn" onclick="goTo(9)" style="justify-content: flex-start;">14. 데이터 편집</button>
+                  <button class="morph-btn" onclick="goTo(10)" style="justify-content: flex-start;">15. 찾기/바꾸기</button>
+                  <button class="morph-btn active" onclick="goTo(11)" style="justify-content: flex-start;">🎯 킬러 함정 4선</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 3 : 07 문자 데이터
+             ======================================================== -->
+        <section class="slide" data-notes="07번 문자 데이터입니다. 문자는 기본적으로 왼쪽 정렬됩니다. 숫자를 문자로 강제 인식시키려면 작은따옴표를 붙이며, 오른쪽 셀의 비어있는지 여부에 따라 연속 표시될지 셀 너비만큼 잘릴지가 결정됩니다. 또한 Ctrl+Enter는 선택 범위 일괄 입력, Alt+Enter는 한 셀 내 줄바꿈 단축키입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 07</div>
+                <h2 class="slide-title">문자 데이터</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">기본 정렬 & 문자 인식</div>
+                <div class="card-desc">
+                  • 기본적으로 셀의 <span class="hl-green">왼쪽을 기준으로 정렬됨</span><br>
+                  • 숫자 데이터 앞에 <span class="hl-green">작은 따옴표(')</span> 입력하면 문자로 인식 (예: <code>'123</code>)
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">셀 너비보다 긴 경우 (출제 빈출)</div>
+                <div class="card-desc">
+                  • 오른쪽 셀이 비어 있으면 : <strong>연속해서 표시</strong><br>
+                  • <span class="hl-green">오른쪽 셀에 데이터가 있으면 셀의 너비만큼만 잘려서 표시됨</span>
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">입력 단축키</div>
+                <div class="card-desc">
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">Enter</span></span> : <span class="hl-green">선택한 모든 셀에 동일한 값 입력</span><br>
+                  • <span class="hl-green"><span class="key-badge">Alt</span>+<span class="key-badge">Enter</span></span> : <span class="hl-green">한 셀에 여러 줄 삽입</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <div style="font-weight: 700; color: #1e293b; font-size: 15px;">🧪 긴 문자열 모핑 시뮬레이션</div>
+                  <button class="morph-btn active" id="btn-toggle-neighbor" onclick="toggleNeighborData()">
+                    오른쪽(B1) 셀: <span id="neighbor-status">비어있음</span>
+                  </button>
+                </div>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">
+                  오른쪽 버튼을 클릭하여 B1 셀에 데이터를 넣었다 뺐을 때 A1 셀의 표시 모핑을 확인하세요:
+                </p>
+                <div class="excel-morph-grid">
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A (너비 한정)</div>
+                  <div class="e-cell header">B (인접 셀)</div>
+
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected" id="cell-a1" style="font-size: 13.5px; color: #0284c7; font-weight: 600; white-space: nowrap; z-index: 10;">
+                    대한민국컴활자격증합격보장
+                  </div>
+                  <div class="e-cell" id="cell-b1" style="color: #94a3b8; font-size: 13px;">
+                    (비어있음)
+                  </div>
+                </div>
+                <div id="overflow-explain" style="margin-top: 14px; padding: 10px 14px; background: #e0f2fe; border-radius: 8px; font-size: 13px; color: #0369a1; line-height: 1.5;">
+                  💡 현재 B1 셀이 비어있어 A1의 긴 텍스트가 <strong>연속해서 표시</strong>됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 4 : 08 숫자 데이터
+             ======================================================== -->
+        <section class="slide" data-notes="08번 숫자 데이터입니다. 숫자는 기본적으로 오른쪽 정렬됩니다. 가장 빈출되는 함정은 분수 입력법으로, 0과 분수 사이에 띄어쓰기를 꼭 해야 합니다. 1/2만 쓰면 1월 2일 날짜가 됩니다. 또한 열 너비가 좁을 때는 지수 형식(1.2E+06)이나 오류 기호인 샵(###)으로 표시됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 08</div>
+                <h2 class="slide-title">숫자 데이터</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">기본 정렬 & 입력 가능 문자</div>
+                <div class="card-desc">
+                  • 기본적으로 셀의 <span class="hl-green">오른쪽을 기준으로 정렬됨</span><br>
+                  • 0~9 숫자와 <code>+ - ( ) , ₩ $ % E e</code>를 함께 입력할 수 있음<br>
+                  • 음수는 <code>-</code> 기호 대신 <strong>괄호()</strong>로 묶어 입력 (예 : <code>(5)</code> → <code>-5</code>)
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">★ 분수 입력 공식 (출제 1위)</div>
+                <div class="card-desc">
+                  • 숫자와 <span class="hl-green">분수를 띄어쓰기함</span> (예 : <span class="hl-green">0 1/2</span>, <span class="hl-green">1 2/5</span>)<br>
+                  • <span class="warn-text">주의</span> : 그냥 <code>1/2</code>만 입력하면 <strong>1월 2일 날짜로 변환</strong>됨!
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">열 너비 부족 시 표기</div>
+                <div class="card-desc">
+                  입력한 숫자가 열 너비보다 길면 지수 형식(<span class="hl-green">1.2E+06</span>) 또는 <strong>'###'</strong>으로 표시됨
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 10px;">
+                  🎚️ 열 너비 부족시 ### 모핑 조절기
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span style="font-size: 13px; color: #64748b;">열 너비 조절 슬라이더:</span>
+                  <span id="slider-col-width-text" style="font-size: 13px; font-weight: 700; color: #0284c7;">너비: 보통 (지수 표기)</span>
+                </div>
+                <input type="range" id="slider-col-width" min="1" max="3" value="2" style="width: 100%; accent-color: var(--accent-blue); cursor: pointer;" oninput="onColWidthChange(this.value)">
+
+                <div class="excel-morph-grid" style="grid-template-columns: 50px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">행</div>
+                  <div class="e-cell header" id="grid-header-a">A (셀 결과값)</div>
+
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected" id="cell-num-demo" style="justify-content: flex-end; font-size: 16px; font-weight: 700; color: #0284c7; transition: all 0.3s ease;">
+                    1.23E+09
+                  </div>
+                </div>
+
+                <div style="margin-top: 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #92400e;">
+                  <strong>분수 입력 공식 암기:</strong> <code>0</code> 입력 후 <span class="key-badge">Space</span> 누르고 <code>1/2</code> 입력!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 5 : 09 날짜/시간 데이터
+             ======================================================== -->
+        <section class="slide" data-notes="09번 날짜와 시간 데이터입니다. 둘 다 오른쪽 정렬됩니다. 날짜는 하이픈이나 슬래시, 시간은 콜론으로 구분합니다. 엑셀의 중요한 기본 원리로 날짜 1일은 숫자 1이고, 24시간이 숫자 1입니다. 단축키로 현재 날짜는 Ctrl+; 현재 시간은 Ctrl+Shift+; 입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 09</div>
+                <h2 class="slide-title">날짜/시간 데이터</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">기본 정렬 및 구분 기호</div>
+                <div class="card-desc">
+                  • 기본적으로 셀의 <span class="hl-green">오른쪽을 기준으로 정렬됨</span><br>
+                  • 날짜 : 하이픈(-) 또는 슬래시(/) 이용 연, 월, 일 구분 (예 : <span class="hl-green">2026-8-15</span>, <span class="hl-green">8-15</span>)<br>
+                  • 시간 : 콜론(:) 이용 시, 분, 초 구분 (예 : <span class="hl-green">15:30</span>, <span class="hl-green">10:10:10</span>)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">일련번호 원리</div>
+                <div class="card-desc">
+                  날짜 1일은 숫자 1과 같고, 시간 24시간이 숫자 1과 같음 (12시간 = 0.5)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">스탬프 단축키</div>
+                <div class="card-desc">
+                  • <span class="hl-green">현재 날짜는</span> <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">;</span></span> 입력<br>
+                  • <span class="hl-green">현재 시간은</span> <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">Shift</span>+<span class="key-badge">;</span></span> 입력
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 12px;">
+                  ⏱️ 실시간 단축키 스탬프 모핑 체험
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                      <div style="font-size: 12px; color: #64748b;">현재 날짜 스탬프</div>
+                      <div id="stamp-date-text" style="font-size: 17px; font-weight: 700; color: #0284c7; font-family: monospace;">2026-09-29</div>
+                    </div>
+                    <button class="morph-btn" onclick="executeDateStamp()">
+                      <span class="key-badge">Ctrl</span>+<span class="key-badge">;</span> 실행
+                    </button>
+                  </div>
+                  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                      <div style="font-size: 12px; color: #64748b;">현재 시간 스탬프</div>
+                      <div id="stamp-time-text" style="font-size: 17px; font-weight: 700; color: #059669; font-family: monospace;">11:45:00 AM</div>
+                    </div>
+                    <button class="morph-btn" onclick="executeTimeStamp()">
+                      <span class="key-badge">Ctrl</span>+<span class="key-badge">Shift</span>+<span class="key-badge">;</span> 실행
+                    </button>
+                  </div>
+                </div>
+                <div style="margin-top: 14px; text-align: center; font-size: 13px; color: #64748b;">
+                  💡 날짜에 숫자 1을 더하면 다음 날이 되고, 시간에 0.5를 더하면 12시간 뒤가 됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 6 : 10 특수 문자 / 한자
+             ======================================================== -->
+        <section class="slide" data-notes="10번 특수 문자와 한자 입력입니다. 한글 자음인 ㄱ, ㄴ, ㄷ, ㅁ 등을 입력하고 한자 키를 누르면 기호 목록 팝업이 뜹니다. 메뉴에서는 [삽입]-[기호]로도 입력할 수 있습니다. 한자 변환 시에는 바꿀 단어나 글자의 블록을 지정한 후 한자 키를 누릅니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 10</div>
+                <h2 class="slide-title">특수 문자 & 한자 변환</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">특수 문자 입력 방법</div>
+                <div class="card-desc">
+                  • <span class="hl-green">한글의 자음(ㄱ, ㄴ, ㄷ..)을 누르고 한자</span>를 눌러 목록에서 입력<br>
+                  • 리본 메뉴의 <strong>[삽입] - [기호]</strong>를 실행하여 입력
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">한자 변환 방법</div>
+                <div class="card-desc">
+                  • 데이터 입력 후 <span class="hl-green">블록을 지정하고</span> <span class="hl-green">한자</span>를 눌러 변환<br>
+                  • 한 글자 또는 단어 단위 블록 지정 가능
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 12px;">
+                  ⌨️ 자음 + 한자 팝업 모핑 팔레트
+                </div>
+                <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+                  <button class="morph-btn active" id="tab-m" onclick="switchJamo('m')">ㅁ (도형기호)</button>
+                  <button class="morph-btn" id="tab-r" onclick="switchJamo('r')">ㄹ (단위기호)</button>
+                  <button class="morph-btn" id="tab-o" onclick="switchJamo('o')">ㅇ (원문자/괄호)</button>
+                </div>
+                <div id="jamo-panel" style="background: #f8fafc; border: 2px solid #0284c7; border-radius: 12px; padding: 14px; min-height: 110px; transition: all 0.3s ease;">
+                  <div style="font-size: 12px; color: #0284c7; font-weight: 700; margin-bottom: 8px;" id="jamo-title">
+                    'ㅁ' 입력 후 [한자] 키 누름 결과:
+                  </div>
+                  <div id="jamo-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; text-align: center; font-size: 15px; font-weight: 700; color: #1e293b;">
+                    <span style="background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;">1. ★</span>
+                    <span style="background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;">2. ☆</span>
+                    <span style="background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;">3. ■</span>
+                    <span style="background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;">4. □</span>
+                    <span style="background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;">5. ●</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 7 : 11 메모 (Shift+F2)
+             ======================================================== -->
+        <section class="slide" data-notes="11번 메모 기능입니다. 단축키는 Shift+F2입니다. 메모는 셀을 복사하거나 이동하면 함께 이동하며, 우측 상단에 빨간 삼각형 점이 생깁니다. 시험에서 가장 중요한 문장은 '셀의 데이터를 Delete로 지워도 메모는 절대 삭제되지 않는다'는 점입니다. 메모를 삭제하려면 검토 메뉴나 모두 지우기, 메모 지우기를 써야 합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 11</div>
+                <h2 class="slide-title">메모 (<span class="key-badge">Shift</span>+<span class="key-badge">F2</span>)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">메모의 기본 특성</div>
+                <div class="card-desc">
+                  • <span class="hl-green">모든 셀에 입력할 수 있고, 셀을 이동, 복사하면 메모도 함께 이동, 복사됨</span><br>
+                  • 셀의 오른쪽 상단에 빨간색 삼각형 점이 표시되고, <span class="hl-green">셀에 마우스 포인터를 위치해야</span> 메모가 표시됨
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 가장 중요한 기출 함정 (Delete 보존)</div>
+                <div class="card-desc">
+                  ★ 셀에 입력된 데이터를 지워도(<span class="key-badge">Delete</span>) <span class="hl-green">메모는 절대 삭제되지 않음!</span>
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="card-title">메모 삭제 방법 3가지</div>
+                <div class="card-desc">
+                  • <span class="hl-green">[검토]-[메모]-[삭제]</span>, <span class="hl-green">[바로 가기 메뉴]-[메모 삭제]</span><br>
+                  • <span class="hl-green">[홈]-[편집]-[지우기]-[모두 지우기] 또는 [메모 지우기]</span><br>
+                  • <span class="hl-green">메모 자체 선택 후</span> <span class="hl-green"><span class="key-badge">Delete</span></span> 누름
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 8px;">
+                  📌 메모 호버 & Delete 보존 모핑 데모
+                </div>
+                <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">
+                  아래 셀에 마우스를 올리면 노란 메모가 뜨며, [Delete 실행] 버튼을 눌러보세요:
+                </p>
+                <div style="position: relative; margin-bottom: 16px;">
+                  <div class="excel-morph-grid" style="grid-template-columns: 50px 1fr;">
+                    <div class="e-cell header">A1</div>
+                    <div class="e-cell selected" id="memo-target-cell" style="cursor: pointer; position: relative;">
+                      <span id="memo-cell-content" style="font-weight: 700; color: #1e293b;">홍길동 (데이터)</span>
+                      <div style="position: absolute; top: 0; right: 0; width: 0; height: 0; border-style: solid; border-width: 0 10px 10px 0; border-color: transparent #ef4444 transparent transparent;"></div>
+                    </div>
+                  </div>
+                  <div id="sticky-memo-popup" style="background: #fef08a; border: 1px solid #ca8a04; border-radius: 6px; padding: 10px 12px; margin-top: 8px; font-size: 13px; color: #854d0e; box-shadow: var(--shadow-card); line-height: 1.5; transition: all 0.3s ease;">
+                    <strong>[셀 메모]:</strong> 데이터를 Delete 키로 지워도 메모는 살아있습니다!
+                  </div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                  <button class="morph-btn" onclick="testDeleteCellData()">
+                    🗑️ 셀 데이터 [Delete] 누르기
+                  </button>
+                  <button class="morph-btn" onclick="resetCellData()">
+                    🔄 원상 복구
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 8 : 12 윗주 삽입
+             ======================================================== -->
+        <section class="slide" data-notes="12번 윗주 삽입입니다. 윗주는 메모와 완벽히 비교해서 외워야 합니다. 윗주는 오직 문자 데이터 셀에만 넣을 수 있습니다. 자동으로 안 보이고 윗주 필드 표시를 눌러야 행 높이가 늘어나며 보입니다. 그리고 셀 데이터를 Delete로 지우면 메모와 달리 윗주는 함께 삭제됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 12</div>
+                <h2 class="slide-title">윗주 삽입 (Phonetic Guide)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">문자 데이터 전용 및 표시 설정</div>
+                <div class="card-desc">
+                  • ★ <span class="hl-green">문자 데이터가 입력된 셀에만</span> 설정할 수 있음 (숫자/날짜 셀 불가)<br>
+                  • 윗주가 입력된 셀은 <span class="hl-green">자동으로 표시되지 않기</span> 때문에, <span class="hl-green">[홈]-[글꼴]-[윗주 필드 표시/숨기기]</span>을 설정하면 <span class="hl-green">행 높이 자동 조절됨</span>
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ Delete 삭제 법칙 (메모와 정반대!)</div>
+                <div class="card-desc">
+                  ★ <span class="hl-green">셀의 데이터를 [Delete]하면 윗주도 함께 삭제됨</span>!
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="card-title">서식 지정 범위</div>
+                <div class="card-desc">
+                  윗주는 입력된 <span class="hl-green">데이터 전체에 대해서만 서식을 지정</span>할 수 있음
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 8px;">
+                  ⚖️ [메모 vs 윗주] 행 높이 모핑 비교표
+                </div>
+                <table class="styled-table" style="margin-bottom: 14px;">
+                  <thead>
+                    <tr>
+                      <th>비교 항목</th>
+                      <th>메모 (Comment)</th>
+                      <th>윗주 (Phonetic)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>적용 대상</strong></td>
+                      <td>모든 셀 가능</td>
+                      <td><span class="hl-green">문자 셀만 가능</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>데이터 Delete</strong></td>
+                      <td>메모 보존 (안 지워짐)</td>
+                      <td><span class="hl-green">윗주도 함께 삭제</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>행 높이 변화</strong></td>
+                      <td>변화 없음</td>
+                      <td><span class="hl-green">행 높이 자동 조절</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <div style="font-size: 12px; color: #64748b;">윗주 필드 표시 상태:</div>
+                    <div id="ruby-morph-box" style="font-size: 17px; font-weight: 700; color: #1e293b; margin-top: 4px; transition: all 0.3s ease;">
+                      대한민국
+                    </div>
+                  </div>
+                  <button class="morph-btn active" id="btn-toggle-ruby" onclick="toggleRubyMorph()">
+                    윗주 필드 [표시 토글]
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 9 : 13 하이퍼링크 (Ctrl+K)
+             ======================================================== -->
+        <section class="slide" data-notes="13번 하이퍼링크입니다. 단축키는 Ctrl+K입니다. 연결 대상 4가지는 기존 파일 및 웹페이지, 현재 문서, 새 문서 만들기, 전자 메일 주소입니다. 시험에 단골로 나오는 지문은 '단추(Button)에는 하이퍼링크를 지정할 수 없다'는 점입니다. 도형이나 그림에는 가능하지만 양식 단추에는 불가합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 13</div>
+                <h2 class="slide-title">하이퍼링크 (<span class="key-badge">Ctrl</span>+<span class="key-badge">K</span>)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">하이퍼링크 정의</div>
+                <div class="card-desc">
+                  셀, 그래픽 개체에 웹, 파일, 이메일 등을 연결하는 기능
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">연결 대상 4가지</div>
+                <div class="card-desc">
+                  <span class="hl-green">기존 파일/웹 페이지, 현재 문서, 새 문서 만들기, 전자 메일 주소로 연결</span> 지정
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 단추(Button) 지정 불가 (출제 1위)</div>
+                <div class="card-desc">
+                  도형, 그림, 워드아트 등의 그래픽 개체에는 하이퍼링크를 지정할 수 있으나 <span class="hl-green">단추에는 하이퍼링크를 지정할 수 없음</span> (단추는 매크로 연결용)
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 12px;">
+                  🔗 하이퍼링크 연결 대상 4총사 모핑 카드
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+                  <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; padding: 12px;">
+                    <div style="font-weight: 700; color: #166534; font-size: 13.5px;">1. 기존 파일/웹페이지</div>
+                    <div style="font-size: 12px; color: #4b5563; margin-top: 4px;">외부 URL 및 PC 파일 연결</div>
+                  </div>
+                  <div style="background: #eff6ff; border: 1px solid #93c5fd; border-radius: 10px; padding: 12px;">
+                    <div style="font-weight: 700; color: #1e40af; font-size: 13.5px;">2. 현재 문서</div>
+                    <div style="font-size: 12px; color: #4b5563; margin-top: 4px;">Sheet2!A1 등 특정 셀 이동</div>
+                  </div>
+                  <div style="background: #faf5ff; border: 1px solid #d8b4fe; border-radius: 10px; padding: 12px;">
+                    <div style="font-weight: 700; color: #6b21a8; font-size: 13.5px;">3. 새 문서 만들기</div>
+                    <div style="font-size: 12px; color: #4b5563; margin-top: 4px;">새로 작성할 통합문서 링크</div>
+                  </div>
+                  <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px;">
+                    <div style="font-weight: 700; color: #92400e; font-size: 13.5px;">4. 전자 메일 주소</div>
+                    <div style="font-size: 12px; color: #4b5563; margin-top: 4px;">mailto: 주소 연결</div>
+                  </div>
+                </div>
+                <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #991b1b; display: flex; align-items: center; justify-content: space-between;">
+                  <span>⚠️ 양식 컨트롤 <strong>[단추]</strong>에는 하이퍼링크 불가!</span>
+                  <button class="morph-btn" style="padding: 4px 8px; font-size: 12px; background: #fff;" onclick="alert('단추 컨트롤은 매크로 실행 전용 개체로, 하이퍼링크 설정이 지원되지 않습니다!')">단추 클릭 테스트</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 10 : 14 데이터 편집 & 지우기
+             ======================================================== -->
+        <section class="slide" data-notes="14번 데이터 편집과 지우기입니다. 셀을 편집하려면 F2 키나 더블클릭, 수식입력줄을 씁니다. 지우기 방식에는 4가지가 있으며 내용 지우기, 서식 지우기, 메모 지우기, 모두 지우기입니다. 키보드의 Delete 키는 내용 지우기에 해당하며, 여러 셀을 블록 지정하고 BackSpace나 SpaceBar를 누르면 첫 번째 셀만 지워진다는 점도 기출 단골 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 14</div>
+                <h2 class="slide-title">데이터 편집 & 지우기</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">데이터 수정 방법</div>
+                <div class="card-desc">
+                  셀에서 <span class="key-badge">F2</span> 누르거나, 더블클릭 또는 수식 입력줄 클릭 후 수정 (취소는 <span class="key-badge">Esc</span>)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">지우기(Clear) 4대 방식</div>
+                <div class="card-desc">
+                  • <span class="hl-green">내용만 지워짐</span> : 셀에 입력된 값/수식만 삭제 (<span class="key-badge">Delete</span>)<br>
+                  • <span class="hl-green">서식만 지워짐</span> : 색상, 테두리 등 서식만 삭제<br>
+                  • <span class="hl-green">메모만 지워짐</span> : 삽입된 메모만 삭제<br>
+                  • <span class="hl-green">셀에 입력된 내용, 서식, 메모 모두 지워짐</span> : 완전 삭제
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">다중 셀 선택 시 주의</div>
+                <div class="card-desc">
+                  <span class="hl-green">[Back Space], [Space Bar]는 여러 셀을 선택해도 첫 번째 셀만 지워짐</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 10px;">
+                  🧹 지우기 4총사 실시간 모핑 시뮬레이터
+                </div>
+                <div style="background: #f0f7ff; border: 2px dashed #0284c7; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px; transition: all 0.3s ease;" id="demo-clear-box">
+                  <span id="box-text" style="font-size: 17px; font-weight: 700; color: #0284c7;">[합격 100점] 서식+메모 적용 셀</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <button class="morph-btn" onclick="applyClear('content')">1. 내용 지우기 (Delete)</button>
+                  <button class="morph-btn" onclick="applyClear('format')">2. 서식 지우기</button>
+                  <button class="morph-btn" onclick="applyClear('memo')">3. 메모 지우기</button>
+                  <button class="morph-btn" onclick="applyClear('all')">4. 모두 지우기</button>
+                </div>
+                <button class="morph-btn" onclick="resetClearDemo()" style="width: 100%; margin-top: 8px; justify-content: center;">
+                  🔄 원래 셀 상태로 리셋
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 11 : 15 찾기 및 바꾸기
+             ======================================================== -->
+        <section class="slide" data-notes="15번 찾기 및 바꾸기입니다. 찾기 단축키는 Ctrl+F, 바꾸기는 Ctrl+H입니다. 서식만 지정하면 내용에 상관없이 서식을 기준으로 찾습니다. 찾는 위치는 수식, 값, 메모 3가지가 가능하지만 바꾸기는 수식만 가능합니다. 와일드카드 문자 자체(*, ?)를 찾을 때는 앞에 물결표(~)를 붙여야 합니다. 별표는 글자 수 무관, 물음표는 딱 1글자입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 15</div>
+                <h2 class="slide-title">찾기 및 바꾸기</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">단축키 및 서식 검색</div>
+                <div class="card-desc">
+                  • 단축키 : <span class="key-badge">Ctrl</span>+<span class="key-badge">F</span>, <span class="key-badge">Shift</span>+<span class="key-badge">F5</span>, <span class="key-badge">Ctrl</span>+<span class="key-badge">H</span>(바꾸기)<br>
+                  • 서식 검색 : <span class="hl-green">서식만 지정하면 내용 상관없이 서식을 기준으로 찾음</span>
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">찾는 위치 vs 바꾸는 위치</div>
+                <div class="card-desc">
+                  <span class="hl-green">수식, 값, 메모</span> 중 검색 가능 / <strong>바꾸기는 수식만 가능!</strong>
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">와일드카드 검색 규칙</div>
+                <div class="card-desc">
+                  • 와일드카드 기호 자체 검색 : <span class="hl-green">와일드카드 문자 앞에 (~)</span>를 붙여서 사용 (예: <code>~*</code>, <code>~?</code>)<br>
+                  • 별표(*) : <span class="hl-green">모든 문자를 개수와 관계없이</span> 검색<br>
+                  • 물음표(?) : 모든 문자를 <span class="hl-green">1개당 1글자</span>로 개수 제한
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 10px;">
+                  🔍 와일드카드 패턴 매칭 모핑 테스트
+                </div>
+                <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+                  <button class="morph-btn active" id="btn-wc1" onclick="filterWildcard('all')">전체보기</button>
+                  <button class="morph-btn" id="btn-wc2" onclick="filterWildcard('kim-star')">김* (글자수 무관)</button>
+                  <button class="morph-btn" id="btn-wc3" onclick="filterWildcard('kim-q')">김? (딱 2글자)</button>
+                  <button class="morph-btn" id="btn-wc4" onclick="filterWildcard('tilde')">~* (* 기호자체)</button>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;" id="wildcard-items-grid">
+                  <div class="wc-item" data-type="kim" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:13.5px;">김 (1글자)</div>
+                  <div class="wc-item" data-type="kim kim-q" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:13.5px;">김밥 (2글자)</div>
+                  <div class="wc-item" data-type="kim" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:13.5px;">김철수 (3글자)</div>
+                  <div class="wc-item" data-type="tilde" style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:13.5px;">*합격* (기호포함)</div>
+                </div>
+                <div style="margin-top: 12px; font-size: 12.5px; color: #64748b; line-height: 1.4;">
+                  💡 <strong>물결표(~)</strong>는 와일드카드 기능(모든 문자 대체)을 무력화하고 문자 그대로 찾을 때 사용합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 12 : 킬러 함정 4선 (3D Flip Morphing)
+             ======================================================== -->
+        <section class="slide" data-notes="마지막으로 시험 직전에 3초 만에 오답을 가려낼 수 있는 4대 킬러 함정입니다. 분수는 0을 붙여야 하고, Delete 시 메모는 남지만 윗주는 사라지며, 단추에는 하이퍼링크가 불가하고, 다중 선택 후 BackSpace는 첫 번째 셀만 지워집니다. 카드를 클릭하면 3D 플립 모핑으로 해설이 나타납니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">FINAL REVIEW</div>
+                <h2 class="slide-title">시험 직전 3초 판별! 킬러 함정 4선</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 분수 입력 판정</div>
+                <div class="card-desc">셀에 <code>1/2</code>만 입력하면 분수가 아니라 <strong>1월 2일 날짜로 변환</strong>됨! (0 1/2로 입력해야 함)</div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. Delete 키 삭제 대상</div>
+                <div class="card-desc">Delete 키를 눌러도 <strong>메모는 절대 안 지워짐</strong>! 반면 <strong>윗주는 데이터와 함께 삭제</strong>됨!</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">3. 하이퍼링크 지정 불가 개체</div>
+                <div class="card-desc">도형, 그림에는 가능하지만 <strong>양식 컨트롤 [단추]에는 하이퍼링크 지정 불가</strong>!</div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 520px;">
+                <!-- Flip Card 1 -->
+                <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                  <div class="flipper">
+                    <div class="flip-front">
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q1. 셀에 1/2을 입력하면 분수 1/2로 입력된다?</div>
+                      <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
+                    </div>
+                    <div class="flip-back">
+                      <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! 1월 2일 날짜로 변환됩니다.</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">분수는 반드시 <strong>0 1/2</strong>로 띄어 써야 합니다.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Flip Card 2 -->
+                <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                  <div class="flipper">
+                    <div class="flip-front">
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q2. Delete 키를 누르면 메모도 함께 삭제된다?</div>
+                      <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
+                    </div>
+                    <div class="flip-back">
+                      <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! 메모는 절대 삭제되지 않습니다.</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">데이터와 함께 삭제되는 것은 <strong>윗주</strong>입니다.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Flip Card 3 -->
+                <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                  <div class="flipper">
+                    <div class="flip-front">
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q3. 양식 컨트롤 단추에도 하이퍼링크를 넣을 수 있다?</div>
+                      <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
+                    </div>
+                    <div class="flip-back">
+                      <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! 단추에는 하이퍼링크 지정 불가!</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">도형이나 그림에는 가능하지만 단추는 매크로 전용입니다.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 13 : Closing Slide
+             ======================================================== -->
+        <section class="slide" data-notes="이상으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반 요약을 마칩니다. 발표자 노트 대본과 키보드 조작을 활용하여 반복 복습하시면 필기시험에서 확실하게 고득점을 획득하실 수 있습니다. 수고하셨습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">SUCCESS GUIDE</div>
+                <h2 class="slide-title">합격을 응원합니다!</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">🎯 복습 시 핵심 체크 사항</div>
+                <div class="card-desc">
+                  • 초록 형광펜 밑줄(<span class="hl-green">hl-green</span>) 친 핵심 키워드 100% 암기<br>
+                  • 메모(Delete 보존) vs 윗주(Delete 삭제, 문자 전용)의 대비 효과 기억<br>
+                  • 하단 발표자 강의 대본(단축키 N)을 함께 확인하며 실전 감각을 완성하세요!
+                </div>
+              </div>
+            </div>
+
+            <div class="right-col anim-right">
+              <div class="morph-card" style="text-align: center; padding: 32px 24px;">
+                <div style="font-size: 48px; margin-bottom: 10px;">🏆</div>
+                <h3 style="font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 6px;">COMPLETED</h3>
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 18px;">2과목 스프레드시트 일반 (07~15) 완전 정복</p>
+                <button class="morph-btn active" onclick="goTo(0)" style="margin: 0 auto; padding: 10px 22px; font-size: 14.5px;">
+                  처음 슬라이드로 돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Speaker Notes Panel -->
+    <footer class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️ 발표자 강의 대본 (Speaker Script)</span>
+          <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(단축키: N 또는 S 키로 대본창 접기/펼치기)</span>
+        </div>
+        <button class="btn-toggle-notes" onclick="toggleNotes()">대본창 접기/펼치기</button>
+      </div>
+      <div class="notes-content" id="notesContent">
+        <!-- Notes Text -->
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // 슬라이드 내비게이션
+    const slides = [...document.querySelectorAll('.slide')];
+    let currentIndex = 0;
+    const total = slides.length;
+
+    function renderSlide(index) {
+      if (index < 0 || index >= total) return;
+      slides[currentIndex].classList.remove('active');
+      slides[index].classList.add('active');
+      currentIndex = index;
+
+      // Update counters & speaker notes
+      const counterEl = document.getElementById('curSlideNum');
+      const totalEl = document.getElementById('totalSlideNum');
+      const notesEl = document.getElementById('notesContent');
+
+      if (counterEl) counterEl.textContent = String(currentIndex + 1).padStart(2, '0');
+      if (totalEl) totalEl.textContent = String(total).padStart(2, '0');
+      if (notesEl) {
+        notesEl.innerHTML = slides[currentIndex].dataset.notes || '(대본 없음)';
+      }
+    }
+
+    function goTo(index) {
+      renderSlide(index);
+    }
+
+    function nextSlide() {
+      if (currentIndex < total - 1) {
+        renderSlide(currentIndex + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        renderSlide(currentIndex - 1);
+      }
+    }
+
+    function toggleNotes() {
+      const drawer = document.getElementById('notesDrawer');
+      if (drawer) drawer.classList.toggle('collapsed');
+    }
+
+    // 전역 키보드 조작 이벤트
+    let lastKeyTime = 0;
+    window.addEventListener('keydown', (e) => {
+      // 텍스트 필드 입력 중 제외
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName) && document.activeElement.type !== 'range') {
+        return;
+      }
+
+      const now = Date.now();
+      const key = e.key;
+      const code = e.code;
+      const keyCode = e.keyCode;
+
+      // 다음 슬라이드
+      if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' || code === 'KeyN' ||
+          key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+          keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        nextSlide();
+        return;
+      }
+
+      // 이전 슬라이드
+      if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' || code === 'KeyP' ||
+          key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+          keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        prevSlide();
+        return;
+      }
+
+      // 처음 / 마지막
+      if (key === 'Home') { e.preventDefault(); goTo(0); return; }
+      if (key === 'End') { e.preventDefault(); goTo(total - 1); return; }
+
+      // 대본창 접기/펼치기
+      if (code === 'KeyS' || key === 's' || key === 'S' || code === 'KeyN' || key === 'n' || key === 'N') {
+        toggleNotes();
+        return;
+      }
+    });
+
+    // 자동 포커스
+    function ensureFocus() {
+      try { window.focus(); document.body.focus(); } catch(e) {}
+    }
+    window.addEventListener('DOMContentLoaded', ensureFocus);
+    window.addEventListener('load', ensureFocus);
+    window.addEventListener('click', ensureFocus);
+
+    // ========================================================
+    // 슬라이드별 인터랙티브 & 모핑 조작 함수들 (100% 보존)
+    // ========================================================
+
+    // 1. Slide 3: 문자 데이터 B1 셀 유무 모핑
+    let hasNeighbor = false;
+    function toggleNeighborData() {
+      hasNeighbor = !hasNeighbor;
+      const cellA = document.getElementById('cell-a1');
+      const cellB = document.getElementById('cell-b1');
+      const statusText = document.getElementById('neighbor-status');
+      const explain = document.getElementById('overflow-explain');
+
+      if (hasNeighbor) {
+        statusText.textContent = "데이터 있음";
+        cellB.textContent = "[데이터있음]";
+        cellB.style.background = "#e2e8f0";
+        cellB.style.color = "#0284c7";
+        cellB.style.fontWeight = "bold";
+
+        cellA.classList.add('overflow-hidden');
+        cellA.style.width = "100%";
+        explain.innerHTML = "💡 B1 셀에 데이터가 있어 A1의 긴 문자열이 <strong>셀 너비만큼 잘려서 표시</strong>됩니다!";
+        explain.style.background = "#fff1f2";
+        explain.style.color = "#9f1239";
+      } else {
+        statusText.textContent = "비어있음";
+        cellB.textContent = "(비어있음)";
+        cellB.style.background = "#ffffff";
+        cellB.style.color = "#94a3b8";
+        cellB.style.fontWeight = "normal";
+
+        cellA.classList.remove('overflow-hidden');
+        explain.innerHTML = "💡 B1 셀이 비어있어 A1의 긴 텍스트가 <strong>연속해서 표시</strong>됩니다.";
+        explain.style.background = "#e0f2fe";
+        explain.style.color = "#0369a1";
+      }
+    }
+
+    // 2. Slide 4: 숫자 열 너비 조절 슬라이더
+    function onColWidthChange(val) {
+      const cell = document.getElementById('cell-num-demo');
+      const header = document.getElementById('grid-header-a');
+      const text = document.getElementById('slider-col-width-text');
+
+      if (val === '1') {
+        cell.textContent = "#######";
+        cell.style.color = "#d97706";
+        text.textContent = "너비: 좁음 (### 오류 표기)";
+        header.textContent = "A (너비 부족)";
+      } else if (val === '2') {
+        cell.textContent = "1.23E+09";
+        cell.style.color = "#0284c7";
+        text.textContent = "너비: 보통 (지수 표기 1.23E+09)";
+        header.textContent = "A (지수 표기)";
+      } else {
+        cell.textContent = "1,234,567,890";
+        cell.style.color = "#059669";
+        text.textContent = "너비: 충분함 (일반 숫자)";
+        header.textContent = "A (충분한 너비)";
+      }
+    }
+
+    // 3. Slide 5: 날짜/시간 스탬프
+    function executeDateStamp() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      document.getElementById('stamp-date-text').textContent = `${yyyy}-${mm}-${dd}`;
+    }
+
+    function executeTimeStamp() {
+      const now = new Date();
+      let h = now.getHours();
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12 || 12;
+      document.getElementById('stamp-time-text').textContent = `${String(h).padStart(2, '0')}:${m}:${s} ${ampm}`;
+    }
+
+    // 4. Slide 6: 특수문자 자음 팔레트 모핑
+    const jamoMap = {
+      m: {
+        title: "'ㅁ' 입력 후 [한자] 키 누름 결과 (도형 기호):",
+        items: ['1. ★', '2. ☆', '3. ■', '4. □', '5. ●', '6. ○', '7. ㈜', '8. ☎', '9. ☞', '10. ℃']
+      },
+      r: {
+        title: "'ㄹ' 입력 후 [한자] 키 누름 결과 (단위 기호):",
+        items: ['1. ㎞', '2. ㎠', '3. ㎖', '4. ㎾', '5. ㏈', '6. ㎧', '7. ㎐', '8. ㏖', '9. Ω', '10. ℉']
+      },
+      o: {
+        title: "'ㅇ' 입력 후 [한자] 키 누름 결과 (원문자/괄호):",
+        items: ['1. ①', '2. ②', '3. ③', '4. ④', '5. ⑤', '6. ㈎', '7. ㈏', '8. ⓐ', '9. ⓑ', '10. ㉠']
+      }
+    };
+
+    function switchJamo(type) {
+      ['m', 'r', 'o'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (btn) btn.classList.toggle('active', t === type);
+      });
+      const data = jamoMap[type];
+      document.getElementById('jamo-title').textContent = data.title;
+      const grid = document.getElementById('jamo-grid');
+      grid.innerHTML = '';
+      data.items.slice(0, 5).forEach(txt => {
+        const span = document.createElement('span');
+        span.style.cssText = "background:#fff; padding:6px; border-radius:6px; border:1px solid #e2e8f0;";
+        span.textContent = txt;
+        grid.appendChild(span);
+      });
+    }
+
+    // 5. Slide 7: 메모 Delete 보존 모핑 데모
+    function testDeleteCellData() {
+      const content = document.getElementById('memo-cell-content');
+      content.style.opacity = '0';
+      setTimeout(() => {
+        content.textContent = "(내용 지워짐)";
+        content.style.color = "#94a3b8";
+        content.style.opacity = '1';
+      }, 200);
+      document.getElementById('sticky-memo-popup').style.transform = "scale(1.04)";
+      document.getElementById('sticky-memo-popup').style.borderColor = "#f59e0b";
+    }
+
+    function resetCellData() {
+      const content = document.getElementById('memo-cell-content');
+      content.textContent = "홍길동 (데이터)";
+      content.style.color = "#1e293b";
+      content.style.opacity = '1';
+      document.getElementById('sticky-memo-popup').style.transform = "scale(1)";
+    }
+
+    // 6. Slide 8: 윗주 행 높이 모핑
+    let rubyActive = false;
+    function toggleRubyMorph() {
+      rubyActive = !rubyActive;
+      const box = document.getElementById('ruby-morph-box');
+      const btn = document.getElementById('btn-toggle-ruby');
+      if (rubyActive) {
+        box.innerHTML = `<ruby style="ruby-position: over;"><span style="color:#0284c7;">대한민국</span><rt style="font-size:12px; color:#d97706; font-weight:normal;">대통합 번영국가</rt></ruby>`;
+        box.style.paddingTop = '10px';
+        btn.textContent = "윗주 필드 [숨기기]";
+      } else {
+        box.innerHTML = `대한민국`;
+        box.style.paddingTop = '0px';
+        btn.textContent = "윗주 필드 [표시 토글]";
+      }
+    }
+
+    // 7. Slide 10: 지우기 4총사 모핑
+    function applyClear(type) {
+      const box = document.getElementById('demo-clear-box');
+      const txt = document.getElementById('box-text');
+
+      if (type === 'content') {
+        txt.textContent = "";
+        box.style.background = "#f0f7ff";
+        box.style.borderColor = "#0284c7";
+      } else if (type === 'format') {
+        txt.textContent = "합격 100점 (서식 지워짐)";
+        txt.style.color = "#1e293b";
+        txt.style.fontWeight = "normal";
+        box.style.background = "#ffffff";
+        box.style.borderColor = "#cbd5e1";
+        box.style.borderStyle = "solid";
+      } else if (type === 'memo') {
+        txt.textContent = "[합격 100점] 서식 유지 (메모만 삭제)";
+      } else if (type === 'all') {
+        txt.textContent = "(모두 지워져 완전히 비어있는 기본 셀)";
+        txt.style.color = "#94a3b8";
+        txt.style.fontWeight = "normal";
+        box.style.background = "#ffffff";
+        box.style.borderColor = "#e2e8f0";
+        box.style.borderStyle = "solid";
+      }
+    }
+
+    function resetClearDemo() {
+      const box = document.getElementById('demo-clear-box');
+      const txt = document.getElementById('box-text');
+      txt.textContent = "[합격 100점] 서식+메모 적용 셀";
+      txt.style.color = "#0284c7";
+      txt.style.fontWeight = "700";
+      box.style.background = "#f0f7ff";
+      box.style.borderColor = "#0284c7";
+      box.style.borderStyle = "dashed";
+    }
+
+    // 8. Slide 11: 와일드카드 필터링 모핑
+    function filterWildcard(mode) {
+      ['wc1', 'wc2', 'wc3', 'wc4'].forEach(id => {
+        const btn = document.getElementById(`btn-${id}`);
+        if (btn) btn.classList.remove('active');
+      });
+      const items = document.querySelectorAll('.wc-item');
+
+      items.forEach(el => {
+        el.style.opacity = '1';
+        el.style.background = '#f8fafc';
+        el.style.borderColor = '#e2e8f0';
+        el.style.fontWeight = 'normal';
+      });
+
+      if (mode === 'all') {
+        document.getElementById('btn-wc1').classList.add('active');
+      } else if (mode === 'kim-star') {
+        document.getElementById('btn-wc2').classList.add('active');
+        items.forEach(el => {
+          if (el.dataset.type.includes('kim')) {
+            el.style.background = '#e0f2fe';
+            el.style.borderColor = '#0284c7';
+            el.style.fontWeight = 'bold';
+          } else {
+            el.style.opacity = '0.3';
+          }
+        });
+      } else if (mode === 'kim-q') {
+        document.getElementById('btn-wc3').classList.add('active');
+        items.forEach(el => {
+          if (el.dataset.type.includes('kim-q')) {
+            el.style.background = '#e0f2fe';
+            el.style.borderColor = '#0284c7';
+            el.style.fontWeight = 'bold';
+          } else {
+            el.style.opacity = '0.3';
+          }
+        });
+      } else if (mode === 'tilde') {
+        document.getElementById('btn-wc4').classList.add('active');
+        items.forEach(el => {
+          if (el.dataset.type.includes('tilde')) {
+            el.style.background = '#fef3c7';
+            el.style.borderColor = '#f59e0b';
+            el.style.fontWeight = 'bold';
+          } else {
+            el.style.opacity = '0.3';
+          }
+        });
+      }
+    }
+
+    // 초기 렌더링
+    renderSlide(0);
+  </script>
+
+</body>
+
+</html>
