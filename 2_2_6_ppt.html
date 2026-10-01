@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반 (26~29)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --canvas-bg: #ffffff;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #d1fae5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #ede9fe;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-canvas: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 초록색 핵심 하이라이트 (요청 디자인 표준 반영) */
+    .hl-green,
+    u,
+    .u-highlight {
+      text-decoration: none;
+      background-color: #dcfce7 !important;
+      color: #15803d !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      border-bottom: 2.5px solid #22c55e;
+      box-shadow: 0 1px 2px rgba(34, 197, 94, 0.12);
+      display: inline-block;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .header-bar {
+      height: 54px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--accent-blue-light);
+      border: 1px solid #bae6fd;
+      color: var(--accent-blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Slide Stage Canvas */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px 8px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating Navigation Arrows */
+    .side-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      user-select: none;
+    }
+
+    .side-nav-arrow:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
+    }
+
+    .side-nav-arrow:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    .side-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .side-nav-arrow.next {
+      right: 14px;
+    }
+
+    .slide-canvas {
+      width: 100%;
+      height: 100%;
+      max-width: 1320px;
+      max-height: 720px;
+      background: var(--canvas-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow-canvas);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 42px;
+    }
+
+    /* Slide Component Structure */
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 32px 42px;
+      display: none;
+      flex-direction: column;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 50:50 좌우 분할 컨테이너 */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+    }
+
+    .anim-left {
+      animation: animLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: animRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes animLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes animRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* 슬라이드 태그 (24px, 800) */
+    .slide-tag {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 24px;
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    /* 슬라이드 제목 (32px, 800) */
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    /* 정보 카드 (좌측 칼럼) */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      border-left: 5px solid var(--accent-blue);
+      position: relative;
+    }
+
+    .info-card.warning {
+      border-left-color: var(--accent-rose);
+      background: #fffbfa;
+    }
+
+    .info-card.success {
+      border-left-color: var(--accent-emerald);
+      background: #fbfdfc;
+    }
+
+    .info-card.amber {
+      border-left-color: var(--accent-amber);
+      background: #fffdfa;
+    }
+
+    .info-card.purple {
+      border-left-color: var(--accent-purple);
+      background: #fbfaff;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card.warning .card-title {
+      color: var(--accent-rose);
+    }
+
+    .info-card.success .card-title {
+      color: var(--accent-emerald);
+    }
+
+    .info-card.amber .card-title {
+      color: var(--accent-amber);
+    }
+
+    .info-card.purple .card-title {
+      color: var(--accent-purple);
+    }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    .card-desc .warn-text {
+      color: #e11d48;
+      font-weight: 800;
+      background: #fff1f2;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Key Badge */
+    .key-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #0369a1;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+
+    /* Visual Mockups & Morph Cards in Right Col */
+    .morph-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      width: 100%;
+      max-width: 530px;
+      position: relative;
+    }
+
+    .morph-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .morph-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .morph-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .morph-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: scale(1.02);
+    }
+
+    .morph-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Excel Table Styling */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .styled-table th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #f1f5f9;
+    }
+
+    .styled-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #f1f5f9;
+      border-right: 1px solid #f1f5f9;
+      color: #334155;
+      text-align: center;
+    }
+
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Excel Cell Morph Grid */
+    .excel-morph-grid {
+      display: grid;
+      gap: 1px;
+      background: #cbd5e1;
+      border: 1px solid #94a3b8;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .e-cell {
+      background: #ffffff;
+      padding: 10px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .e-cell.header {
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 12px;
+      justify-content: center;
+    }
+
+    .e-cell.selected {
+      outline: 2px solid var(--accent-blue);
+      background: #f0f7ff;
+      font-weight: 800;
+      color: var(--accent-blue);
+      z-index: 2;
+    }
+
+    .e-cell.active-green {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+    }
+
+    /* 3D 플립 카드 */
+    .flip-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-container.flipped .flipper {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
+
+    /* Title Slide (No Split) */
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
+      border-radius: 16px;
+    }
+
+    .title-badge {
+      padding: 8px 26px;
+      background: var(--accent-emerald-light);
+      border: 1.5px solid #86efac;
+      color: var(--accent-emerald);
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .title-h1 {
+      font-size: 54px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
+    .title-sub {
+      font-size: 24px;
+      color: #64748b;
+      font-weight: 600;
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    /* Bottom Speaker Notes Drawer */
+    .notes-drawer {
+      height: 140px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .notes-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-content {
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .notes-content strong {
+      color: #047857;
+      background: #ecfdf5;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle-notes {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Bar -->
+    <header class="header-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-subject" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">컴퓨터활용능력 2급 필기</span>
+        <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (26~29)</span>
+      </div>
+      <!-- 슬라이드 번호 카운터 -->
+      <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">19</span></div>
+    </header>
+
+    <!-- Slide Canvas Stage -->
+    <main class="slide-stage">
+      <!-- 좌우 사이드 플로팅 내비게이션 화살표 -->
+      <button class="side-nav-arrow prev" onclick="prevSlide()" title="이전 슬라이드 (◀ / Backspace)">‹</button>
+      <button class="side-nav-arrow next" onclick="nextSlide()" title="다음 슬라이드 (▶ / Space / Enter)">›</button>
+
+      <div class="slide-canvas" id="slideCanvas">
+
+        <!-- ========================================================
+             SLIDE 1 : Title Slide
+             ======================================================== -->
+        <section class="slide active title-slide"
+          data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반에서 매회 5~6문항 이상 직결되는 필수 계산 함수들을 다룹니다. 26번 조건별 합계 함수인 SUMIF와 SUMIFS의 인수 순서 차이점, 27번 자릿수 지정 4총사(ROUND, ROUNDUP, ROUNDDOWN, TRUNC)의 양수·음수 자릿수 원리, 28번 수학 삼각 함수 중 시험 단골인 MOD의 제수 부호 원칙과 INT vs TRUNC 음수 판별, 그리고 29번 조건별 개수 통계 함수인 COUNTIF와 COUNTIFS까지 총 19개 슬라이드로 완벽 정리합니다. 실기와 필기 시험 모두에서 합격을 결정짓는 핵심 단원이니 집중해서 시청해 주시기 바랍니다.">
+          <div class="title-badge">컴활 2급 필기 • 핵심 요약 26~29</div>
+          <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
+          <p class="title-sub">수학·삼각·통계 함수 (SUMIF·SUMIFS, ROUND 4총사, MOD·INT·TRUNC, COUNTIF·COUNTIFS) 완전 정복</p>
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <button onclick="nextSlide()"
+              style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              🚀 강의 시작하기 (Next ➔)
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 2 : Table of Contents (Agenda)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="전체 19개 슬라이드 목차입니다. 26번 SUMIF와 SUMIFS의 첫 번째 인수 위치 차이점과 다중조건 수식, 27번 자릿수 지정 함수 4총사의 양수/정수/음수 자릿수 계산 및 3대 비교 원칙, 28번 MOD 함수의 제수 부호 규칙과 INT(-12.5) 음수 킬러 함정, 29번 COUNTIF와 COUNTIFS 다중조건 개수 구하기, 그리고 3초 판별 플립카드까지 순서대로 정복해 보겠습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TABLE OF CONTENTS</div>
+                <h2 class="slide-title">핵심 학습 목차</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">26. 조건별 합계 (SUMIF & SUMIFS)</div>
+                <div class="card-desc">인수 순서 비교(합계범위 위치 차이 ★출제 1위), 단일 조건 합계 vs 다중 조건 AND 합계</div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">27. 자릿수 지정 함수 (ROUND 4총사)</div>
+                <div class="card-desc">ROUND(반올림), ROUNDUP(올림), ROUNDDOWN(내림), TRUNC(버림), 자릿수(0, 양수, 음수) 원리</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">28~29. 수학·삼각 & 조건별 통계 (MOD/INT/COUNT)</div>
+                <div class="card-desc">MOD 제수 부호 일치, INT(-12.5)=-13 vs TRUNC, POWER/PRODUCT, COUNTIF & COUNTIFS 개수 구하기</div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 20px; width: 100%;">
+                <div style="font-size: 15px; font-weight: 800; color: #0284c7; margin-bottom: 12px; letter-spacing: 0.5px;">
+                  ⚡ 원하는 토픽으로 즉시 이동 (Click Jump)
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <button class="morph-btn" onclick="goTo(2)" style="justify-content: flex-start;">26. SUMIF vs SUMIFS</button>
+                  <button class="morph-btn" onclick="goTo(3)" style="justify-content: flex-start;">26. SUMIF 실전 계산</button>
+                  <button class="morph-btn" onclick="goTo(4)" style="justify-content: flex-start;">26. SUMIFS 다중조건</button>
+                  <button class="morph-btn" onclick="goTo(5)" style="justify-content: flex-start;">27. ROUND 4총사 개념</button>
+                  <button class="morph-btn" onclick="goTo(6)" style="justify-content: flex-start;">27. 자릿수(양수/음수)</button>
+                  <button class="morph-btn" onclick="goTo(7)" style="justify-content: flex-start;">27. 12457 실전 시뮬</button>
+                  <button class="morph-btn" onclick="goTo(8)" style="justify-content: flex-start;">27. 자릿수 3대 원칙</button>
+                  <button class="morph-btn" onclick="goTo(9)" style="justify-content: flex-start;">28. MOD 제수 부호</button>
+                  <button class="morph-btn" onclick="goTo(10)" style="justify-content: flex-start;">28. INT vs TRUNC</button>
+                  <button class="morph-btn" onclick="goTo(11)" style="justify-content: flex-start;">28. POWER & PRODUCT</button>
+                  <button class="morph-btn" onclick="goTo(12)" style="justify-content: flex-start;">29. COUNTIF & COUNTIFS</button>
+                  <button class="morph-btn" onclick="goTo(13)" style="justify-content: flex-start;">29. COUNTIFS 다중조건</button>
+                  <button class="morph-btn" onclick="goTo(14)" style="justify-content: flex-start;">🎯 킬러 함정 플립카드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 3 : 26 SUMIF vs SUMIFS 구조 비교 (출제 1위)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="26번 단원의 기출 1위 출제 포인트인 SUMIF와 SUMIFS의 인수 구조 비교입니다. 수험생들이 가장 많이 틀리는 핵심은 '합계 범위(sum_range)'의 위치입니다. SUMIF는 단일 조건이므로 합계 범위가 맨 마지막 세 번째에 옵니다. 반면 SUMIFS는 조건이 2개 이상 여러 개 올 수 있으므로, 합계 범위를 맨 앞 첫 번째에 먼저 지정하고 그 뒤에 조건범위1, 조건1, 조건범위2, 조건2 순으로 나열합니다. 이 첫 번째 인수 위치 차이는 시험에 정말 단골로 출제됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 26 ★ 출제 1위</div>
+                <h2 class="slide-title">SUMIF vs SUMIFS <span class="hl-green">인수 순서 비교</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. SUMIF — 합계 범위가 맨 뒤!</div>
+                <div class="card-desc">
+                  <code>=SUMIF(조건범위, 조건, <span class="hl-green">합계범위</span>)</code><br>
+                  • 단일 조건 합계: 특정 조건을 만족하는 셀의 합계를 구함<br>
+                  • 예시: <code>=SUMIF(A2:A9, "부산", <span class="hl-green">D2:D9</span>)</code> ➔ 합계범위 D2:D9가 <strong>맨 뒤</strong>!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. SUMIFS — 합계 범위가 맨 앞! (★암기 필수)</div>
+                <div class="card-desc">
+                  <code>=SUMIFS(<span class="hl-green">합계범위</span>, 조건범위1, 조건1, [조건범위2, 조건2, ...])</code><br>
+                  • 다중 조건(AND) 합계: 여러 조건을 <strong>동시에 모두 만족</strong>하는 셀의 합계<br>
+                  • 예시: <code>=SUMIFS(<span class="hl-green">D2:D9</span>, A2:A9, "부산")</code> ➔ 합계범위 D2:D9가 <strong>맨 앞</strong>!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 합계범위 위치 비교 시각화</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">함수명</div>
+                  <div class="e-cell header">인수 구조 배치도</div>
+                  <div class="e-cell" style="font-weight:800; color:#0284c7;">SUMIF</div>
+                  <div class="e-cell">(조건범위, 조건, <span class="hl-green" style="margin-left:4px;">합계범위</span>)</div>
+                  <div class="e-cell" style="font-weight:800; color:#059669;">SUMIFS</div>
+                  <div class="e-cell">(<span class="hl-green" style="margin-right:4px;">합계범위</span>, 조건범위1, 조건1, ...)</div>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                  💡 <strong>암기 팁</strong>: 뒤에 <strong>S</strong>가 붙으면(SUMIFS, AVERAGEIFS, COUNTIFS) 복수 조건이므로 합계를 구할 범위를 <strong>맨 앞</strong>에 못 박아두고 시작합니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 4 : 26 SUMIF 실전 계산 시뮬레이터 (부산 판매수량 합계)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="SUMIF 실전 기출 예제입니다. 표에서 대리점이 '부산'인 판매수량의 합계를 구하는 문제입니다. 수식은 =SUMIF(A2:A9, '부산', D2:D9) 입니다. A2부터 A9 영역에서 '부산'인 셀을 찾으면 A2, A4, A9 셀 3개가 검색됩니다. 이에 대응하는 D열의 판매수량 D2의 120, D4의 220, D9의 200을 합산하여 최종 결과는 580이 됩니다. 단일 셀로 =SUM(D2, D4, D9)를 선택한 것과 결과가 완전히 같습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 26 • 실전 예제</div>
+                <h2 class="slide-title">대리점이 '부산'인 판매수량 합계</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 단일 셀 직접 지정 합계</div>
+                <div class="card-desc">
+                  <code>=SUM(D2, D4, D9)</code><br>
+                  • 부산에 해당하는 셀만 개별 선택: <code>120 + 220 + 200 = 580</code>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. SUMIF 조건부 합계 공식 (★출제)</div>
+                <div class="card-desc">
+                  <code>=SUMIF(A2:A9, "부산", D2:D9)</code><br>
+                  • <strong>A2:A9</strong> 영역에서 '부산' 검색 ➔ <span class="hl-green">A2, A4, A9</span> 적중!<br>
+                  • <strong>D2:D9</strong> 영역에서 대응 셀 합산: <span class="hl-green">120 + 220 + 200 = 580</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>📊 8개 대리점 판매 데이터 시뮬레이션</span>
+                </div>
+                <table class="styled-table" style="font-size: 13.5px; margin-top: 8px;">
+                  <thead>
+                    <tr><th>행</th><th>A(대리점)</th><th>B(단가)</th><th>C(공급단가)</th><th>D(판매수량)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>2</td><td>부산 ★</td><td>500</td><td>450</td><td>120 ★</td></tr>
+                    <tr><td>3</td><td>인천</td><td>500</td><td>420</td><td>180</td></tr>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>4</td><td>부산 ★</td><td>500</td><td>450</td><td>220 ★</td></tr>
+                    <tr><td>5</td><td>서울</td><td>500</td><td>410</td><td>190</td></tr>
+                    <tr><td>6</td><td>광주</td><td>500</td><td>440</td><td>250</td></tr>
+                    <tr><td>7</td><td>이천</td><td>500</td><td>420</td><td>180</td></tr>
+                    <tr><td>8</td><td>광주</td><td>500</td><td>440</td><td>230</td></tr>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>9</td><td>부산 ★</td><td>500</td><td>450</td><td>200 ★</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #15803d; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #86efac; margin-top: 8px;">
+                  💡 부산 대리점 3곳의 판매수량(120 + 220 + 200) 합계 = <strong>580</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 5 : 26 SUMIFS 다중조건 실전 계산 (부산 AND 판매수량>=200)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="SUMIFS 다중 조건 실전 예제입니다. '대리점이 부산이고, 판매수량이 200 이상인 판매수량의 합계'를 구하는 문제입니다. 수식은 =SUMIFS(D2:D9, A2:A9, '부산', D2:D9, '>=200') 입니다. 먼저 첫 번째 조건인 부산을 만족하는 행은 2행, 4행, 9행입니다. 두 번째 조건인 판매수량이 200 이상인 행은 4행(220), 6행(250), 8행(230), 9행(200)입니다. 두 조건을 동시에 만족하는 교집합 행은 4행과 9행이므로, 판매수량 220과 200을 더한 결과는 420이 됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 26 • 다중조건 AND</div>
+                <h2 class="slide-title">부산 AND 판매수량 200 이상 합계</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 필수 공식 수식</div>
+                <div class="card-desc">
+                  <code>=SUMIFS(<span class="hl-green">D2:D9</span>, A2:A9, "부산", D2:D9, "&gt;=200")</code><br>
+                  • <strong>합계 범위</strong>: <span class="hl-green">D2:D9</span> (맨 앞에 위치!)<br>
+                  • <strong>조건 1</strong>: A2:A9 영역에서 '부산' 검색 ➔ [A2, A4, A9]<br>
+                  • <strong>조건 2</strong>: D2:D9 영역에서 '&gt;=200' 검색 ➔ [D4, D6, D8, D9]
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">교집합 판정 및 최종 합계 결과</div>
+                <div class="card-desc">
+                  두 조건을 <strong>동시에 만족하는 데이터</strong>는 <span class="hl-green">[D4(220)]</span> 와 <span class="hl-green">[D9(200)]</span><br>
+                  ➔ 계산 결과: <code>220 + 200 =</code> <span class="hl-green"><strong>420</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>🎯 두 조건 동시 만족(AND) 셀 판정</span>
+                </div>
+                <table class="styled-table" style="font-size: 13px; margin-top: 8px;">
+                  <thead>
+                    <tr><th>행</th><th>대리점(부산?)</th><th>판매수량(&gt;=200?)</th><th>판정</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>2</td><td>부산 (O)</td><td>120 (X)</td><td>탈락</td></tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;"><td>4</td><td>부산 (O)</td><td>220 (O)</td><td>선택 (220) ★</td></tr>
+                    <tr><td>6</td><td>광주 (X)</td><td>250 (O)</td><td>탈락</td></tr>
+                    <tr><td>8</td><td>광주 (X)</td><td>230 (O)</td><td>탈락</td></tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;"><td>9</td><td>부산 (O)</td><td>200 (O)</td><td>선택 (200) ★</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #b45309; background: #fefce8; padding: 8px 12px; border-radius: 8px; border: 1px solid #fef08a; margin-top: 8px;">
+                  💡 두 조건 모두 만족하는 4행(220) + 9행(200) = <strong>420</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 6 : 27 수학 삼각 함수_자릿수 지정 4총사 개념
+             ======================================================== -->
+        <section class="slide"
+          data-notes="27번 자릿수 지정 함수 4총사입니다. ROUND는 지정 자릿수 아래에서 5 이상이면 올리고 5 미만이면 버리는 '반올림' 함수입니다. ROUNDUP은 무조건 0이 아니면 위로 올리는 '올림' 함수입니다. ROUNDDOWN은 무조건 내리는 '내림' 함수이며, TRUNC는 지정된 자릿수 미만을 그냥 잘라버리는 '버림' 함수입니다. TRUNC에서 자릿수를 생략하면 0으로 간주되어 소수점 이하를 버리고 정수로 만듭니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 27</div>
+                <h2 class="slide-title">자릿수 지정 함수 4총사 기본 개념</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. ROUND & ROUNDUP</div>
+                <div class="card-desc">
+                  • <code>ROUND(숫자, 자릿수)</code>: <span class="hl-green">반올림</span> (다음 자리 숫자가 5 이상이면 올림)<br>
+                  • <code>ROUNDUP(숫자, 자릿수)</code>: <span class="hl-green">올림</span> (0이 아니면 무조건 올림)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. ROUNDDOWN & TRUNC</div>
+                <div class="card-desc">
+                  • <code>ROUNDDOWN(숫자, 자릿수)</code>: <span class="hl-green">내림</span> (0에 가까운 쪽으로 내림)<br>
+                  • <code>TRUNC(숫자, [자릿수])</code>: <span class="hl-green">버림</span> (자릿수 생략 시 기본값 0 정수화)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🔄 4대 함수 핵심 성격 비교 요약</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 100px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">함수명</div>
+                  <div class="e-cell header">처리 방식 (동작 원리)</div>
+                  <div class="e-cell" style="font-weight:800; color:#0284c7;">ROUND</div>
+                  <div class="e-cell">5 이상 올림, 5 미만 버림 (사사오입)</div>
+                  <div class="e-cell" style="font-weight:800; color:#e11d48;">ROUNDUP</div>
+                  <div class="e-cell">무조건 윗자리로 강제 올림</div>
+                  <div class="e-cell" style="font-weight:800; color:#059669;">ROUNDDOWN</div>
+                  <div class="e-cell">무조건 아랫자리로 강제 내림</div>
+                  <div class="e-cell" style="font-weight:800; color:#7c3aed;">TRUNC</div>
+                  <div class="e-cell">지정 자릿수 이하 소수점 절삭(버림)</div>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 양수에서 <strong>ROUNDDOWN</strong>과 <strong>TRUNC</strong>는 완전히 동일한 결과를 냅니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 7 : 27 자릿수 인수(양수/0/음수)의 원리
+             ======================================================== -->
+        <section class="slide"
+          data-notes="자릿수 인수의 원리입니다. 자릿수 0은 정수까지 표시하라는 뜻이므로 소수 첫째 자리에서 처리합니다. 양수인 1은 소수 1자리까지 표시하므로 소수 둘째 자리에서 처리하고, 2는 소수 2자리까지 표시합니다. 반대로 음수인 -1은 일의 자리를 0으로 만들어 십의 자리까지 표시하고, -2는 십의 자리를 0으로 만들어 백의 자리까지, -3은 백의 자리를 0으로 만들어 천의 자리까지 표시합니다. '음수 자릿수는 0의 개수'라고 외우면 절대 헷갈리지 않습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 27 ★ 출제 1위</div>
+                <h2 class="slide-title">자릿수 인수(0, 양수, 음수)의 원리</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 자릿수 0 & 양수 (소수점 이하)</div>
+                <div class="card-desc">
+                  • <code>자릿수 0</code>: <span class="hl-green">정수 표시</span> (소수 첫째 자리에서 처리)<br>
+                  • <code>자릿수 1</code>: <span class="hl-green">소수 1자리</span> 표시 (소수 둘째 자리에서 처리)<br>
+                  • <code>자릿수 2</code>: <span class="hl-green">소수 2자리</span> 표시 (소수 셋째 자리에서 처리)
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 음수 자릿수 (십, 백, 천의 자리) ★기출 빈출</div>
+                <div class="card-desc">
+                  • <code>자릿수 -1</code>: <span class="hl-green">십의 자리</span>까지 표시 (일의 자리 0으로 만듦, 0이 1개)<br>
+                  • <code>자릿수 -2</code>: <span class="hl-green">백의 자리</span>까지 표시 (십의 자리 0으로 만듦, 0이 2개)<br>
+                  • <code>자릿수 -3</code>: <span class="hl-green">천의 자리</span>까지 표시 (백의 자리 0으로 만듦, 0이 3개)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📐 자릿수 위치 좌표계 시각화</span>
+                </div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:18px; font-weight:800; text-align:center; padding:16px 0; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:12px; color:#1e293b;">
+                  1 2 <span style="color:#d97706;">4</span> <span style="color:#0284c7;">5</span> <span style="color:#e11d48;">7</span> . <span style="color:#059669;">5</span> <span style="color:#7c3aed;">2</span> 6<br>
+                  <span style="font-size:12px; font-weight:600; color:#64748b;">
+                    -3(-천) | -2(-백) | -1(-십) | 0(정수) . 1(소수1) | 2(소수2)
+                  </span>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 <strong>암기 꿀팁</strong>: 음수 자릿수의 절댓값 숫자는 결과값 끝에 붙는 <strong>0의 개수</strong>와 일치합니다! (-1 ➔ 0이 1개, -2 ➔ 00이 2개, -3 ➔ 000이 3개)
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 8 : 27 12457.526 실전 자릿수 시뮬레이터
+             ======================================================== -->
+        <section class="slide"
+          data-notes="교재 본문에 수록된 12457.526 숫자에 대한 자릿수별 실전 계산 표입니다. 정수(0)일 때 ROUND와 ROUNDUP은 12458, ROUNDDOWN과 TRUNC는 12457이 됩니다. 소수 1자리(1)일 때 둘째 자리 숫자가 2이므로 ROUND는 버려져서 12457.5가 되지만 ROUNDUP은 12457.6이 됩니다. 십의자리(-1)일 때 일의 자리가 7이므로 ROUND와 ROUNDUP은 12460이 되고 ROUNDDOWN과 TRUNC는 12450이 됩니다. 우측 탭을 눌러 각 결과를 확인해 보시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 27 • 기출 데이터</div>
+                <h2 class="slide-title">12457.526 자릿수별 결과 종합</h2>
+              </div>
+              <table class="styled-table" style="font-size: 13px;">
+                <thead>
+                  <tr><th>구분</th><th>정수(0)</th><th>소수1자리(1)</th><th>소수2자리(2)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td style="font-weight:700;">ROUND</td><td>12458</td><td>12457.5</td><td>12457.53</td></tr>
+                  <tr><td style="font-weight:700;">ROUNDUP</td><td>12458</td><td>12457.6</td><td>12457.53</td></tr>
+                  <tr><td style="font-weight:700;">ROUNDDOWN</td><td>12457</td><td>12457.5</td><td>12457.52</td></tr>
+                  <tr><td style="font-weight:700;">TRUNC</td><td>12457</td><td>12457.5</td><td>12457.52</td></tr>
+                </tbody>
+              </table>
+              <table class="styled-table" style="font-size: 13px; margin-top: 8px;">
+                <thead>
+                  <tr><th>구분</th><th>십의자리(-1)</th><th>백의자리(-2)</th><th>천의자리(-3)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td style="font-weight:700;">ROUND</td><td>12460</td><td>12500</td><td>12000</td></tr>
+                  <tr><td style="font-weight:700;">ROUNDUP</td><td>12460</td><td>12500</td><td>13000</td></tr>
+                  <tr><td style="font-weight:700;">ROUNDDOWN</td><td>12450</td><td>12400</td><td>12000</td></tr>
+                  <tr><td style="font-weight:700;">TRUNC</td><td>12450</td><td>12400</td><td>12000</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 인터랙티브 자릿수 판정기</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" onclick="simRound(0)">자릿수 0 (정수)</button>
+                  <button class="morph-btn" onclick="simRound(1)">자릿수 1 (소수1)</button>
+                  <button class="morph-btn" onclick="simRound(-1)">자릿수 -1 (십)</button>
+                  <button class="morph-btn" onclick="simRound(-2)">자릿수 -2 (백)</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 110px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">ROUND (반올림)</div>
+                  <div class="e-cell" id="r-round">12458</div>
+                  <div class="e-cell header">ROUNDUP (올림)</div>
+                  <div class="e-cell" id="r-roundup">12458</div>
+                  <div class="e-cell header">ROUNDDOWN (내림)</div>
+                  <div class="e-cell" id="r-rounddown">12457</div>
+                  <div class="e-cell header">TRUNC (버림)</div>
+                  <div class="e-cell active-green" id="r-trunc">12457</div>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;" id="r-desc">
+                  💡 자릿수 0: 소수 첫째 자리(5)에서 반올림되어 12458, 내림/버림은 12457이 됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 9 : 27 자릿수 함수 3대 비교 원칙 (출제 1위)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="시험 지문에 그대로 문장으로 출제되는 3대 비교 원칙입니다. 첫째, 숫자가 같고 자릿수가 같을 때 양수 조건에서 ROUNDDOWN과 TRUNC의 결과값은 항상 100% 동일합니다. 둘째, ROUNDUP과 ROUNDDOWN은 절대 동일한 값이 나오지 않습니다(끝자리가 0인 특수 경우 제외). 셋째, ROUND 함수는 반올림할 자리의 숫자가 5 이상이면 ROUNDUP 결과와 같고, 5 미만이면 ROUNDDOWN 결과와 동일합니다. 이 세 문장은 시험 문제 지문으로 단골 출제됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 27 ★ 기출 지문 1위</div>
+                <h2 class="slide-title">자릿수 함수 3대 비교 원칙</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">원칙 1. ROUNDDOWN == TRUNC (항상 일치)</div>
+                <div class="card-desc">
+                  숫자가 같고 자릿수가 같을 때, <span class="hl-green">ROUNDDOWN과 TRUNC의 결과값은 모두 동일함</span>!
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">원칙 2. ROUNDUP != ROUNDDOWN (불일치)</div>
+                <div class="card-desc">
+                  버려질 숫자가 존재하는 한, <span class="hl-green">ROUNDUP과 ROUNDDOWN은 동일한 값이 나오지 않음</span>!
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">원칙 3. ROUND의 5 기준 일치성 판정</div>
+                <div class="card-desc">
+                  • 반올림할 자리 숫자가 <strong>'5' 이상</strong>이면 ➔ <span class="hl-green">ROUNDUP의 결과값과 같음</span><br>
+                  • 반올림할 자리 숫자가 <strong>'5' 미만</strong>이면 ➔ <span class="hl-green">ROUNDDOWN의 결과값과 동일함</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📝 시험 보기 완벽 해부</span>
+                </div>
+                <div style="font-size:14px; line-height:1.7; color:#334155; margin-top:10px;">
+                  다음 중 설명으로 옳지 않은 것은?<br>
+                  ① 숫자가 같고 자릿수가 같으면 ROUNDDOWN과 TRUNC의 결과는 같다. (○)<br>
+                  ② ROUNDUP과 ROUNDDOWN은 항상 동일한 값을 출력한다. (<strong>X, 오답!</strong>)<br>
+                  ③ 반올림할 자리가 5 이상이면 ROUNDUP의 결과와 같다. (○)<br>
+                  ④ TRUNC 함수는 자릿수를 생략하면 정수로 변환한다. (○)
+                </div>
+                <div style="font-size: 14px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "ROUNDUP과 ROUNDDOWN은 동일한 값이 나온다"는 보기는 기출 1위 대표 오답 지문입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 10 : 28 MOD 함수 (제수의 부호 일치 원칙)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="28번 수학 삼각 함수 중 가장 많은 수험생이 틀리는 MOD 함수입니다. MOD(숫자, 나누는수)는 나머지를 구하는 함수인데, 기출 1위 법칙은 '나머지의 부호는 항상 나누는 수(제수)의 부호와 동일하다'는 점입니다. MOD(17, 3)은 3이 양수이므로 결과가 양수 2가 됩니다. 하지만 나누는 수가 음수인 MOD(17, -3)은 제수가 -3으로 음수이므로 결과도 음수가 되어 -1이 됩니다. 엑셀의 공식인 피제수 - (제수 * INT(피제수/제수))에 의해 17 - (-3 * INT(17/-3)) = 17 - (-3 * -6) = 17 - 18 = -1 이 도출됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 28 ★ 기출 1위</div>
+                <h2 class="slide-title">MOD 함수와 <span class="hl-green">제수 부호 일치 원칙</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ MOD 함수의 절대 원칙</div>
+                <div class="card-desc">
+                  <code>=MOD(피제수, 제수)</code> ➔ 나머지를 구함<br>
+                  나머지는 반드시 <span class="hl-green">나누는 수(제수)의 부호와 동일하게 표시</span>됨!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">대표 기출 비교 (17을 3과 -3으로 나눌 때)</div>
+                <div class="card-desc">
+                  • <code>=MOD(17, 3)</code> ➔ 제수(3)가 양수이므로 결과: <span class="hl-green"><strong>2</strong></span><br>
+                  • <code>=MOD(17, -3)</code> ➔ 제수(-3)가 음수이므로 결과: <span class="hl-green"><strong>-1</strong></span> (★출제 1위)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ MOD 부호 실시간 판정기</span>
+                </div>
+                <div class="morph-controls" style="margin-top: 10px;">
+                  <button class="morph-btn active" id="btn-mod-pos" onclick="simMod('pos')">=MOD(17, 3)</button>
+                  <button class="morph-btn" id="btn-mod-neg" onclick="simMod('neg')">=MOD(17, -3)</button>
+                  <button class="morph-btn" id="btn-mod-neg2" onclick="simMod('neg2')">=MOD(-17, 3)</button>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 90px 1fr; margin-top: 14px;">
+                  <div class="e-cell header">입력 수식</div>
+                  <div class="e-cell" id="mod-formula">=MOD(17, 3)</div>
+                  <div class="e-cell header">제수 부호</div>
+                  <div class="e-cell" id="mod-sign" style="color:#0284c7; font-weight:800;">+3 (양수)</div>
+                  <div class="e-cell header">계산 결과</div>
+                  <div class="e-cell active-green" id="mod-result" style="font-size:18px;">2</div>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;" id="mod-desc">
+                  💡 제수가 +3(양수)이므로 결과값의 부호도 양수(+2)입니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 11 : 28 INT vs TRUNC (음수 판별 킬러 함정)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="INT와 TRUNC의 음수 처리 킬러 비교입니다. 양수 12.5일 때는 INT(12.5)와 TRUNC(12.5) 모두 12로 일치합니다. 하지만 음수 -12.5가 되면 완전히 달라집니다. TRUNC(-12.5)는 소수점 .5를 그냥 칼로 자르듯 버리기 때문에 -12가 됩니다. 반면 INT 함수는 정의 자체가 '그 수를 넘지 않는 가장 가까운 정수'이므로, 수직선에서 -12.5보다 왼쪽에 있는 더 작은 정수인 -13이 됩니다. 이 INT(-12.5) = -13 은 컴활 시험에서 100번 출제된 최고 난이도 함정입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 28 • 출제율 99%</div>
+                <h2 class="slide-title">INT vs TRUNC <span class="hl-green">음수 판별 비교</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. INT(숫자) — 수를 넘지 않는 최대 정수</div>
+                <div class="card-desc">
+                  • 정의: <span class="hl-green">그 수를 넘지 않는 가장 가까운 정수</span> (수직선 왼쪽)<br>
+                  • <code>=INT(12.5)</code> ➔ <strong>12</strong><br>
+                  • <code>=INT(-12.5)</code> ➔ <span class="hl-green"><strong>-13</strong></span> (★-12가 아닌 -13으로 더 작아짐!)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. TRUNC(숫자) — 소수점 단순 절삭(버림)</div>
+                <div class="card-desc">
+                  • 정의: 부호와 무관하게 <span class="hl-green">소수점 이하를 버리고 정수만 표시</span><br>
+                  • <code>=TRUNC(12.5)</code> ➔ <strong>12</strong><br>
+                  • <code>=TRUNC(-12.5)</code> ➔ <span class="hl-green"><strong>-12</strong></span> (소수점 .5만 버림)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📐 수직선 상의 INT(-12.5) 동작 원리</span>
+                </div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:16px; font-weight:800; text-align:center; padding:18px 0; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:12px; color:#1e293b;">
+                  ◀ 왼쪽(작은 수) ──────────── 오른쪽(큰 수) ▶<br>
+                  <span style="color:#dc2626; font-size:20px;">-13</span> &lt;─── <span style="background:#fef08a; padding:2px 6px; border-radius:4px;">-12.5</span> ───&gt; <span style="color:#0284c7; font-size:20px;">-12</span><br>
+                  <span style="font-size:12px; color:#64748b; font-weight:600;">
+                    INT(-12.5)=-13 (왼쪽) &nbsp;&nbsp;|&nbsp;&nbsp; TRUNC(-12.5)=-12 (절삭)
+                  </span>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+                  💡 <strong>핵심 판별</strong>: 음수일 때 <strong>INT</strong>는 숫자가 1 커져서 마이너스가 붙고(-13), <strong>TRUNC</strong>는 소수점만 떼어냅니다(-12)!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 12 : 28 POWER & PRODUCT 함수
+             ======================================================== -->
+        <section class="slide"
+          data-notes="28번 수학 함수의 POWER와 PRODUCT입니다. POWER는 밑수를 지수만큼 거듭제곱하는 함수입니다. POWER(2, 3)은 2의 3제곱으로 2 곱하기 2 곱하기 2 해서 8이 됩니다. 반면 PRODUCT는 인수들의 모든 곱을 구하는 함수입니다. PRODUCT(2, 3)은 2 곱하기 3 해서 6이 됩니다. POWER(2,3)과 PRODUCT(2,3)을 혼동하여 곱셈을 거듭제곱으로 계산하는 실수를 방지해야 합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 28</div>
+                <h2 class="slide-title">POWER(거듭제곱) vs PRODUCT(곱)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. POWER(밑수, 지수) — 거듭제곱</div>
+                <div class="card-desc">
+                  • <code>=POWER(2, 3)</code><br>
+                  • 수식 의미: <code>2³ = 2 × 2 × 2 =</code> <span class="hl-green"><strong>8</strong></span><br>
+                  • 연산자 표기: <code>=2 ^ 3</code> 과 완전히 동일함
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">2. PRODUCT(인수1, 인수2, ...) — 모든 인수의 곱</div>
+                <div class="card-desc">
+                  • <code>=PRODUCT(2, 3)</code><br>
+                  • 수식 의미: <code>2 × 3 =</code> <span class="hl-green"><strong>6</strong></span><br>
+                  • 범위 지정: <code>=PRODUCT(A1:A3)</code> (A1부터 A3까지의 모든 셀 값을 곱함)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 연산 결과 직관 비교</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 1fr 1fr; margin-top: 14px;">
+                  <div class="e-cell header">POWER(2, 3)</div>
+                  <div class="e-cell header">PRODUCT(2, 3)</div>
+                  <div class="e-cell" style="font-size:18px; font-weight:800; color:#0284c7; justify-content:center;">8</div>
+                  <div class="e-cell" style="font-size:18px; font-weight:800; color:#7c3aed; justify-content:center;">6</div>
+                  <div class="e-cell" style="font-size:12px; justify-content:center;">2의 3제곱 (2³)</div>
+                  <div class="e-cell" style="font-size:12px; justify-content:center;">2와 3의 곱 (2×3)</div>
+                </div>
+                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                  💡 POWER는 거듭제곱 기호인 <code>^</code> (캐럿)과 같고, PRODUCT는 곱하기 <code>*</code> 기호와 같습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 13 : 29 통계 함수_개수 (COUNTIF & COUNTIFS)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="29번 통계 함수인 COUNTIF와 COUNTIFS입니다. 앞서 배운 SUMIF는 합계 범위를 더해주었지만, COUNTIF는 조건에 맞는 셀의 '개수'만 셉니다. 따라서 합계 범위가 아예 존재하지 않습니다. COUNTIF(조건범위, 조건) 형태로 쓰며, 대리점 열 A2:A9에서 '부산'을 찾으면 3개가 나옵니다. COUNTIFS는 조건이 2개 이상일 때 쓰며 조건범위1, 조건1, 조건범위2, 조건2 순으로 나열합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 29</div>
+                <h2 class="slide-title">COUNTIF vs COUNTIFS 개수 구하기</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. COUNTIF — 단일 조건 개수</div>
+                <div class="card-desc">
+                  <code>=COUNTIF(조건범위, 조건)</code><br>
+                  • 합계범위가 필요 없음 (셀의 개수만 카운트)<br>
+                  • 예시: <code>=COUNTIF(A2:A9, "부산")</code> ➔ <span class="hl-green"><strong>3</strong></span> (부산 대리점 수)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. COUNTIFS — 다중 조건 개수 (AND)</div>
+                <div class="card-desc">
+                  <code>=COUNTIFS(조건범위1, 조건1, [조건범위2, 조건2, ...])</code><br>
+                  • 여러 조건을 동시에 모두 만족하는 행의 개수 카운트<br>
+                  • 단일 조건만 넣어도 정상 작동: <code>=COUNTIFS(A2:A9, "부산")</code> ➔ <strong>3</strong>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>📊 '부산' 대리점 개수 카운트 시각화</span>
+                </div>
+                <table class="styled-table" style="font-size: 13.5px; margin-top: 8px;">
+                  <thead>
+                    <tr><th>행</th><th>대리점</th><th>판매수량</th><th>COUNT 대상 여부</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>2</td><td>부산</td><td>120</td><td>카운트 1 ★</td></tr>
+                    <tr><td>3</td><td>인천</td><td>180</td><td>제외</td></tr>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>4</td><td>부산</td><td>220</td><td>카운트 2 ★</td></tr>
+                    <tr><td>5</td><td>서울</td><td>190</td><td>제외</td></tr>
+                    <tr style="background:#dcfce7; font-weight:700;"><td>9</td><td>부산</td><td>200</td><td>카운트 3 ★</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #15803d; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #86efac; margin-top: 8px;">
+                  💡 <code>=COUNTIF(A2:A9, "부산")</code> ➔ 총 <strong>3개</strong> 셀이 검색되어 결과는 3입니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 14 : 29 COUNTIFS 다중조건 실전 계산 (부산 AND 판매수량>=200)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="COUNTIFS 다중 조건 실전 예제입니다. '대리점이 부산이고, 판매수량이 200 이상인 대리점 수'를 구하는 문제입니다. 수식은 =COUNTIFS(A2:A9, '부산', D2:D9, '>=200') 입니다. 부산인 셀 A2, A4, A9 중에서 판매수량이 200 이상인 셀은 D4의 220과 D9의 200 두 개뿐입니다. 따라서 두 조건을 모두 만족하는 대리점의 개수는 최종 '2'가 됩니다. 합계를 구하는 SUMIFS에서는 결과가 420이었고, 개수를 구하는 COUNTIFS에서는 결과가 2라는 점을 명확히 구분해야 합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 29 • 다중조건 AND</div>
+                <h2 class="slide-title">부산 AND 판매수량 200 이상 대리점 수</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 필수 공식 수식</div>
+                <div class="card-desc">
+                  <code>=COUNTIFS(A2:A9, "부산", D2:D9, "&gt;=200")</code><br>
+                  • <strong>조건범위1 & 조건1</strong>: A2:A9에서 '부산' 검색 ➔ [2, 4, 9행]<br>
+                  • <strong>조건범위2 & 조건2</strong>: D2:D9에서 '&gt;=200' 검색 ➔ [4, 6, 8, 9행]
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">SUMIFS(합계) vs COUNTIFS(개수) 비교</div>
+                <div class="card-desc">
+                  • <strong>SUMIFS</strong>(합계): <code>220 + 200 =</code> <span class="hl-green"><strong>420</strong></span><br>
+                  • <strong>COUNTIFS</strong>(개수): 만족하는 데이터 수 = <span class="hl-green"><strong>2</strong></span> (4행, 9행 2건)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 16px;">
+                <div class="morph-title">
+                  <span>🎯 다중 조건 만족 개수 카운트</span>
+                </div>
+                <table class="styled-table" style="font-size: 13px; margin-top: 8px;">
+                  <thead>
+                    <tr><th>행</th><th>대리점</th><th>판매수량</th><th>조건 판정</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>2</td><td>부산</td><td>120</td><td>수량 200 미만 탈락</td></tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;"><td>4</td><td>부산</td><td>220</td><td>만족 1건 (★)</td></tr>
+                    <tr style="background:#fef08a; font-weight:700; color:#854d0e;"><td>9</td><td>부산</td><td>200</td><td>만족 2건 (★)</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 14px; color: #b45309; background: #fefce8; padding: 8px 12px; border-radius: 8px; border: 1px solid #fef08a; margin-top: 8px;">
+                  💡 두 조건을 모두 만족하는 행은 4행과 9행이므로, 카운트 결과는 <strong>2</strong>입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 15 : 킬러 함정 3D 플립 카드 1 (SUMIF 순서 & MOD 부호)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 1입니다. 카드를 클릭하면 180도 회전하면서 정답과 해설이 뒤집힙니다. 1번 문제는 SUMIFS에서 합계범위의 위치, 2번 문제는 MOD(17, -3)의 제수 부호 일치 여부를 묻는 대표 기출 함정입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 01</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ①</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">SUMIFS 인수 순서 & MOD 음수 부호</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. SUMIFS 함수의 첫 번째 인수</div>
+                    <div style="font-size: 14px;">"SUMIFS 함수는 SUMIF와 마찬가지로 합계를 구할 범위를 맨 마지막 인수로 지정한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (SUMIFS는 맨 앞!)</div>
+                    <div style="font-size: 14px;">SUMIFS는 다중 조건이므로 <strong>합계 범위를 맨 앞 첫 번째 인수</strong>로 지정해야 합니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. =MOD(17, -3)의 계산 결과 부호</div>
+                    <div style="font-size: 14px;">"=MOD(17, -3) 수식의 결과값은 피제수가 양수이므로 양수 2가 된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (제수의 부호 일치 ➔ -1)</div>
+                    <div style="font-size: 14px;">MOD의 나머지는 <strong>나누는 수(제수)의 부호(-3)</strong>를 따르므로 결과는 <strong>-1</strong>입니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 16 : 킬러 함정 3D 플립 카드 2 (INT 음수 & ROUNDDOWN==TRUNC)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 2입니다. 1번 문제는 INT(-12.5)가 -12인지 -13인지 묻는 킬러 문제, 2번 문제는 양수 조건에서 ROUNDDOWN과 TRUNC가 같은지 다른지를 판별하는 문제입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 02</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ②</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">INT 음수 계산 & 자릿수 함수 비교</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. =INT(-12.5) 의 결과값</div>
+                    <div style="font-size: 14px;">"=INT(-12.5) 수식을 실행하면 소수점이 버려져 -12 가 출력된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (-12가 아닌 -13!)</div>
+                    <div style="font-size: 14px;">INT는 수를 넘지 않는 최대 정수이므로 <strong>-13</strong>이 됩니다. -12는 TRUNC의 결과입니다.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. ROUNDDOWN vs TRUNC 결과 일치</div>
+                    <div style="font-size: 14px;">"숫자가 같고 자릿수가 같을 때 ROUNDDOWN과 TRUNC의 결과값은 동일하다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #166534; margin-bottom: 2px; font-size: 15px;">정답: O (완전 일치!)</div>
+                    <div style="font-size: 14px;">양수 조건에서 <strong>내림(ROUNDDOWN)과 버림(TRUNC)은 항상 100% 동일</strong>합니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 17 : 킬러 함정 3D 플립 카드 3 (음수 자릿수 & POWER/PRODUCT)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 3입니다. 1번 문제는 자릿수 -2가 의미하는 표시 자릿수, 2번 문제는 POWER(2, 3)과 PRODUCT(2, 3)의 계산 결과 구별입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 03</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ③</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">음수 자릿수 의미 & POWER vs PRODUCT</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 자릿수 -2의 의미</div>
+                    <div style="font-size: 14px;">"ROUND 함수에서 자릿수에 -2를 지정하면 소수 둘째 자리까지 표시된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (소수가 아닌 백의 자리!)</div>
+                    <div style="font-size: 14px;">소수 둘째 자리는 양수 2이며, <strong>-2는 백의 자리(0이 2개)</strong>까지 표시함을 의미합니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. =POWER(2, 3) 과 =PRODUCT(2, 3)</div>
+                    <div style="font-size: 14px;">"=POWER(2, 3)의 결과값은 6이고, =PRODUCT(2, 3)의 결과값은 8이다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (결과가 정반대!)</div>
+                    <div style="font-size: 14px;"><strong>POWER(2,3) = 2³ = 8</strong> 이며, <strong>PRODUCT(2,3) = 2×3 = 6</strong> 입니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 18 : 총정리 체크리스트 & 완강
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수고하셨습니다. 이것으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 26번부터 29번 단원까지의 모든 수학·삼각 및 통계 함수 핵심 요약을 마쳤습니다. 화면의 체크리스트 6개 항목을 완벽히 점검하셨다면 이번 단원에서 출제되는 5~6문항은 100% 모두 정답을 맞히실 수 있습니다. 복습이 필요하시면 언제든 처음으로 가기 버튼을 눌러 다시 점검해 주시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag" style="color: #15803d;">COMPLETION</div>
+                <h2 class="slide-title">26~29단원 핵심 총정리 체크리스트</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">✅ 시험장 들어가기 전 최종 점검 6문항</div>
+                <div class="card-desc" style="line-height: 1.8;">
+                  [ ] SUMIF는 합계범위가 맨 뒤, SUMIFS는 합계범위가 맨 앞!<br>
+                  [ ] ROUNDDOWN과 TRUNC는 양수에서 결과가 항상 100% 동일함<br>
+                  [ ] 자릿수 음수(-1: 십, -2: 백, -3: 천)는 결과값 끝자리 0의 개수<br>
+                  [ ] MOD의 나머지는 항상 나누는 수(제수)의 부호와 동일 (=MOD(17, -3) ➔ -1)<br>
+                  [ ] INT(-12.5) 는 수를 넘지 않는 최대 정수이므로 -13, TRUNC는 -12<br>
+                  [ ] COUNTIF는 개수만 카운트하므로 합계범위 인수가 없음
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <div style="font-size: 64px;">🏆</div>
+                <h3 style="font-size: 26px; font-weight: 800; color: #0f172a;">26~29단원 완강을 축하합니다!</h3>
+                <p style="font-size: 16px; color: #64748b; line-height: 1.6; max-width: 400px;">
+                  SUMIF·SUMIFS, ROUND 4총사, MOD·INT, COUNTIF·COUNTIFS 계산 문제를 완벽 마스터하셨습니다.
+                </p>
+                <button onclick="goTo(0)"
+                  style="background:#0284c7; color:#fff; border:none; padding:12px 26px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(2,132,199,0.3); transition:all 0.2s;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                  🔄 처음 슬라이드로 돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 19 : [부록] 수학·삼각·통계 함수 공식 치트시트
+             ======================================================== -->
+        <section class="slide"
+          data-notes="마지막 부록 슬라이드입니다. 26번부터 29번까지 출제되는 핵심 함수 공식과 기출 판별 팁을 한눈에 볼 수 있도록 치트시트로 정리했습니다. 시험 직전 캡처하여 요긴하게 활용하시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">컴퓨터활용2급 7일 완성 부록</div>
+                <h2 class="slide-title">수학·삼각·통계 함수 공식 치트시트</h2>
+              </div>
+              <table class="styled-table" style="font-size: 13.5px;">
+                <thead>
+                  <tr><th>함수명</th><th>구문 형식</th><th>핵심 기출 포인트</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>SUMIF</code></td><td>(조건범위, 조건, <strong>합계범위</strong>)</td><td>합계범위가 <strong>맨 뒤</strong></td></tr>
+                  <tr><td><code>SUMIFS</code></td><td>(<strong>합계범위</strong>, 조건범위1, 조건1...)</td><td>합계범위가 <strong>맨 앞</strong></td></tr>
+                  <tr><td><code>ROUND</code></td><td>(숫자, 자릿수)</td><td>5 이상 올림, 5 미만 버림</td></tr>
+                  <tr><td><code>ROUNDUP</code></td><td>(숫자, 자릿수)</td><td>무조건 강제 올림</td></tr>
+                  <tr><td><code>ROUNDDOWN</code></td><td>(숫자, 자릿수)</td><td>=TRUNC 와 결과 동일</td></tr>
+                  <tr><td><code>TRUNC</code></td><td>(숫자, [자릿수])</td><td>소수점 단순 절삭 (기본 0)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="width: 100%;">
+                <div class="morph-title"><span>📑 특수 함수 및 통계 함수 요약</span></div>
+                <table class="styled-table" style="font-size: 13.5px;">
+                  <thead>
+                    <tr><th>함수명</th><th>예시 수식</th><th>계산 결과 및 팁</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>MOD</code></td><td>=MOD(17, -3)</td><td><strong>-1</strong> (제수 부호 일치)</td></tr>
+                    <tr><td><code>INT</code></td><td>=INT(-12.5)</td><td><strong>-13</strong> (넘지 않는 최대 정수)</td></tr>
+                    <tr><td><code>TRUNC</code></td><td>=TRUNC(-12.5)</td><td><strong>-12</strong> (단순 소수 버림)</td></tr>
+                    <tr><td><code>POWER</code></td><td>=POWER(2, 3)</td><td><strong>8</strong> (2의 3제곱: 2³)</td></tr>
+                    <tr><td><code>PRODUCT</code></td><td>=PRODUCT(2, 3)</td><td><strong>6</strong> (2 × 3 = 6)</td></tr>
+                    <tr><td><code>COUNTIF</code></td><td>=COUNTIF(A2:A9, "부산")</td><td><strong>3</strong> (합계범위 없음)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Speaker Notes Drawer -->
+    <footer class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️ 발표자 강의 대본 (Speaker Script)</span>
+          <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(단축키: N 또는 S 키로 대본창 접기/펼치기)</span>
+        </div>
+        <button class="btn-toggle-notes" onclick="toggleNotes()">대본창 접기/펼치기</button>
+      </div>
+      <div class="notes-content" id="notesContent"></div>
+    </footer>
+  </div>
+
+  <script>
+    // Slide Data & Interactive Management
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    const curSlideNumEl = document.getElementById('curSlideNum');
+    const totalSlideNumEl = document.getElementById('totalSlideNum');
+    const notesContentEl = document.getElementById('notesContent');
+    const notesDrawerEl = document.getElementById('notesDrawer');
+
+    totalSlideNumEl.textContent = totalSlides < 10 ? '0' + totalSlides : totalSlides;
+
+    function updateSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+
+      curSlideNumEl.textContent = (currentSlide + 1) < 10 ? '0' + (currentSlide + 1) : (currentSlide + 1);
+
+      // 대본 동기화
+      const notes = slides[currentSlide].getAttribute('data-notes') || '작성된 발표 대본이 없습니다.';
+      notesContentEl.innerHTML = notes;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        updateSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        updateSlide(currentSlide - 1);
+      }
+    }
+
+    function goTo(index) {
+      updateSlide(index);
+    }
+
+    function toggleNotes() {
+      notesDrawerEl.classList.toggle('collapsed');
+    }
+
+    // Keyboard Navigation
+    let lastKeyTime = 0;
+    window.addEventListener('keydown', (e) => {
+      const now = Date.now();
+      const code = e.code;
+      const key = e.key;
+      const keyCode = e.keyCode;
+
+      if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' ||
+        key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+        keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        nextSlide();
+      }
+
+      if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' ||
+        key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+        keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        prevSlide();
+      }
+
+      if (code === 'KeyN' || code === 'KeyS' || key === 'n' || key === 'N' || key === 's' || key === 'S') {
+        e.preventDefault();
+        toggleNotes();
+      }
+    });
+
+    function ensureFocus() {
+      try { window.focus(); document.body.focus(); } catch (e) { }
+    }
+    window.addEventListener('DOMContentLoaded', ensureFocus);
+    window.addEventListener('load', ensureFocus);
+
+    // Initial sync
+    updateSlide(0);
+
+    // --- Interactive Simulators ---
+    // 1. 자릿수 판정기 (Slide 8)
+    const roundData = {
+      0: { round: '12458', roundup: '12458', rounddown: '12457', trunc: '12457', desc: '자릿수 0 (정수): 소수 첫째 자리(5)에서 반올림되어 12458, 내림/버림은 12457이 됩니다.' },
+      1: { round: '12457.5', roundup: '12457.6', rounddown: '12457.5', trunc: '12457.5', desc: '자릿수 1 (소수 1자리): 소수 둘째 자리(2)가 5 미만이므로 ROUND는 12457.5, 올림은 12457.6이 됩니다.' },
+      '-1': { round: '12460', roundup: '12460', rounddown: '12450', trunc: '12450', desc: '자릿수 -1 (십의 자리): 일의 자리(7)가 5 이상이므로 ROUND와 ROUNDUP은 12460, 내림/버림은 12450이 됩니다.' },
+      '-2': { round: '12500', roundup: '12500', rounddown: '12400', trunc: '12400', desc: '자릿수 -2 (백의 자리): 십의 자리(5)가 5 이상이므로 ROUND와 ROUNDUP은 12500, 내림/버림은 12400이 됩니다.' }
+    };
+
+    function simRound(d) {
+      const data = roundData[d];
+      document.getElementById('r-round').textContent = data.round;
+      document.getElementById('r-roundup').textContent = data.roundup;
+      document.getElementById('r-rounddown').textContent = data.rounddown;
+      document.getElementById('r-trunc').textContent = data.trunc;
+      document.getElementById('r-desc').innerHTML = '💡 ' + data.desc;
+
+      const btns = event.target.parentElement.querySelectorAll('.morph-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // 2. MOD 부호 판정기 (Slide 10)
+    function simMod(type) {
+      const formulaEl = document.getElementById('mod-formula');
+      const signEl = document.getElementById('mod-sign');
+      const resEl = document.getElementById('mod-result');
+      const descEl = document.getElementById('mod-desc');
+
+      if (type === 'pos') {
+        formulaEl.textContent = '=MOD(17, 3)';
+        signEl.textContent = '+3 (양수)';
+        signEl.style.color = '#0284c7';
+        resEl.textContent = '2';
+        resEl.style.color = '#15803d';
+        descEl.innerHTML = '💡 제수가 +3(양수)이므로 결과값의 부호도 양수(+2)입니다.';
+      } else if (type === 'neg') {
+        formulaEl.textContent = '=MOD(17, -3)';
+        signEl.textContent = '-3 (음수)';
+        signEl.style.color = '#dc2626';
+        resEl.textContent = '-1';
+        resEl.style.color = '#dc2626';
+        descEl.innerHTML = '💡 <strong>출제 1위</strong>: 제수가 -3(음수)이므로 결과값의 부호도 반드시 음수(-1)가 됩니다!';
+      } else if (type === 'neg2') {
+        formulaEl.textContent = '=MOD(-17, 3)';
+        signEl.textContent = '+3 (양수)';
+        signEl.style.color = '#0284c7';
+        resEl.textContent = '1';
+        resEl.style.color = '#15803d';
+        descEl.innerHTML = '💡 피제수가 음수여도 제수가 +3(양수)이므로 결과값은 양수(+1)가 됩니다!';
+      }
+
+      document.getElementById('btn-mod-pos').classList.remove('active');
+      document.getElementById('btn-mod-neg').classList.remove('active');
+      document.getElementById('btn-mod-neg2').classList.remove('active');
+      if (type === 'pos') document.getElementById('btn-mod-pos').classList.add('active');
+      if (type === 'neg') document.getElementById('btn-mod-neg').classList.add('active');
+      if (type === 'neg2') document.getElementById('btn-mod-neg2').classList.add('active');
+    }
+  </script>
+
+</body>
+
+</html>
