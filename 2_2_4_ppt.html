@@ -506,7 +506,7 @@
 
     .e-cell {
       background: #ffffff;
-      padding: 10px 14px;
+      padding: 13px 10px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 14.5px;
       display: flex;
@@ -540,15 +540,26 @@
       z-index: 3;
     }
 
-    .e-cell.currency-mode {
-      justify-content: flex-end;
-      padding-right: 14px;
+    .e-cell.currency-mode,
+    .e-cell.accounting-mode {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center;
+      padding: 10px 14px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .e-cell.accounting-mode {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 14px;
+    .e-cell.currency-mode .symbol,
+    .e-cell.accounting-mode .symbol {
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .e-cell.currency-mode .val,
+    .e-cell.accounting-mode .val {
+      margin-left: auto;
+      text-align: right;
     }
 
     /* 표 스타일 */
@@ -859,8 +870,9 @@
                 <div class="card-title">2. 숫자 & 통화 vs 회계</div>
                 <div class="card-desc">
                   • <strong>숫자</strong>: 소수 자릿수, 1,000단위 구분 기호(,), 음수 표시 형식 설정<br>
-                  • <strong>통화</strong>: 통화 기호가 <span class="hl-green">숫자 바로 왼쪽에 밀착</span>되어 표시됨<br>
-                  • <strong>회계</strong>: 통화 기호가 <span class="hl-green">셀 맨 왼쪽에 정렬, 숫자는 오른쪽에</span> 정렬됨
+                  • <strong>통화</strong>: 통화 기호(₩)가 <span class="hl-green">셀 맨 왼쪽에 정렬, 숫자는 오른쪽에</span> 정렬됨 (음수 서식 지정
+                  가능)<br>
+                  • <strong>회계</strong>: 통화 기호(₩)가 <span class="hl-green">셀 맨 왼쪽에 정렬, 0은 하이픈(-)</span>으로 표시됨
                 </div>
               </div>
               <div class="info-card purple">
@@ -904,7 +916,7 @@
              SLIDE 4 : 통화 vs 회계 집중 비교
              ======================================================== -->
         <section class="slide"
-          data-notes="기출 출제 1위인 통화와 회계 서식의 결정적 차이점입니다. 첫째, 통화 기호(\)의 위치입니다. 통화는 숫자 바로 옆에 붙지만, 회계는 셀의 가장 왼쪽에 배치됩니다. 둘째, 값 0의 표시입니다. 통화 서식은 0원이 그대로 표기되지만, 회계 서식은 숫자 0을 반드시 하이픈(-) 기호로 표시합니다. 셋째, 회계 서식에서는 음수 서식 선택 옵션이 제공되지 않습니다.">
+          data-notes="기출 출제 1위인 통화와 회계 서식의 결정적 차이점입니다. 첫째, 통화 기호(￦)의 위치입니다. 통화는 숫자 바로 옆에 붙지만, 회계는 셀의 가장 왼쪽에 배치됩니다. 둘째, 값 0의 표시입니다. 통화 서식은 0원이 그대로 표기되지만, 회계 서식은 숫자 0을 반드시 하이픈(-) 기호로 표시합니다. 셋째, 회계 서식에서는 음수 서식 선택 옵션이 제공되지 않습니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -914,8 +926,8 @@
               <div class="info-card success">
                 <div class="card-title">💵 통화 (Currency) 서식</div>
                 <div class="card-desc">
-                  • 통화 기호가 <span class="hl-green">숫자 바로 왼쪽</span>에 붙어 표시됨<br>
-                  • 숫자 <span class="hl-green">0을 그대로 \0</span>으로 표시함<br>
+                  • 통화 기호가 <span class="hl-green">셀 맨 왼쪽</span>에 정렬됨 (숫자는 오른쪽)<br>
+                  • 숫자 <span class="hl-green">0을 그대로 ₩0</span>으로 표시함<br>
                   • 음수 표시 형식(빨강, 괄호 등)을 자유롭게 지정 가능
                 </div>
               </div>
@@ -944,18 +956,24 @@
                   <div class="e-cell header">적용 결과</div>
                   <div class="e-cell">양수</div>
                   <div class="e-cell">12500</div>
-                  <div class="e-cell active-green" id="ca-cell-1" style="justify-content: flex-end;">\12,500</div>
+                  <div class="e-cell active-green currency-mode" id="ca-cell-1" style="justify-content: space-between;">
+                    <span class="symbol">₩</span><span class="val">12,500</span>
+                  </div>
                   <div class="e-cell">영(0)</div>
                   <div class="e-cell">0</div>
-                  <div class="e-cell active-green" id="ca-cell-2" style="justify-content: flex-end;">\0</div>
+                  <div class="e-cell active-green currency-mode" id="ca-cell-2" style="justify-content: space-between;">
+                    <span class="symbol">₩</span><span class="val">0</span>
+                  </div>
                   <div class="e-cell">음수</div>
                   <div class="e-cell">-3500</div>
-                  <div class="e-cell active-green" id="ca-cell-3" style="justify-content: flex-end;">-\3,500</div>
+                  <div class="e-cell active-green currency-mode" id="ca-cell-3" style="justify-content: space-between;">
+                    <span class="symbol">₩</span><span class="val">(3,500)</span>
+                  </div>
                 </div>
                 <div
                   style="font-size: 15px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;"
                   id="ca-explain">
-                  💡 <strong>통화 서식 상태:</strong> 기호(\)가 숫자 바로 앞에 붙고, 0은 \0으로 정상 출력됩니다.
+                  💡 <strong>통화 서식 상태:</strong> 기호(₩)가 셀 맨 왼쪽에 정렬되고, 0은 ₩0으로 정상 출력됩니다.
                 </div>
               </div>
             </div>
@@ -1667,12 +1685,12 @@
                   <div class="flip-front">
                     <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 통화와 회계 서식의 0
                       표기</div>
-                    <div style="font-size: 14px;">"회계 서식은 숫자 0을 \0으로 표시하고, 통화 서식은 0을 하이픈(-)으로 표시한다." (O / X?)</div>
+                    <div style="font-size: 14px;">"회계 서식은 숫자 0을 ₩0으로 표시하고, 통화 서식은 0을 하이픈(-)으로 표시한다." (O / X?)</div>
                   </div>
                   <div class="flip-back">
                     <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (정반대로
                       설명함!)</div>
-                    <div style="font-size: 13.5px;"><strong>통화</strong>가 0을 \0으로 표시하고, <strong>회계</strong> 서식이 0을
+                    <div style="font-size: 13.5px;"><strong>통화</strong>가 0을 ₩0으로 표시하고, <strong>회계</strong> 서식이 0을
                       하이픈(-)으로 표시합니다.</div>
                   </div>
                 </div>
@@ -2034,6 +2052,8 @@
         document.getElementById(id)?.classList.remove('active');
       });
 
+      cell.style.justifyContent = '';
+
       if (cat === 'general') {
         document.getElementById('btn-cat-general').classList.add('active');
         cell.className = 'e-cell active-green';
@@ -2045,17 +2065,19 @@
         cell.className = 'e-cell active-green';
         cell.textContent = '1,250,000.00';
         cell.style.justifyContent = 'flex-end';
-        exp.innerHTML = '💡 <strong>숫자 범주:</strong> 천단위 쉼표와 소수 둘째 자리(.00)가 지정되었습니다.';
+        exp.innerHTML = '💡 <strong>숫자 범주:</strong> 천단위 쉼표와 소수 둘째 자리(.00)로 표기됩니다..';
       } else if (cat === 'currency') {
         document.getElementById('btn-cat-currency').classList.add('active');
         cell.className = 'e-cell active-green currency-mode';
-        cell.textContent = '\\1,250,000';
-        exp.innerHTML = '💡 <strong>통화 범주:</strong> 통화 기호(\\)가 숫자 바로 앞에 밀착되어 붙습니다.';
+        cell.style.justifyContent = 'space-between';
+        cell.innerHTML = '<span class="symbol">₩</span><span class="val">1,250,000</span>';
+        exp.innerHTML = '💡 <strong>통화 범주:</strong> 통화 기호(₩)는 셀 맨 왼쪽에, 숫자는 오른쪽에 정렬됩니다.';
       } else if (cat === 'acc') {
         document.getElementById('btn-cat-acc').classList.add('active');
         cell.className = 'e-cell active-green accounting-mode';
-        cell.innerHTML = '<span>\\</span><span>1,250,000</span>';
-        exp.innerHTML = '💡 <strong>회계 범주:</strong> 통화 기호(\\)는 셀 맨 왼쪽에, 숫자는 오른쪽에 정렬됩니다.';
+        cell.style.justifyContent = 'space-between';
+        cell.innerHTML = '<span class="symbol">₩</span><span class="val">1,250,000</span>';
+        exp.innerHTML = '💡 <strong>회계 범주:</strong> 통화 기호(₩)는 셀 맨 왼쪽에, 숫자는 오른쪽에 정렬됩니다.';
       } else if (cat === 'han') {
         document.getElementById('btn-cat-han').classList.add('active');
         cell.className = 'e-cell active-green';
@@ -2074,26 +2096,36 @@
       const btnAcc = document.getElementById('btn-mode-acc');
       const exp = document.getElementById('ca-explain');
 
+      [c1, c2, c3].forEach(c => {
+        if (c) c.style.justifyContent = '';
+      });
+
       if (mode === 'currency') {
         btnCur.classList.add('active');
         btnAcc.classList.remove('active');
         c1.className = 'e-cell active-green currency-mode';
-        c1.innerHTML = '\\12,500';
+        c1.style.justifyContent = 'space-between';
+        c1.innerHTML = '<span class="symbol">₩</span><span class="val">12,500</span>';
         c2.className = 'e-cell active-green currency-mode';
-        c2.innerHTML = '\\0';
+        c2.style.justifyContent = 'space-between';
+        c2.innerHTML = '<span class="symbol">₩</span><span class="val">0</span>';
         c3.className = 'e-cell active-green currency-mode';
-        c3.innerHTML = '-\\3,500';
-        exp.innerHTML = '💡 <strong>통화 서식:</strong> 통화기호(\\)가 숫자 바로 옆에 붙고, 숫자 0은 <strong>\\0</strong>으로 그대로 표시됩니다.';
+        c3.style.justifyContent = 'space-between';
+        c3.innerHTML = '<span class="symbol">₩</span><span class="val">(3,500)</span>';
+        exp.innerHTML = '💡 <strong>통화 서식:</strong> 통화기호(₩)가 셀 맨 왼쪽에 정렬되고, 숫자 0은 <strong>₩0</strong>으로 그대로 표시됩니다.';
       } else {
         btnAcc.classList.add('active');
         btnCur.classList.remove('active');
         c1.className = 'e-cell active-green accounting-mode';
-        c1.innerHTML = '<span>\\</span><span>12,500</span>';
+        c1.style.justifyContent = 'space-between';
+        c1.innerHTML = '<span class="symbol">₩</span><span class="val">12,500</span>';
         c2.className = 'e-cell active-green accounting-mode';
-        c2.innerHTML = '<span>\\</span><span>-</span>';
+        c2.style.justifyContent = 'space-between';
+        c2.innerHTML = '<span class="symbol">₩</span><span class="val">-</span>';
         c3.className = 'e-cell active-green accounting-mode';
-        c3.innerHTML = '<span>\\</span><span>(3,500)</span>';
-        exp.innerHTML = '💡 <strong>회계 서식:</strong> 기호(\\)가 셀 맨 왼쪽에 고정 정렬되고, 숫자 0은 반드시 <strong>하이픈(-)</strong>으로 표시됩니다!';
+        c3.style.justifyContent = 'space-between';
+        c3.innerHTML = '<span class="symbol">-₩</span><span class="val">3,500</span>';
+        exp.innerHTML = '💡 <strong>회계 서식:</strong> 기호(₩)가 셀 맨 왼쪽에 고정 정렬되고, 숫자 0은 반드시 <strong>하이픈(-)</strong>으로 표시됩니다!';
       }
     }
 
