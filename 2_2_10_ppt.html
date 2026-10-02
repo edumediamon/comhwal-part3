@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반 (40~44)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --canvas-bg: #ffffff;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #d1fae5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #ede9fe;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-canvas: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 초록색 핵심 하이라이트 (디자인 표준) */
+    .hl-green,
+    u,
+    .u-highlight {
+      text-decoration: none;
+      background-color: #dcfce7 !important;
+      color: #15803d !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      border-bottom: 2.5px solid #22c55e;
+      box-shadow: 0 1px 2px rgba(34, 197, 94, 0.12);
+      display: inline-block;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .header-bar {
+      height: 54px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--accent-emerald-light);
+      border: 1px solid #a7f3d0;
+      color: #047857;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Slide Stage Canvas */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px 8px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating Navigation Arrows */
+    .side-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      user-select: none;
+    }
+
+    .side-nav-arrow:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
+    }
+
+    .side-nav-arrow:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    .side-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .side-nav-arrow.next {
+      right: 14px;
+    }
+
+    .slide-canvas {
+      width: 100%;
+      height: 100%;
+      max-width: 1320px;
+      max-height: 720px;
+      background: var(--canvas-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow-canvas);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 42px;
+    }
+
+    /* Slide Component Structure */
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 32px 42px;
+      display: none;
+      flex-direction: column;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 50:50 좌우 분할 컨테이너 */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+    }
+
+    .anim-left {
+      animation: animLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: animRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes animLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes animRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* 슬라이드 태그 (24px, 800) */
+    .slide-tag {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 24px;
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    /* 슬라이드 제목 (32px, 800) */
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    /* 정보 카드 (좌측 칼럼) */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      border-left: 5px solid var(--accent-blue);
+      position: relative;
+    }
+
+    .info-card.warning {
+      border-left-color: var(--accent-rose);
+      background: #fffbfa;
+    }
+
+    .info-card.success {
+      border-left-color: var(--accent-emerald);
+      background: #fbfdfc;
+    }
+
+    .info-card.amber {
+      border-left-color: var(--accent-amber);
+      background: #fffdfa;
+    }
+
+    .info-card.purple {
+      border-left-color: var(--accent-purple);
+      background: #fbfaff;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card.warning .card-title {
+      color: var(--accent-rose);
+    }
+
+    .info-card.success .card-title {
+      color: var(--accent-emerald);
+    }
+
+    .info-card.amber .card-title {
+      color: var(--accent-amber);
+    }
+
+    .info-card.purple .card-title {
+      color: var(--accent-purple);
+    }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    .card-desc .warn-text {
+      color: #e11d48;
+      font-weight: 800;
+      background: #fff1f2;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Key Badge */
+    .key-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #0369a1;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+
+    /* Visual Mockups & Morph Cards in Right Col */
+    .morph-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      width: 100%;
+      max-width: 530px;
+      position: relative;
+    }
+
+    .morph-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .morph-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .morph-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .morph-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: scale(1.02);
+    }
+
+    .morph-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Excel Table Styling */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13.5px;
+    }
+
+    .styled-table th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 7px 9px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #f1f5f9;
+    }
+
+    .styled-table td {
+      padding: 6px 9px;
+      border-bottom: 1px solid #f1f5f9;
+      border-right: 1px solid #f1f5f9;
+      color: #334155;
+      text-align: center;
+    }
+
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Excel Cell Morph Grid */
+    .excel-morph-grid {
+      display: grid;
+      gap: 1px;
+      background: #cbd5e1;
+      border: 1px solid #94a3b8;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .e-cell {
+      background: #ffffff;
+      padding: 9px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .e-cell.header {
+      background: #f1f5f9;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 12px;
+      justify-content: center;
+    }
+
+    .e-cell.selected {
+      outline: 2px solid var(--accent-blue);
+      background: #f0f7ff;
+      font-weight: 800;
+      color: var(--accent-blue);
+      z-index: 2;
+    }
+
+    .e-cell.active-green {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 800;
+    }
+
+    /* 3D 플립 카드 */
+    .flip-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 96px;
+      cursor: pointer;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-container.flipped .flipper {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
+
+    /* Title Slide */
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
+      border-radius: 16px;
+    }
+
+    .title-badge {
+      padding: 8px 26px;
+      background: var(--accent-emerald-light);
+      border: 1.5px solid #86efac;
+      color: var(--accent-emerald);
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .title-h1 {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
+    .title-sub {
+      font-size: 23px;
+      color: #64748b;
+      font-weight: 600;
+      max-width: 900px;
+      line-height: 1.5;
+    }
+
+    /* Bottom Speaker Notes Drawer */
+    .notes-drawer {
+      height: 140px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .notes-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-content {
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .notes-content strong {
+      color: #047857;
+      background: #ecfdf5;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle-notes {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Bar -->
+    <header class="header-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-subject">컴퓨터활용능력 2급 필기</span>
+        <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (40~44 & 필터심화)</span>
+      </div>
+      <!-- 슬라이드 번호 카운터 -->
+      <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">21</span></div>
+    </header>
+
+    <!-- Slide Canvas Stage -->
+    <main class="slide-stage">
+      <!-- 좌우 사이드 플로팅 내비게이션 화살표 -->
+      <button class="side-nav-arrow prev" onclick="prevSlide()" title="이전 슬라이드 (◀ / Backspace)">‹</button>
+      <button class="side-nav-arrow next" onclick="nextSlide()" title="다음 슬라이드 (▶ / Space / Enter)">›</button>
+
+      <div class="slide-canvas" id="slideCanvas">
+
+        <!-- ========================================================
+             SLIDE 1 : Title Slide
+             ======================================================== -->
+        <section class="slide active title-slide"
+          data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 핵심 데이터 도구와 고급 필터 심화 영역을 총정리합니다. 고급 필터의 수식 조건 작성법과 와일드카드, 40번 텍스트 나누기 3단계 마법사, 41번 데이터 유효성 검사와 3대 오류 스타일, 실기와 필기 1위 기출인 42번 부분합의 사전 정렬 및 중첩 부분합 규칙, 43번 데이터 통합의 원본 연결 조건, 마지막 44번 데이터 표 가상 분석 도구까지 총 21개 슬라이드로 완벽 정리합니다.">
+          <div class="title-badge">컴활 2급 필기 • 핵심 요약 40~44</div>
+          <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
+          <p class="title-sub">고급 필터 수식 조건 & 데이터 관리 도구(텍스트나누기·유효성검사·부분합·통합·데이터표) 완전 정복</p>
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <button onclick="nextSlide()"
+              style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              🚀 강의 시작하기 (Next ➔)
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 2 : Table of Contents (Agenda)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="전체 21개 슬라이드 목차입니다. 고급 필터의 AND+OR 결합 조건과 수식 조건 작성법, 40번 텍스트 나누기의 3단계 마법사, 41번 유효성 검사의 제한 대상과 3대 오류 스타일, 42번 부분합의 사전 정렬과 중첩 부분합 및 윤곽 기호, 43번 데이터 통합의 원본 연결 조건, 44번 데이터 표의 특징, 그리고 3초 판별 플립카드와 치트시트까지 다룹니다. 우측의 퀵 점프 버튼을 누르면 원하는 주제로 즉시 이동할 수 있습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TABLE OF CONTENTS</div>
+                <h2 class="slide-title">핵심 학습 목차</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">39 심화. 고급 필터 복합 & 수식 조건</div>
+                <div class="card-desc">AND+OR 결합 표, 수식 조건 작성 절대 규칙(원본과 다른 필드명!), 만능문자(?와 *)</div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">40~41. 텍스트 나누기 & 유효성 검사</div>
+                <div class="card-desc">단일 열 제약·오른쪽 빈 열 필요, 3단계 마법사, 유효성 7대 제한 대상, 3대 오류 스타일</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">42~44. 부분합·데이터 통합·데이터 표</div>
+                <div class="card-desc">부분합(사전 정렬 필수, 새로운 값으로 대치 해제, 윤곽), 데이터 통합(원본 연결), 데이터 표</div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 18px; width: 100%;">
+                <div style="font-size: 15px; font-weight: 800; color: #0284c7; margin-bottom: 12px;">
+                  ⚡ 원하는 토픽으로 즉시 이동 (Click Jump)
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <button class="morph-btn" onclick="goTo(2)" style="justify-content: flex-start;">39. AND+OR 결합</button>
+                  <button class="morph-btn" onclick="goTo(3)" style="justify-content: flex-start;">39. 수식 조건 규칙</button>
+                  <button class="morph-btn" onclick="goTo(4)" style="justify-content: flex-start;">39. 와일드카드(?*)</button>
+                  <button class="morph-btn" onclick="goTo(5)" style="justify-content: flex-start;">40. 텍스트 나누기</button>
+                  <button class="morph-btn" onclick="goTo(6)" style="justify-content: flex-start;">40. 3단계 마법사</button>
+                  <button class="morph-btn" onclick="goTo(7)" style="justify-content: flex-start;">41. 유효성 검사 기본</button>
+                  <button class="morph-btn" onclick="goTo(8)" style="justify-content: flex-start;">41. 3대 오류 스타일</button>
+                  <button class="morph-btn" onclick="goTo(9)" style="justify-content: flex-start;">42. 부분합 사전 정렬</button>
+                  <button class="morph-btn" onclick="goTo(10)" style="justify-content: flex-start;">42. 중첩 부분합</button>
+                  <button class="morph-btn" onclick="goTo(11)" style="justify-content: flex-start;">42. 윤곽 기호 3단계</button>
+                  <button class="morph-btn" onclick="goTo(12)" style="justify-content: flex-start;">42. 부분합 시뮬레이터</button>
+                  <button class="morph-btn" onclick="goTo(13)" style="justify-content: flex-start;">43. 데이터 통합</button>
+                  <button class="morph-btn" onclick="goTo(14)" style="justify-content: flex-start;">43. 원본 데이터 연결</button>
+                  <button class="morph-btn" onclick="goTo(15)" style="justify-content: flex-start;">44. 데이터 표 가상분석</button>
+                  <button class="morph-btn" onclick="goTo(16)" style="justify-content: flex-start;">🎯 킬러 함정 플립카드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 3 : 39 심화 : 고급 필터 AND + OR 결합 조건 표
+             ======================================================== -->
+        <section class="slide"
+          data-notes="고급 필터의 AND와 OR 결합 조건입니다. '부서가 영업부이고 실기점수가 70점 이상이거나, 부서가 총무부인 데이터'를 추출하는 문제입니다. '영업부이고 실기 70점 이상'은 AND이므로 2행에 부서 '영업부'와 실기점수 '>=70'을 같은 행에 나란히 씁니다. 그리고 '이거나 부서가 총무부'는 OR이므로 줄을 바꿔서 3행에 부서 '총무부'를 쓰고 실기점수는 공백으로 둡니다. 이렇게 작성하면 (영업부 AND >=70) OR (총무부 전체) 조건으로 정확히 작동합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 39 심화</div>
+                <h2 class="slide-title">고급 필터 AND + OR 결합 조건 표</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">지문 분석: "영업부이고 실기&gt;=70 이거나 총무부"</div>
+                <div class="card-desc">
+                  • 1단계: <span class="hl-green">영업부이고 실기점수 &gt;= 70</span> ➔ <strong>같은 행에 나란히(AND)</strong><br>
+                  • 2단계: <span class="hl-green">이거나 부서가 총무부</span> ➔ <strong>다음 행으로 내려서(OR)</strong> 작성!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">행 구성 원리</div>
+                <div class="card-desc">
+                  총무부 행의 실기점수 칸은 <span class="hl-green">비워두어야(공백)</span> 총무부 사원은 점수와 관계없이 모두 추출됨!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📝 결합 조건 표 구조 해부</span>
+                </div>
+                <table class="styled-table" style="font-size: 14px; margin-top: 14px;">
+                  <thead>
+                    <tr><th style="background:#e0f2fe; color:#0369a1;">부서</th><th style="background:#e0f2fe; color:#0369a1;">실기점수</th><th style="background:#f1f5f9;">해석</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#dcfce7; font-weight:700;">
+                      <td>영업부</td>
+                      <td>&gt;=70</td>
+                      <td style="font-size:12px; color:#15803d;">같은 행 ➔ 영업부 AND &gt;=70</td>
+                    </tr>
+                    <tr style="background:#fef3c7; font-weight:700;">
+                      <td>총무부</td>
+                      <td style="color:#94a3b8; font-style:italic;">(공백)</td>
+                      <td style="font-size:12px; color:#b45309;">다른 행 ➔ OR 총무부 전체</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #15803d; background: #f0fdf4; padding: 10px; border-radius: 8px; border: 1px solid #86efac; margin-top: 14px;">
+                  💡 2행은 AND 결합, 2행과 3행 사이는 OR 결합으로 동시에 만족 또는 개별 만족 행을 추출합니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 4 : 39 심화 : 조건에 함수(수식)가 사용된 경우 (★출제 1위)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="고급 필터에서 가장 오답률이 높은 '수식 조건 작성 규칙'입니다. 예를 들어 '급여가 평균 이상인 데이터'를 추출할 때, 조건식으로 =F4>=AVERAGE($F$4:$F$15) 를 사용합니다. 이때 시험에 100% 출제되는 절대 규칙은 '조건 영역의 필드명(제목)은 원본 데이터의 제목과 절대로 같아서는 안 되며, 반드시 다른 이름(예: 조건, 평균이상)을 쓰거나 아예 빈칸(공백)으로 두어야 한다'는 점입니다! 만약 원본 제목인 '급여'를 그대로 쓰면 필터가 정상 작동하지 않습니다. 또한 비교 대상 첫 셀 F4는 상대참조, 전체 평균 범위는 절대참조($F$4:$F$15)로 묶어줍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 39 ★ 출제 1위</div>
+                <h2 class="slide-title">수식 조건 작성의 <span class="hl-green">절대 규칙</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 절대 규칙: 원본과 다른 필드명 입력!</div>
+                <div class="card-desc">
+                  수식을 조건으로 사용할 때, 필드명(제목)은 <span class="warn-text">원본 필드명과 반드시 다른 이름</span>(예: '조건', '평균이상')을 입력하거나 <span class="hl-green">빈칸(공백)</span>으로 두어야 함!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">수식 작성 참조 원칙</div>
+                <div class="card-desc">
+                  • 비교할 첫 셀(F4)은 <span class="hl-green">상대 참조</span>로 지정 (아래로 내려가며 비교)<br>
+                  • 전체 범위($F$4:$F$15)는 <span class="hl-green">절대 참조($)</span>로 고정!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚠️ 수식 조건 표 올바른 예 vs 잘못된 예</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+                  <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:12px;">
+                    <div style="font-weight:800; color:#15803d; font-size:14px; margin-bottom:6px;">⭕ 올바른 조건 표 (정상 추출)</div>
+                    <table class="styled-table" style="font-size:13px; margin:0;">
+                      <tr><th style="background:#dcfce7; color:#15803d;">평균이상 (또는 조건, 공백)</th></tr>
+                      <tr><td style="font-family:'JetBrains Mono'; font-weight:700;">=F4&gt;=AVERAGE($F$4:$F$15)</td></tr>
+                    </table>
+                  </div>
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:10px; padding:12px;">
+                    <div style="font-weight:800; color:#dc2626; font-size:14px; margin-bottom:6px;">❌ 잘못된 조건 표 (에러 발생)</div>
+                    <table class="styled-table" style="font-size:13px; margin:0;">
+                      <tr><th style="background:#fee2e2; color:#dc2626;">급여 (원본과 동일한 필드명 사용 시 오류!)</th></tr>
+                      <tr><td style="font-family:'JetBrains Mono'; color:#94a3b8;">=F4&gt;=AVERAGE($F$4:$F$15)</td></tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 5 : 39 심화 : 만능 문자(?와 *) & 함수 조건
+             ======================================================== -->
+        <section class="slide"
+          data-notes="고급 필터에서 만능 문자(와일드카드)와 함수 조건을 결합한 예제입니다. 물음표(?)는 정확히 임의의 한 글자를 뜻하고, 별표(*)는 글자 수 제한 없이 모든 문자를 뜻합니다. 문제에서 '평균이 상위 5위 이내이거나, 이름의 두 번째 글자가 종인 데이터'를 추출할 때, 상위 조건은 =RANK.EQ(H4,$H$4:$H$15,0)<=5 로 2행에 쓰고, 이름 조건은 줄을 바꿔 3행에 '?종*' 형태로 작성합니다. 두 번째 글자가 종이어야 하므로 첫 글자는 ?, 두 번째는 종, 그 뒤는 *가 됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 39 심화</div>
+                <h2 class="slide-title">만능 문자(?와 *) &amp; 순위 함수 조건</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 만능 문자(와일드카드) 규칙</div>
+                <div class="card-desc">
+                  • <code>?</code> : <span class="hl-green">정확히 임의의 1개 문자</span> (예: <code>?종*</code> ➔ 2번째 글자가 '종')<br>
+                  • <code>*</code> : <span class="hl-green">글자 수 제한 없는 모든 문자</span> (0개 이상)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">2. 상위 5위 이내 조건 수식</div>
+                <div class="card-desc">
+                  <code>=RANK.EQ(H4, $H$4:$H$15, 0) &lt;= 5</code><br>
+                  • 수식 조건이므로 필드명은 원본과 다른 '상위'로 지정!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>📝 "상위 5위 이내이거나 이름 2번째가 '종'" 조건 표</span>
+                </div>
+                <table class="styled-table" style="font-size: 13.5px; margin-top: 14px;">
+                  <thead>
+                    <tr><th style="background:#ede9fe; color:#6b21a8;">상위 (수식조건)</th><th style="background:#ede9fe; color:#6b21a8;">이름 (문자조건)</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#fdf4ff;">
+                      <td style="font-family:'JetBrains Mono'; font-weight:700; color:#7c3aed;">=RANK.EQ(H4,$H$4:$H$15,0)&lt;=5</td>
+                      <td style="color:#94a3b8;">(공백)</td>
+                    </tr>
+                    <tr style="background:#fdf4ff;">
+                      <td style="color:#94a3b8;">(공백)</td>
+                      <td style="font-family:'JetBrains Mono'; font-weight:800; color:#dc2626;">?종*</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #6b21a8; background: #faf5ff; padding: 10px; border-radius: 8px; border: 1px solid #d8b4fe; margin-top: 14px;">
+                  💡 두 조건이 서로 다른 행에 있으므로 OR(또는)으로 결합되며, <code>?종*</code>은 김종찬, 박종민 등 2번째 글자가 '종'인 사람을 모두 찾습니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 6 : 40 텍스트 나누기 기본 개념 & 2대 제약 규칙
+             ======================================================== -->
+        <section class="slide"
+          data-notes="40번 텍스트 나누기의 기본 개념과 2대 제약 규칙입니다. 텍스트 나누기는 한 셀에 모여서 입력된 데이터를 여러 개의 셀(열)로 분리해 주는 기능입니다. 시험에 나오는 2대 제약입니다. 첫째, 선택할 수 있는 셀의 개수는 제한이 없지만, '열은 반드시 하나만' 선택해야 합니다! 두 개 이상의 열을 동시에 범위 지정하고 텍스트 나누기를 실행할 수 없습니다. 둘째, 분리된 데이터가 들어갈 수 있도록 선택한 열 오른쪽에는 '빈 열이 한 개 이상' 있어야 합니다. 만약 빈 열이 없으면 기존 오른쪽에 있던 데이터에 그대로 덮어쓰기(덮어쓰기 경고)가 발생합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 40 ★ 출제 1위</div>
+                <h2 class="slide-title">텍스트 나누기 기본 개념 &amp; 2대 제약</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 기능 정의</div>
+                <div class="card-desc">
+                  워크시트의 <span class="hl-green">한 셀에 입력된 텍스트 데이터를 여러 개의 셀(열)로 분리</span>하는 기능
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">제약 1. 열은 반드시 '하나만' 선택! (★기출 지문)</div>
+                <div class="card-desc">
+                  선택 범위의 행(셀) 수는 제한이 없으나, <span class="hl-green">열은 반드시 1개 열만 포함</span>해야 함! (다중 열 선택 불가)
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">제약 2. 오른쪽에 '빈 열' 확보 필수</div>
+                <div class="card-desc">
+                  선택한 열 오른쪽에 빈 열이 없으면 <span class="warn-text">오른쪽 열의 기존 데이터가 덮어씌워짐!</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 텍스트 분리 전후 시각화</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:14px; margin-top:12px;">
+                  <div style="font-size:13px; font-weight:700; color:#64748b; margin-bottom:4px;">[분리 전: 1개 열에 주민번호 입력]</div>
+                  <div class="e-cell" style="background:#fee2e2; border:1px solid #f87171; border-radius:6px; font-weight:700;">
+                    A열: 991215-1234567
+                  </div>
+                  <div style="text-align:center; font-size:18px; margin:6px 0; color:#0284c7;">▼ 구분 기호(-)로 텍스트 나누기 실행 ▼</div>
+                  <div style="font-size:13px; font-weight:700; color:#059669; margin-bottom:4px;">[분리 후: A열과 B열 2개 열로 분할]</div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                    <div class="e-cell active-green" style="border-radius:6px; justify-content:center;">A열: 991215</div>
+                    <div class="e-cell active-green" style="border-radius:6px; justify-content:center;">B열: 1234567</div>
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #0369a1; background: #f0f9ff; padding: 10px; border-radius: 8px; border: 1px solid #bae6fd; margin-top: 12px;">
+                  💡 B열에 원래 다른 데이터가 있었다면 경고 창과 함께 덮어쓰기되므로 반드시 빈 열을 삽입 후 실행해야 합니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 7 : 40 텍스트 마법사 3단계 완벽 해부
+             ======================================================== -->
+        <section class="slide"
+          data-notes="텍스트 마법사의 3단계 절차입니다. 1단계는 원본 데이터의 파일 유형 선택으로, '구분 기호로 분리됨(쉼표, 탭 등)'과 '너비가 일정함(자리수 고정)' 중 하나를 고릅니다. 2단계는 구분 기호 설정으로, 기본 제공되는 기호 4가지는 '탭, 세미콜론, 쉼표, 공백'이며, 하이픈(-)이나 슬래시(/) 등은 '기타'에 직접 입력합니다. 너비 지정일 경우 마우스 클릭으로 열 구분선을 넣거나 이동/삭제합니다. 3단계는 분리된 각 열의 데이터 서식을 지정하는 단계로, '일반, 텍스트, 날짜, 열 건너뜀(가져오지 않음)'을 설정합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 40</div>
+                <h2 class="slide-title">텍스트 마법사 3단계 절차 해부</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1단계: 원본 파일 유형 선택</div>
+                <div class="card-desc">
+                  • <span class="hl-green">구분 기호로 분리됨</span> (기호/문자로 구분)<br>
+                  • <span class="hl-green">너비가 일정함</span> (각 열의 너비/글자 수로 구분)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2단계: 구분 기호 및 구분선 설정 (★기출)</div>
+                <div class="card-desc">
+                  • 기본 기호: <span class="hl-green">탭, 세미콜론(;), 쉼표(,), 공백</span>, 기타<br>
+                  • 너비 일정: 눈금자에서 마우스로 <span class="hl-green">열 구분선</span> 작성/삭제
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3단계: 각 열의 데이터 서식 지정</div>
+                <div class="card-desc">
+                  • <span class="hl-green">일반, 텍스트, 날짜, 열 건너뜀(가져오지 않음)</span> 선택 가능
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 2단계 기본 구분 기호 4종 체크박스</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:14px; line-height:1.9;">
+                  <div style="font-weight:700; color:#1e293b; margin-bottom:6px;">구분 기호(D) 선택 목록:</div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                    <div>☑ <strong>탭(Tab)</strong></div>
+                    <div>☑ <strong>세미콜론(;)</strong></div>
+                    <div>☑ <strong>쉼표(,)</strong></div>
+                    <div>☑ <strong>공백(Space)</strong></div>
+                  </div>
+                  <div style="margin-top:8px; display:flex; align-items:center; gap:8px;">
+                    <span>☑ <strong>기타(O):</strong></span>
+                    <span style="background:#fff; border:1px solid #cbd5e1; padding:2px 8px; border-radius:4px; font-family:'JetBrains Mono'; font-weight:800; color:#0284c7;">-</span>
+                    <span style="font-size:12px; color:#64748b;">(하이픈 등 직접 입력)</span>
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                  💡 3단계에서 <strong>'열 건너뜀'</strong>을 선택하면 특정 열을 워크시트로 가져오지 않고 제외할 수 있습니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 8 : 41 데이터 유효성 검사 기본 개념 & 7대 제한 대상
+             ======================================================== -->
+        <section class="slide"
+          data-notes="41번 데이터 유효성 검사(Data Validation)의 기본 개념과 7대 제한 대상입니다. 데이터 유효성 검사는 셀에 잘못된 데이터가 입력되지 않도록 입력 가능한 값을 제한하거나 형식을 통제하는 기능입니다. 제한 대상 7가지는 반드시 암기하셔야 합니다. '정수, 소수점, 목록, 날짜, 시간, 텍스트 길이, 사용자 지정'입니다. 여기서 아주 중요한 시험 포인트는 '이미 데이터가 입력되어 있는 상태에서 뒤늦게 유효성 검사를 걸었을 때, 기존에 있던 잘못된 데이터는 삭제되거나 지워지지 않는다'는 점입니다. 잘못된 데이터는 지워지지 않고 그대로 남아있습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 41 ★ 출제 1위</div>
+                <h2 class="slide-title">데이터 유효성 검사 &amp; 7대 제한 대상</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 기능 정의</div>
+                <div class="card-desc">
+                  셀에 입력할 수 있는 <span class="hl-green">값을 제한하거나 데이터의 형식을 설정</span>하여 잘못된 입력을 사전 방지
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 7대 제한 대상 (★암기 필수)</div>
+                <div class="card-desc" style="line-height:1.7;">
+                  <span class="hl-green">정수</span>, <span class="hl-green">소수점</span>, <span class="hl-green">목록</span>, <span class="hl-green">날짜</span>, <span class="hl-green">시간</span>, <span class="hl-green">텍스트 길이</span>, <span class="hl-green">사용자 지정</span>
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">3. 기존 입력 데이터 보존 원칙 (★출제 1위)</div>
+                <div class="card-desc">
+                  규칙 설정 전 이미 입력된 데이터 중 조건을 만족하지 않는 데이터는 <span class="warn-text">절대 삭제되거나 지워지지 않음!</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 유효성 검사 설정 대화상자 해부</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:14px; line-height:1.8;">
+                  <div><strong>제한 대상(A)</strong>: <span style="color:#0284c7; font-weight:800;">[ 목록 ▼ ]</span></div>
+                  <div style="margin-top:6px;"><strong>원본(S)</strong>: <span style="background:#fff; border:1px solid #cbd5e1; padding:3px 8px; border-radius:4px; font-family:'JetBrains Mono';">사원,대리,과장,부장</span></div>
+                  <div style="margin-top:8px; font-size:13px; color:#059669;">
+                    ☑ 드롭다운 목록 표시 &nbsp; ☑ 공백 무시
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "유효성 검사를 적용하면 기존의 유효하지 않은 데이터가 자동 삭제된다"는 보기는 100% 오답입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 9 : 41 유효성 검사 3대 오류 스타일 & 목록 너비 규칙
+             ======================================================== -->
+        <section class="slide"
+          data-notes="유효성 검사의 3대 오류 스타일과 목록 너비 규칙입니다. 유효하지 않은 값을 입력했을 때 나타나는 오류 스타일은 3종류입니다. 첫째, [중지 ❌]는 데이터 입력을 전면 차단합니다. 다시 시도하거나 취소해야만 합니다. 둘째, [경고 ⚠️]는 경고 메시지를 띄우지만 사용자가 '예'를 누르면 유효하지 않은 값도 입력할 수 있습니다. 셋째, [정보 ℹ️]는 단순 알림 창을 띄운 뒤 '확인'을 누르면 유효하지 않은 값이 그대로 입력됩니다. 또한 드롭다운 목록에서 목록 값은 '쉼표(,)'로 구분하며, 목록 상자의 너비는 사용자가 임의로 지정할 수 없고 '셀의 너비'에 맞춰 자동으로 결정된다는 점도 시험 단골 출제 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 41</div>
+                <h2 class="slide-title">3대 오류 스타일 &amp; 드롭다운 목록 규칙</h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. 중지 (❌ Stop) — 입력 절대 불가</div>
+                <div class="card-desc">
+                  유효하지 않은 데이터는 <span class="warn-text">입력 자체가 불가능</span>함 (다시 시도 / 취소)
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">2. 경고 (⚠️ Warning) &amp; 정보 (ℹ️ Information)</div>
+                <div class="card-desc">
+                  • <strong>경고</strong>: 경고 후 계속 여부를 선택하여 <span class="hl-green">입력 가능</span><br>
+                  • <strong>정보</strong>: 단순 안내 메시지 후 확인을 누르면 <span class="hl-green">입력 가능</span>
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3. 목록 너비 제약 규칙 (★기출 1위)</div>
+                <div class="card-desc">
+                  목록 너비는 <span class="warn-text">사용자가 임의로 설정할 수 없으며</span>, <span class="hl-green">셀의 너비에 의해 자동으로 결정</span>됨!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 3대 오류 스타일 아이콘 및 동작 비교</span>
+                </div>
+                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr 110px; margin-top: 14px;">
+                  <div class="e-cell header">스타일</div>
+                  <div class="e-cell header">메시지 및 동작</div>
+                  <div class="e-cell header">입력 허용 여부</div>
+                  <div class="e-cell" style="justify-content:center; font-size:16px;">❌ 중지</div>
+                  <div class="e-cell">이 셀에 입력할 수 없는 값입니다.</div>
+                  <div class="e-cell" style="color:#dc2626; font-weight:800; justify-content:center;">입력 불가 🚫</div>
+                  <div class="e-cell" style="justify-content:center; font-size:16px;">⚠️ 경고</div>
+                  <div class="e-cell">계속 진행하시겠습니까? (예/아니요)</div>
+                  <div class="e-cell active-green" style="justify-content:center;">입력 가능 ⭕</div>
+                  <div class="e-cell" style="justify-content:center; font-size:16px;">ℹ️ 정보</div>
+                  <div class="e-cell">유효하지 않은 값입니다. (확인/취소)</div>
+                  <div class="e-cell active-green" style="justify-content:center;">입력 가능 ⭕</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 10 : 42 부분합 실행 1순위 절대 원칙: 사전 정렬 필수
+             ======================================================== -->
+        <section class="slide"
+          data-notes="42번 부분합(Subtotal) 실행 1순위 절대 원칙입니다. 부분합은 입력된 자료를 특정 항목을 기준으로 묶어서 합계나 평균 등의 계산을 수행하는 기능입니다. 시험에 100번 이상 출제된 절대 원칙은 '부분합을 실행하기 전에는 반드시 그룹화할 기준 필드를 먼저 정렬(오름차순 또는 내림차순)해야 한다'는 점입니다! 만약 사전에 정렬하지 않고 부분합을 실행하면 동일한 그룹이 여기저기 쪼개져서 그룹별 요약이 수십 개로 난도질되는 오류가 발생합니다. '정렬하지 않고도 부분합을 실행할 수 있다'는 대표적인 오답 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 42 ★ 출제 1위</div>
+                <h2 class="slide-title">부분합 실행의 <span class="hl-green">제1 절대 원칙: 사전 정렬</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 절대 원칙: 그룹 필드 사전 정렬 필수!</div>
+                <div class="card-desc">
+                  부분합을 실행하기 전에, 그룹화할 기준 필드를 <span class="hl-green"><strong>반드시 정렬(오름차순/내림차순)</strong></span>해야 함!
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="card-title">정렬하지 않고 부분합을 실행하면?</div>
+                <div class="card-desc">
+                  동일한 항목이 연속해서 모이지 않아, <span class="warn-text">그룹별 요약이 여러 개로 갈라져 엉망이 됨!</span>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">지원하는 11대 요약 함수</div>
+                <div class="card-desc" style="font-size:14.5px;">
+                  합계, 개수, 평균, 최대값, 최소값, 곱, 숫자 개수, 표준 편차, 표본 표준 편차, 분산, 표본 분산
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚠️ 사전 정렬 유무에 따른 부분합 결과 비교</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px;">
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:10px; padding:12px;">
+                    <div style="font-weight:800; color:#dc2626; font-size:13.5px; margin-bottom:4px;">❌ 정렬 안 한 경우 (영업부 ➔ 총무부 ➔ 영업부)</div>
+                    <div style="font-size:13px; color:#475569;">
+                      영업부 요약 ➔ 총무부 요약 ➔ 또다시 영업부 요약 (그룹 분열 오류!)
+                    </div>
+                  </div>
+                  <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:12px;">
+                    <div style="font-weight:800; color:#15803d; font-size:13.5px; margin-bottom:4px;">⭕ 부서별 사전 정렬 완료 후 부분합 실행</div>
+                    <div style="font-size:13px; color:#475569;">
+                      영업부 전체 모임 ➔ <strong>영업부 요약</strong><br>
+                      총무부 전체 모임 ➔ <strong>총무부 요약</strong> ➔ <strong>전체 총합계</strong> (완벽 집계!)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 11 : 42 중첩 부분합: [새로운 값으로 대치] 해제
+             ======================================================== -->
+        <section class="slide"
+          data-notes="부분합의 두 번째 핵심 시험 포인트인 '중첩 부분합'과 옵션들입니다. 표에서 부서별 '합계'를 먼저 구한 뒤, 추가로 '평균'도 함께 표시하고 싶을 때 부분합을 두 번 실행하는 것을 중첩 부분합이라고 합니다. 이때 두 번째 부분합을 실행할 때 반드시 체크를 해제해야 하는 옵션이 바로 [새로운 값으로 대치]입니다! 만약 이 옵션을 켜둔 채로 실행하면 기존에 구했던 합계가 싹 지워지고 평균만 남아버립니다. 또한 부분합을 원상 복구하여 없애고 싶을 때는 대화상자의 [모두 제거] 버튼을 클릭하면 원래 데이터로 돌아갑니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 42 ★ 출제 1위</div>
+                <h2 class="slide-title">중첩 부분합: <span class="hl-green">새로운 값으로 대치 해제</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 중첩 부분합 시 필수 조치 (★기출 1위)</div>
+                <div class="card-desc">
+                  이미 계산된 부분합에 다른 함수를 추가(중첩)할 때는 <span class="warn-text">[새로운 값으로 대치]의 체크를 반드시 해제</span>해야 함!<br>
+                  • 체크 유지 시: 기존 부분합이 지워지고 새 부분합만 남음
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">데이터 아래에 요약 표시</div>
+                <div class="card-desc">
+                  체크하면 그룹 데이터의 <span class="hl-green">아래쪽에 요약 행(합계/평균)이 표시</span>됨 (기본값)
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">부분합 제거</div>
+                <div class="card-desc">
+                  부분합 대화상자에서 <span class="hl-green">[모두 제거]</span>를 클릭하면 원래 데이터 상태로 복귀!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 부분합 대화상자 핵심 체크박스 해부</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:14px; line-height:1.9;">
+                  <div><strong>그룹화할 항목(G)</strong>: [ 부서명 ▼ ]</div>
+                  <div><strong>사용할 함수(U)</strong>: [ 평균 ▼ ]</div>
+                  <div style="margin-top:10px; border-top:1px dashed #cbd5e1; padding-top:10px;">
+                    <div style="color:#dc2626; font-weight:800;">
+                      ☐ <strong>새로운 값으로 대치(R)</strong> ➔ <span style="background:#fee2e2; padding:2px 6px; border-radius:4px;">체크 해제 필수! ★</span>
+                    </div>
+                    <div>☑ 그룹 사이에 페이지 나누기(P)</div>
+                    <div>☑ <strong>데이터 아래에 요약 표시(S)</strong></div>
+                  </div>
+                  <div style="margin-top:12px; text-align:right;">
+                    <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 14px; border-radius:6px; font-weight:700; cursor:pointer;">모두 제거(R)</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 12 : 42 부분합 윤곽 기호 3단계 (1, 2, 3)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="부분합 실행 시 워크시트 좌측에 생성되는 윤곽 기호(Outline Symbols) 3단계입니다. 시험에 각 번호가 무엇을 표시하는지 짝짓는 문제가 단골 출제됩니다. 숫자 1 버튼을 누르면 모든 세부 데이터와 그룹 요약이 숨겨지고 오직 '전체 총합계(총요약)'만 딱 한 줄 표시됩니다. 숫자 2 버튼을 누르면 개별 데이터는 숨겨지고 '각 그룹별 계산 항목(그룹 요약)과 총합계'가 표시됩니다. 마지막 숫자 3 버튼을 누르면 '모든 세부 데이터와 모든 요약이 전부 표시'됩니다. 즉 1은 총요약, 2는 그룹요약, 3은 모두 표시입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 42</div>
+                <h2 class="slide-title">부분합 윤곽 기호 3단계 (1·2·3)</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">윤곽 레벨 [ 1 ] : 전체 요약만 표시</div>
+                <div class="card-desc">
+                  모든 세부 데이터와 그룹별 요약을 숨기고, <span class="hl-green">전체 총합계(총요약)만</span> 표시
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">윤곽 레벨 [ 2 ] : 그룹별 요약 표시 (★기출)</div>
+                <div class="card-desc">
+                  세부 데이터는 숨기고, <span class="hl-green">각 그룹별 요약(합계/평균)과 총합계만</span> 표시
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">윤곽 레벨 [ 3 ] : 모든 데이터 표시</div>
+                <div class="card-desc">
+                  세부 원본 데이터와 모든 요약을 <span class="hl-green">전부 화면에 표시</span> (기본 상태)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 윤곽 기호 좌측 표시 바 구조</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px;">
+                  <div style="display:flex; gap:10px; margin-bottom:12px;">
+                    <span style="background:#0284c7; color:#fff; width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-weight:800;">1</span>
+                    <span style="background:#059669; color:#fff; width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-weight:800;">2</span>
+                    <span style="background:#7c3aed; color:#fff; width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; font-weight:800;">3</span>
+                  </div>
+                  <div style="font-size:13.5px; line-height:1.8; color:#334155;">
+                    • <code>[+]</code> 기호: 접혀 있는 세부 데이터 그룹 펼치기<br>
+                    • <code>[-]</code> 기호: 펼쳐져 있는 세부 데이터 그룹 접기(숨기기)<br>
+                    • <strong>외우기 비법</strong>: 숫자가 작을수록(1) 많이 숨기고, 숫자가 클수록(3) 다 보여준다!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 13 : 42 부분합 실시간 인터랙티브 시뮬레이터
+             ======================================================== -->
+        <section class="slide"
+          data-notes="부분합 윤곽 레벨 실시간 시뮬레이터입니다. 우측의 [1단계 총요약], [2단계 그룹요약], [3단계 전체표시] 버튼을 클릭해 보십시오. 1단계를 누르면 영업부와 총무부의 세부 인원과 부서 요약이 싹 닫히고 오직 맨 아래 '총합계'만 남습니다. 2단계를 누르면 세부 인원은 숨겨지고 '영업부 합계'와 '총무부 합계' 그리고 '총합계'가 표시됩니다. 3단계를 누르면 김건우, 정종찬 등 모든 원본 사원 데이터와 합계가 한꺼번에 펼쳐집니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 42 • 인터랙티브</div>
+                <h2 class="slide-title">윤곽 레벨(1·2·3) 실시간 모핑</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">버튼을 클릭하여 화면 변화를 확인하세요</div>
+                <div class="card-desc">
+                  우측 상단의 윤곽 번호 버튼을 누르면 실제 엑셀 시트에서 데이터가 접히고 펼쳐지는 과정이 즉시 재현됩니다.
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">기출 암기 포인트</div>
+                <div class="card-desc">
+                  • 1번 클릭 시: <span class="hl-green">총합계만 남음</span><br>
+                  • 2번 클릭 시: <span class="hl-green">그룹별 요약 + 총합계</span> 표시
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding:16px;">
+                <div class="morph-title">
+                  <span>⚡ 부분합 윤곽 시뮬레이터</span>
+                </div>
+                <div class="morph-controls" style="margin-top:10px;">
+                  <button class="morph-btn" id="btn-lvl-1" onclick="simSubtotal(1)">[ 1 ] 총요약</button>
+                  <button class="morph-btn" id="btn-lvl-2" onclick="simSubtotal(2)">[ 2 ] 그룹요약</button>
+                  <button class="morph-btn active" id="btn-lvl-3" onclick="simSubtotal(3)">[ 3 ] 전체표시</button>
+                </div>
+                <table class="styled-table" style="font-size:12.5px; margin-top:10px;" id="subtotal-table">
+                  <thead>
+                    <tr><th>부서</th><th>성명</th><th>실적</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-detail"><td>영업부</td><td>김건우</td><td>500</td></tr>
+                    <tr class="row-detail"><td>영업부</td><td>정종찬</td><td>450</td></tr>
+                    <tr class="row-subtotal" style="background:#e0f2fe; font-weight:700;"><td>영업부 요약</td><td>-</td><td>950</td></tr>
+                    <tr class="row-detail"><td>총무부</td><td>김동하</td><td>300</td></tr>
+                    <tr class="row-detail"><td>총무부</td><td>박순례</td><td>400</td></tr>
+                    <tr class="row-subtotal" style="background:#e0f2fe; font-weight:700;"><td>총무부 요약</td><td>-</td><td>700</td></tr>
+                    <tr class="row-grand" style="background:#dcfce7; font-weight:800; color:#15803d;"><td>총합계</td><td>-</td><td>1,650</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 14 : 43 데이터 통합(Consolidate) 핵심 기능
+             ======================================================== -->
+        <section class="slide"
+          data-notes="43번 데이터 통합(Consolidate)의 핵심 기능입니다. 데이터 통합은 서로 다른 영역이나 표에 흩어져 있는 비슷한 형태의 데이터들을 하나의 완성된 요약 표로 합쳐주는 기능입니다. 첫째, 현재 워크시트뿐만 아니라 '다른 워크시트'나 심지어 '다른 통합 문서(다른 엑셀 파일)'에 있는 데이터도 가져와서 통합할 수 있습니다. 둘째, 원본 데이터 영역에 통합 표와 일치하지 않는 레이블(항목 이름)이 있는 경우, 엑셀이 자동으로 별도의 새로운 행이나 열을 생성하여 통합 결과에 포함시킵니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 43</div>
+                <h2 class="slide-title">데이터 통합 기본 개념 &amp; 범위 확장</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 기능 정의</div>
+                <div class="card-desc">
+                  비슷한 형태의 여러 영역 데이터를 <span class="hl-green">하나의 통합 표로 요약·표시</span>하는 데이터 관리 도구
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 다른 시트 &amp; 다른 파일 통합 가능 (★기출)</div>
+                <div class="card-desc">
+                  같은 시트뿐만 아니라 <span class="hl-green">다른 워크시트</span> 및 <span class="hl-green">다른 통합 문서(다른 엑셀 파일)</span>의 데이터도 모두 참조하여 통합할 수 있음!
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3. 일치하지 않는 레이블 처리</div>
+                <div class="card-desc">
+                  통합 표와 일치하지 않는 레이블이 원본에 있으면 <span class="hl-green">별도의 새로운 행이나 열이 자동으로 만들어짐</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 데이터 통합 설정 대화상자 해부</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:14px; line-height:1.8;">
+                  <div><strong>함수(F)</strong>: <span style="color:#0284c7; font-weight:800;">[ 합계 ▼ ]</span> (평균, 개수 등 가능)</div>
+                  <div style="margin-top:6px;"><strong>참조(R)</strong>: <code>[상반기.xlsx]Sheet1!$A$2:$D$10</code></div>
+                  <div style="margin-top:10px; border-top:1px dashed #cbd5e1; padding-top:10px;">
+                    <div style="font-weight:700; color:#1e293b;">사용할 레이블:</div>
+                    <div>☑ <strong>첫 행(T)</strong> &nbsp;&nbsp; ☑ <strong>왼쪽 열(L)</strong></div>
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                  💡 첫 행과 왼쪽 열 레이블을 체크해야 제목과 항목명 기준으로 정확히 일치시켜 합산합니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 15 : 43 [원본 데이터에 연결]의 2대 절대 조건 (★출제 1위)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="데이터 통합에서 가장 출제 빈도가 높은 [원본 데이터에 연결] 옵션의 2대 절대 조건입니다. 첫째, [원본 데이터에 연결]을 체크하면 원본 데이터가 변경되었을 때 통합된 결과 데이터도 자동으로 변경됩니다. 하지만 원본의 '행이나 열 구조를 추가/삭제'한 경우에는 통합 결과에 자동 업데이트되지 않습니다. 둘째, 시험 단골 오답 규칙입니다! '원본 데이터에 연결' 옵션은 통합할 원본 워크시트와 결과가 작성될 워크시트가 서로 다르거나 다른 파일인 경우에만 적용할 수 있습니다! 같은 워크시트 안에서는 이 옵션을 절대로 사용할 수 없습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 43 ★ 출제 1위</div>
+                <h2 class="slide-title">[원본 데이터에 연결] <span class="hl-green">2대 절대 조건</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">조건 1. 동일 시트에서는 적용 불가! (★기출 1위)</div>
+                <div class="card-desc">
+                  원본 데이터가 있는 시트와 통합 결과 시트가 <span class="warn-text">서로 다르거나 다른 통합 문서인 경우에만 적용 가능</span>함! (동일 시트 불가)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">조건 2. 데이터 값 변경 시 자동 갱신</div>
+                <div class="card-desc">
+                  • 참조한 원본의 숫자가 변경되면 <span class="hl-green">통합 결과가 자동으로 변경</span>됨<br>
+                  • <span class="warn-text">주의</span>: 원본의 <span class="hl-green">행과 열 구조를 추가/삭제해도 업데이트되지 않음!</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🚫 단골 오답 지문 판별</span>
+                </div>
+                <div style="font-size:14px; line-height:1.8; color:#334155; margin-top:10px;">
+                  • <strong>기출 지문 1</strong>: "동일한 워크시트에 있는 데이터 영역을 통합할 때도 [원본 데이터에 연결]을 설정할 수 있다." ➔ <span style="color:#dc2626; font-weight:800;">X (오류 발생!)</span><br>
+                  • <strong>기출 지문 2</strong>: "원본 데이터의 행이나 열을 새로 삽입하면 통합 결과에 자동으로 반영된다." ➔ <span style="color:#dc2626; font-weight:800;">X (데이터 값만 반영됨!)</span>
+                </div>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "동일 시트에서 원본 데이터 연결 가능"이라는 보기는 수험생들이 가장 많이 낚이는 대표 함정입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 16 : 44 데이터 표(Data Table) 가상 분석 도구
+             ======================================================== -->
+        <section class="slide"
+          data-notes="44번 데이터 표(Data Table) 가상 분석 도구입니다. 특정 데이터(변수)의 값이 변화함에 따라 계산 결과값이 어떻게 달라지는지를 표 형태로 한눈에 보여주는 기능입니다. 첫째, 결과값은 반드시 변화하는 값을 포함하는 수식으로 작성되어야 합니다. 둘째, 계산된 결과는 참조 셀의 데이터가 바뀌면 자동으로 갱신됩니다. 셋째, 시험에 무조건 출제되는 핵심 규칙은 '데이터 표로 계산된 결과값은 배열 수식 형태이므로 결과값의 일부만 수정하거나 삭제할 수 없다'는 점입니다! 전체를 다 지워야지 일부 셀만 콕 집어서 바꿀 수 없습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 44 ★ 출제 1위</div>
+                <h2 class="slide-title">데이터 표 가상 분석 &amp; <span class="hl-green">일부 수정 불가</span></h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 기능 정의 (가상 분석 도구)</div>
+                <div class="card-desc">
+                  특정 데이터의 변화 값(행/열)에 따라 <span class="hl-green">결과값의 변화 과정을 표 형태</span>로 한눈에 보여주는 도구
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 결과값 일부 수정/삭제 절대 불가! (★기출 1위)</div>
+                <div class="card-desc">
+                  데이터 표의 결과값은 하나의 배열로 묶여 있으므로 <span class="warn-text">일부 데이터만 수정하거나 삭제할 수 없음!</span>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">3. 수식 필수 작성 및 자동 변경</div>
+                <div class="card-desc">
+                  변화 값을 참조하는 수식이 반드시 작성되어야 하며, <span class="hl-green">참조 셀 변경 시 결과도 자동 변경</span>됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 데이터 표(대출 이자 계산 예시) 구조</span>
+                </div>
+                <table class="styled-table" style="font-size:13px; margin-top:12px;">
+                  <thead>
+                    <tr><th style="background:#f1f5f9;">이자율 \ 기간</th><th>1년</th><th>2년</th><th>3년</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="font-weight:700;">3.0%</td><td>102,000</td><td>205,000</td><td>310,000</td></tr>
+                    <tr><td style="font-weight:700;">4.0%</td><td>104,000</td><td>210,000</td><td>318,000</td></tr>
+                    <tr><td style="font-weight:700;">5.0%</td><td>106,000</td><td>215,000</td><td>326,000</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ 표 내부의 210,000 한 칸만 Delete 키로 지우려고 하면 "데이터 표의 일부를 변경할 수 없습니다" 에러 창이 뜹니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 17 : 킬러 함정 3D 플립 카드 1 (수식 필드명 & 텍스트나누기 열 수)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 1입니다. 카드를 클릭하면 180도 회전하면서 정답과 해설이 뒤집힙니다. 1번 문제는 고급 필터 수식 조건 작성 시 원본과 동일한 필드명을 써도 되는지 여부, 2번 문제는 텍스트 나누기 실행 시 여러 열을 한꺼번에 선택할 수 있는지에 대한 기출 단골 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 01</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ①</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">고급 필터 수식 조건 &amp; 텍스트 나누기 제약</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 고급 필터 수식 조건의 필드명 규칙</div>
+                    <div style="font-size: 14px;">"고급 필터 조건에 수식을 사용할 때 조건 범위의 첫 행에는 원본 데이터의 필드명을 동일하게 입력해야 한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (원본과 다른 이름 필수!)</div>
+                    <div style="font-size: 14px;">수식 조건은 원본 필드명과 <strong>반드시 다른 이름</strong>을 쓰거나 <strong>빈칸(공백)</strong>으로 두어야 합니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 텍스트 나누기 시 선택 가능한 열 개수</div>
+                    <div style="font-size: 14px;">"텍스트 나누기 기능을 사용할 때 여러 개의 열을 동시에 선택하여 한 번에 분리할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (오직 1개 열만 가능!)</div>
+                    <div style="font-size: 14px;">셀 개수는 무관하지만 열은 <strong>반드시 하나만 선택</strong>해야 합니다. 다중 열은 실행 불가합니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 18 : 킬러 함정 3D 플립 카드 2 (부분합 사전 정렬 & 중첩 대치)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 2입니다. 1번 문제는 부분합 실행 시 정렬을 하지 않아도 정상 실행되는지 여부, 2번 문제는 중첩 부분합 작성 시 [새로운 값으로 대치]를 체크해야 하는지에 대한 기출 단골 함정입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 02</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ②</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">부분합 실행 규칙 &amp; 중첩 옵션 기출 함정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 부분합 실행 전 정렬 필수 여부</div>
+                    <div style="font-size: 14px;">"부분합은 기준이 되는 필드의 정렬 여부와 관계없이 그룹별 요약이 정상적으로 수행된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (사전 정렬 필수!)</div>
+                    <div style="font-size: 14px;">그룹화할 기준 필드를 <strong>반드시 먼저 정렬(오름/내림차순)</strong>해야 그룹이 분열되지 않고 정상 집계됩니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 중첩 부분합 시 [새로운 값으로 대치] 옵션</div>
+                    <div style="font-size: 14px;">"기존 부분합에 새로운 함수를 추가하여 중첩 부분합을 만들려면 [새로운 값으로 대치]를 선택해야 한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (체크를 해제해야 함!)</div>
+                    <div style="font-size: 14px;">[새로운 값으로 대치]를 <strong>해제</strong>해야 이전 부분합이 유지된 상태로 새 요약이 추가됩니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 19 : 킬러 함정 3D 플립 카드 3 (통합 동일시트 & 데이터표 일부수정)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 3입니다. 1번 문제는 데이터 통합에서 동일한 시트 내에서 [원본 데이터에 연결]이 가능한지 여부, 2번 문제는 데이터 표의 결과값 중 일부만 삭제할 수 있는지에 대한 핵심 기출입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 03</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ③</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">데이터 통합 원본 연결 &amp; 데이터 표 일부 수정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 데이터 통합 시 동일 시트 원본 연결 가능 여부</div>
+                    <div style="font-size: 14px;">"동일한 워크시트 내의 데이터 영역을 통합할 때도 [원본 데이터에 연결] 옵션을 지정할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (동일 시트 불가!)</div>
+                    <div style="font-size: 14px;">원본 시트와 결과 시트가 <strong>다르거나 다른 통합 문서인 경우에만</strong> 원본 연결이 지원됩니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 데이터 표 결과값의 일부 수정 가능 여부</div>
+                    <div style="font-size: 14px;">"데이터 표를 실행하여 계산된 결과값 중 잘못된 특정 셀 하나만 선택하여 수정할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (일부 수정/삭제 절대 불가!)</div>
+                    <div style="font-size: 14px;">데이터 표 결과값은 배열 수식 형태이므로 <strong>일부 셀만 단독으로 변경하거나 삭제할 수 없습니다!</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 20 : 40~44단원 핵심 총정리 체크리스트 & 완강
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수고하셨습니다. 이것으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 40번부터 44번 단원까지의 데이터 관리 도구와 고급 필터 심화 요약을 마쳤습니다. 화면에 정리된 6개 체크리스트 항목을 완벽히 점검하셨다면 이번 단원에서 출제되는 3~4문항은 100% 모두 맞히실 수 있습니다. 복습이 필요하시면 언제든 처음으로 가기 버튼을 눌러 다시 점검해 주시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag" style="color: #15803d;">COMPLETION</div>
+                <h2 class="slide-title">40~44단원 핵심 총정리 체크리스트</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">✅ 시험장 들어가기 전 최종 점검 6문항</div>
+                <div class="card-desc" style="line-height: 1.8;">
+                  [ ] 고급 필터 수식 조건 작성 시 필드명은 원본과 다른 이름(또는 공백)으로 입력한다.<br>
+                  [ ] 텍스트 나누기는 단 1개의 열만 선택 가능하며 오른쪽에 빈 열이 있어야 한다.<br>
+                  [ ] 유효성 검사 규칙 적용 전의 기존 데이터는 절대 삭제되지 않는다.<br>
+                  [ ] 부분합 실행 전 그룹 필드 사전 정렬은 필수이며, 중첩 시 [새로운 값으로 대치] 해제<br>
+                  [ ] 데이터 통합의 [원본 데이터에 연결]은 동일 시트에서는 적용할 수 없다.<br>
+                  [ ] 데이터 표로 계산된 결과값은 일부만 따로 수정하거나 삭제할 수 없다.
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <div style="font-size: 64px;">🏆</div>
+                <h3 style="font-size: 26px; font-weight: 800; color: #0f172a;">40~44단원 완강을 축하합니다!</h3>
+                <p style="font-size: 16px; color: #64748b; line-height: 1.6; max-width: 400px;">
+                  텍스트 나누기, 데이터 유효성 검사, 부분합, 데이터 통합, 데이터 표를 완벽하게 마스터하셨습니다.
+                </p>
+                <button onclick="goTo(0)"
+                  style="background:#0284c7; color:#fff; border:none; padding:12px 26px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(2,132,199,0.3); transition:all 0.2s;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                  🔄 처음 슬라이드로 돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 21 : [부록] 데이터 도구 5대 기능 핵심 치트시트
+             ======================================================== -->
+        <section class="slide"
+          data-notes="마지막 부록 슬라이드입니다. 오늘 학습한 데이터 관리 도구 5대 기능(텍스트나누기, 유효성검사, 부분합, 데이터통합, 데이터표)의 핵심 요약 치트시트입니다. 시험 직전 캡처하여 요긴하게 활용하시기 바랍니다. 감사합니다!">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">컴퓨터활용2급 7일 완성 부록</div>
+                <h2 class="slide-title">데이터 관리 도구 5대 기능 치트시트</h2>
+              </div>
+              <table class="styled-table" style="font-size: 13px;">
+                <thead>
+                  <tr><th>기능명</th><th>메뉴 위치</th><th>절대 기출 규칙</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>고급필터 수식</code></td><td>데이터 ➔ 고급</td><td>필드명 원본과 다른 이름 필수</td></tr>
+                  <tr><td><code>텍스트 나누기</code></td><td>데이터 ➔ 텍스트 나누기</td><td>1개 열만 가능, 오른쪽 빈 열 필요</td></tr>
+                  <tr><td><code>유효성 검사</code></td><td>데이터 ➔ 데이터 유효성</td><td>기존 데이터 보존, 3대 오류 스타일</td></tr>
+                  <tr><td><code>부분합</code></td><td>데이터 ➔ 부분합</td><td><strong>사전 정렬 필수</strong>, 대치 해제</td></tr>
+                  <tr><td><code>데이터 통합</code></td><td>데이터 ➔ 통합</td><td>원본 연결은 <strong>다른 시트/문서만</strong></td></tr>
+                  <tr><td><code>데이터 표</code></td><td>데이터 ➔ 가상 분석</td><td>결과값 <strong>일부 수정 불가</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="width: 100%;">
+                <div class="morph-title"><span>📑 부분합 윤곽 &amp; 유효성 오류 요약</span></div>
+                <table class="styled-table" style="font-size: 13px;">
+                  <thead>
+                    <tr><th>구분</th><th>항목 내용</th><th>특징</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>윤곽 1</td><td>총요약만 표시</td><td>전체 총합계 한 줄</td></tr>
+                    <tr><td>윤곽 2</td><td>그룹별 요약 표시</td><td>세부 숨김 + 부서요약</td></tr>
+                    <tr><td>윤곽 3</td><td>모든 데이터 표시</td><td>세부데이터 + 요약 전체</td></tr>
+                    <tr><td>오류: 중지</td><td>❌ 빨간 엑스</td><td>입력 절대 차단</td></tr>
+                    <tr><td>오류: 경고/정보</td><td>⚠️ 노란삼각 / ℹ️ 파란원</td><td>사용자 확인 후 입력 가능</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Speaker Notes Drawer -->
+    <footer class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️ 발표자 강의 대본 (Speaker Script)</span>
+          <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(단축키: N 또는 S 키로 대본창 접기/펼치기)</span>
+        </div>
+        <button class="btn-toggle-notes" onclick="toggleNotes()">대본창 접기/펼치기</button>
+      </div>
+      <div class="notes-content" id="notesContent"></div>
+    </footer>
+  </div>
+
+  <script>
+    // Slide Data & Interactive Management
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    const curSlideNumEl = document.getElementById('curSlideNum');
+    const totalSlideNumEl = document.getElementById('totalSlideNum');
+    const notesContentEl = document.getElementById('notesContent');
+    const notesDrawerEl = document.getElementById('notesDrawer');
+
+    totalSlideNumEl.textContent = totalSlides < 10 ? '0' + totalSlides : totalSlides;
+
+    function updateSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+
+      curSlideNumEl.textContent = (currentSlide + 1) < 10 ? '0' + (currentSlide + 1) : (currentSlide + 1);
+
+      // 대본 동기화
+      const notes = slides[currentSlide].getAttribute('data-notes') || '작성된 발표 대본이 없습니다.';
+      notesContentEl.innerHTML = notes;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        updateSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        updateSlide(currentSlide - 1);
+      }
+    }
+
+    function goTo(index) {
+      updateSlide(index);
+    }
+
+    function toggleNotes() {
+      notesDrawerEl.classList.toggle('collapsed');
+    }
+
+    // Keyboard Navigation
+    let lastKeyTime = 0;
+    window.addEventListener('keydown', (e) => {
+      const now = Date.now();
+      const code = e.code;
+      const key = e.key;
+      const keyCode = e.keyCode;
+
+      if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' ||
+        key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+        keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        nextSlide();
+      }
+
+      if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' ||
+        key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+        keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        prevSlide();
+      }
+
+      if (code === 'KeyN' || code === 'KeyS' || key === 'n' || key === 'N' || key === 's' || key === 'S') {
+        e.preventDefault();
+        toggleNotes();
+      }
+    });
+
+    function ensureFocus() {
+      try { window.focus(); document.body.focus(); } catch (e) { }
+    }
+    window.addEventListener('DOMContentLoaded', ensureFocus);
+    window.addEventListener('load', ensureFocus);
+
+    // Initial sync
+    updateSlide(0);
+
+    // 부분합 윤곽 시뮬레이터 (Slide 13)
+    function simSubtotal(level) {
+      const detailRows = document.querySelectorAll('.row-detail');
+      const subtotalRows = document.querySelectorAll('.row-subtotal');
+      const grandRow = document.querySelector('.row-grand');
+
+      document.getElementById('btn-lvl-1').classList.remove('active');
+      document.getElementById('btn-lvl-2').classList.remove('active');
+      document.getElementById('btn-lvl-3').classList.remove('active');
+      document.getElementById('btn-lvl-' + level).classList.add('active');
+
+      if (level === 1) {
+        detailRows.forEach(r => r.style.display = 'none');
+        subtotalRows.forEach(r => r.style.display = 'none');
+        grandRow.style.display = '';
+      } else if (level === 2) {
+        detailRows.forEach(r => r.style.display = 'none');
+        subtotalRows.forEach(r => r.style.display = '');
+        grandRow.style.display = '';
+      } else if (level === 3) {
+        detailRows.forEach(r => r.style.display = '');
+        subtotalRows.forEach(r => r.style.display = '');
+        grandRow.style.display = '';
+      }
+    }
+  </script>
+
+</body>
+
+</html>

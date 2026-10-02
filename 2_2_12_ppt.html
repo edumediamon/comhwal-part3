@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반 (48~51)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --canvas-bg: #ffffff;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #e0f2fe;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #d1fae5;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fef3c7;
+      --accent-rose: #e11d48;
+      --accent-rose-light: #ffe4e6;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #ede9fe;
+      --card-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --shadow-canvas: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-card-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* 초록색 핵심 하이라이트 (디자인 표준) */
+    .hl-green,
+    u,
+    .u-highlight {
+      text-decoration: none;
+      background-color: #dcfce7 !important;
+      color: #15803d !important;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      border-bottom: 2.5px solid #22c55e;
+      box-shadow: 0 1px 2px rgba(34, 197, 94, 0.12);
+      display: inline-block;
+    }
+
+    .presentation-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #f1f5f9;
+      overflow: hidden;
+    }
+
+    /* Top Bar */
+    .header-bar {
+      height: 54px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .badge-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: var(--accent-emerald-light);
+      border: 1px solid #a7f3d0;
+      color: #047857;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Slide Stage Canvas */
+    .slide-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 36px 8px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating Navigation Arrows */
+    .side-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      user-select: none;
+    }
+
+    .side-nav-arrow:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
+    }
+
+    .side-nav-arrow:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    .side-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .side-nav-arrow.next {
+      right: 14px;
+    }
+
+    .slide-canvas {
+      width: 100%;
+      height: 100%;
+      max-width: 1320px;
+      max-height: 720px;
+      background: var(--canvas-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow-canvas);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 42px;
+    }
+
+    /* Slide Component Structure */
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 32px 42px;
+      display: none;
+      flex-direction: column;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* 50:50 좌우 분할 컨테이너 */
+    .split-container {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      height: 100%;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      position: relative;
+    }
+
+    .anim-left {
+      animation: animLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: animRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes animLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes animRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* 슬라이드 태그 (24px, 800) */
+    .slide-tag {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 24px;
+      background: var(--accent-blue);
+      border-radius: 4px;
+    }
+
+    /* 슬라이드 제목 (32px, 800) */
+    .slide-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    /* 정보 카드 (좌측 칼럼) */
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      border-left: 5px solid var(--accent-blue);
+      position: relative;
+    }
+
+    .info-card.warning {
+      border-left-color: var(--accent-rose);
+      background: #fffbfa;
+    }
+
+    .info-card.success {
+      border-left-color: var(--accent-emerald);
+      background: #fbfdfc;
+    }
+
+    .info-card.amber {
+      border-left-color: var(--accent-amber);
+      background: #fffdfa;
+    }
+
+    .info-card.purple {
+      border-left-color: var(--accent-purple);
+      background: #fbfaff;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card.warning .card-title {
+      color: var(--accent-rose);
+    }
+
+    .info-card.success .card-title {
+      color: var(--accent-emerald);
+    }
+
+    .info-card.amber .card-title {
+      color: var(--accent-amber);
+    }
+
+    .info-card.purple .card-title {
+      color: var(--accent-purple);
+    }
+
+    .card-desc {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
+    .card-desc .warn-text {
+      color: #e11d48;
+      font-weight: 800;
+      background: #fff1f2;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* Key Badge */
+    .key-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #0369a1;
+      font-weight: 700;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      vertical-align: baseline;
+    }
+
+    /* Visual Mockups & Morph Cards in Right Col */
+    .morph-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      width: 100%;
+      max-width: 530px;
+      position: relative;
+    }
+
+    .morph-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .morph-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .morph-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .morph-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+      transform: scale(1.02);
+    }
+
+    .morph-btn.active {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Excel Table Styling */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .styled-table th {
+      background: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      padding: 6px 8px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      border-right: 1px solid #f1f5f9;
+    }
+
+    .styled-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      border-right: 1px solid #f1f5f9;
+      color: #334155;
+      text-align: center;
+    }
+
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 3D 플립 카드 */
+    .flip-container {
+      perspective: 1000px;
+      width: 100%;
+      height: 96px;
+      cursor: pointer;
+    }
+
+    .flipper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-container.flipped .flipper {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
+
+    /* Title Slide */
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
+      border-radius: 16px;
+    }
+
+    .title-badge {
+      padding: 8px 26px;
+      background: var(--accent-emerald-light);
+      border: 1.5px solid #86efac;
+      color: var(--accent-emerald);
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .title-h1 {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
+    .title-sub {
+      font-size: 23px;
+      color: #64748b;
+      font-weight: 600;
+      max-width: 920px;
+      line-height: 1.5;
+    }
+
+    /* Bottom Speaker Notes Drawer */
+    .notes-drawer {
+      height: 140px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 14px 36px;
+      display: flex;
+      flex-direction: column;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
+      z-index: 20;
+    }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .notes-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .notes-content {
+      overflow-y: auto;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    .notes-content strong {
+      color: #047857;
+      background: #ecfdf5;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .btn-toggle-notes {
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="presentation-container">
+    <!-- Top Bar -->
+    <header class="header-bar">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <span class="badge-subject">컴퓨터활용능력 2급 필기</span>
+        <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (48~51)</span>
+      </div>
+      <!-- 슬라이드 번호 카운터 -->
+      <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">21</span></div>
+    </header>
+
+    <!-- Slide Stage Canvas -->
+    <main class="slide-stage">
+      <!-- 좌우 사이드 플로팅 내비게이션 화살표 -->
+      <button class="side-nav-arrow prev" onclick="prevSlide()" title="이전 슬라이드 (◀ / Backspace)">‹</button>
+      <button class="side-nav-arrow next" onclick="nextSlide()" title="다음 슬라이드 (▶ / Space / Enter)">›</button>
+
+      <div class="slide-canvas" id="slideCanvas">
+
+        <!-- ========================================================
+             SLIDE 1 : Title Slide
+             ======================================================== -->
+        <section class="slide active title-slide"
+          data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 차트 종류별 심화 특징과 인쇄 및 페이지 설정, 페이지 나누기 미리보기 영역을 총정리합니다. 48번 차트 심화인 도넛형과 혼합형 작성 불가 차트, 49번 페이지 설정의 4대 탭(페이지, 여백, 머리글/바닥글, 시트 탭의 인쇄 제목), 50번 인쇄 미리보기에서 열 너비 조절 가능과 행 높이 조절 불가 원칙, 51번 페이지 나누기 미리보기의 점선과 실선 구분선 및 데이터 편집 가능 여부까지 총 21개 슬라이드로 완벽 정리합니다.">
+          <div class="title-badge">컴활 2급 필기 • 핵심 요약 48~51</div>
+          <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
+          <p class="title-sub">차트 종류 심화 &amp; 페이지 설정(여백·머리글·인쇄제목) &amp; 인쇄 미리보기 완전 정복</p>
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <button onclick="nextSlide()"
+              style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              🚀 강의 시작하기 (Next ➔)
+            </button>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 2 : Table of Contents (Agenda)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="전체 21개 슬라이드 목차입니다. 48번 차트 심화인 도넛형과 분산형, 방사형 및 혼합형 작성 불가 차트 6종, 49번 페이지 설정 4대 탭의 핵심 옵션들, 50번 인쇄 미리보기의 열 너비 조절 및 행 높이 조절 불가 규칙, 51번 페이지 나누기 미리보기의 파선(점선)과 실선 구분선, 실시간 시뮬레이터와 3초 판별 플립카드까지 순서대로 정복해 보겠습니다. 우측의 퀵 점프 버튼을 누르면 원하는 주제로 즉시 이동할 수 있습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TABLE OF CONTENTS</div>
+                <h2 class="slide-title">핵심 학습 목차</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">48 심화. 차트 종류별 핵심 특징</div>
+                <div class="card-desc">도넛형(다중 계열, 구멍 0~90%), 분산형(XY좌표), 방사형(거미줄), 혼합형 작성 불가 차트 6종</div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">49. 페이지 설정 4대 탭 완전 정복</div>
+                <div class="card-desc">[페이지] 배율 10~400%, [여백] 가운데 맞춤, [머리글] &[탭]=시트이름, [시트] 인쇄제목 반복행 $1:$3</div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">50~51. 인쇄 미리보기 &amp; 페이지 나누기</div>
+                <div class="card-desc">인쇄 미리보기(열 너비 조절O / 행 높이 조절X), 페이지 나누기(데이터 편집 가능, 자동=점선 / 수동=실선)</div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="padding: 18px; width: 100%;">
+                <div style="font-size: 15px; font-weight: 800; color: #0284c7; margin-bottom: 12px;">
+                  ⚡ 원하는 토픽으로 즉시 이동 (Click Jump)
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <button class="morph-btn" onclick="goTo(2)" style="justify-content: flex-start;">48. 도넛형 차트</button>
+                  <button class="morph-btn" onclick="goTo(3)" style="justify-content: flex-start;">48. 분산형·방사형·트리맵</button>
+                  <button class="morph-btn" onclick="goTo(4)" style="justify-content: flex-start;">48. 혼합형 불가 6종</button>
+                  <button class="morph-btn" onclick="goTo(5)" style="justify-content: flex-start;">49. [페이지] 배율 10~400%</button>
+                  <button class="morph-btn" onclick="goTo(6)" style="justify-content: flex-start;">49. [여백] 가운데 맞춤</button>
+                  <button class="morph-btn" onclick="goTo(7)" style="justify-content: flex-start;">49. [머리글/바닥글] &[탭]</button>
+                  <button class="morph-btn" onclick="goTo(8)" style="justify-content: flex-start;">49. [시트] 인쇄 제목</button>
+                  <button class="morph-btn" onclick="goTo(9)" style="justify-content: flex-start;">49. [시트] 간단하게 인쇄</button>
+                  <button class="morph-btn" onclick="goTo(10)" style="justify-content: flex-start;">50. 인쇄 미리보기 기본</button>
+                  <button class="morph-btn" onclick="goTo(11)" style="justify-content: flex-start;">50. 열너비O / 행높이X</button>
+                  <button class="morph-btn" onclick="goTo(12)" style="justify-content: flex-start;">50. 인쇄 미리보기 제약</button>
+                  <button class="morph-btn" onclick="goTo(13)" style="justify-content: flex-start;">51. 페이지 나누기 미리보기</button>
+                  <button class="morph-btn" onclick="goTo(14)" style="justify-content: flex-start;">51. 자동 점선 vs 수동 실선</button>
+                  <button class="morph-btn" onclick="goTo(15)" style="justify-content: flex-start;">51. 구분선 시뮬레이터</button>
+                  <button class="morph-btn" onclick="goTo(16)" style="justify-content: flex-start;">🎯 킬러 함정 플립카드</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 3 : 48 심화 : 도넛형 차트 vs 원형 차트
+             ======================================================== -->
+        <section class="slide"
+          data-notes="차트 심화 첫 번째인 도넛형 차트입니다. 원형 차트와의 결정적 차이점입니다. 원형 차트는 오직 1개의 데이터 계열만 표시할 수 있었지만, 도넛형 차트는 '여러 개의 데이터 계열'을 고리 모양으로 겹쳐서 가질 수 있습니다! 각 고리가 하나의 계열을 나타냅니다. 또한 도넛 내부의 빈 공간인 '도넛 구멍 크기'를 0%에서 90%까지 자유롭게 조절할 수 있습니다. 만약 도넛 구멍 크기를 0%로 줄이면 가운데 구멍이 사라져서 원형 차트와 완전히 같은 모양이 됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 48 심화</div>
+                <h2 class="slide-title">도넛형 차트 vs 원형 차트 <span class="hl-green">비교</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. 여러 개의 데이터 계열 지원! (★원형과 차이점)</div>
+                <div class="card-desc">
+                  원형 차트는 1개 계열만 가능하지만, 도넛형은 <span class="hl-green"><strong>여러 개의 데이터 계열</strong></span>을 동심원 고리로 표현 가능!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 도넛 구멍 크기 조절 (0% ~ 90%)</div>
+                <div class="card-desc">
+                  가운데 구멍 크기를 <span class="hl-green">0%에서 90%까지 조정</span> 가능<br>
+                  • 구멍 크기 0% 지정 시: 원형 차트와 동일해짐
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 원형 차트 vs 도넛형 차트 매트릭스</span>
+                </div>
+                <table class="styled-table" style="font-size:13.5px; margin-top:14px;">
+                  <thead>
+                    <tr><th>비교 항목</th><th>원형 차트</th><th>도넛형 차트</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>데이터 계열 수</td><td style="color:#dc2626; font-weight:800;">오직 1개만!</td><td style="color:#059669; font-weight:800;">여러 개 가능! ★</td></tr>
+                    <tr><td>가운데 구멍</td><td>없음 (0%)</td><td>0% ~ 90% 조절</td></tr>
+                    <tr><td>조각 분리</td><td>가능</td><td>첫 번째 고리 분리 가능</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #0369a1; background: #f0f9ff; padding: 10px; border-radius: 8px; border: 1px solid #bae6fd; margin-top: 14px;">
+                  💡 시험에서 "도넛형 차트는 단 하나의 데이터 계열만 표시할 수 있다"는 대표적인 단골 오답 지문입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 4 : 48 심화 : 분산형, 방사형, 표면형, 트리맵
+             ======================================================== -->
+        <section class="slide"
+          data-notes="특수 목적 차트 4종의 기출 정의입니다. 시험에는 지문 설명과 차트 이름을 짝짓는 문제가 단골 출제됩니다. 첫째, [분산형(XY)]은 두 개의 숫자 그룹을 x축과 y축 좌표로 이루어진 점으로 찍어 두 숫자 데이터 사이의 상관관계를 보여주는 과학/공학용 차트입니다. 둘째, [방사형]은 가운데 중심점에서 뻗어나온 여러 축을 거미줄 형태로 연결하여 각 계열의 균형과 합계 값을 비교합니다. 셋째, [표면형]은 두 데이터 집합에서 마치 등고선처럼 '최적의 조합'을 찾을 때 씁니다. 넷째, [트리맵]은 사각형 크기로 계층적 구조와 상대적 크기를 직관적으로 보여줍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 48 심화</div>
+                <h2 class="slide-title">기출 특수 차트 4종 핵심 키워드</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 분산형 (XY 좌표) — 숫자 간 관계</div>
+                <div class="card-desc">
+                  두 개의 숫자 그룹을 <span class="hl-green">XY 좌표로 이루어진 점</span>으로 표시하여 <span class="hl-green">데이터 간의 상관관계</span>를 분석
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 방사형 — 거미줄 모양 축</div>
+                <div class="card-desc">
+                  <span class="hl-green">가운데 요소에서 뻗어나온 값 축</span>을 갖고, 같은 계열의 모든 값을 선으로 연결하여 비교
+                </div>
+              </div>
+              <div class="info-card amber">
+                <div class="card-title">3. 표면형 &amp; 트리맵</div>
+                <div class="card-desc">
+                  • <strong>표면형</strong>: 두 데이터 집합에서 <span class="hl-green">최적의 조합</span>을 찾음 (등고선 형태)<br>
+                  • <strong>트리맵</strong>: 데이터를 중첩 사각형으로 구성하여 <span class="hl-green">계층적 관계</span> 시각화
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🎯 1초 컷 지문 키워드 매칭</span>
+                </div>
+                <div style="font-size:14px; line-height:1.9; color:#334155; margin-top:10px;">
+                  • <code>XY 좌표, 상관관계</code> ➔ <strong style="color:#0284c7;">분산형 차트</strong><br>
+                  • <code>가운데서 뻗어나온 축, 거미줄</code> ➔ <strong style="color:#059669;">방사형 차트</strong><br>
+                  • <code>최적의 조합, 등고선</code> ➔ <strong style="color:#d97706;">표면형 차트</strong><br>
+                  • <code>중첩 사각형, 계층적 크기</code> ➔ <strong style="color:#7c3aed;">트리맵 차트</strong><br>
+                  • <code>시간에 따른 합계 추세</code> ➔ <strong style="color:#e11d48;">영역형 차트</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 5 : 48 심화 : 혼합형 차트 작성 불가 6종
+             ======================================================== -->
+        <section class="slide"
+          data-notes="혼합형 차트(Combo Chart) 작성 불가 차트 6종입니다. 혼합형 차트는 막대 차트와 꺾은선형 차트를 함께 묶고 보조 축을 지정하여 서로 단위가 다른 데이터를 한눈에 비교하는 차트입니다. 시험에 100% 출제되는 킬러 암기 공식은 '혼합형 차트로 결합할 수 없는 차트 종류'입니다! 첫째, 모든 3차원(3D) 차트는 결합할 수 없습니다. 둘째, 주식형 차트, 거품형 차트, 표면형 차트, 트리맵 차트, 선버스트 차트는 혼합형 차트로 작성할 수 없습니다! '3차원 막대와 꺾은선을 혼합 차트로 작성했다'는 보기는 대표적인 오답입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 48 ★ 기출 1위</div>
+                <h2 class="slide-title">혼합형 차트 <span class="warn-text">작성 불가 차트 6종</span></h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">혼합형 차트란?</div>
+                <div class="card-desc">
+                  두 개 이상의 차트 종류(예: 막대 + 꺾은선)를 하나로 결합하여 <span class="hl-green">데이터 간의 관계를 한눈에 비교·강조</span>하는 차트
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 혼합형 차트 작성 불가능한 6종 (암기 필수!)</div>
+                <div class="card-desc" style="line-height:1.7;">
+                  • <span class="warn-text">모든 3차원(3D) 차트 전체</span><br>
+                  • <span class="warn-text">주식형 차트</span> &nbsp;|&nbsp; <span class="warn-text">거품형 차트</span><br>
+                  • <span class="warn-text">표면형 차트</span> &nbsp;|&nbsp; <span class="warn-text">트리맵 차트</span> &nbsp;|&nbsp; <span class="warn-text">선버스트</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 3D 차트 가능 여부 총정리</span>
+                </div>
+                <div style="font-size:13.5px; line-height:1.8; color:#334155; margin-top:10px;">
+                  • <strong>3차원 차트 제작 가능 종류</strong>:<br>
+                  세로막대, 가로막대, 꺾은선형, 영역형, 원형, 표면형<br>
+                  • <strong>3차원 차트의 절대 금지 2대 제약</strong>:<br>
+                  ① <span style="color:#dc2626; font-weight:800;">추세선 추가 절대 불가!</span><br>
+                  ② <span style="color:#dc2626; font-weight:800;">혼합형(콤보) 차트 작성 절대 불가!</span>
+                </div>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "3차원 차트"가 나오는 순간 추세선과 혼합형은 100% 불가능하다는 공식을 기억하세요!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 6 : 49 페이지 설정 : [페이지] 탭 (배율 10~400%)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="49번 페이지 설정의 첫 번째인 [페이지] 탭입니다. 인쇄 용지의 기본 규격을 정하는 곳입니다. 첫째, 인쇄 용지 방향을 '세로' 또는 '가로'로 선택할 수 있습니다. 둘째, 시험 출제 1위인 인쇄 배율입니다! 워크시트의 인쇄 배율은 '10%부터 400%까지' 확대/축소 지정할 수 있습니다. 10~400%라는 숫자가 시험에 단골 출제됩니다. 또한 '자동 맞춤'을 선택하면 사용자가 지정한 용지 너비(가로)와 용지 높이(세로) 페이지 수에 맞춰 엑셀이 자동으로 배율을 줄여서 인쇄해 줍니다. 셋째, 시작 페이지 번호는 기본값인 '자동'일 때 1페이지부터 시작합니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 49 ★ 출제 1위</div>
+                <h2 class="slide-title">페이지 설정: [페이지] 탭 핵심 옵션</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 용지 방향</div>
+                <div class="card-desc">
+                  인쇄 용지 방향을 <span class="hl-green">세로(기본)</span> 또는 <span class="hl-green">가로</span>로 설정
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 인쇄 배율: 10% ~ 400% (★기출 숫자)</div>
+                <div class="card-desc">
+                  • 수동 배율: <span class="hl-green"><strong>10% ~ 400%</strong>까지</span> 지정 가능<br>
+                  • <strong>자동 맞춤</strong>: 지정한 용지 너비/높이에 맞춰 <span class="hl-green">자동 확대·축소 인쇄</span>
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">3. 시작 페이지 번호</div>
+                <div class="card-desc">
+                  기본값 <span class="hl-green">'자동'은 1페이지부터 시작</span>하며, 임의의 번호로 변경 가능
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🖥️ [페이지] 탭 설정 UI 해부</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:13.5px; line-height:1.9;">
+                  <div><strong>방향</strong>: ○ 세로(T) &nbsp;&nbsp; ● <strong>가로(L)</strong></div>
+                  <div style="margin-top:8px; border-top:1px dashed #cbd5e1; padding-top:8px;">
+                    <div><strong>배율</strong>:</div>
+                    <div>○ 확대/축소 배율: <span style="font-weight:800; color:#0284c7;">100%</span> (10~400%)</div>
+                    <div>● <strong>자동 맞춤(F)</strong>: 용지 너비 <code>1</code>, 용지 높이 <code>1</code></div>
+                  </div>
+                  <div style="margin-top:8px; border-top:1px dashed #cbd5e1; padding-top:8px;">
+                    <div>시작 페이지 번호(F): <code>자동</code> (➔ 1부터 시작)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 7 : 49 페이지 설정 : [여백] 탭 (가운데 맞춤)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="페이지 설정의 두 번째인 [여백] 탭입니다. 용지의 상하좌우 및 머리글, 바닥글 여백을 센티미터 단위로 조절하는 곳입니다. 시험에 무조건 나오는 핵심 기능은 화면 하단의 '페이지 가운데 맞춤'입니다! '가로'와 '세로' 체크박스가 제공됩니다. 가로를 체크하면 표가 좌우 정중앙에 배치되고, 세로를 체크하면 표가 위아래 정중앙에 배치됩니다. 둘 다 체크하면 용지의 정가운데에 예쁘게 인쇄됩니다. 표의 크기가 용지보다 작을 때 매우 유용하게 쓰입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 49</div>
+                <h2 class="slide-title">페이지 설정: [여백] 탭 &amp; 가운데 맞춤</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 6대 여백 설정 항목</div>
+                <div class="card-desc">
+                  <span class="hl-green">위쪽, 아래쪽, 왼쪽, 오른쪽, 머리글, 바닥글</span>의 여백을 cm 단위로 지정
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 페이지 가운데 맞춤 (★출제 1위)</div>
+                <div class="card-desc">
+                  • <strong>가로(Z)</strong>: 인쇄 내용이 용지의 <span class="hl-green">좌우 수평 가운데</span>에 인쇄됨<br>
+                  • <strong>세로(V)</strong>: 인쇄 내용이 용지의 <span class="hl-green">상하 수직 가운데</span>에 인쇄됨<br>
+                  • 둘 다 체크 시 용지의 정중앙에 배치됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ [페이지 가운데 맞춤] 시각 효과</span>
+                </div>
+                <div style="height:170px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; margin-top:14px; position:relative; display:flex; align-items:center; justify-content:center;">
+                  <div style="position:absolute; top:8px; left:8px; font-size:11px; color:#94a3b8;">인쇄 용지 (A4)</div>
+                  <!-- 정가운데 배치된 표 -->
+                  <div style="background:#ffffff; border:2px solid #0284c7; padding:12px 20px; border-radius:8px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                    <div style="font-weight:800; color:#0284c7; font-size:14px;">데이터 표 영역</div>
+                    <div style="font-size:12px; color:#64748b; margin-top:4px;">☑ 가로 &nbsp; ☑ 세로 정중앙 맞춤</div>
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #0369a1; background: #f0f9ff; padding: 10px; border-radius: 8px; border: 1px solid #bae6fd; margin-top: 12px;">
+                  💡 가로/세로 가운데 맞춤을 체크하면 표가 용지 한쪽 구석으로 치우치지 않고 정중앙에 깔끔하게 인쇄됩니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 8 : 49 [머리글/바닥글] 탭: &[탭] = 시트 이름
+             ======================================================== -->
+        <section class="slide"
+          data-notes="[머리글/바닥글] 탭과 매크로 코드입니다. 매 페이지 상단과 하단에 고정 출력되는 정보를 지정합니다. 첫째, [문서에 맞게 배율 조정]을 체크하면 워크시트가 축소/확대 인쇄될 때 머리글과 바닥글의 글자 크기도 비례해서 자동으로 조절됩니다. 둘째, 시험 출제 1위인 앤드(&) 코드입니다! 현재 페이지 번호는 &[페이지 번호], 총 페이지 수는 &[전체 페이지 수], 파일 이름은 &[파일]입니다. 여기서 수험생들이 가장 많이 틀리는 핵심 함정은 '시트 이름 코드는 &[시트]가 아니라 &[탭]이라는 점'입니다! 시트 탭의 이름을 가져오므로 &[탭]을 씁니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 49 ★ 기출 1위</div>
+                <h2 class="slide-title">머리글/바닥글 코드 &amp; <span class="warn-text">&amp;[탭] 함정</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">★ 시트 이름 코드는 &amp;[탭]! (절대 주의)</div>
+                <div class="card-desc">
+                  워크시트 이름은 <span class="warn-text">&amp;[시트]가 아니라</span> <span class="hl-green"><strong>&amp;[탭]</strong></span> 코드로 자동 삽입됨!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">문서에 맞게 배율 조정</div>
+                <div class="card-desc">
+                  인쇄 확대/축소 배율에 따라 <span class="hl-green">머리글/바닥글의 글자 크기도 자동 조절</span>됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 머리글/바닥글 7대 자동 코드</span>
+                </div>
+                <table class="styled-table" style="font-size:13px; margin-top:12px;">
+                  <thead>
+                    <tr><th>아이콘 / 내용</th><th>자동 코드</th><th>기출 함정</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>📄 페이지 번호</td><td><code>&amp;[페이지 번호]</code></td><td>현재 번호</td></tr>
+                    <tr><td>📄++ 전체 페이지</td><td><code>&amp;[전체 페이지 수]</code></td><td>총 매수</td></tr>
+                    <tr><td>📑 시트 이름</td><td style="color:#dc2626; font-weight:800;">&amp;[탭] ★</td><td>&amp;[시트] X</td></tr>
+                    <tr><td>📊 파일 이름</td><td><code>&amp;[파일]</code></td><td>통합문서명</td></tr>
+                    <tr><td>📁 파일 전체 경로</td><td><code>&amp;[경로]&amp;[파일]</code></td><td>폴더+파일명</td></tr>
+                    <tr><td>📅 날짜 / 🕒 시간</td><td><code>&amp;[날짜]</code> / <code>&amp;[시간]</code></td><td>인쇄 시점</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 9 : 49 [시트] 탭 1: 인쇄 제목 반복 행 & 열
+             ======================================================== -->
+        <section class="slide"
+          data-notes="[시트] 탭의 가장 중요한 기능인 '인쇄 제목'입니다. 데이터가 여러 페이지로 길게 인쇄될 때, 2페이지나 3페이지를 보면 상단에 표 제목(헤더)이 없어서 데이터가 무엇인지 알아보기 어렵습니다. 이때 모든 페이지마다 특정 제목 행이나 열을 반복해서 인쇄되도록 고정하는 기능이 인쇄 제목입니다. 반복할 행에는 $1:$3 과 같이 행 번호 범위가 입력되며, 1행부터 3행까지 매 페이지 상단에 반복 인쇄됩니다. 반복할 열에는 $A:$C 와 같이 열 문자 범위가 입력되며, 매 페이지 좌측에 반복 인쇄됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 49 ★ 출제 1위</div>
+                <h2 class="slide-title">[시트] 탭: <span class="hl-green">인쇄 제목(반복 행/열)</span></h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 인쇄 제목이란?</div>
+                <div class="card-desc">
+                  데이터가 여러 페이지로 인쇄될 때, <span class="hl-green">모든 페이지마다 특정 행이나 열을 반복적으로 인쇄</span>하는 기능
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 반복할 행 지정 형식: <code>$1:$3</code></div>
+                <div class="card-desc">
+                  모든 페이지 상단에 <span class="hl-green">1행부터 3행까지 제목행을 매번 반복</span> 인쇄
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3. 반복할 열 지정 형식: <code>$A:$C</code></div>
+                <div class="card-desc">
+                  모든 페이지 좌측에 <span class="hl-green">A열부터 C열까지 매번 반복</span> 인쇄
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🖥️ [시트] 탭 대화상자 입력 UI</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:13.5px; line-height:1.9;">
+                  <div style="font-weight:700; color:#1e293b;">인쇄 영역(A): <code>$A$1:$F$100</code></div>
+                  <div style="margin-top:8px; border-top:1px dashed #cbd5e1; padding-top:8px;">
+                    <div style="font-weight:700; color:#0284c7;">인쇄 제목:</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span>• 반복할 행(R):</span>
+                      <span style="background:#fff; border:1px solid #94a3b8; padding:2px 8px; border-radius:4px; font-family:'JetBrains Mono'; font-weight:800; color:#059669;">$1:$3</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+                      <span>• 반복할 열(C):</span>
+                      <span style="background:#fff; border:1px solid #94a3b8; padding:2px 8px; border-radius:4px; font-family:'JetBrains Mono'; font-weight:800; color:#7c3aed;">$A:$C</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                  💡 인쇄 제목을 설정해 두면 100페이지를 인쇄해도 모든 페이지 맨 위에 표 제목이 나타납니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 10 : 49 [시트] 탭 2: 인쇄 옵션 (간단하게 인쇄 & 메모)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="[시트] 탭의 세부 인쇄 옵션 4가지입니다. 첫째, [눈금선]은 셀 구분 격자선을 종이에 인쇄할지 여부입니다. 둘째, 출제 빈도가 높은 [간단하게 인쇄]입니다! 복잡한 서식이나 테두리, 채우기 색상, 차트나 도형 등의 모든 개체를 인쇄에서 빼버리고 오직 '텍스트와 숫자 데이터만 빠르게' 흑백으로 인쇄하는 모드입니다. 잉크와 인쇄 시간을 대폭 절약할 때 씁니다. 셋째, [행/열 머리글]은 1, 2, 3 행 번호와 A, B, C 열 문자를 함께 인쇄합니다. 넷째, [메모] 인쇄 방식 3가지는 '없음, 시트 끝, 시트에 표시된 대로'입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 49</div>
+                <h2 class="slide-title">[시트] 탭 인쇄 옵션 &amp; <span class="hl-green">간단하게 인쇄</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">1. 간단하게 인쇄 (★출제 1위)</div>
+                <div class="card-desc">
+                  테두리, 채우기 색, 그래픽 개체는 모두 제외하고 <span class="warn-text">텍스트와 숫자만 빠르게</span> 인쇄!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 눈금선 &amp; 행/열 머리글</div>
+                <div class="card-desc">
+                  • <strong>눈금선</strong>: 셀의 회색 격자선 인쇄 여부<br>
+                  • <strong>행/열 머리글</strong>: 열 문자(A,B)와 행 번호(1,2) 인쇄 여부
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3. 메모 인쇄 3대 방식</div>
+                <div class="card-desc">
+                  <span class="hl-green">없음</span>, <span class="hl-green">시트 끝</span>(맨 마지막 페이지), <span class="hl-green">시트에 표시된 대로</span>(화면 위치 그대로)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 인쇄 옵션 체크박스 비교</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:14px; line-height:1.9;">
+                  <div>☑ <strong>눈금선(G)</strong> (격자선 출력)</div>
+                  <div>☑ <strong>흑백으로(B)</strong></div>
+                  <div style="color:#dc2626; font-weight:800;">
+                    ☑ <strong>간단하게 인쇄(Q)</strong> ➔ 테두리/개체 무시, 텍스트만!
+                  </div>
+                  <div>☑ <strong>행/열 머리글(L)</strong> (A, B, C, 1, 2, 3 인쇄)</div>
+                  <div style="margin-top:6px; border-top:1px dashed #cbd5e1; padding-top:6px;">
+                    <strong>메모(M)</strong>: [ 시트 끝 ▼ ] (없음 / 시트 끝 / 시트에 표시된 대로)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 11 : 50 인쇄 미리 보기 및 인쇄 (Ctrl+P)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="50번 인쇄 미리 보기 및 인쇄(단축키 Ctrl+P)의 기본 기능입니다. 인쇄를 실행하기 전에 실제 용지에 출력될 최종 레이아웃을 화면으로 미리 검토하는 화면입니다. 첫째, 인쇄 대상은 '활성 시트 인쇄(현재 시트만)', '전체 통합 문서 인쇄(모든 시트 전체)', '선택 영역 인쇄(블록 지정한 셀만)', 그리고 '인쇄 영역 무시' 중 하나를 선택할 수 있습니다. 둘째, 워크시트에서 숨겨놓은 행이나 열에 있는 데이터는 인쇄 미리 보기와 실제 인쇄에서 모두 제외됩니다. 셋째, 인쇄 영역에 포함된 도형이나 차트 등의 개체만 단독으로 인쇄에서 뺄 수는 없습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 50</div>
+                <h2 class="slide-title">인쇄 미리 보기 (<span class="key-badge">Ctrl</span>+<span class="key-badge">P</span>) 핵심 원리</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 3대 인쇄 대상 선택</div>
+                <div class="card-desc">
+                  • <span class="hl-green">활성 시트 인쇄</span> (현재 선택된 워크시트만)<br>
+                  • <span class="hl-green">전체 통합 문서 인쇄</span> (모든 워크시트 전체)<br>
+                  • <span class="hl-green">선택 영역 인쇄</span> (마우스로 블록 지정한 영역만)
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 숨겨진 행·열 인쇄 제외</div>
+                <div class="card-desc">
+                  워크시트에서 <span class="warn-text">숨겨진 행이나 열은 인쇄되지 않음!</span> (차트와 동일 규칙)
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 인쇄 미리 보기 화면 구성</span>
+                </div>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px; font-size:13.5px; line-height:1.8;">
+                  <div>• <strong>인쇄 부수</strong>: 출력할 매수 지정 (기본 1부)</div>
+                  <div>• <strong>프린터 선택</strong>: 실제 출력 장비 또는 PDF 저장</div>
+                  <div>• <strong>페이지 범위</strong>: 1페이지부터 n페이지까지 지정 인쇄</div>
+                  <div>• <strong>한 면 / 양면 인쇄</strong> 설정</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 12 : 50 인쇄 미리 보기 절대 규칙: 열 너비 O vs 행 높이 X
+             ======================================================== -->
+        <section class="slide"
+          data-notes="필기시험에 100번 이상 출제된 인쇄 미리 보기의 최고 빈출 절대 규칙입니다. 인쇄 미리 보기 화면 우측 하단의 [여백 표시] 단추를 누르면 여백 조절선과 열 구분선이 나타납니다. 여기서 시험 출제 1위 함정이 있습니다! 마우스 드래그를 통해 상하좌우 여백과 '열 너비는 직접 마우스로 조절할 수 있습니다'. 하지만 '행 높이는 절대로 조절할 수 없습니다'! 행 높이는 미리 보기 화면에서 손댈 수 없고 워크시트로 직접 돌아가서 조절해야 합니다. '인쇄 미리 보기에서 마우스로 행 높이를 조절할 수 있다'는 대표적인 단골 오답입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 50 ★ 출제 1위</div>
+                <h2 class="slide-title">여백 표시: <span class="hl-green">열 너비 조절 O</span> vs <span class="warn-text">행 높이 조절 X</span></h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">1. 조절 가능한 항목 (마우스 드래그)</div>
+                <div class="card-desc">
+                  • 상·하·좌·우 여백 및 머리글·바닥글 여백 조절 가능<br>
+                  • <span class="hl-green"><strong>각 열의 너비(Column Width)는 직접 조절 가능! ⭕</strong></span>
+                </div>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">2. 절대 조절 불가능한 항목 (★기출 1위)</div>
+                <div class="card-desc">
+                  • <span class="warn-text"><strong>행 높이(Row Height)는 절대로 조절할 수 없음! 🚫</strong></span><br>
+                  • 워크시트 화면으로 돌아가서 조절해야 함!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚠️ 조절 가능 vs 불가능 매트릭스</span>
+                </div>
+                <table class="styled-table" style="font-size:13.5px; margin-top:14px;">
+                  <thead>
+                    <tr><th>구분</th><th>인쇄 미리 보기 화면에서</th><th>조절 방법</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>상/하/좌/우 여백</td><td style="color:#059669; font-weight:800;">조절 가능 ⭕</td><td>핸들 드래그</td></tr>
+                    <tr><td><strong>열 너비 (Column)</strong></td><td style="color:#059669; font-weight:800;">조절 가능 ⭕ ★</td><td>열 구분선 드래그</td></tr>
+                    <tr style="background:#fff1f2;"><td><strong>행 높이 (Row)</strong></td><td style="color:#dc2626; font-weight:800;">조절 불가 ❌ ★</td><td>시트에서만 가능!</td></tr>
+                  </tbody>
+                </table>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "인쇄 미리 보기에서 행 높이를 조절할 수 있다"는 지문은 3초 만에 솎아내야 할 최고 빈출 함정입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 13 : 50 인쇄 미리 보기 제약: 인쇄영역·제목 설정 불가
+             ======================================================== -->
+        <section class="slide"
+          data-notes="인쇄 미리 보기 화면의 2대 기능 제약입니다. 첫째, 인쇄 미리 보기 화면 좌측 상단의 [페이지 설정] 링크를 누르면 페이지 설정 대화상자가 열립니다. 하지만 여기서 [시트] 탭을 보면 '인쇄 영역'과 '인쇄 제목(반복할 행/열)' 입력란이 회색으로 비활성화되어 있습니다! 즉, 인쇄 미리 보기 화면에서는 인쇄 영역이나 인쇄 제목을 새로 설정하거나 수정할 수 없습니다! 반드시 일반 워크시트 화면의 [페이지 레이아웃] 탭에서 실행해야 합니다. 둘째, 우측 하단의 [확대/축소(돋보기)] 단추는 화면 상에서만 크게/작게 보는 것이며 실제 인쇄물 크기에는 전혀 영향을 주지 않습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 50 ★ 기출 1위</div>
+                <h2 class="slide-title">인쇄 미리 보기의 <span class="warn-text">2대 기능 제약</span></h2>
+              </div>
+              <div class="info-card warning">
+                <div class="card-title">제약 1. 인쇄 영역 &amp; 인쇄 제목 설정 불가!</div>
+                <div class="card-desc">
+                  인쇄 미리 보기 상태에서는 <span class="warn-text">인쇄 영역 및 인쇄 제목(반복 행/열)을 새로 설정하거나 수정할 수 없음!</span> (시트 탭 비활성화)
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">제약 2. 돋보기 확대/축소의 인쇄 무관</div>
+                <div class="card-desc">
+                  미리 보기 창의 확대/축소(🔍)는 <span class="hl-green">화면 디스플레이에만 적용</span>되며, <span class="warn-text">실제 인쇄 크기에는 전혀 영향 없음!</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>🚫 단골 오답 보기 3초 판별</span>
+                </div>
+                <div style="font-size:14px; line-height:1.8; color:#334155; margin-top:10px;">
+                  • <strong>기출 지문 1</strong>: "인쇄 미리 보기 상태에서 반복할 행(인쇄 제목)을 새로 지정하였다." ➔ <span style="color:#dc2626; font-weight:800;">X (미리보기 중 설정 불가!)</span><br>
+                  • <strong>기출 지문 2</strong>: "미리 보기에서 돋보기로 확대하면 실제 인쇄 용지에도 글자가 크게 출력된다." ➔ <span style="color:#dc2626; font-weight:800;">X (화면 보기용일 뿐!)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 14 : 51 페이지 나누기 미리 보기 기본 개념 & 편집 가능
+             ======================================================== -->
+        <section class="slide"
+          data-notes="51번 페이지 나누기 미리 보기의 기본 개념과 데이터 편집 가능 원칙입니다. 페이지 나누기 미리 보기는 인쇄될 페이지 영역과 페이지 번호 워터마크(1페이지, 2페이지)를 파란색 구분선과 함께 보여주는 보기 모드입니다. 시험 출제 1위 절대 원칙입니다! '페이지 나누기 미리 보기 모드에서도 일반 워크시트와 똑같이 데이터 입력 및 셀 편집은 물론, 차트나 그림 같은 개체의 삽입과 삭제 작업도 모두 할 수 있다'는 점입니다! 단순히 보기만 하는 화면이 아니라 모든 편집 작업이 정상적으로 수행된다는 점을 꼭 기억하십시오.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 51 ★ 출제 1위</div>
+                <h2 class="slide-title">페이지 나누기 미리 보기 &amp; <span class="hl-green">데이터 편집 가능</span></h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 화면 표시 요소</div>
+                <div class="card-desc">
+                  파란색 <span class="hl-green">페이지 구분선</span>, 인쇄 영역 테두리, 배경의 <span class="hl-green">페이지 번호 워터마크</span>(1페이지, 2페이지)가 표시됨
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 데이터 및 개체 편집 전면 가능! (★기출 1위)</div>
+                <div class="card-desc">
+                  단순 뷰어가 아니므로 <span class="hl-green"><strong>데이터 입력·수정·삭제뿐만 아니라 차트·도형 삽입 등 모든 편집 작업이 가능</strong></span>함!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 페이지 나누기 미리 보기 화면 캡처</span>
+                </div>
+                <div style="background:#f1f5f9; border:2px dashed #0284c7; border-radius:10px; padding:24px; text-align:center; margin-top:14px; position:relative;">
+                  <div style="font-size:36px; font-weight:900; color:#cbd5e1; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); pointer-events:none;">
+                    1 페이지
+                  </div>
+                  <div style="position:relative; z-index:1; font-size:14px; font-weight:700; color:#1e293b;">
+                    표 데이터 입력 및 수식 수정 가능 ⭕<br>
+                    차트 및 이미지 삽입 가능 ⭕
+                  </div>
+                </div>
+                <div style="font-size: 13.5px; color: #dc2626; background: #fff1f2; padding: 10px; border-radius: 8px; border: 1px solid #fecdd3; margin-top: 14px;">
+                  ⚠️ "페이지 나누기 미리 보기에서는 셀 데이터를 수정하거나 차트를 삽입할 수 없다"는 보기는 100% 오답입니다!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 15 : 51 페이지 구분선 2대 표시: 자동 점선 vs 수동 실선
+             ======================================================== -->
+        <section class="slide"
+          data-notes="페이지 나누기 미리 보기의 구분선 2대 표시 규칙입니다. 필기시험에 정말 자주 나오는 핵심 구분 문제입니다. 첫째, 엑셀이 용지 크기와 여백에 맞춰 자동으로 삽입한 페이지 구분선은 파란색 '점선(파선)'으로 표시됩니다. 둘째, 사용자가 마우스로 구분선을 드래그하여 수동으로 변경하거나 [페이지 나누기 삽입]을 실행하여 추가한 구분선은 파란색 '실선'으로 표시됩니다. 셋째, 행 높이나 열 너비를 늘리거나 줄이면 자동 페이지 나누기 위치도 함께 이동하며, 수동으로 선을 넓게 옮기면 인쇄 배율이 자동으로 축소 조절됩니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 51 ★ 기출 1위</div>
+                <h2 class="slide-title">페이지 구분선: <span class="hl-green">자동=점선(파선)</span> vs <span class="warn-text">수동=실선</span></h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">1. 자동 페이지 구분선 ➔ 점선(파선) (★기출)</div>
+                <div class="card-desc">
+                  엑셀이 용지 크기와 여백에 맞춰 자동으로 나눈 구분선은 <span class="hl-green"><strong>파란색 점선(파선)</strong></span>으로 표시됨!
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">2. 수동 페이지 구분선 ➔ 실선 (★기출)</div>
+                <div class="card-desc">
+                  사용자가 마우스로 드래그하여 이동하거나 새로 삽입한 구분선은 <span class="warn-text"><strong>파란색 실선</strong></span>으로 표시됨!
+                </div>
+              </div>
+              <div class="info-card purple">
+                <div class="card-title">3. 행 높이/열 너비 변경 시 연동</div>
+                <div class="card-desc">
+                  행 높이나 열 너비를 변경하면 <span class="hl-green">자동 페이지 나누기 위치도 함께 변경</span>됨
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 구분선 형태별 의미 시각화</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:14px; margin-top:14px;">
+                  <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:14px;">
+                    <div style="font-weight:800; color:#15803d; font-size:14px; display:flex; justify-content:space-between;">
+                      <span>자동 구분선</span>
+                      <span style="font-family:'JetBrains Mono';">파선 ( - - - - - )</span>
+                    </div>
+                    <div style="border-top:2px dashed #0284c7; margin:8px 0;"></div>
+                    <div style="font-size:12.5px; color:#475569;">용지 크기에 맞춰 엑셀이 자동 계산한 분할 위치</div>
+                  </div>
+                  <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:10px; padding:14px;">
+                    <div style="font-weight:800; color:#dc2626; font-size:14px; display:flex; justify-content:space-between;">
+                      <span>수동 구분선</span>
+                      <span style="font-family:'JetBrains Mono';">실선 ( ───── )</span>
+                    </div>
+                    <div style="border-top:2px solid #0284c7; margin:8px 0;"></div>
+                    <div style="font-size:12.5px; color:#475569;">사용자가 마우스 드래그로 조절하여 고정한 분할 위치</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 16 : 51 페이지 나누기 구분선 실시간 인터랙티브 시뮬레이터
+             ======================================================== -->
+        <section class="slide"
+          data-notes="페이지 나누기 구분선 실시간 인터랙티브 시뮬레이터입니다. 우측의 두 가지 버튼을 눌러보십시오. [자동 나누기 상태]를 누르면 엑셀이 기본 용지 크기에 맞춰 파란색 점선(파선)으로 1페이지와 2페이지를 나눈 모습을 보여줍니다. [수동으로 드래그 조절]을 누르면 사용자가 마우스로 구분선을 오른쪽 아래로 밀어서 구분선이 '실선'으로 바뀌고, 2페이지 영역까지 1페이지 안으로 통합 흡수되어 인쇄 배율이 자동으로 축소되는 모습을 직접 확인하실 수 있습니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">TOPIC 51 • 인터랙티브</div>
+                <h2 class="slide-title">자동(점선) vs 수동(실선) 실시간 모핑</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">버튼을 클릭하여 구분선 변화를 확인하세요</div>
+                <div class="card-desc">
+                  우측의 버튼을 클릭하면 실제 엑셀 시트에서 마우스로 구분선을 드래그할 때 점선이 실선으로 바뀌는 모습이 재현됩니다.
+                </div>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">관전 포인트</div>
+                <div class="card-desc">
+                  • 자동: <span class="hl-green">파란색 점선(파선)</span><br>
+                  • 수동 조절 후: <span class="hl-green">파란색 굵은 실선</span>으로 전환
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card">
+                <div class="morph-title">
+                  <span>⚡ 페이지 나누기 모핑 시뮬레이터</span>
+                </div>
+                <div class="morph-controls" style="margin-top:10px;">
+                  <button class="morph-btn active" id="btn-line-auto" onclick="simPageBreak('auto')">자동 나누기 (점선)</button>
+                  <button class="morph-btn" id="btn-line-manual" onclick="simPageBreak('manual')">수동 조절 (실선)</button>
+                </div>
+                <div id="pb-box" style="height:170px; background:#f8fafc; border:2px solid #0284c7; border-radius:10px; margin-top:14px; position:relative; overflow:hidden;">
+                  <div id="pb-line" style="position:absolute; top:50%; left:0; width:100%; border-top:2.5px dashed #0284c7; transition:all 0.3s;"></div>
+                  <div id="pb-p1" style="position:absolute; top:20%; left:45%; font-size:20px; font-weight:800; color:#cbd5e1;">1 페이지</div>
+                  <div id="pb-p2" style="position:absolute; top:70%; left:45%; font-size:20px; font-weight:800; color:#cbd5e1;">2 페이지</div>
+                </div>
+                <div id="pb-desc" style="font-size:13px; color:#475569; text-align:center; margin-top:8px; font-weight:700;">
+                  기본 자동 상태: 파란색 점선(파선)으로 1페이지와 2페이지가 분할됨
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 17 : 킬러 함정 3D 플립 카드 1 (도넛형 계열 & 3D 혼합차트)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 1입니다. 카드를 클릭하면 180도 회전하면서 정답과 해설이 뒤집힙니다. 1번 문제는 도넛형 차트에서 여러 데이터 계열을 가질 수 있는지 여부, 2번 문제는 3차원 차트를 혼합형 차트로 만들 수 있는지에 대한 기출 단골 지문입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 01</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ①</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">도넛형 차트 &amp; 혼합형 차트 기출 함정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 도넛형 차트의 데이터 계열 개수</div>
+                    <div style="font-size: 14px;">"도넛형 차트는 원형 차트와 마찬가지로 오직 하나의 데이터 계열만 표시할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (여러 개 계열 가능!)</div>
+                    <div style="font-size: 14px;">도넛형 차트는 <strong>여러 개의 데이터 계열</strong>을 고리 모양으로 가질 수 있습니다! (구멍 0~90% 조절)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 3차원 차트의 혼합형 차트 작성 가능 여부</div>
+                    <div style="font-size: 14px;">"3차원 세로 막대형 차트와 꺾은선형 차트를 결합하여 혼합형 차트를 작성할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (모든 3D 차트 불가!)</div>
+                    <div style="font-size: 14px;"><strong>모든 3차원 차트</strong>와 주식형, 거품형, 표면형, 트리맵은 <strong>혼합형 차트 작성이 절대 불가</strong>합니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 18 : 킬러 함정 3D 플립 카드 2 (머리글 &[탭] & 인쇄 행높이)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 2입니다. 1번 문제는 머리글/바닥글에서 시트 이름 자동 삽입 코드가 &[시트]인지 여부, 2번 문제는 인쇄 미리 보기 화면에서 마우스로 행 높이를 조절할 수 있는지에 대한 기출 핵심입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 02</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ②</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">머리글/바닥글 코드 &amp; 인쇄 미리보기 조절</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 머리글의 워크시트 이름 자동 코드</div>
+                    <div style="font-size: 14px;">"머리글에 현재 워크시트의 이름을 자동으로 인쇄하려면 &[시트] 코드를 입력해야 한다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (&amp;[탭] 코드를 사용!)</div>
+                    <div style="font-size: 14px;">시트 이름 코드는 &[시트]가 아니라 <strong>&amp;[탭]</strong>입니다! (파일 이름은 &[파일])</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 인쇄 미리 보기에서 행 높이 조절 가능 여부</div>
+                    <div style="font-size: 14px;">"인쇄 미리 보기에서 [여백 표시]를 클릭하면 마우스 드래그로 행 높이와 열 너비를 모두 조절할 수 있다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (열너비만 가능, 행높이 불가!)</div>
+                    <div style="font-size: 14px;">미리 보기에서 열 너비는 조절할 수 있지만, <strong>행 높이는 절대로 조절할 수 없습니다!</strong> (워크시트에서 조절)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 19 : 킬러 함정 3D 플립 카드 3 (페이지나누기 편집 & 자동 구분선)
+             ======================================================== -->
+        <section class="slide"
+          data-notes="킬러 함정 3D 플립카드 3입니다. 1번 문제는 페이지 나누기 미리 보기 화면에서 데이터 편집 및 차트 삽입이 가능한지 여부, 2번 문제는 엑셀이 자동으로 삽입한 페이지 구분선의 형태가 실선인지 점선인지에 대한 문제입니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">KILLER TRAP 03</div>
+                <h2 class="slide-title">시험 직전 3초 판별 킬러 함정 ③</h2>
+              </div>
+              <div class="info-card">
+                <div class="card-title">페이지 나누기 미리 보기 기출 함정</div>
+                <div class="card-desc">
+                  실제 시험 지문에 가장 자주 출제되는 보기 2개입니다. 우측의 카드를 클릭하여 3초 만에 O/X를 판별해 보세요!
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right" style="flex-direction: column; gap: 16px;">
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q1. 페이지 나누기 미리 보기에서 데이터 편집 가능 여부</div>
+                    <div style="font-size: 14px;">"페이지 나누기 미리 보기 상태에서는 셀 데이터를 수정하거나 차트를 삽입하는 작업이 제한된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (모든 편집 작업 전면 가능!)</div>
+                    <div style="font-size: 14px;">데이터 입력, 수식 편집, 차트 및 그림 삽입 등 <strong>모든 일반 편집 작업이 100% 가능</strong>합니다!</div>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-container" onclick="this.classList.toggle('flipped')">
+                <div class="flipper">
+                  <div class="flip-front">
+                    <div style="font-weight: 800; color: #0284c7; margin-bottom: 4px; font-size: 15px;">Q2. 자동으로 삽입된 페이지 구분선 형태</div>
+                    <div style="font-size: 14px;">"엑셀에 의해 자동으로 삽입된 페이지 구분선은 파란색 실선으로 표시된다." (O / X?)</div>
+                  </div>
+                  <div class="flip-back">
+                    <div style="font-weight: 800; color: #dc2626; margin-bottom: 2px; font-size: 15px;">정답: X (자동=점선/파선, 수동=실선!)</div>
+                    <div style="font-size: 14px;"><strong>자동 삽입 구분선은 점선(파선)</strong>이며, 사용자가 <strong>수동 변경한 구분선이 실선</strong>입니다!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 20 : 48~51단원 핵심 총정리 체크리스트 & 완강
+             ======================================================== -->
+        <section class="slide"
+          data-notes="수고하셨습니다. 이것으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 48번 차트 심화부터 51번 페이지 나누기 미리보기까지의 핵심 강의를 마쳤습니다. 화면에 정리된 6개 체크리스트 항목을 완벽히 점검하셨다면 이번 단원에서 출제되는 문제는 100% 모두 맞히실 수 있습니다. 복습이 필요하시면 언제든 처음으로 가기 버튼을 눌러 다시 점검해 주시기 바랍니다.">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag" style="color: #15803d;">COMPLETION</div>
+                <h2 class="slide-title">48~51단원 핵심 총정리 체크리스트</h2>
+              </div>
+              <div class="info-card success">
+                <div class="card-title">✅ 시험장 들어가기 전 최종 점검 6문항</div>
+                <div class="card-desc" style="line-height: 1.8;">
+                  [ ] 도넛형 차트는 여러 계열 가능(구멍 0~90%), 모든 3D 차트는 혼합형 불가<br>
+                  [ ] 인쇄 배율은 10%~400% 가능, 페이지 가운데 맞춤(가로/세로 정중앙)<br>
+                  [ ] 머리글 시트 이름 코드는 &[시트]가 아니라 &[탭]이다.<br>
+                  [ ] 인쇄 제목은 $1:$3(반복 행), $A:$C(반복 열)로 지정한다.<br>
+                  [ ] 인쇄 미리보기에서 열 너비는 조절 가능하나 행 높이는 조절 불가하다.<br>
+                  [ ] 페이지 나누기 미리보기도 데이터 편집 가능하며, 자동=점선 / 수동=실선이다.
+                </div>
+              </div>
+            </div>
+            <div class="right-col anim-right">
+              <div style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <div style="font-size: 64px;">🏆</div>
+                <h3 style="font-size: 26px; font-weight: 800; color: #0f172a;">48~51단원 완강을 축하합니다!</h3>
+                <p style="font-size: 16px; color: #64748b; line-height: 1.6; max-width: 400px;">
+                  차트 심화, 페이지 설정, 인쇄 미리보기, 페이지 나누기 미리보기를 완벽하게 마스터하셨습니다.
+                </p>
+                <button onclick="goTo(0)"
+                  style="background:#0284c7; color:#fff; border:none; padding:12px 26px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(2,132,199,0.3); transition:all 0.2s;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                  🔄 처음 슬라이드로 돌아가기
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================
+             SLIDE 21 : [부록] 차트 종류 & 페이지 설정·인쇄 핵심 치트시트
+             ======================================================== -->
+        <section class="slide"
+          data-notes="마지막 부록 슬라이드입니다. 오늘 학습한 차트 종류 심화와 페이지 설정, 인쇄 미리보기의 핵심 요약 치트시트입니다. 시험 직전 캡처하여 요긴하게 활용하시기 바랍니다. 대단히 수고하셨습니다. 감사합니다!">
+          <div class="split-container">
+            <div class="left-col anim-left">
+              <div>
+                <div class="slide-tag">컴퓨터활용2급 7일 완성 부록</div>
+                <h2 class="slide-title">차트 심화 &amp; 페이지설정·인쇄 치트시트</h2>
+              </div>
+              <table class="styled-table" style="font-size: 13px;">
+                <thead>
+                  <tr><th>기능명</th><th>설정 항목</th><th>절대 기출 규칙</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>도넛형 차트</code></td><td>구멍 0~90%</td><td><strong>여러 개 계열</strong> 가능 (원형은 1개)</td></tr>
+                  <tr><td><code>혼합형 불가</code></td><td>6종 차트</td><td><strong>모든 3D 차트</strong>, 주식, 거품, 표면 등</td></tr>
+                  <tr><td><code>인쇄 배율</code></td><td>[페이지] 탭</td><td><strong>10% ~ 400%</strong> / 자동 맞춤</td></tr>
+                  <tr><td><code>시트 이름</code></td><td>머리글/바닥글</td><td>코드: <code>&amp;[탭]</code> (&amp;[시트] 아님)</td></tr>
+                  <tr><td><code>인쇄 제목</code></td><td>[시트] 탭</td><td>반복 행: <code>$1:$3</code>, 반복 열: <code>$A:$C</code></td></tr>
+                  <tr><td><code>인쇄 미리보기</code></td><td>여백 표시</td><td><strong>열너비 조절O</strong> / <strong>행높이 조절X</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="right-col anim-right">
+              <div class="morph-card" style="width: 100%;">
+                <div class="morph-title"><span>📑 페이지 나누기 &amp; 인쇄 옵션 요약</span></div>
+                <table class="styled-table" style="font-size: 13px;">
+                  <thead>
+                    <tr><th>구분</th><th>규칙 및 표시 형태</th><th>특징</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>자동 구분선</td><td>파란색 <strong>점선(파선)</strong></td><td>용지 크기 맞춰 자동 분할</td></tr>
+                    <tr><td>수동 구분선</td><td>파란색 <strong>실선</strong></td><td>마우스 드래그 조절 위치</td></tr>
+                    <tr><td>데이터 편집</td><td><strong>모든 편집 가능</strong></td><td>셀수정, 수식, 차트삽입 가능</td></tr>
+                    <tr><td>간단하게 인쇄</td><td>서식/개체 제외</td><td><strong>텍스트·숫자만</strong> 빠르게</td></tr>
+                    <tr><td>메모 인쇄</td><td>3대 방식</td><td>없음, 시트끝, 시트표시대로</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Speaker Notes Drawer -->
+    <footer class="notes-drawer" id="notesDrawer">
+      <div class="notes-header">
+        <div class="notes-title">
+          <span>🎙️ 발표자 강의 대본 (Speaker Script)</span>
+          <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(단축키: N 또는 S 키로 대본창 접기/펼치기)</span>
+        </div>
+        <button class="btn-toggle-notes" onclick="toggleNotes()">대본창 접기/펼치기</button>
+      </div>
+      <div class="notes-content" id="notesContent"></div>
+    </footer>
+  </div>
+
+  <script>
+    // Slide Data & Interactive Management
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    const curSlideNumEl = document.getElementById('curSlideNum');
+    const totalSlideNumEl = document.getElementById('totalSlideNum');
+    const notesContentEl = document.getElementById('notesContent');
+    const notesDrawerEl = document.getElementById('notesDrawer');
+
+    totalSlideNumEl.textContent = totalSlides < 10 ? '0' + totalSlides : totalSlides;
+
+    function updateSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+
+      curSlideNumEl.textContent = (currentSlide + 1) < 10 ? '0' + (currentSlide + 1) : (currentSlide + 1);
+
+      // 대본 동기화
+      const notes = slides[currentSlide].getAttribute('data-notes') || '작성된 발표 대본이 없습니다.';
+      notesContentEl.innerHTML = notes;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        updateSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        updateSlide(currentSlide - 1);
+      }
+    }
+
+    function goTo(index) {
+      updateSlide(index);
+    }
+
+    function toggleNotes() {
+      notesDrawerEl.classList.toggle('collapsed');
+    }
+
+    // Keyboard Navigation
+    let lastKeyTime = 0;
+    window.addEventListener('keydown', (e) => {
+      const now = Date.now();
+      const code = e.code;
+      const key = e.key;
+      const keyCode = e.keyCode;
+
+      if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' ||
+        key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+        keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        nextSlide();
+      }
+
+      if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' ||
+        key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+        keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        e.preventDefault();
+        if (now - lastKeyTime < 180) return;
+        lastKeyTime = now;
+        prevSlide();
+      }
+
+      if (code === 'KeyN' || code === 'KeyS' || key === 'n' || key === 'N' || key === 's' || key === 'S') {
+        e.preventDefault();
+        toggleNotes();
+      }
+    });
+
+    function ensureFocus() {
+      try { window.focus(); document.body.focus(); } catch (e) { }
+    }
+    window.addEventListener('DOMContentLoaded', ensureFocus);
+    window.addEventListener('load', ensureFocus);
+
+    // Initial sync
+    updateSlide(0);
+
+    // 페이지 구분선 시뮬레이터 (Slide 16)
+    function simPageBreak(mode) {
+      const line = document.getElementById('pb-line');
+      const p1 = document.getElementById('pb-p1');
+      const p2 = document.getElementById('pb-p2');
+      const desc = document.getElementById('pb-desc');
+
+      document.getElementById('btn-line-auto').classList.remove('active');
+      document.getElementById('btn-line-manual').classList.remove('active');
+
+      if (mode === 'auto') {
+        document.getElementById('btn-line-auto').classList.add('active');
+        line.style.borderTop = '2.5px dashed #0284c7';
+        line.style.top = '50%';
+        p1.style.top = '20%';
+        p2.style.display = 'block';
+        desc.textContent = '기본 자동 상태: 파란색 점선(파선)으로 1페이지와 2페이지가 분할됨';
+      } else if (mode === 'manual') {
+        document.getElementById('btn-line-manual').classList.add('active');
+        line.style.borderTop = '3px solid #0284c7';
+        line.style.top = '96%';
+        p1.style.top = '40%';
+        p2.style.display = 'none';
+        desc.textContent = '수동 드래그 상태: 파란색 실선으로 바뀌며 전체가 1페이지로 축소 통합됨!';
+      }
+    }
+  </script>
+
+</body>
+
+</html>
