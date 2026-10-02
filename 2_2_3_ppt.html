@@ -7,7 +7,9 @@
   <title>컴퓨터활용능력 2급 핵심 요약 - 2과목 스프레드시트 일반 (16~19)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg-body: #f8fafc;
@@ -108,6 +110,7 @@
       border-radius: 20px;
       border: 1px solid #e2e8f0;
     }
+
     .slide-counter span {
       color: var(--accent-blue);
       font-weight: 800;
@@ -146,6 +149,7 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
       user-select: none;
     }
+
     .side-nav-arrow:hover {
       background: var(--accent-blue);
       color: #ffffff;
@@ -153,11 +157,18 @@
       transform: translateY(-50%) scale(1.08);
       box-shadow: 0 8px 24px rgba(2, 132, 199, 0.25);
     }
+
     .side-nav-arrow:active {
       transform: translateY(-50%) scale(0.96);
     }
-    .side-nav-arrow.prev { left: 14px; }
-    .side-nav-arrow.next { right: 14px; }
+
+    .side-nav-arrow.prev {
+      left: 14px;
+    }
+
+    .side-nav-arrow.next {
+      right: 14px;
+    }
 
     .slide-canvas {
       width: 100%;
@@ -189,20 +200,48 @@
     }
 
     @keyframes slideFadeIn {
-      from { opacity: 0; transform: translateY(12px) scale(0.995); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(20px) scale(0.98); }
-      to { opacity: 1; transform: translateX(0) scale(1); }
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
-    .anim-left { animation: fadeInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .anim-right { animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .anim-left {
+      animation: fadeInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .anim-right {
+      animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
     .slide-tag {
       font-size: 24px;
@@ -215,6 +254,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .slide-tag::before {
       content: '';
       display: inline-block;
@@ -275,11 +315,13 @@
       position: relative;
       box-shadow: var(--shadow-card);
     }
+
     .info-card:hover {
       transform: translateY(-2px);
       border-color: #93c5fd;
       box-shadow: var(--shadow-card-hover);
     }
+
     .info-card::before {
       content: '';
       position: absolute;
@@ -291,10 +333,22 @@
       border-bottom-left-radius: 14px;
       background: var(--accent-blue);
     }
-    .info-card.warning::before { background: var(--accent-rose); }
-    .info-card.success::before { background: var(--accent-emerald); }
-    .info-card.amber::before { background: var(--accent-amber); }
-    .info-card.purple::before { background: var(--accent-purple); }
+
+    .info-card.warning::before {
+      background: var(--accent-rose);
+    }
+
+    .info-card.success::before {
+      background: var(--accent-emerald);
+    }
+
+    .info-card.amber::before {
+      background: var(--accent-amber);
+    }
+
+    .info-card.purple::before {
+      background: var(--accent-purple);
+    }
 
     .card-title {
       font-size: 19px;
@@ -311,7 +365,12 @@
       line-height: 1.6;
       color: #334155;
     }
-    .card-desc strong { color: #0369a1; font-weight: 700; }
+
+    .card-desc strong {
+      color: #0369a1;
+      font-weight: 700;
+    }
+
     .card-desc .warn-text {
       color: #e11d48;
       font-weight: 800;
@@ -360,12 +419,14 @@
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       font-family: inherit;
     }
+
     .morph-btn:hover {
       background: var(--accent-blue);
       color: #ffffff;
       border-color: var(--accent-blue);
       transform: scale(1.02);
     }
+
     .morph-btn.active {
       background: var(--accent-blue);
       color: #ffffff;
@@ -382,6 +443,7 @@
       overflow: hidden;
       margin-top: 10px;
     }
+
     .e-cell {
       background: #ffffff;
       padding: 8px 10px;
@@ -394,12 +456,14 @@
       position: relative;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .e-cell.header {
       background: #f1f5f9;
       color: #64748b;
       font-weight: 700;
       font-size: 12px;
     }
+
     .e-cell.selected {
       outline: 2px solid var(--accent-blue);
       background: #f0f7ff;
@@ -407,6 +471,7 @@
       color: var(--accent-blue);
       z-index: 2;
     }
+
     .e-cell.active-green {
       background: #dcfce7;
       color: #15803d;
@@ -414,6 +479,7 @@
       outline: 2px solid #22c55e;
       z-index: 3;
     }
+
     .e-cell.hidden-col {
       display: none;
     }
@@ -428,6 +494,7 @@
       overflow: hidden;
       font-size: 13px;
     }
+
     .styled-table th {
       background: #f8fafc;
       color: #1e293b;
@@ -436,12 +503,16 @@
       text-align: left;
       border-bottom: 1px solid #e2e8f0;
     }
+
     .styled-table td {
       padding: 7px 10px;
       border-bottom: 1px solid #f1f5f9;
       color: #334155;
     }
-    .styled-table tr:last-child td { border-bottom: none; }
+
+    .styled-table tr:last-child td {
+      border-bottom: none;
+    }
 
     .flip-container {
       perspective: 1000px;
@@ -449,6 +520,7 @@
       height: 94px;
       cursor: pointer;
     }
+
     .flipper {
       position: relative;
       width: 100%;
@@ -456,10 +528,13 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       transform-style: preserve-3d;
     }
+
     .flip-container.flipped .flipper {
       transform: rotateY(180deg);
     }
-    .flip-front, .flip-back {
+
+    .flip-front,
+    .flip-back {
       position: absolute;
       inset: 0;
       backface-visibility: hidden;
@@ -471,8 +546,18 @@
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow-card);
     }
-    .flip-front { background: #ffffff; color: #1e293b; }
-    .flip-back { background: #f0fdf4; border-color: #86efac; color: #166534; transform: rotateY(180deg); }
+
+    .flip-front {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .flip-back {
+      background: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
+      transform: rotateY(180deg);
+    }
 
     .title-slide {
       display: flex;
@@ -485,6 +570,7 @@
       background: radial-gradient(circle at center, #ffffff 40%, #f0fdf4 100%);
       border-radius: 16px;
     }
+
     .title-badge {
       padding: 8px 26px;
       background: var(--accent-emerald-light);
@@ -496,6 +582,7 @@
       margin-bottom: 20px;
       letter-spacing: 0.05em;
     }
+
     .title-h1 {
       font-size: 50px;
       font-weight: 900;
@@ -504,7 +591,11 @@
       margin-bottom: 18px;
       color: #0f172a;
     }
-    .title-h1 span { color: var(--accent-emerald); }
+
+    .title-h1 span {
+      color: var(--accent-emerald);
+    }
+
     .title-sub {
       font-size: 22px;
       color: #64748b;
@@ -524,13 +615,18 @@
       box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.03);
       z-index: 20;
     }
-    .notes-drawer.collapsed { height: 42px; }
+
+    .notes-drawer.collapsed {
+      height: 42px;
+    }
+
     .notes-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 6px;
     }
+
     .notes-title {
       font-size: 13.5px;
       font-weight: 700;
@@ -539,18 +635,21 @@
       align-items: center;
       gap: 8px;
     }
+
     .notes-content {
       overflow-y: auto;
       font-size: 15px;
       line-height: 1.65;
       color: #334155;
     }
+
     .notes-content strong {
       color: #047857;
       background: #ecfdf5;
       padding: 1px 6px;
       border-radius: 4px;
     }
+
     .btn-toggle-notes {
       padding: 4px 12px;
       border-radius: 6px;
@@ -562,7 +661,11 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-toggle-notes:hover { background: #e2e8f0; color: #0f172a; }
+
+    .btn-toggle-notes:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
   </style>
 </head>
 
@@ -571,7 +674,8 @@
   <div class="presentation-container">
     <header class="header-bar">
       <div style="display: flex; align-items: center; gap: 14px;">
-        <span class="badge-subject" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">컴퓨터활용능력 2급 필기</span>
+        <span class="badge-subject" style="background:#ecfdf5; border-color:#a7f3d0; color:#047857;">컴퓨터활용능력 2급
+          필기</span>
         <span style="font-size: 15px; font-weight: 700; color: #334155;">제2과목 스프레드시트 일반 핵심 요약 (16~19)</span>
       </div>
       <div class="slide-counter"><span id="curSlideNum">01</span> / <span id="totalSlideNum">20</span></div>
@@ -584,21 +688,26 @@
       <div class="slide-canvas" id="slideCanvas">
 
         <!-- SLIDE 1 : Title -->
-        <section class="slide active title-slide" data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 핵심 파트인 16번 셀 선택/이동부터 17번 붙여넣기, 18번 행열 편집, 19번 채우기 핸들과 연속 데이터까지 20개 슬라이드로 완벽 정리합니다. 실기와 필기 시험 모두에서 매회 4~5문항 이상 직결되는 필수 단원이니 집중해서 시청해 주시기 바랍니다.">
+        <section class="slide active title-slide"
+          data-notes="안녕하십니까. 오늘 강의에서는 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반의 핵심 파트인 16번 셀 선택/이동부터 17번 붙여넣기, 18번 행열 편집, 19번 채우기 핸들과 연속 데이터까지 20개 슬라이드로 완벽 정리합니다. 실기와 필기 시험 모두에서 매회 4~5문항 이상 직결되는 필수 단원이니 집중해서 시청해 주시기 바랍니다.">
           <div class="title-badge">컴활 2급 필기 • 핵심 요약 16~19</div>
           <h1 class="title-h1"><span>컴퓨터활용능력 2급 필기</span><br>2과목 스프레드시트 일반</h1>
           <p class="title-sub">셀 선택·이동·복사, 선택하여 붙여넣기, 행/열 숨기기, 채우기 핸들 및 연속 데이터 완전 정복</p>
-          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
+          <div
+            style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center;">
             <span class="key-badge">단축키: Space / Enter / 방향키</span>
             <span class="key-badge" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0;">20장 완성 요약 덱</span>
-            <button onclick="nextSlide()" style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <button onclick="nextSlide()"
+              style="background:#059669; color:#fff; border:none; padding:10px 22px; border-radius:8px; font-weight:800; cursor:pointer; font-size:15px; box-shadow:0 4px 14px rgba(5,150,105,0.3); transition:all 0.2s;"
+              onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
               🚀 강의 시작하기 (Next ➔)
             </button>
           </div>
         </section>
 
         <!-- SLIDE 2 : 목차 -->
-        <section class="slide" data-notes="전체 20개 슬라이드 목차입니다. 16번 셀 선택과 포인터 이동 공식, 17번 연결하여 붙여넣기와 카메라 기능, 18번 셀 삽입/삭제 및 행열 숨기기 취소, 19번 채우기 핸들 데이터별 규칙과 연속 데이터 계산까지 체계적으로 학습합니다.">
+        <section class="slide"
+          data-notes="전체 20개 슬라이드 목차입니다. 16번 셀 선택과 포인터 이동 공식, 17번 연결하여 붙여넣기와 카메라 기능, 18번 셀 삽입/삭제 및 행열 숨기기 취소, 19번 채우기 핸들 데이터별 규칙과 연속 데이터 계산까지 체계적으로 학습합니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -643,7 +752,8 @@
         </section>
 
         <!-- SLIDE 3 : 16 셀 선택 -->
-        <section class="slide" data-notes="16번 셀 선택 공식입니다. 가장 빈출되는 개념은 연속 영역 선택과 떨어진 비연속 영역 선택의 단축키 차이입니다. Shift는 연속 선택이며 F8 키도 동일하게 확장 선택 모드로 작동합니다. 떨어진 영역은 Ctrl 키를 누른 채 클릭이나 드래그를 합니다. 시트 전체 선택은 Ctrl+A 또는 Ctrl+Shift+SpaceBar입니다.">
+        <section class="slide"
+          data-notes="16번 셀 선택 공식입니다. 가장 빈출되는 개념은 연속 영역 선택과 떨어진 비연속 영역 선택의 단축키 차이입니다. Shift는 연속 선택이며 F8 키도 동일하게 확장 선택 모드로 작동합니다. 떨어진 영역은 Ctrl 키를 누른 채 클릭이나 드래그를 합니다. 시트 전체 선택은 Ctrl+A 또는 Ctrl+Shift+SpaceBar입니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -667,7 +777,9 @@
               <div class="info-card success">
                 <div class="card-title">시트 전체 선택</div>
                 <div class="card-desc">
-                  <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">A</span></span> 또는 <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">Shift</span>+<span class="key-badge">Space Bar</span></span>
+                  <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">A</span></span> 또는
+                  <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">Shift</span>+<span
+                      class="key-badge">Space Bar</span></span>
                 </div>
               </div>
             </div>
@@ -677,16 +789,27 @@
                   🖱️ 셀 다중 선택 모핑 시뮬레이터
                 </div>
                 <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                  <button class="morph-btn active" id="btn-sel-shift" onclick="simSelectMode('shift')">Shift 선택 (A1:B3 연속)</button>
-                  <button class="morph-btn" id="btn-sel-ctrl" onclick="simSelectMode('ctrl')">Ctrl 선택 (A1, B2, A3 분리)</button>
+                  <button class="morph-btn active" id="btn-sel-shift" onclick="simSelectMode('shift')">Shift 선택 (A1:B3
+                    연속)</button>
+                  <button class="morph-btn" id="btn-sel-ctrl" onclick="simSelectMode('ctrl')">Ctrl 선택 (A1, B2, A3
+                    분리)</button>
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr 1fr;" id="grid-select-demo">
-                  <div class="e-cell header"></div><div class="e-cell header">A</div><div class="e-cell header">B</div>
-                  <div class="e-cell header">1</div><div class="e-cell selected" id="c-a1">10</div><div class="e-cell selected" id="c-b1">20</div>
-                  <div class="e-cell header">2</div><div class="e-cell selected" id="c-a2">30</div><div class="e-cell selected" id="c-b2">40</div>
-                  <div class="e-cell header">3</div><div class="e-cell selected" id="c-a3">50</div><div class="e-cell selected" id="c-b3">60</div>
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A</div>
+                  <div class="e-cell header">B</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected" id="c-a1">10</div>
+                  <div class="e-cell selected" id="c-b1">20</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell selected" id="c-a2">30</div>
+                  <div class="e-cell selected" id="c-b2">40</div>
+                  <div class="e-cell header">3</div>
+                  <div class="e-cell selected" id="c-a3">50</div>
+                  <div class="e-cell selected" id="c-b3">60</div>
                 </div>
-                <div id="sel-explain" style="margin-top: 12px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 10px 12px; border-radius: 8px;">
+                <div id="sel-explain"
+                  style="margin-top: 12px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 10px 12px; border-radius: 8px;">
                   💡 <strong>Shift 키 선택:</strong> A1부터 B3까지 직사각형 연속 범위 전체가 일괄 선택됩니다.
                 </div>
               </div>
@@ -695,7 +818,8 @@
         </section>
 
         <!-- SLIDE 4 : 16 셀 이동 기본 -->
-        <section class="slide" data-notes="16번 셀 포인터 기본 이동 키입니다. Enter는 아래, Shift+Enter는 위, Tab은 오른쪽, Shift+Tab은 왼쪽으로 이동합니다. Shift 키가 붙으면 반대 방향(위/왼쪽)으로 거꾸로 올라간다는 원리를 기억하시면 헷갈리지 않습니다.">
+        <section class="slide"
+          data-notes="16번 셀 포인터 기본 이동 키입니다. Enter는 아래, Shift+Enter는 위, Tab은 오른쪽, Shift+Tab은 왼쪽으로 이동합니다. Shift 키가 붙으면 반대 방향(위/왼쪽)으로 거꾸로 올라간다는 원리를 기억하시면 헷갈리지 않습니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -705,15 +829,19 @@
               <div class="info-card">
                 <div class="card-title">상/하 이동 (Enter 계열)</div>
                 <div class="card-desc">
-                  • <span class="hl-green"><span class="key-badge">Enter</span> 또는 <span class="key-badge">↓</span></span> : <span class="hl-green">아래쪽</span>으로 이동<br>
-                  • <span class="hl-green"><span class="key-badge">Shift</span>+<span class="key-badge">Enter</span> 또는 <span class="key-badge">↑</span></span> : <span class="hl-green">위쪽</span>으로 이동
+                  • <span class="hl-green"><span class="key-badge">Enter</span> 또는 <span
+                      class="key-badge">↓</span></span> : <span class="hl-green">아래쪽</span>으로 이동<br>
+                  • <span class="hl-green"><span class="key-badge">Shift</span>+<span class="key-badge">Enter</span> 또는
+                    <span class="key-badge">↑</span></span> : <span class="hl-green">위쪽</span>으로 이동
                 </div>
               </div>
               <div class="info-card success">
                 <div class="card-title">좌/우 이동 (Tab 계열)</div>
                 <div class="card-desc">
-                  • <span class="hl-green"><span class="key-badge">Tab</span> 또는 <span class="key-badge">→</span></span> : <span class="hl-green">오른쪽</span>으로 이동<br>
-                  • <span class="hl-green"><span class="key-badge">Shift</span>+<span class="key-badge">Tab</span> 또는 <span class="key-badge">←</span></span> : <span class="hl-green">왼쪽</span>으로 이동
+                  • <span class="hl-green"><span class="key-badge">Tab</span> 또는 <span class="key-badge">→</span></span>
+                  : <span class="hl-green">오른쪽</span>으로 이동<br>
+                  • <span class="hl-green"><span class="key-badge">Shift</span>+<span class="key-badge">Tab</span> 또는
+                    <span class="key-badge">←</span></span> : <span class="hl-green">왼쪽</span>으로 이동
                 </div>
               </div>
               <div class="info-card amber">
@@ -729,10 +857,22 @@
                   🧭 셀 포인터 4방향 이동 시뮬레이터
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr 1fr 1fr; margin-bottom: 12px;">
-                  <div class="e-cell header"></div><div class="e-cell header">A</div><div class="e-cell header">B</div><div class="e-cell header">C</div>
-                  <div class="e-cell header">1</div><div class="e-cell" id="p-a1">A1</div><div class="e-cell" id="p-b1">B1</div><div class="e-cell" id="p-c1">C1</div>
-                  <div class="e-cell header">2</div><div class="e-cell" id="p-a2">A2</div><div class="e-cell selected" id="p-b2">B2(현재)</div><div class="e-cell" id="p-c2">C2</div>
-                  <div class="e-cell header">3</div><div class="e-cell" id="p-a3">A3</div><div class="e-cell" id="p-b3">B3</div><div class="e-cell" id="p-c3">C3</div>
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A</div>
+                  <div class="e-cell header">B</div>
+                  <div class="e-cell header">C</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell" id="p-a1">A1</div>
+                  <div class="e-cell" id="p-b1">B1</div>
+                  <div class="e-cell" id="p-c1">C1</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell" id="p-a2">A2</div>
+                  <div class="e-cell selected" id="p-b2">B2(현재)</div>
+                  <div class="e-cell" id="p-c2">C2</div>
+                  <div class="e-cell header">3</div>
+                  <div class="e-cell" id="p-a3">A3</div>
+                  <div class="e-cell" id="p-b3">B3</div>
+                  <div class="e-cell" id="p-c3">C3</div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                   <button class="morph-btn" onclick="movePointer(0, 1)">Enter (아래 B3)</button>
@@ -746,7 +886,8 @@
         </section>
 
         <!-- SLIDE 5 : 16 Home vs Ctrl+Home -->
-        <section class="slide" data-notes="16번 시험 출제율 1위인 Home과 Ctrl+Home의 차이점입니다. 그냥 Home을 누르면 현재 위치한 행의 맨 앞인 'A열'로 가고, Ctrl을 누른 상태로 Home을 누르면 시트의 맨 꼭대기인 'A1 셀'로 직행합니다. 또한 시트 간 이동은 Ctrl+PageUp(앞 시트), Ctrl+PageDown(뒤 시트)입니다.">
+        <section class="slide"
+          data-notes="16번 시험 출제율 1위인 Home과 Ctrl+Home의 차이점입니다. 그냥 Home을 누르면 현재 위치한 행의 맨 앞인 'A열'로 가고, Ctrl을 누른 상태로 Home을 누르면 시트의 맨 꼭대기인 'A1 셀'로 직행합니다. 또한 시트 간 이동은 Ctrl+PageUp(앞 시트), Ctrl+PageDown(뒤 시트)입니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -756,15 +897,19 @@
               <div class="info-card warning">
                 <div class="card-title">★ [Home] vs [Ctrl]+[Home] 결정적 차이</div>
                 <div class="card-desc">
-                  • <span class="hl-green"><span class="key-badge">Home</span></span> : 해당 행의 <span class="hl-green">[A] 열</span>로 이동 (예: E5에서 Home ➔ A5)<br>
-                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">Home</span></span> : 시트 최상단 <span class="hl-green">[A1] 셀</span>로 즉시 직행!
+                  • <span class="hl-green"><span class="key-badge">Home</span></span> : 해당 행의 <span class="hl-green">[A]
+                    열</span>로 이동 (예: E5에서 Home ➔ A5)<br>
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span
+                      class="key-badge">Home</span></span> : 시트 최상단 <span class="hl-green">[A1] 셀</span>로 즉시 직행!
                 </div>
               </div>
               <div class="info-card success">
                 <div class="card-title">워크시트 전환 단축키</div>
                 <div class="card-desc">
-                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+[Page Up]</span> : <span class="hl-green">현재 앞(왼쪽) 시트</span>로 이동<br>
-                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+[Page Down]</span> : <span class="hl-green">현재 뒤(오른쪽) 시트</span>로 이동
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+[Page Up]</span> : <span
+                    class="hl-green">현재 앞(왼쪽) 시트</span>로 이동<br>
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+[Page Down]</span> : <span
+                    class="hl-green">현재 뒤(오른쪽) 시트</span>로 이동
                 </div>
               </div>
             </div>
@@ -773,7 +918,8 @@
                 <div style="font-weight: 700; color: #1e293b; font-size: 15px; margin-bottom: 8px;">
                   🚀 [E5 셀]에서 이동 점프 시뮬레이션
                 </div>
-                <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px;">
+                <div
+                  style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px;">
                   현재 셀 포인터 위치: <strong style="font-size: 18px; color: #e11d48;" id="pos-display">E5 셀</strong>
                 </div>
                 <div style="display: flex; gap: 8px; margin-bottom: 12px;">
@@ -781,7 +927,8 @@
                   <button class="morph-btn active" onclick="testJump('ctrlhome')">[Ctrl]+[Home] 누름</button>
                   <button class="morph-btn" onclick="testJump('reset')">E5로 리셋</button>
                 </div>
-                <div id="jump-explain" style="font-size: 14px; color: #047857; background: #ecfdf5; border: 1px solid #86efac; padding: 10px 14px; border-radius: 8px;">
+                <div id="jump-explain"
+                  style="font-size: 14px; color: #047857; background: #ecfdf5; border: 1px solid #86efac; padding: 10px 14px; border-radius: 8px;">
                   👉 위 버튼을 눌러 이동 위치 차이를 눈으로 확인하세요!
                 </div>
               </div>
@@ -790,7 +937,8 @@
         </section>
 
         <!-- SLIDE 6 : 16 범위 지정 후 Enter -->
-        <section class="slide" data-notes="16번 범위 지정 후 Enter 키 입력의 특징입니다. 특정 범위를 블록 지정하고 Enter를 누르면 셀 포인터가 지정된 영역 밖으로 빠져나가지 않고 영역 안에서만 돕니다. 특히 영역의 마지막 셀에서 Enter를 누르면 영역의 첫 번째 셀로 순환 이동한다는 점이 기출 지문으로 빈출됩니다.">
+        <section class="slide"
+          data-notes="16번 범위 지정 후 Enter 키 입력의 특징입니다. 특정 범위를 블록 지정하고 Enter를 누르면 셀 포인터가 지정된 영역 밖으로 빠져나가지 않고 영역 안에서만 돕니다. 특히 영역의 마지막 셀에서 Enter를 누르면 영역의 첫 번째 셀로 순환 이동한다는 점이 기출 지문으로 빈출됩니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -800,19 +948,23 @@
               <div class="info-card">
                 <div class="card-title">범위 내 순환 이동 원칙</div>
                 <div class="card-desc">
-                  <span class="hl-green">범위를 지정하고 <span class="key-badge">Enter</span> 누르면 범위 내에서만</span> 셀 포인터가 아래쪽으로 이동합니다.
+                  <span class="hl-green">범위를 지정하고 <span class="key-badge">Enter</span> 누르면 범위 내에서만</span> 셀 포인터가 아래쪽으로
+                  이동합니다.
                 </div>
               </div>
               <div class="info-card warning">
                 <div class="card-title">★ 마지막 셀 도달 시 (기출 지문)</div>
                 <div class="card-desc">
-                  지정된 범위의 <span class="hl-green">마지막 셀에 셀 포인터가 위치한 경우, <span class="key-badge">Enter</span>를 누르면 첫 번째 셀로 셀 포인터가 이동함</span>!
+                  지정된 범위의 <span class="hl-green">마지막 셀에 셀 포인터가 위치한 경우, <span class="key-badge">Enter</span>를 누르면 첫 번째 셀로
+                    셀 포인터가 이동함</span>!
                 </div>
               </div>
               <div class="info-card purple">
                 <div class="card-title">복사 단축키 3가지</div>
                 <div class="card-desc">
-                  [홈]-[클립보드]-[복사], <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">C</span></span>, <span class="hl-green"><span class="key-badge">Ctrl</span>+드래그</span>
+                  [홈]-[클립보드]-[복사], <span class="hl-green"><span class="key-badge">Ctrl</span>+<span
+                      class="key-badge">C</span></span>, <span class="hl-green"><span
+                      class="key-badge">Ctrl</span>+드래그</span>
                 </div>
               </div>
             </div>
@@ -822,14 +974,22 @@
                   🔄 범위 지정(A1:B2) 내 Enter 순환 시뮬레이터
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr 1fr; margin-bottom: 12px;">
-                  <div class="e-cell header"></div><div class="e-cell header">A</div><div class="e-cell header">B</div>
-                  <div class="e-cell header">1</div><div class="e-cell active-green" id="loop-0">1단계(A1)</div><div class="e-cell" id="loop-2">3단계(B1)</div>
-                  <div class="e-cell header">2</div><div class="e-cell" id="loop-1">2단계(A2)</div><div class="e-cell" id="loop-3">4단계(B2)</div>
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A</div>
+                  <div class="e-cell header">B</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell active-green" id="loop-0">1단계(A1)</div>
+                  <div class="e-cell" id="loop-2">3단계(B1)</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell" id="loop-1">2단계(A2)</div>
+                  <div class="e-cell" id="loop-3">4단계(B2)</div>
                 </div>
-                <button class="morph-btn active" onclick="stepRangeLoop()" style="width: 100%; justify-content: center; font-size: 14.5px;">
+                <button class="morph-btn active" onclick="stepRangeLoop()"
+                  style="width: 100%; justify-content: center; font-size: 14.5px;">
                   👉 Enter 누르기 (현재: <span id="loop-step-name">1단계 A1</span>)
                 </button>
-                <div id="loop-desc" style="margin-top: 10px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 8px 12px; border-radius: 8px;">
+                <div id="loop-desc"
+                  style="margin-top: 10px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 8px 12px; border-radius: 8px;">
                   현재 A1에서 Enter를 누르면 아래 A2로 이동합니다.
                 </div>
               </div>
@@ -838,7 +998,8 @@
         </section>
 
         <!-- SLIDE 7 : 17 연결하여 붙여넣기 & 서식 복사 -->
-        <section class="slide" data-notes="17번 선택하여 붙여넣기 기능입니다. '연결하여 붙여넣기'는 원본 셀 주소를 참조하는 수식(예: =A1) 형태로 붙여넣어 원본 값이 바뀌면 결과도 함께 바뀝니다. 반면 '서식 복사(페인트 붓)'는 데이터 내용이나 수식은 가져오지 않고 셀의 색상, 글꼴, 테두리 같은 모양(서식)만 복사하는 도구입니다.">
+        <section class="slide"
+          data-notes="17번 선택하여 붙여넣기 기능입니다. '연결하여 붙여넣기'는 원본 셀 주소를 참조하는 수식(예: =A1) 형태로 붙여넣어 원본 값이 바뀌면 결과도 함께 바뀝니다. 반면 '서식 복사(페인트 붓)'는 데이터 내용이나 수식은 가져오지 않고 셀의 색상, 글꼴, 테두리 같은 모양(서식)만 복사하는 도구입니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -883,7 +1044,8 @@
         </section>
 
         <!-- SLIDE 8 : 17 연결된 그림 붙여넣기 -->
-        <section class="slide" data-notes="17번 기출 핵심인 '연결된 그림 붙여넣기', 일명 카메라 기능입니다. 표 영역을 복사하여 이미지(그림) 형태로 붙여넣되 원본과 링크가 걸려 있어, 원본 표의 데이터나 색상이 바뀌면 복사된 그림 안의 내용도 실시간으로 똑같이 갱신됩니다.">
+        <section class="slide"
+          data-notes="17번 기출 핵심인 '연결된 그림 붙여넣기', 일명 카메라 기능입니다. 표 영역을 복사하여 이미지(그림) 형태로 붙여넣되 원본과 링크가 걸려 있어, 원본 표의 데이터나 색상이 바뀌면 복사된 그림 안의 내용도 실시간으로 똑같이 갱신됩니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -893,7 +1055,8 @@
               <div class="info-card warning">
                 <div class="card-title">★ 연결된 그림 붙여넣기 (🛍️)</div>
                 <div class="card-desc">
-                  <span class="hl-green">연결하여 붙여넣기와 그림 붙여넣기가 혼합된 기능으로, 원본이 변경되면 붙여넣기의 그림에도 그대로 반영됨</span> (과거 엑셀의 카메라 기능과 동일).
+                  <span class="hl-green">연결하여 붙여넣기와 그림 붙여넣기가 혼합된 기능으로, 원본이 변경되면 붙여넣기의 그림에도 그대로 반영됨</span> (과거 엑셀의 카메라
+                  기능과 동일).
                 </div>
               </div>
               <div class="info-card">
@@ -911,11 +1074,14 @@
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px;">
                   <div style="background:#fff; border:1.5px solid #cbd5e1; border-radius:8px; padding:10px;">
                     <span style="font-size:12px; color:#64748b; font-weight:700;">[원본 표]</span>
-                    <span id="cam-origin-text" style="margin-left:10px; font-weight:800; color:#0f172a; font-size:16px;">합격 점수: 95점</span>
+                    <span id="cam-origin-text"
+                      style="margin-left:10px; font-weight:800; color:#0f172a; font-size:16px;">합격 점수: 95점</span>
                   </div>
-                  <div style="background:#fefce8; border:2px dashed #f59e0b; border-radius:8px; padding:12px; transform:rotate(-1deg); box-shadow:0 4px 10px rgba(0,0,0,0.06);">
+                  <div
+                    style="background:#fefce8; border:2px dashed #f59e0b; border-radius:8px; padding:12px; transform:rotate(-1deg); box-shadow:0 4px 10px rgba(0,0,0,0.06);">
                     <span style="font-size:12px; color:#b45309; font-weight:800;">🖼️ [붙여넣은 연결된 그림 개체]</span>
-                    <div id="cam-picture-text" style="font-size:18px; font-weight:900; color:#b45309; margin-top:4px;">합격 점수: 95점</div>
+                    <div id="cam-picture-text" style="font-size:18px; font-weight:900; color:#b45309; margin-top:4px;">
+                      합격 점수: 95점</div>
                   </div>
                 </div>
                 <button class="morph-btn active" onclick="toggleCamScore()">원본 점수 100점으로 변경 테스트</button>
@@ -925,7 +1091,8 @@
         </section>
 
         <!-- SLIDE 9 : 18 셀 삽입 & 삭제 -->
-        <section class="slide" data-notes="18번 셀 삽입과 삭제입니다. 셀 삽입(Ctrl++)은 기존 셀을 오른쪽이나 아래쪽으로 밀어내고 새 셀이 들어옵니다. 셀 삭제(Ctrl+-)는 선택한 셀이 없어지며 오른쪽이나 아래쪽 셀이 당겨져 채워집니다. 가장 중요한 기출 함정은 아무리 셀을 삽입하거나 삭제해도 시트 전체 행 수와 열 수는 절대 변하지 않는다는 점입니다.">
+        <section class="slide"
+          data-notes="18번 셀 삽입과 삭제입니다. 셀 삽입(Ctrl++)은 기존 셀을 오른쪽이나 아래쪽으로 밀어내고 새 셀이 들어옵니다. 셀 삭제(Ctrl+-)는 선택한 셀이 없어지며 오른쪽이나 아래쪽 셀이 당겨져 채워집니다. 가장 중요한 기출 함정은 아무리 셀을 삽입하거나 삭제해도 시트 전체 행 수와 열 수는 절대 변하지 않는다는 점입니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -933,13 +1100,15 @@
                 <h2 class="slide-title">셀 삽입(Ctrl++) & 삭제(Ctrl+-)</h2>
               </div>
               <div class="info-card">
-                <div class="card-title">셀 삽입 (<span class="key-badge">Ctrl</span>+<span class="key-badge">+</span>)</div>
+                <div class="card-title">셀 삽입 (<span class="key-badge">Ctrl</span>+<span class="key-badge">+</span>)
+                </div>
                 <div class="card-desc">
                   <span class="hl-green">선택한 범위의 셀을 오른쪽이나 아래쪽으로 밀고</span> 새로운 빈 셀을 삽입합니다.
                 </div>
               </div>
               <div class="info-card warning">
-                <div class="card-title">셀 삭제 (<span class="key-badge">Ctrl</span>+<span class="key-badge">-</span>)</div>
+                <div class="card-title">셀 삭제 (<span class="key-badge">Ctrl</span>+<span class="key-badge">-</span>)
+                </div>
                 <div class="card-desc">
                   <span class="hl-green">선택한 범위의 셀이 삭제되고 오른쪽이나 아래쪽의 데이터가 표시</span>(당겨 채워짐)됩니다.
                 </div>
@@ -957,8 +1126,12 @@
                   밀기(삽입) & 당기기(삭제) 모핑
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr 1fr;" id="insert-delete-grid">
-                  <div class="e-cell header"></div><div class="e-cell header">A</div><div class="e-cell header">B</div>
-                  <div class="e-cell header">1</div><div class="e-cell selected" id="shift-cell">데이터(A1)</div><div class="e-cell">비어있음</div>
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A</div>
+                  <div class="e-cell header">B</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected" id="shift-cell">데이터(A1)</div>
+                  <div class="e-cell">비어있음</div>
                 </div>
                 <div style="display: flex; gap: 8px; margin-top: 12px;">
                   <button class="morph-btn active" onclick="simInsertCell()">오른쪽으로 밀고 삽입</button>
@@ -970,7 +1143,8 @@
         </section>
 
         <!-- SLIDE 10 : 18 행/열 숨기기 & 취소 -->
-        <section class="slide" data-notes="18번 행/열 숨기기 및 취소 공식입니다. 머리글을 우클릭하여 숨길 수 있으며, 숨겨진 열을 다시 보이게 하려면 반드시 숨겨진 열의 양옆 머리글(예를 들어 B열이 숨겨졌다면 A열부터 C열까지)을 포함하여 범위를 잡고 '숨기기 취소'를 실행해야 합니다.">
+        <section class="slide"
+          data-notes="18번 행/열 숨기기 및 취소 공식입니다. 머리글을 우클릭하여 숨길 수 있으며, 숨겨진 열을 다시 보이게 하려면 반드시 숨겨진 열의 양옆 머리글(예를 들어 B열이 숨겨졌다면 A열부터 C열까지)을 포함하여 범위를 잡고 '숨기기 취소'를 실행해야 합니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1016,7 +1190,8 @@
         </section>
 
         <!-- SLIDE 11 : 19 채우기 핸들 (1) 문자 vs 숫자 -->
-        <section class="slide" data-notes="19번 채우기 핸들 기본 원칙입니다. 문자 데이터는 1개든 2개든 그냥 복사됩니다. 숫자 데이터는 셀 1개만 잡고 끌면 '복사'되지만, 2개 셀(예: 1과 3)을 블록 잡고 끌면 두 수의 차이(2씩)만큼 5, 7, 9로 자동 증가하거나 감소한다는 점을 꼭 기억해야 합니다.">
+        <section class="slide"
+          data-notes="19번 채우기 핸들 기본 원칙입니다. 문자 데이터는 1개든 2개든 그냥 복사됩니다. 숫자 데이터는 셀 1개만 잡고 끌면 '복사'되지만, 2개 셀(예: 1과 3)을 블록 잡고 끌면 두 수의 차이(2씩)만큼 5, 7, 9로 자동 증가하거나 감소한다는 점을 꼭 기억해야 합니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1048,12 +1223,17 @@
                   <button class="morph-btn" onclick="simFillNum('double')">2개 셀 [10, 20] 드래그</button>
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 50px 1fr;" id="fill-num-grid">
-                  <div class="e-cell header">1</div><div class="e-cell selected">10</div>
-                  <div class="e-cell header">2</div><div class="e-cell" id="fn-2">10</div>
-                  <div class="e-cell header">3</div><div class="e-cell" id="fn-3">10</div>
-                  <div class="e-cell header">4</div><div class="e-cell" id="fn-4">10</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected">10</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell" id="fn-2">10</div>
+                  <div class="e-cell header">3</div>
+                  <div class="e-cell" id="fn-3">10</div>
+                  <div class="e-cell header">4</div>
+                  <div class="e-cell" id="fn-4">10</div>
                 </div>
-                <div id="fn-explain" style="margin-top: 10px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 8px 12px; border-radius: 8px;">
+                <div id="fn-explain"
+                  style="margin-top: 10px; font-size: 13.5px; color: #0284c7; background: #e0f2fe; padding: 8px 12px; border-radius: 8px;">
                   💡 1개 셀만 드래그하면 숫자가 그대로 복사됩니다.
                 </div>
               </div>
@@ -1062,7 +1242,8 @@
         </section>
 
         <!-- SLIDE 12 : 19 채우기 핸들 (2) 혼합 데이터 -->
-        <section class="slide" data-notes="19번 혼합 데이터 채우기 규칙입니다. 문자와 숫자가 섞여 있는 데이터는 문자는 복사되고, 오직 가장 오른쪽에 있는 '마지막 숫자만 1씩 증가'합니다. 예를 들어 '1반 1번'을 채우기 핸들로 끌면 앞의 1반은 그대로 있고 뒤의 1번만 2번, 3번으로 올라갑니다.">
+        <section class="slide"
+          data-notes="19번 혼합 데이터 채우기 규칙입니다. 문자와 숫자가 섞여 있는 데이터는 문자는 복사되고, 오직 가장 오른쪽에 있는 '마지막 숫자만 1씩 증가'합니다. 예를 들어 '1반 1번'을 채우기 핸들로 끌면 앞의 1반은 그대로 있고 뒤의 1번만 2번, 3번으로 올라갑니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1080,7 +1261,7 @@
                 <div class="card-desc">
                   • <code>1반 1번</code> ➔ <code>1반 2번</code>, <code>1반 3번</code>, <code>1반 4번</code><br>
                   • <code>제1과목</code> ➔ <code>제2과목</code>, <code>제3과목</code><br>
-                  • <code>A101</code> ➔ <code>A102</code>, <code>A103</code>
+                  • <code>A01-01</code> ➔ <code>A01-02</code>, <code>A01-03</code>
                 </div>
               </div>
             </div>
@@ -1091,13 +1272,33 @@
                 </div>
                 <table class="styled-table">
                   <thead>
-                    <tr><th>행</th><th>A열 (혼합 데이터 채우기)</th><th>변화 분석</th></tr>
+                    <tr>
+                      <th>행</th>
+                      <th>A열 (혼합 데이터 채우기)</th>
+                      <th>변화 분석</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <tr style="background:#f0fdf4;"><td>1</td><td><strong>1반 1번 (원본)</strong></td><td>기준 셀</td></tr>
-                    <tr><td>2</td><td>1반 <span class="hl-green">2번</span></td><td>마지막 숫자 1 증가</td></tr>
-                    <tr><td>3</td><td>1반 <span class="hl-green">3번</span></td><td>마지막 숫자 1 증가</td></tr>
-                    <tr><td>4</td><td>1반 <span class="hl-green">4번</span></td><td>마지막 숫자 1 증가</td></tr>
+                    <tr style="background:#f0fdf4;">
+                      <td>1</td>
+                      <td><strong>1반 1번 (원본)</strong></td>
+                      <td>기준 셀</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>1반 <span class="hl-green">2번</span></td>
+                      <td>마지막 숫자 1 증가</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>1반 <span class="hl-green">3번</span></td>
+                      <td>마지막 숫자 1 증가</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>1반 <span class="hl-green">4번</span></td>
+                      <td>마지막 숫자 1 증가</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1106,7 +1307,8 @@
         </section>
 
         <!-- SLIDE 13 : 19 채우기 핸들 (3) 날짜 & 시간 -->
-        <section class="slide" data-notes="19번 날짜와 시간 데이터 채우기입니다. 날짜 1개 셀은 기본적으로 1일 단위로 증가합니다. 채우기 옵션 단추를 누르면 일 단위, 평일 단위, 월 단위, 연 단위 채우기를 선택할 수 있습니다. 시간 데이터는 1개 셀을 끌면 1시간 단위로 증가합니다.">
+        <section class="slide"
+          data-notes="19번 날짜와 시간 데이터 채우기입니다. 날짜 1개 셀은 기본적으로 1일 단위로 증가합니다. 채우기 옵션 단추를 누르면 일 단위, 평일 단위, 월 단위, 연 단위 채우기를 선택할 수 있습니다. 시간 데이터는 1개 셀을 끌면 1시간 단위로 증가합니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1140,10 +1342,14 @@
                   <button class="morph-btn" onclick="simDateFill('year')">년 단위</button>
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr;" id="date-fill-grid">
-                  <div class="e-cell header">1</div><div class="e-cell selected">2026-01-15</div>
-                  <div class="e-cell header">2</div><div class="e-cell" id="df-2">2026-01-16</div>
-                  <div class="e-cell header">3</div><div class="e-cell" id="df-3">2026-01-17</div>
-                  <div class="e-cell header">4</div><div class="e-cell" id="df-4">2026-01-18</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected">2026-01-15</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell" id="df-2">2026-01-16</div>
+                  <div class="e-cell header">3</div>
+                  <div class="e-cell" id="df-3">2026-01-17</div>
+                  <div class="e-cell header">4</div>
+                  <div class="e-cell" id="df-4">2026-01-18</div>
                 </div>
               </div>
             </div>
@@ -1151,7 +1357,8 @@
         </section>
 
         <!-- SLIDE 14 : 19 채우기 핸들 (4) 사용자 지정 목록 -->
-        <section class="slide" data-notes="19번 사용자 지정 목록 데이터입니다. 엑셀에 미리 등록된 목록(예: 월, 화, 수 / 일월, 이월, 삼월 / 갑, 을, 병)은 첫 글자만 쓰고 끌어도 목록 순서대로 반복 채워집니다. 하지만 가장 대표적인 기출 함정으로 '가, 나, 다, 라'나 영문 'A, B, C, D'는 기본 목록에 등록되어 있지 않아 그냥 복사된다는 점을 반드시 기억하세요.">
+        <section class="slide"
+          data-notes="19번 사용자 지정 목록 데이터입니다. 엑셀에 미리 등록된 목록(예: 월, 화, 수 / 일월, 이월, 삼월 / 갑, 을, 병)은 첫 글자만 쓰고 끌어도 목록 순서대로 반복 채워집니다. 하지만 가장 대표적인 기출 함정으로 '가, 나, 다, 라'나 영문 'A, B, C, D'는 기본 목록에 등록되어 있지 않아 그냥 복사된다는 점을 반드시 기억하세요.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1167,7 +1374,8 @@
               <div class="info-card warning">
                 <div class="card-title">★ 기본 목록에 없는 단골 오답 함정</div>
                 <div class="card-desc">
-                  <span class="warn-text">주의</span> : <span class="hl-green">'가, 나, 다, 라' 또는 'A, B, C, D'는 엑셀 기본 목록에 없음</span>! 따라서 채우기 핸들로 끌어도 그대로 복사됨!
+                  <span class="warn-text">주의</span> : <span class="hl-green">'가, 나, 다, 라' 또는 'A, B, C, D'는 엑셀 기본 목록에
+                    없음</span>! 따라서 채우기 핸들로 끌어도 그대로 복사됨!
                 </div>
               </div>
             </div>
@@ -1178,13 +1386,33 @@
                 </div>
                 <table class="styled-table">
                   <thead>
-                    <tr><th>초기값</th><th>드래그 결과</th><th>목록 등록 여부</th></tr>
+                    <tr>
+                      <th>초기값</th>
+                      <th>드래그 결과</th>
+                      <th>목록 등록 여부</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <tr><td><strong>월</strong></td><td>화 ➔ 수 ➔ 목</td><td><span class="hl-green">기본 등록됨 (순환)</span></td></tr>
-                    <tr><td><strong>일월</strong></td><td>이월 ➔ 삼월 ➔ 사월</td><td><span class="hl-green">기본 등록됨</span></td></tr>
-                    <tr style="background:#fff1f2;"><td><strong>가</strong></td><td>가 ➔ 가 ➔ 가</td><td><span style="color:#e11d48; font-weight:800;">미등록 (그냥 복사!)</span></td></tr>
-                    <tr style="background:#fff1f2;"><td><strong>A</strong></td><td>A ➔ A ➔ A</td><td><span style="color:#e11d48; font-weight:800;">미등록 (그냥 복사!)</span></td></tr>
+                    <tr>
+                      <td><strong>월</strong></td>
+                      <td>화 ➔ 수 ➔ 목</td>
+                      <td><span class="hl-green">기본 등록됨 (순환)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>일월</strong></td>
+                      <td>이월 ➔ 삼월 ➔ 사월</td>
+                      <td><span class="hl-green">기본 등록됨</span></td>
+                    </tr>
+                    <tr style="background:#fff1f2;">
+                      <td><strong>가</strong></td>
+                      <td>가 ➔ 가 ➔ 가</td>
+                      <td><span style="color:#e11d48; font-weight:800;">미등록 (그냥 복사!)</span></td>
+                    </tr>
+                    <tr style="background:#fff1f2;">
+                      <td><strong>A</strong></td>
+                      <td>A ➔ A ➔ A</td>
+                      <td><span style="color:#e11d48; font-weight:800;">미등록 (그냥 복사!)</span></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1193,7 +1421,8 @@
         </section>
 
         <!-- SLIDE 15 : 19 채우기 핸들 (5) Ctrl 키와 드래그 -->
-        <section class="slide" data-notes="19번 채우기 핸들 시 Ctrl 키의 역할입니다. 기본적으로 Ctrl 키를 누르고 끌면 '복사'를 의미합니다. 하지만 오직 하나의 예외로 '숫자가 입력된 단일 셀'을 그냥 끌면 복사이지만, Ctrl 키를 누르고 끌면 1씩 증가합니다. 이 반대 성질이 시험에 아주 자주 출제됩니다.">
+        <section class="slide"
+          data-notes="19번 채우기 핸들 시 Ctrl 키의 역할입니다. 기본적으로 Ctrl 키를 누르고 끌면 '복사'를 의미합니다. 하지만 오직 하나의 예외로 '숫자가 입력된 단일 셀'을 그냥 끌면 복사이지만, Ctrl 키를 누르고 끌면 1씩 증가합니다. 이 반대 성질이 시험에 아주 자주 출제됩니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1203,14 +1432,16 @@
               <div class="info-card">
                 <div class="card-title">Ctrl 키의 기본 기능: 복사</div>
                 <div class="card-desc">
-                  연속 채우기가 기본으로 작동하는 목록이나 날짜 등에서 <span class="hl-green"><span class="key-badge">Ctrl</span> 누른 채 드래그하면 복사</span>됨.
+                  연속 채우기가 기본으로 작동하는 목록이나 날짜 등에서 <span class="hl-green"><span class="key-badge">Ctrl</span> 누른 채 드래그하면
+                    복사</span>됨.
                 </div>
               </div>
               <div class="info-card warning">
                 <div class="card-title">★ 숫자 단일 셀에서의 정반대 법칙</div>
                 <div class="card-desc">
                   • <strong>숫자 1개 셀 그냥 드래그</strong> : 값 복사 (1 ➔ 1, 1, 1)<br>
-                  • <strong>숫자 1개 셀 <span class="key-badge">Ctrl</span>+드래그</strong> : <span class="hl-green">1씩 증가</span> (1 ➔ 2, 3, 4)
+                  • <strong>숫자 1개 셀 <span class="key-badge">Ctrl</span>+드래그</strong> : <span class="hl-green">1씩
+                    증가</span> (1 ➔ 2, 3, 4)
                 </div>
               </div>
             </div>
@@ -1237,17 +1468,20 @@
         </section>
 
         <!-- SLIDE 16 : 19 빠른 채우기 (Ctrl+E) -->
-        <section class="slide" data-notes="19번 빠른 채우기입니다. 단축키는 Ctrl+E입니다. 사용자가 입력한 일괄된 데이터 패턴을 엑셀이 스스로 감지하여 나머지 전체 데이터를 자동으로 채워주는 매우 강력한 인공지능형 기능입니다.">
+        <section class="slide"
+          data-notes="19번 빠른 채우기입니다. 단축키는 Ctrl+E입니다. 사용자가 입력한 일괄된 데이터 패턴을 엑셀이 스스로 감지하여 나머지 전체 데이터를 자동으로 채워주는 매우 강력한 인공지능형 기능입니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
                 <div class="slide-tag">TOPIC 19</div>
-                <h2 class="slide-title">빠른 채우기 (<span class="key-badge">Ctrl</span>+<span class="key-badge">E</span>)</h2>
+                <h2 class="slide-title">빠른 채우기 (<span class="key-badge">Ctrl</span>+<span class="key-badge">E</span>)
+                </h2>
               </div>
               <div class="info-card success">
                 <div class="card-title">빠른 채우기 정의</div>
                 <div class="card-desc">
-                  데이터의 일관된 <span class="hl-green">패턴을 입력하는 경우</span> 채우기 핸들을 드래그하거나 단축키 <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">E</span></span>를 누르면 자동으로 분리·조합 채워짐.
+                  데이터의 일관된 <span class="hl-green">패턴을 입력하는 경우</span> 채우기 핸들을 드래그하거나 단축키 <span class="hl-green"><span
+                      class="key-badge">Ctrl</span>+<span class="key-badge">E</span></span>를 누르면 자동으로 분리·조합 채워짐.
                 </div>
               </div>
               <div class="info-card">
@@ -1264,16 +1498,32 @@
                 </div>
                 <table class="styled-table" id="flash-fill-table">
                   <thead>
-                    <tr><th>제품 코드</th><th>추출 패턴(앞 2자리)</th></tr>
+                    <tr>
+                      <th>제품 코드</th>
+                      <th>추출 패턴(앞 2자리)</th>
+                    </tr>
                   </thead>
                   <tbody>
-                    <tr><td>H2-03-1</td><td><strong>H2 (직접입력)</strong></td></tr>
-                    <tr><td>D1-02-2</td><td id="ff-1" style="color:#94a3b8;">(미입력)</td></tr>
-                    <tr><td>H3-33-3</td><td id="ff-2" style="color:#94a3b8;">(미입력)</td></tr>
-                    <tr><td>S1-04-2</td><td id="ff-3" style="color:#94a3b8;">(미입력)</td></tr>
+                    <tr>
+                      <td>H2-03-1</td>
+                      <td><strong>H2 (직접입력)</strong></td>
+                    </tr>
+                    <tr>
+                      <td>D1-02-2</td>
+                      <td id="ff-1" style="color:#94a3b8;">(미입력)</td>
+                    </tr>
+                    <tr>
+                      <td>H3-33-3</td>
+                      <td id="ff-2" style="color:#94a3b8;">(미입력)</td>
+                    </tr>
+                    <tr>
+                      <td>S1-04-2</td>
+                      <td id="ff-3" style="color:#94a3b8;">(미입력)</td>
+                    </tr>
                   </tbody>
                 </table>
-                <button class="morph-btn active" onclick="execFlashFill()" style="width:100%; margin-top:10px; justify-content:center;">
+                <button class="morph-btn active" onclick="execFlashFill()"
+                  style="width:100%; margin-top:10px; justify-content:center;">
                   단축키 [Ctrl+E] 빠른 채우기 실행
                 </button>
               </div>
@@ -1282,7 +1532,8 @@
         </section>
 
         <!-- SLIDE 17 : 19 자동 완성 & 복사 단축키 -->
-        <section class="slide" data-notes="19번 셀 내용 자동 완성과 복사 단축키입니다. 자동 완성은 같은 열에 있는 기존 텍스트와 앞글자가 같으면 나머지 문자가 자동으로 완성되며, 오직 '문자 데이터'만 적용되고 숫자는 지원되지 않습니다. 또한 Ctrl+D는 위쪽 셀 복사, Ctrl+R은 왼쪽 셀 복사, Alt+아래방향키는 이전 입력 목록을 드롭다운으로 표시합니다.">
+        <section class="slide"
+          data-notes="19번 셀 내용 자동 완성과 복사 단축키입니다. 자동 완성은 같은 열에 있는 기존 텍스트와 앞글자가 같으면 나머지 문자가 자동으로 완성되며, 오직 '문자 데이터'만 적용되고 숫자는 지원되지 않습니다. 또한 Ctrl+D는 위쪽 셀 복사, Ctrl+R은 왼쪽 셀 복사, Alt+아래방향키는 이전 입력 목록을 드롭다운으로 표시합니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1298,9 +1549,12 @@
               <div class="info-card success">
                 <div class="card-title">핵심 복사 & 목록 단축키 3총사</div>
                 <div class="card-desc">
-                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">D</span></span> : 바로 <span class="hl-green">위쪽 셀(Down)</span>의 데이터 복사 입력<br>
-                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">R</span></span> : 바로 <span class="hl-green">왼쪽 셀(Right)</span>의 데이터 복사 입력<br>
-                  • <span class="hl-green"><span class="key-badge">Alt</span>+<span class="key-badge">↓</span></span> : 같은 열에 입력된 텍스트 목록 드롭다운 표시
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">D</span></span> :
+                  바로 <span class="hl-green">위쪽 셀(Down)</span>의 데이터 복사 입력<br>
+                  • <span class="hl-green"><span class="key-badge">Ctrl</span>+<span class="key-badge">R</span></span> :
+                  바로 <span class="hl-green">왼쪽 셀(Right)</span>의 데이터 복사 입력<br>
+                  • <span class="hl-green"><span class="key-badge">Alt</span>+<span class="key-badge">↓</span></span> :
+                  같은 열에 입력된 텍스트 목록 드롭다운 표시
                 </div>
               </div>
             </div>
@@ -1310,9 +1564,15 @@
                   ⌨️ 복사 단축키 원클릭 테스트
                 </div>
                 <div class="excel-morph-grid" style="grid-template-columns: 40px 1fr 1fr; margin-bottom: 12px;">
-                  <div class="e-cell header"></div><div class="e-cell header">A</div><div class="e-cell header">B</div>
-                  <div class="e-cell header">1</div><div class="e-cell selected">대한민국</div><div class="e-cell" id="td-b1">(빈셀)</div>
-                  <div class="e-cell header">2</div><div class="e-cell" id="td-a2">(빈셀)</div><div class="e-cell">대기중</div>
+                  <div class="e-cell header"></div>
+                  <div class="e-cell header">A</div>
+                  <div class="e-cell header">B</div>
+                  <div class="e-cell header">1</div>
+                  <div class="e-cell selected">대한민국</div>
+                  <div class="e-cell" id="td-b1">(빈셀)</div>
+                  <div class="e-cell header">2</div>
+                  <div class="e-cell" id="td-a2">(빈셀)</div>
+                  <div class="e-cell">대기중</div>
                 </div>
                 <div style="display: flex; gap: 8px;">
                   <button class="morph-btn active" onclick="testCopyShortcut('down')">Ctrl+D (A2에 위쪽 복사)</button>
@@ -1324,7 +1584,8 @@
         </section>
 
         <!-- SLIDE 18 : 19 연속 데이터 선형 vs 급수 -->
-        <section class="slide" data-notes="19번 연속 데이터 대화상자입니다. 방향은 행(가로)과 열(세로)이 있습니다. 유형에서 선형은 '단계 값을 더하는 방식(등차수열)'이고, 급수는 '단계 값을 곱하는 방식(등비수열)'입니다. 예를 들어 2에서 시작하여 단계값 2로 채우면 선형은 2, 4, 6, 8, 10이 되고, 급수는 2, 4, 8, 16, 32, 64가 됩니다.">
+        <section class="slide"
+          data-notes="19번 연속 데이터 대화상자입니다. 방향은 행(가로)과 열(세로)이 있습니다. 유형에서 선형은 '단계 값을 더하는 방식(등차수열)'이고, 급수는 '단계 값을 곱하는 방식(등비수열)'입니다. 예를 들어 2에서 시작하여 단계값 2로 채우면 선형은 2, 4, 6, 8, 10이 되고, 급수는 2, 4, 8, 16, 32, 64가 됩니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1363,7 +1624,8 @@
                   <div class="e-cell" id="sg-3">8</div>
                   <div class="e-cell" id="sg-4">10</div>
                 </div>
-                <div id="series-desc" style="margin-top: 10px; font-size: 13.5px; color: #047857; background: #ecfdf5; border: 1px solid #86efac; padding: 8px 12px; border-radius: 8px;">
+                <div id="series-desc"
+                  style="margin-top: 10px; font-size: 13.5px; color: #047857; background: #ecfdf5; border: 1px solid #86efac; padding: 8px 12px; border-radius: 8px;">
                   선형 결과: 2에 2를 계속 더하여 2, 4, 6, 8, 10이 완성됩니다.
                 </div>
               </div>
@@ -1372,7 +1634,8 @@
         </section>
 
         <!-- SLIDE 19 : 킬러 함정 4선 -->
-        <section class="slide" data-notes="마지막으로 시험 직전에 3초 만에 오답을 가려낼 수 있는 16~19단원 킬러 함정 4선입니다. Home은 A열이고 Ctrl+Home은 A1셀입니다. 셀을 삽입하거나 삭제해도 시트 전체 행렬 크기는 불변입니다. 숫자 1개 셀은 그냥 끌면 복사이고 Ctrl 누르면 증가합니다. 가나다라나 ABCD는 목록에 없어 그냥 복사됩니다.">
+        <section class="slide"
+          data-notes="마지막으로 시험 직전에 3초 만에 오답을 가려낼 수 있는 16~19단원 킬러 함정 4선입니다. Home은 A열이고 Ctrl+Home은 A1셀입니다. 셀을 삽입하거나 삭제해도 시트 전체 행렬 크기는 불변입니다. 숫자 1개 셀은 그냥 끌면 복사이고 Ctrl 누르면 증가합니다. 가나다라나 ABCD는 목록에 없어 그냥 복사됩니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1381,7 +1644,8 @@
               </div>
               <div class="info-card">
                 <div class="card-title">1. [Home] vs [Ctrl]+[Home]</div>
-                <div class="card-desc">Home은 해당 행의 <strong>A열</strong>로 가고, Ctrl+Home은 무조건 <strong>A1 셀</strong>로 직행합니다!</div>
+                <div class="card-desc">Home은 해당 행의 <strong>A열</strong>로 가고, Ctrl+Home은 무조건 <strong>A1 셀</strong>로 직행합니다!
+                </div>
               </div>
               <div class="info-card warning">
                 <div class="card-title">2. 셀 삽입/삭제 시 전체 크기</div>
@@ -1397,12 +1661,14 @@
                 <div class="flip-container" onclick="this.classList.toggle('flipped')">
                   <div class="flipper">
                     <div class="flip-front">
-                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q1. Home 키를 누르면 무조건 A1 셀로 이동한다?</div>
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q1. Home 키를 누르면 무조건 A1 셀로 이동한다?
+                      </div>
                       <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
                     </div>
                     <div class="flip-back">
                       <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! A1이 아니라 해당 행의 'A열'로 이동합니다.</div>
-                      <div style="font-size: 12.5px; margin-top: 2px;">A1 셀로 이동하려면 반드시 <strong>Ctrl+Home</strong>을 눌러야 합니다.</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">A1 셀로 이동하려면 반드시 <strong>Ctrl+Home</strong>을 눌러야
+                        합니다.</div>
                     </div>
                   </div>
                 </div>
@@ -1410,12 +1676,14 @@
                 <div class="flip-container" onclick="this.classList.toggle('flipped')">
                   <div class="flipper">
                     <div class="flip-front">
-                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q2. 숫자 1개 셀을 그냥 드래그하면 1씩 증가한다?</div>
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q2. 숫자 1개 셀을 그냥 드래그하면 1씩 증가한다?
+                      </div>
                       <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
                     </div>
                     <div class="flip-back">
                       <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! 숫자 1개 셀은 그냥 끌면 '복사'됩니다.</div>
-                      <div style="font-size: 12.5px; margin-top: 2px;">1씩 증가시키려면 <strong>Ctrl 키를 누른 채</strong> 끌어야 합니다.</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">1씩 증가시키려면 <strong>Ctrl 키를 누른 채</strong> 끌어야 합니다.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1423,12 +1691,14 @@
                 <div class="flip-container" onclick="this.classList.toggle('flipped')">
                   <div class="flipper">
                     <div class="flip-front">
-                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q3. '가' 입력 후 채우기 핸들을 끌면 '나, 다, 라'로 채워진다?</div>
+                      <div style="font-weight: 700; font-size: 14.5px; color: #1e293b;">Q3. '가' 입력 후 채우기 핸들을 끌면 '나, 다,
+                        라'로 채워진다?</div>
                       <div style="font-size: 12px; color: #64748b; margin-top: 4px;">클릭하여 정답 확인 ➔</div>
                     </div>
                     <div class="flip-back">
                       <div style="font-weight: 700; font-size: 14.5px;">❌ 오답! 가나다라는 기본 목록에 없습니다.</div>
-                      <div style="font-size: 12.5px; margin-top: 2px;">등록되지 않은 문자이므로 <strong>'가, 가, 가'로 복사</strong>됩니다.</div>
+                      <div style="font-size: 12.5px; margin-top: 2px;">등록되지 않은 문자이므로 <strong>'가, 가, 가'로 복사</strong>됩니다.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1438,7 +1708,8 @@
         </section>
 
         <!-- SLIDE 20 : Closing Slide -->
-        <section class="slide" data-notes="이상으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반 요약-3 강의를 마칩니다. 16번부터 19번까지의 핵심을 반복 복습하시면 실기 작업과 필기 시험 모두에서 완벽한 점수를 얻으실 수 있습니다. 수고하셨습니다.">
+        <section class="slide"
+          data-notes="이상으로 컴퓨터활용능력 2급 필기 2과목 스프레드시트 일반 요약-3 강의를 마칩니다. 16번부터 19번까지의 핵심을 반복 복습하시면 실기 작업과 필기 시험 모두에서 완벽한 점수를 얻으실 수 있습니다. 수고하셨습니다.">
           <div class="split-container">
             <div class="left-col anim-left">
               <div>
@@ -1460,7 +1731,8 @@
                 <div style="font-size: 48px; margin-bottom: 10px;">🏆</div>
                 <h3 style="font-size: 22px; font-weight: 800; color: #1e293b; margin-bottom: 6px;">COMPLETED</h3>
                 <p style="font-size: 14px; color: #64748b; margin-bottom: 18px;">2과목 스프레드시트 일반 (16~19) 20장 요약 완성</p>
-                <button class="morph-btn active" onclick="goTo(0)" style="margin: 0 auto; padding: 10px 22px; font-size: 14.5px;">
+                <button class="morph-btn active" onclick="goTo(0)"
+                  style="margin: 0 auto; padding: 10px 22px; font-size: 14.5px;">
                   처음 슬라이드로 돌아가기
                 </button>
               </div>
@@ -1522,8 +1794,8 @@
       const keyCode = e.keyCode;
 
       if (code === 'ArrowRight' || code === 'ArrowDown' || code === 'Space' || code === 'Enter' || code === 'KeyN' ||
-          key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
-          keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
+        key === 'ArrowRight' || key === 'ArrowDown' || key === ' ' || key === 'Enter' || key === 'PageDown' ||
+        keyCode === 39 || keyCode === 40 || keyCode === 32 || keyCode === 13 || keyCode === 34) {
         e.preventDefault();
         if (now - lastKeyTime < 180) return;
         lastKeyTime = now;
@@ -1532,8 +1804,8 @@
       }
 
       if (code === 'ArrowLeft' || code === 'ArrowUp' || code === 'Backspace' || code === 'KeyP' ||
-          key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
-          keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
+        key === 'ArrowLeft' || key === 'ArrowUp' || key === 'Backspace' || key === 'PageUp' ||
+        keyCode === 37 || keyCode === 38 || keyCode === 8 || keyCode === 33) {
         e.preventDefault();
         if (now - lastKeyTime < 180) return;
         lastKeyTime = now;
@@ -1550,7 +1822,7 @@
     });
 
     function ensureFocus() {
-      try { window.focus(); document.body.focus(); } catch(e) {}
+      try { window.focus(); document.body.focus(); } catch (e) { }
     }
     window.addEventListener('DOMContentLoaded', ensureFocus);
     window.addEventListener('load', ensureFocus);
@@ -1588,21 +1860,21 @@
     let curR = 2, curC = 2; // B2
     const colNames = ['A', 'B', 'C'];
     function movePointer(dc, dr) {
-      const prevId = `p-${colNames[curC-1].toLowerCase()}${curR}`;
+      const prevId = `p-${colNames[curC - 1].toLowerCase()}${curR}`;
       const prevEl = document.getElementById(prevId);
       if (prevEl) {
         prevEl.classList.remove('selected');
-        prevEl.textContent = `${colNames[curC-1]}${curR}`;
+        prevEl.textContent = `${colNames[curC - 1]}${curR}`;
       }
 
       curC = Math.max(1, Math.min(3, curC + dc));
       curR = Math.max(1, Math.min(3, curR + dr));
 
-      const newId = `p-${colNames[curC-1].toLowerCase()}${curR}`;
+      const newId = `p-${colNames[curC - 1].toLowerCase()}${curR}`;
       const newEl = document.getElementById(newId);
       if (newEl) {
         newEl.classList.add('selected');
-        newEl.textContent = `${colNames[curC-1]}${curR}(현재)`;
+        newEl.textContent = `${colNames[curC - 1]}${curR}(현재)`;
       }
     }
 
