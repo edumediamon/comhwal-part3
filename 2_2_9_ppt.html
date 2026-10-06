@@ -685,6 +685,82 @@
       background: #e2e8f0;
       color: #0f172a;
     }
+
+    /* Excel mockups: scoped exclusively to the requested right-hand panels. */
+    .excel-demo { width:100%; max-width:530px; min-width:0; border:1px solid #b6b6b6; border-radius:5px; background:#fff; color:#242424; box-shadow:0 8px 22px rgba(0,0,0,.12); font-family:'Segoe UI','Malgun Gothic',sans-serif; font-size:12px; }
+    .excel-demo * { min-width:0; }
+    .excel-demo .xl-titlebar { height:32px; display:flex; align-items:center; gap:10px; padding:0 12px; background:#217346; color:#fff; border-radius:4px 4px 0 0; }
+    .excel-demo .xl-logo { font-size:16px; font-weight:700; border-right:1px solid #ffffff50; padding-right:10px; }
+    .excel-demo .xl-book { flex:1; font-size:12px; }
+    .excel-demo .xl-window-controls { letter-spacing:9px; font-size:12px; }
+    .excel-demo .xl-tabs { display:flex; gap:20px; align-items:center; height:29px; padding:0 12px; background:#fafafa; border-bottom:1px solid #d4d4d4; white-space:nowrap; }
+    .excel-demo .xl-tab-active { align-self:stretch; display:flex; align-items:center; color:#217346; font-weight:700; border-bottom:2px solid #217346; }
+    .excel-demo .xl-ribbon { min-height:51px; display:flex; align-items:center; gap:16px; padding:6px 12px; background:#f5f5f5; border-bottom:1px solid #d4d4d4; }
+    .excel-demo .xl-command { display:flex; flex-direction:column; gap:2px; border-right:1px solid #ddd; padding-right:16px; white-space:nowrap; }
+    .excel-demo .xl-command b { color:#217346; font-size:14px; }
+    .excel-demo .xl-command small { color:#666; font-size:10px; }
+    .excel-demo .xl-formula { display:flex; align-items:center; gap:8px; height:31px; padding:4px 8px; background:#f6f6f6; border-bottom:1px solid #ddd; }
+    .excel-demo .xl-name { width:65px; flex:none; background:#fff; border:1px solid #bcbcbc; padding:2px 6px; }
+    .excel-demo .xl-fx { font-style:italic; color:#737373; font-weight:600; }
+    .excel-demo .xl-expression { flex:1; border:1px solid #d2d2d2; background:#fff; padding:2px 6px; white-space:nowrap; font-size:11px; font-family:Consolas,'Malgun Gothic',monospace; }
+    .excel-demo .xl-sheet { width:100%; border-collapse:collapse; table-layout:fixed; font-size:12px; line-height:1.35; }
+    .excel-demo .xl-sheet th,.excel-demo .xl-sheet td { border:1px solid #d8d8d8; padding:6px 7px; height:31px; overflow-wrap:anywhere; vertical-align:middle; }
+    .excel-demo .xl-sheet thead th { height:23px; padding:3px; background:#e6e6e6; color:#505050; font-weight:400; text-align:center; }
+    .excel-demo .xl-sheet .xl-row { width:30px; background:#efefef; color:#616161; text-align:center; font-weight:400; padding:3px; }
+    .excel-demo .xl-sheet .xl-header { background:#f1f1f1; font-weight:600; }
+    .excel-demo .xl-sheet .xl-match td { background:#e2efda; }
+    .excel-demo .xl-sheet .xl-selected { position:relative; outline:2px solid #217346; outline-offset:-2px; background:#e2efda; }
+    .excel-demo .xl-sheet .xl-selected::after { content:''; position:absolute; right:0; bottom:0; width:5px; height:5px; background:#217346; }
+    .excel-demo .xl-sheet .xl-number { text-align:right; }
+    .excel-demo .xl-sheet .xl-filtered { color:#0066c0; }
+    .excel-demo .xl-sheet .xl-muted { color:#888; font-style:italic; }
+    .excel-demo .xl-funnel { display:inline-block; width:9px; height:10px; background:#217346; clip-path:polygon(0 0,100% 0,60% 45%,60% 100%,40% 100%,40% 45%); vertical-align:middle; }
+    .excel-demo .xl-tip { margin:10px 12px; padding:8px 10px; border-left:3px solid #217346; background:#f2f8f3; color:#36533e; font-size:12px; line-height:1.55; }
+    .excel-demo .xl-tip strong { color:#217346; }
+    .excel-demo .xl-sheet-tabs { height:29px; display:flex; align-items:center; gap:16px; padding:0 12px; border-top:1px solid #d8d8d8; background:#f3f3f3; color:#6e6e6e; }
+    .excel-demo .xl-sheet-tab { align-self:stretch; display:flex; align-items:center; border-bottom:3px solid #217346; background:#fff; padding:0 12px; font-weight:600; color:#217346; }
+    .excel-demo .xl-status { display:flex; justify-content:space-between; padding:4px 10px; background:#f5f5f5; color:#686868; border-top:1px solid #ddd; font-size:10px; border-radius:0 0 4px 4px; }
+    .excel-demo .xl-workspace { background:#ededed; padding:12px; }
+    .excel-demo .xl-dialog { border:1px solid #a8a8a8; background:#f7f7f7; box-shadow:0 3px 8px #0002; }
+    .excel-demo .xl-dialog-title { display:flex; align-items:center; justify-content:space-between; padding:7px 10px; background:#fff; border-bottom:1px solid #ddd; font-size:13px; }
+    .excel-demo .xl-dialog-body { padding:12px; line-height:1.65; }
+    .excel-demo .xl-dialog-body > div { background:transparent!important; border:0!important; border-radius:0!important; margin-top:0!important; padding:0!important; }
+    .excel-demo .xl-dialog-body input { accent-color:#217346; }
+    .excel-demo .xl-dialog-body label { cursor:pointer; }
+    .excel-demo .xl-dialog-body input:focus-visible,.excel-demo .morph-btn:focus-visible { outline:2px solid #217346; outline-offset:3px; }
+    .excel-demo .xl-dialog-body code,.excel-demo .xl-field { display:inline-block; padding:2px 6px; border:1px solid #aaa; background:#fff; font-family:Consolas,'Malgun Gothic',monospace; font-size:12px; }
+    .excel-demo .xl-dialog-grid { display:grid; grid-template-columns:72px 1fr; gap:8px; align-items:center; }
+    .excel-demo .xl-filter-menu { margin:0 12px 10px auto; width:260px; border:1px solid #bcbcbc; background:#fff; box-shadow:2px 3px 6px #0002; }
+    .excel-demo .xl-filter-menu div { padding:6px 12px; }
+    .excel-demo .xl-filter-menu .xl-menu-selected { background:#e2efda; color:#217346; border-block:1px solid #d6e5d4; }
+    .excel-demo .xl-filter-note { margin:8px 12px; font-size:12px; color:#555; line-height:1.6; }
+    .excel-demo .morph-controls { display:flex; gap:7px; flex-wrap:nowrap; }
+    .excel-demo .morph-btn { padding:6px 9px; border-radius:2px; background:#fafafa; border:1px solid #bcbcbc; color:#242424; font-size:12px; font-family:inherit; white-space:nowrap; }
+    .excel-demo .morph-btn:hover { background:#e2efda; color:#217346; border-color:#217346; transform:none; }
+    .excel-demo .morph-btn.active { background:#e2efda; border-color:#217346; color:#217346; }
+    .excel-demo.xl-sort .xl-sheet td { font-size:11.5px; }
+    @media (max-height:800px) {
+      .excel-demo .xl-titlebar { height:26px; }
+      .excel-demo .xl-tabs { height:24px; }
+      .excel-demo .xl-ribbon { min-height:42px; padding-block:4px; }
+      .excel-demo .xl-formula { height:25px; }
+      .excel-demo .xl-sheet th,.excel-demo .xl-sheet td { height:25px; padding:4px 6px; font-size:11.5px; line-height:1.3; }
+      .excel-demo .xl-sheet thead th { height:20px; padding:2px; }
+      .excel-demo .xl-tip { margin:6px 10px; padding:5px 8px; font-size:11px; line-height:1.4; }
+      .excel-demo .xl-sheet-tabs { height:24px; }
+      .excel-demo .xl-status { padding:3px 9px; font-size:9px; }
+      .excel-demo .xl-workspace { padding:8px; }
+      .excel-demo .xl-dialog-title { padding:5px 9px; }
+      .excel-demo .xl-dialog-body { padding:9px; line-height:1.5; }
+      .excel-demo .xl-dialog-grid { gap:6px; }
+      .excel-demo .xl-filter-menu div { padding:4px 10px; }
+      .excel-demo .xl-filter-note { margin:6px 10px; font-size:11px; }
+      .excel-demo.xl-advanced .xl-workspace { padding:6px; }
+      .excel-demo.xl-advanced .xl-dialog-title { padding:4px 9px; }
+      .excel-demo.xl-advanced .xl-dialog-body { padding:6px 9px; font-size:11px; line-height:1.35; }
+      .excel-demo.xl-advanced .xl-dialog-grid { gap:4px; }
+      .excel-demo.xl-advanced .xl-field { padding:1px 6px; }
+    }
   </style>
 </head>
 
@@ -802,23 +878,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 3대 인수 시각적 매핑</span>
-                </div>
-                <div class="excel-morph-grid" style="grid-template-columns: 110px 1fr; margin-top: 14px;">
-                  <div class="e-cell header">인수 순서</div>
-                  <div class="e-cell header">지정 예시 및 필수 요건</div>
-                  <div class="e-cell" style="font-weight:800; color:#0284c7;">1. Database</div>
-                  <div class="e-cell"><code>A1:D8</code> (첫 행의 제목 필드 포함 필수)</div>
-                  <div class="e-cell" style="font-weight:800; color:#059669;">2. Field</div>
-                  <div class="e-cell"><code>D1</code> 또는 <code>4</code> (계산할 근태점수 열)</div>
-                  <div class="e-cell" style="font-weight:800; color:#d97706;">3. Criteria</div>
-                  <div class="e-cell active-green"><code>B1:B2</code> (직위 / 과장 형태의 조건표)</div>
-                </div>
-                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+              <div class="excel-demo " aria-label="데이터베이스 함수 인수 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">데이터베이스 함수 인수 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="xl-tab-active">수식</span><span class="">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>ƒx</b><small>함수 삽입</small></div><div class="xl-command"><b>Σ</b><small>자동 합계</small></div><div class="xl-command"><b>이름 정의</b><small>정의된 이름</small></div></div>
+                <div class="xl-formula"><span class="xl-name">B2</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">=DSUM(A1:D8,D1,B1:B2)</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:28%"><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>인수 순서</b></td><td class=""><b>지정 예시 및 필수 요건</b></td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">1. Database</td><td class="xl-selected"><code>A1:D8</code><br>첫 행의 제목 필드 포함 필수</td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">2. Field</td><td class=""><code>D1</code> 또는 <code>4</code><br>계산할 근태점수 열</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">3. Criteria</td><td class=""><code>B1:B2</code><br>직위 / 과장 형태의 조건표</td></tr></tbody></table><div class="xl-tip">
                   💡 <strong>오답 주의</strong>: 데이터베이스 범위에서 첫 행의 제목(A1:D1)을 제외하고 지정하면 함수가 정상 동작하지 않습니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">인수 구조</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -851,27 +920,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card" style="padding: 16px;">
-                <div class="morph-title">
-                  <span>📊 근태점수 평가 원본 데이터 (A1:D8)</span>
-                </div>
-                <table class="styled-table" style="font-size: 13px; margin-top: 8px;">
-                  <thead>
-                    <tr><th>행</th><th>A(성명)</th><th>B(직위)</th><th>C(부서명)</th><th>D(근태점수)</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr style="background:#dcfce7; font-weight:700;"><td>2</td><td>김건우</td><td>과장 ★</td><td>영업부</td><td>73 ★</td></tr>
-                    <tr style="background:#dcfce7; font-weight:700;"><td>3</td><td>정종찬</td><td>과장 ★</td><td>생산부</td><td>68 ★</td></tr>
-                    <tr><td>4</td><td>김동하</td><td>대리</td><td>총무부</td><td>98</td></tr>
-                    <tr><td>5</td><td>박순례</td><td>사원</td><td>생산부</td><td>65</td></tr>
-                    <tr style="background:#dcfce7; font-weight:700;"><td>6</td><td>정종민</td><td>과장 ★</td><td>관리부</td><td>69 ★</td></tr>
-                    <tr><td>7</td><td>최성애</td><td>사원</td><td>관리부</td><td>80</td></tr>
-                    <tr><td>8</td><td>이성균</td><td>대리</td><td>영업부</td><td>86</td></tr>
-                  </tbody>
-                </table>
-                <div style="font-size: 13.5px; color: #15803d; background: #f0fdf4; padding: 8px 12px; border-radius: 8px; border: 1px solid #86efac; margin-top: 8px;">
-                  💡 과장 3명의 근태점수 합계 = <strong>210</strong> &nbsp;|&nbsp; 평균 = <strong>70</strong>
-                </div>
+              <div class="excel-demo " aria-label="근태점수 평가 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">근태점수 평가 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="xl-tab-active">수식</span><span class="">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>ƒx</b><small>함수 삽입</small></div><div class="xl-command"><b>Σ</b><small>자동 합계</small></div><div class="xl-command"><b>이름 정의</b><small>정의된 이름</small></div></div>
+                <div class="xl-formula"><span class="xl-name">D10</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">=DSUM(A1:D8,D1,B1:B2)</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col><col><col><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>성명</b></td><td class=""><b>직위</b></td><td class=""><b>부서명</b></td><td class=""><b>근태점수</b></td></tr><tr class="xl-match"><th scope="row" class="xl-row ">2</th><td class="">김건우</td><td class="">과장 ★</td><td class="">영업부</td><td class="xl-selected">73 ★</td></tr><tr class="xl-match"><th scope="row" class="xl-row ">3</th><td class="">정종찬</td><td class="">과장 ★</td><td class="">생산부</td><td class="">68 ★</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">김동하</td><td class="">대리</td><td class="">총무부</td><td class="">98</td></tr><tr class=""><th scope="row" class="xl-row ">5</th><td class="">박순례</td><td class="">사원</td><td class="">생산부</td><td class="">65</td></tr><tr class="xl-match"><th scope="row" class="xl-row ">6</th><td class="">정종민</td><td class="">과장 ★</td><td class="">관리부</td><td class="">69 ★</td></tr><tr class=""><th scope="row" class="xl-row ">7</th><td class="">최성애</td><td class="">사원</td><td class="">관리부</td><td class="">80</td></tr><tr class=""><th scope="row" class="xl-row ">8</th><td class="">이성균</td><td class="">대리</td><td class="">영업부</td><td class="">86</td></tr></tbody></table><div class="xl-tip">
+                  💡 과장 3명의 근태점수 합계 = <strong>210</strong>  |  평균 = <strong>70</strong>
+</div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">근태점수</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -905,30 +963,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 두 번째 인수(필드) 허용 비교 매트릭스</span>
-                </div>
-                <div class="excel-morph-grid" style="grid-template-columns: 110px 1fr 1fr; margin-top: 14px;">
-                  <div class="e-cell header">필드 항목</div>
-                  <div class="e-cell header">DCOUNT 인정?</div>
-                  <div class="e-cell header">DCOUNTA 인정?</div>
-                  <div class="e-cell">A1 (성명, 문자)</div>
-                  <div class="e-cell" style="color:#dc2626; font-weight:800; justify-content:center;">X (결과 0)</div>
-                  <div class="e-cell active-green" style="justify-content:center;">O (결과 3)</div>
-                  <div class="e-cell">B1 (직위, 문자)</div>
-                  <div class="e-cell" style="color:#dc2626; font-weight:800; justify-content:center;">X (결과 0)</div>
-                  <div class="e-cell active-green" style="justify-content:center;">O (결과 3)</div>
-                  <div class="e-cell">C1 (부서, 문자)</div>
-                  <div class="e-cell" style="color:#dc2626; font-weight:800; justify-content:center;">X (결과 0)</div>
-                  <div class="e-cell active-green" style="justify-content:center;">O (결과 3)</div>
-                  <div class="e-cell">D1 (근태, 숫자)</div>
-                  <div class="e-cell active-green" style="justify-content:center;">O (결과 3) ★</div>
-                  <div class="e-cell active-green" style="justify-content:center;">O (결과 3)</div>
-                </div>
-                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+              <div class="excel-demo " aria-label="DCOUNT · DCOUNTA 비교 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">DCOUNT · DCOUNTA 비교 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="xl-tab-active">수식</span><span class="">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>ƒx</b><small>함수 삽입</small></div><div class="xl-command"><b>Σ</b><small>자동 합계</small></div><div class="xl-command"><b>이름 정의</b><small>정의된 이름</small></div></div>
+                <div class="xl-formula"><span class="xl-name">B5</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">=DCOUNT(A1:D8,D1,B1:B2)</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:35%"><col><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>필드 항목</b></td><td class=""><b>DCOUNT 인정?</b></td><td class=""><b>DCOUNTA 인정?</b></td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">A1 (성명, 문자)</td><td class=""><span style="color:#c00000">X (결과 0)</span></td><td class="">O (결과 3)</td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">B1 (직위, 문자)</td><td class=""><span style="color:#c00000">X (결과 0)</span></td><td class="">O (결과 3)</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">C1 (부서, 문자)</td><td class=""><span style="color:#c00000">X (결과 0)</span></td><td class="">O (결과 3)</td></tr><tr class="xl-match"><th scope="row" class="xl-row ">5</th><td class="">D1 (근태, 숫자)</td><td class="xl-selected">O (결과 3) ★</td><td class="">O (결과 3)</td></tr></tbody></table><div class="xl-tip">
                   💡 시험 문제에서 <strong>"DCOUNT의 필드로 성명(A1)을 지정할 수 있다"</strong>는 대표적인 단골 오답 지문입니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">필드 비교</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -965,25 +1009,28 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚠️ [정렬 경고] 대화상자 시뮬레이션</span>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px;">
-                  <div style="font-size:15px; font-weight:800; color:#1e293b; margin-bottom:8px;">⚠️ 정렬 경고</div>
-                  <div style="font-size:13.5px; color:#475569; line-height:1.6;">
-                    선택 영역 옆에 데이터가 있습니다. 선택하지 않은 데이터는 정렬되지 않습니다.<br>
-                    <strong>어떻게 하시겠습니까?</strong>
-                  </div>
-                  <div style="margin-top:12px; display:flex; flex-direction:column; gap:6px; font-size:13.5px;">
-                    <label style="display:flex; align-items:center; gap:8px;">
-                      <input type="radio" name="warn-opt" checked> <strong>선택 영역 확장</strong> (권장: 전체 행 일치 유지)
+              <div class="excel-demo " aria-label="정렬 경고 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">정렬 경고 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">B2:B8</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression"></span></div>
+                <div class="xl-workspace"><div class="xl-dialog"><div class="xl-dialog-title"><span>정렬 경고</span><span aria-hidden="true">×</span></div><div class="xl-dialog-body">
+
+<div style="font-size:13.5px; color:#475569; line-height:1.6;">
+                    선택 영역 옆에 데이터가 있습니다. 선택하지 않은 데이터는 정렬되지 않습니다.<br/>
+<strong>어떻게 하시겠습니까?</strong>
+</div>
+<div style="margin-top:12px; display:flex; flex-direction:column; gap:6px; font-size:13.5px;">
+<label style="display:flex; align-items:center; gap:8px;">
+<input checked="" name="warn-opt" type="radio"/> <strong>선택 영역 확장</strong> (권장: 전체 행 일치 유지)
                     </label>
-                    <label style="display:flex; align-items:center; gap:8px;">
-                      <input type="radio" name="warn-opt"> 현재 선택 영역으로 정렬 (지정한 열만 정렬)
+<label style="display:flex; align-items:center; gap:8px;">
+<input name="warn-opt" type="radio"/> 현재 선택 영역으로 정렬 (지정한 열만 정렬)
                     </label>
-                  </div>
-                </div>
+</div>
+</div></div></div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">근태점수</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1015,23 +1062,14 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>📐 오름차순 우선순위 체인 시각화</span>
-                </div>
-                <div style="font-family:'JetBrains Mono', monospace; font-size:13.5px; font-weight:700; text-align:center; padding:16px 8px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; margin-top:12px; line-height:1.9;">
-                  [1] 숫자 (0~9)<br>
-                  ▼<br>
-                  [2] 기호 문자 (!, @, #)<br>
-                  ▼<br>
-                  [3] <span style="color:#0284c7; font-weight:800;">영문 소문자 (a, b, c)</span> ★소문자 먼저!<br>
-                  ▼<br>
-                  [4] <span style="color:#7c3aed; font-weight:800;">영문 대문자 (A, B, C)</span><br>
-                  ▼<br>
-                  [5] 한글 (가, 나, 다)<br>
-                  ▼<br>
-                  [6] <span style="color:#dc2626; font-weight:800;">빈 셀 (공백)</span> ★항상 맨 마지막!
-                </div>
+              <div class="excel-demo " aria-label="오름차순 정렬 순서 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">오름차순 정렬 순서 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">A2:A7</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression"></span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:22%"><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>우선순위</b></td><td class=""><b>데이터 분류 및 예시</b></td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">1</td><td class="">숫자 (0~9)</td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">2</td><td class="">기호 문자 (!, @, #)</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">3</td><td class="xl-selected"><span style="color:#217346;font-weight:700">영문 소문자 (a, b, c) ★소문자 먼저!</span></td></tr><tr class=""><th scope="row" class="xl-row ">5</th><td class="">4</td><td class="">영문 대문자 (A, B, C)</td></tr><tr class=""><th scope="row" class="xl-row ">6</th><td class="">5</td><td class="">한글 (가, 나, 다)</td></tr><tr class=""><th scope="row" class="xl-row ">7</th><td class="">6</td><td class=""><span style="color:#c00000;font-weight:700">빈 셀 (공백) ★항상 맨 마지막!</span></td></tr></tbody></table>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">정렬 순서</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1112,37 +1150,17 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 정렬 실시간 결과 표</span>
-                </div>
-                <div class="morph-controls" style="margin-top:10px;">
-                  <button class="morph-btn active" id="btn-sort-asc" onclick="simSort('asc')">오름차순 (▲ 작~큰)</button>
-                  <button class="morph-btn" id="btn-sort-desc" onclick="simSort('desc')">내림차순 (▼ 큰~작)</button>
-                </div>
-                <div class="excel-morph-grid" style="grid-template-columns: 80px 1fr 100px; margin-top: 14px;">
-                  <div class="e-cell header">순번</div>
-                  <div class="e-cell header">데이터 값</div>
-                  <div class="e-cell header">데이터 분류</div>
-                  <div class="e-cell" style="justify-content:center;">1</div>
-                  <div class="e-cell" id="s-val-1" style="font-weight:800; color:#0284c7;">7</div>
-                  <div class="e-cell" id="s-type-1">숫자</div>
-                  <div class="e-cell" style="justify-content:center;">2</div>
-                  <div class="e-cell" id="s-val-2">!</div>
-                  <div class="e-cell" id="s-type-2">기호 문자</div>
-                  <div class="e-cell" style="justify-content:center;">3</div>
-                  <div class="e-cell" id="s-val-3" style="color:#059669; font-weight:800;">apple</div>
-                  <div class="e-cell" id="s-type-3">영문 소문자</div>
-                  <div class="e-cell" style="justify-content:center;">4</div>
-                  <div class="e-cell" id="s-val-4" style="color:#7c3aed; font-weight:800;">Banana</div>
-                  <div class="e-cell" id="s-type-4">영문 대문자</div>
-                  <div class="e-cell" style="justify-content:center;">5</div>
-                  <div class="e-cell" id="s-val-5">사과</div>
-                  <div class="e-cell" id="s-type-5">한글</div>
-                  <div class="e-cell" style="justify-content:center; background:#fee2e2;">6</div>
-                  <div class="e-cell" id="s-val-6" style="color:#94a3b8; font-style:italic;">(빈 셀)</div>
-                  <div class="e-cell active-green" id="s-type-6" style="justify-content:center;">항상 마지막!</div>
-                </div>
+              <div class="excel-demo xl-sort" aria-label="정렬 실시간 결과 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">정렬 실시간 결과 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="morph-controls" style="margin-top:10px;">
+<button class="morph-btn active" id="btn-sort-asc" onclick="simSort('asc')">오름차순 (▲ 작~큰)</button>
+<button class="morph-btn" id="btn-sort-desc" onclick="simSort('desc')">내림차순 (▼ 큰~작)</button>
+</div></div>
+                <div class="xl-formula"><span class="xl-name">B2:B7</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression"></span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:12%"><col style="width:25%"><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class="">순번</td><td class="">데이터 값</td><td class="">데이터 분류</td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">1</td><td class="xl-selected"><span id="s-val-1">7</span></td><td class=""><span id="s-type-1">숫자</span></td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">2</td><td class=""><span id="s-val-2">!</span></td><td class=""><span id="s-type-2">기호 문자</span></td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">3</td><td class=""><span id="s-val-3">apple</span></td><td class=""><span id="s-type-3">영문 소문자</span></td></tr><tr class=""><th scope="row" class="xl-row ">5</th><td class="">4</td><td class=""><span id="s-val-4">Banana</span></td><td class=""><span id="s-type-4">영문 대문자</span></td></tr><tr class=""><th scope="row" class="xl-row ">6</th><td class="">5</td><td class=""><span id="s-val-5">사과</span></td><td class=""><span id="s-type-5">한글</span></td></tr><tr class=""><th scope="row" class="xl-row ">7</th><td class="">6</td><td class=""><span id="s-val-6">(빈 셀)</span></td><td class=""><span id="s-type-6">항상 마지막!</span></td></tr></tbody></table>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">정렬 시뮬레이터</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1174,25 +1192,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 자동 필터 드롭다운 UI 시각화</span>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-top:12px;">
-                  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0284c7; padding-bottom:8px;">
-                    <span style="font-weight:800; font-size:14px;">성명 [▼]</span>
-                    <span style="font-weight:800; font-size:14px;">직위 [▼]</span>
-                    <span style="font-weight:800; font-size:14px; color:#0284c7;">부서명 [▼] (필터 적용됨)</span>
-                    <span style="font-weight:800; font-size:14px;">근태점수 [▼]</span>
-                  </div>
-                  <div style="font-size:13.5px; color:#475569; line-height:1.7; margin-top:12px;">
-                    • 필터가 적용된 열의 드롭다운 버튼은 깔때기 모양 아이콘으로 변경됨<br>
-                    • 숨겨진 행의 행 번호는 파란색 숫자로 표시됨
-                  </div>
-                </div>
-                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+              <div class="excel-demo " aria-label="자동 필터 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">자동 필터 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">C1</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">부서명</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col><col><col><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>성명 ▾</b></td><td class=""><b>직위 ▾</b></td><td class="xl-selected"><b style="color:#217346">부서명 <span class="xl-funnel" aria-label="필터 적용됨"></span></b></td><td class=""><b>근태점수 ▾</b></td></tr></tbody></table><div class="xl-filter-menu"><div>A↓Z　오름차순 정렬</div><div>Z↓A　내림차순 정렬</div><div class="xl-menu-selected">▽　부서명 (필터 적용됨)</div><div>부서명에서 필터 해제</div></div><div class="xl-filter-note">• 필터 적용 열: 드롭다운이 깔때기 아이콘으로 변경<br>• 필터링된 행 번호는 파란색으로 표시</div><div class="xl-tip">
                   💡 서로 다른 열끼리는 OR(또는) 필터링이 불가능하며, 오직 <strong>AND(누적)</strong>만 가능합니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">자동 필터</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1224,28 +1233,30 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 사용자 지정 자동 필터 대화상자</span>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:14px; margin-top:12px;">
-                  <div style="font-size:13.5px; font-weight:700; color:#1e293b; margin-bottom:8px;">근태점수 표시 조건:</div>
-                  <div style="display:flex; gap:10px; align-items:center; font-size:13px;">
-                    <span>찾을 조건:</span>
-                    <span style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px;">&gt;= 90</span>
-                  </div>
-                  <div style="margin:8px 0; font-size:13px; display:flex; gap:16px;">
-                    <label><input type="radio" name="cust-filter"> 그리고(AND)</label>
-                    <label><input type="radio" name="cust-filter" checked> <strong>또는(OR) ★</strong></label>
-                  </div>
-                  <div style="display:flex; gap:10px; align-items:center; font-size:13px;">
-                    <span>찾을 조건:</span>
-                    <span style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px;">&lt;= 70</span>
-                  </div>
-                </div>
-                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 12px;">
+              <div class="excel-demo " aria-label="사용자 지정 자동 필터 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">사용자 지정 자동 필터 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">D1</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">근태점수</span></div>
+                <div class="xl-workspace"><div class="xl-dialog"><div class="xl-dialog-title"><span>사용자 지정 자동 필터</span><span aria-hidden="true">×</span></div><div class="xl-dialog-body">
+<div style="font-size:13.5px; font-weight:700; color:#1e293b; margin-bottom:8px;">근태점수 표시 조건:</div>
+<div style="display:flex; gap:10px; align-items:center; font-size:13px;">
+<span>찾을 조건:</span>
+<span style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px;">&gt;= 90</span>
+</div>
+<div style="margin:8px 0; font-size:13px; display:flex; gap:16px;">
+<label><input name="cust-filter" type="radio"/> 그리고(AND)</label>
+<label><input checked="" name="cust-filter" type="radio"/> <strong>또는(OR) ★</strong></label>
+</div>
+<div style="display:flex; gap:10px; align-items:center; font-size:13px;">
+<span>찾을 조건:</span>
+<span style="background:#fff; border:1px solid #cbd5e1; padding:4px 8px; border-radius:4px;">&lt;= 70</span>
+</div>
+</div></div></div><div class="xl-tip">
                   💡 단일 열에서는 <strong>OR(또는)</strong> 조건이 가능하지만, 다른 열끼리는 무조건 <strong>AND</strong>로만 결합됩니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">근태점수</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1283,22 +1294,18 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>⚡ 고급 필터 설정 대화상자 해부</span>
-                </div>
-                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:14px; margin-top:12px; font-size:13.5px; line-height:1.8;">
-                  <div><strong>결과</strong>: ○ 현재 위치에 필터 &nbsp; ● <span style="color:#0284c7; font-weight:800;">다른 장소에 복사</span></div>
-                  <div><strong>목록 범위</strong>: <code>$A$1:$D$8</code> (원본 전체)</div>
-                  <div><strong>조건 범위</strong>: <code>$F$1:$G$2</code> (사전 입력한 조건)</div>
-                  <div><strong>복사 위치</strong>: <code>$A$12</code> (결과를 뿌릴 셀)</div>
-                  <div style="margin-top:6px; color:#059669; font-weight:700;">
-                    ☑ 동일한 레코드는 하나만 (중복 배제)
-                  </div>
-                </div>
-                <div style="font-size: 14px; color: #475569; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+              <div class="excel-demo xl-advanced" aria-label="고급 필터 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">고급 필터 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">A12</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression"></span></div>
+                <div class="xl-workspace"><div class="xl-dialog"><div class="xl-dialog-title"><span>고급 필터</span><span aria-hidden="true">×</span></div><div class="xl-dialog-body"><div style="margin-bottom:10px"><b>결과</b><br>○ 현재 위치에 필터<br>● <strong style="color:#217346">다른 장소에 복사</strong></div>
+<div class="xl-dialog-grid"><span>목록 범위:</span><span class="xl-field">$A$1:$D$8　▴</span><span>조건 범위:</span><span class="xl-field">$F$1:$G$2　▴</span><span>복사 위치:</span><span class="xl-field">$A$12　▴</span></div>
+<div style="margin-top:10px;color:#217346">☑ 동일한 레코드는 하나만 (중복 배제)</div></div></div></div><div class="xl-tip">
                   💡 자동 필터와 달리 3개 이상의 복합 조건 및 복사 위치 지정이 가능한 것이 고급 필터의 강력한 장점입니다.
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">고급 필터</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1331,24 +1338,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>📝 AND 조건 표 예시: "식품이고 가격 &gt;= 50000"</span>
-                </div>
-                <table class="styled-table" style="font-size: 14px; margin-top: 14px;">
-                  <thead>
-                    <tr><th style="background:#e0f2fe; color:#0369a1;">분류</th><th style="background:#e0f2fe; color:#0369a1;">가격</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr style="background:#dcfce7; font-weight:800; color:#15803d;">
-                      <td>식품</td>
-                      <td>&gt;=50000</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div style="font-size: 13.5px; color: #15803d; background: #f0fdf4; padding: 10px; border-radius: 8px; border: 1px solid #86efac; margin-top: 14px;">
+              <div class="excel-demo " aria-label="고급 필터 · AND 조건 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">고급 필터 · AND 조건 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">F2:G2</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">식품이고 가격 &gt;= 50000</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">F</th><th scope="col">G</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>분류</b></td><td class=""><b>가격</b></td></tr><tr class="xl-match"><th scope="row" class="xl-row ">2</th><td class="xl-selected">식품</td><td class="">&gt;=50000</td></tr></tbody></table><div class="xl-tip">
                   💡 두 조건이 <strong>동일한 2행</strong>에 나란히 입력되었으므로 <strong>AND(그리고)</strong> 조건으로 작동합니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">AND 조건</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
@@ -1379,28 +1378,16 @@
               </div>
             </div>
             <div class="right-col anim-right">
-              <div class="morph-card">
-                <div class="morph-title">
-                  <span>📝 OR 조건 표 예시: "식품이거나 가격 &gt;= 50000"</span>
-                </div>
-                <table class="styled-table" style="font-size: 14px; margin-top: 14px;">
-                  <thead>
-                    <tr><th style="background:#ede9fe; color:#6b21a8;">분류</th><th style="background:#ede9fe; color:#6b21a8;">가격</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr style="background:#fdf4ff;">
-                      <td style="font-weight:800; color:#7c3aed;">식품</td>
-                      <td style="color:#94a3b8;">(공백)</td>
-                    </tr>
-                    <tr style="background:#fdf4ff;">
-                      <td style="color:#94a3b8;">(공백)</td>
-                      <td style="font-weight:800; color:#7c3aed;">&gt;=50000</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div style="font-size: 13.5px; color: #6b21a8; background: #faf5ff; padding: 10px; border-radius: 8px; border: 1px solid #d8b4fe; margin-top: 14px;">
+              <div class="excel-demo " aria-label="고급 필터 · OR 조건 엑셀 학습 화면">
+                <div class="xl-titlebar"><span class="xl-logo" aria-hidden="true">X</span><span class="xl-book">고급 필터 · OR 조건 - Excel</span><span class="xl-window-controls" aria-hidden="true">− □ ×</span></div>
+                <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="">수식</span><span class="xl-tab-active">데이터</span><span class="">보기</span></div>
+                <div class="xl-ribbon"><div class="xl-command"><b>A↓Z</b><small>정렬</small></div><div class="xl-command"><b>▽</b><small>필터</small></div><div class="xl-command"><b>고급</b><small>정렬 및 필터</small></div></div>
+                <div class="xl-formula"><span class="xl-name">F2:G3</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">식품이거나 가격 &gt;= 50000</span></div>
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">F</th><th scope="col">G</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>분류</b></td><td class=""><b>가격</b></td></tr><tr class="xl-match"><th scope="row" class="xl-row ">2</th><td class="xl-selected">식품</td><td class=""><span class="xl-muted">(공백)</span></td></tr><tr class="xl-match"><th scope="row" class="xl-row ">3</th><td class=""><span class="xl-muted">(공백)</span></td><td class="">&gt;=50000</td></tr></tbody></table><div class="xl-tip">
                   💡 조건이 <strong>서로 다른 행(2행과 3행)</strong>에 입력되었으므로 <strong>OR(또는)</strong> 조건으로 작동합니다!
                 </div>
+                <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">OR 조건</span><span aria-hidden="true">＋</span></div>
+                <div class="xl-status"><span>준비</span><span aria-hidden="true">▦ ───── ● ── 100%</span></div>
               </div>
             </div>
           </div>
