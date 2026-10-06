@@ -2140,6 +2140,24 @@
       card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();actions[index]();}});
     });
   });
+  // The three formula arguments and the D1/4 examples are individual lesson controls.
+  const argumentActions = [
+    ()=>click('xl3-database'),()=>click('xl3-field'),()=>click('xl3-criteria'),
+    ()=>click('xl3-database'),()=>{choose('xl3-field-value','4');click('xl3-field');},
+    ()=>{choose('xl3-field-value','D1');click('xl3-field');},()=>click('xl3-criteria')
+  ];
+  slides[2].querySelectorAll('.left-col .info-card').forEach(card=>{
+    card.setAttribute('role','group');card.removeAttribute('tabindex');
+    card.setAttribute('aria-label',card.querySelector('.card-title').textContent.trim());
+  });
+  slides[2].querySelectorAll('.left-col .hl-green').forEach((text,index)=>{
+    const action=()=>{check('xl3-header',true);argumentActions[index]();};
+    text.tabIndex=0;text.setAttribute('role','button');text.style.cursor='pointer';
+    text.setAttribute('aria-label',text.textContent.trim()+' · 해당 인수 실습');
+    text.title='클릭하거나 Enter 키를 눌러 오른쪽 인수를 선택하세요.';
+    text.addEventListener('click',e=>{e.stopPropagation();action();});
+    text.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();action();}});
+  });
 })();
 
 </script>
