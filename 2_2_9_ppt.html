@@ -429,7 +429,7 @@
       color: #334155;
       padding: 8px 14px;
       border-radius: 8px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -702,7 +702,7 @@
     .excel-demo .xl-formula { display:flex; align-items:center; gap:8px; height:31px; padding:4px 8px; background:#f6f6f6; border-bottom:1px solid #ddd; }
     .excel-demo .xl-name { width:65px; flex:none; background:#fff; border:1px solid #bcbcbc; padding:2px 6px; }
     .excel-demo .xl-fx { font-style:italic; color:#737373; font-weight:600; }
-    .excel-demo .xl-expression { flex:1; border:1px solid #d2d2d2; background:#fff; padding:2px 6px; white-space:nowrap; font-size:11px; font-family:Consolas,'Malgun Gothic',monospace; }
+    .excel-demo .xl-expression { flex:1; border:1px solid #d2d2d2; background:#fff; padding:2px 6px; white-space:nowrap; font-size:15px; font-family:Consolas,'Malgun Gothic',monospace; }
     .excel-demo .xl-sheet { width:100%; border-collapse:collapse; table-layout:fixed; font-size:12px; line-height:1.35; }
     .excel-demo .xl-sheet th,.excel-demo .xl-sheet td { border:1px solid #d8d8d8; padding:6px 7px; height:31px; overflow-wrap:anywhere; vertical-align:middle; }
     .excel-demo .xl-sheet thead th { height:23px; padding:3px; background:#e6e6e6; color:#505050; font-weight:400; text-align:center; }
@@ -760,6 +760,52 @@
       .excel-demo.xl-advanced .xl-dialog-body { padding:6px 9px; font-size:11px; line-height:1.35; }
       .excel-demo.xl-advanced .xl-dialog-grid { gap:4px; }
       .excel-demo.xl-advanced .xl-field { padding:1px 6px; }
+    }
+
+    /* Controls and result tables remain inside the accepted Excel panels. */
+    .slide .left-col .info-card[role=button] { cursor:pointer; }
+    .excel-demo.xl-live .xl-ribbon { flex-wrap:wrap; gap:6px 8px; padding:6px 10px; }
+    .excel-demo.xl-live label { display:inline-flex; align-items:center; gap:4px; font-size:11px; }
+    .excel-demo.xl-live input,.excel-demo.xl-live select { border:1px solid #aaa; border-radius:1px; padding:3px 4px; background:#fff; color:#242424; font:11px 'Segoe UI','Malgun Gothic',sans-serif; max-width:100%; }
+    .excel-demo.xl-live input[type=number] { width:52px; }
+    .excel-demo.xl-live input[type=text] { width:93px; }
+    .excel-demo.xl-live input[type=radio],.excel-demo.xl-live input[type=checkbox] { accent-color:#217346; padding:0; flex:none; }
+    .excel-demo.xl-live input:focus-visible,.excel-demo.xl-live select:focus-visible { outline:2px solid #217346; outline-offset:1px; }
+    .excel-demo.xl-live .xl-ribbon .morph-btn { padding:5px 8px; font-size:11px; }
+    .excel-demo.xl-live .xl-expression { overflow:hidden; text-overflow:ellipsis; }
+    .excel-demo.xl-live .xl-formula:focus-within .xl-expression { overflow:visible; white-space:normal; }
+    .excel-demo.xl-live .xl-tip { font-size:11px; margin:7px 10px; padding:6px 8px; line-height:1.45; }
+    .excel-demo.xl-live .xl-error { border-color:#c00000; color:#9c0006; background:#fff2f2; }
+    .excel-demo.xl-live .xl-mismatch td { color:#9c0006; background:#fce4d6; }
+    .excel-demo.xl-live .xl-grid-viewport { max-height:180px; overflow:auto; scrollbar-width:thin; }
+    .excel-demo.xl-live .xl-grid-viewport th,.excel-demo.xl-live .xl-grid-viewport td { height:26px; padding:4px 5px; font-size:11px; }
+    .excel-demo.xl-live .xl-grid-viewport thead { position:sticky; top:0; z-index:2; }
+    .excel-demo.xl-live .xl-dialog-body { font-size:11px; line-height:1.5; padding:9px; }
+    .excel-demo.xl-live .xl-dialog-body > label { display:flex; margin-top:4px; }
+    .excel-demo.xl-live .xl-dialog-grid { grid-template-columns:64px 1fr; gap:4px; margin-block:5px!important; }
+    .excel-demo.xl-live .xl-dialog-grid input { width:100%; }
+    .excel-demo.xl-live .xl-inline { display:flex; gap:10px; }
+    .excel-demo.xl-live #xl11-custom-options > label { margin-right:10px; }
+    .excel-demo.xl-live #xl11-custom-options > div { display:flex; gap:12px; margin-top:6px; }
+    .excel-demo.xl-live #xl11-top-options:not([hidden]) { display:flex; gap:10px; align-items:center; }
+    .excel-demo.xl-live .xl-sheet input[type=text],.excel-demo.xl-live .xl-sheet select { width:100%; }
+    .excel-demo.xl-live .xl-sheet [hidden] { display:none; }
+    @media (max-height:800px) {
+      .excel-demo.xl-live .xl-ribbon { min-height:36px; padding:4px 8px; gap:4px 6px; }
+      .excel-demo.xl-live .xl-ribbon .morph-btn { padding:4px 6px; }
+      .excel-demo.xl-live .xl-grid-viewport { max-height:120px; }
+      .excel-demo.xl-live .xl-grid-viewport th,.excel-demo.xl-live .xl-grid-viewport td { height:23px; padding:3px 5px; }
+      .excel-demo.xl-live .xl-workspace { padding:6px; }
+      .excel-demo.xl-live .xl-dialog-title { padding:4px 8px; font-size:12px; }
+      .excel-demo.xl-live .xl-dialog-body { padding:6px 8px; line-height:1.35; }
+      .excel-demo.xl-live .xl-tip { margin:5px 8px; padding:4px 6px; line-height:1.35; }
+      .excel-demo.xl-live .xl-sheet th,.excel-demo.xl-live .xl-sheet td { padding:4px 6px; }
+      .excel-demo.xl-advanced.xl-live .xl-workspace { padding:4px; }
+      .excel-demo.xl-advanced.xl-live .xl-dialog-title { padding:3px 8px; }
+      .excel-demo.xl-advanced.xl-live .xl-dialog-body { padding:4px 8px; }
+      .excel-demo.xl-advanced.xl-live .xl-dialog-grid { gap:2px; }
+      .excel-demo.xl-advanced.xl-live .xl-field { padding:1px 4px; font-size:10px; line-height:1.2; }
+      .excel-demo.xl-advanced.xl-live .xl-dialog-grid input { padding:1px 4px; }
     }
   </style>
 </head>
@@ -883,7 +929,7 @@
                 <div class="xl-tabs"><span class="">파일</span><span class="">홈</span><span class="">삽입</span><span class="xl-tab-active">수식</span><span class="">데이터</span><span class="">보기</span></div>
                 <div class="xl-ribbon"><div class="xl-command"><b>ƒx</b><small>함수 삽입</small></div><div class="xl-command"><b>Σ</b><small>자동 합계</small></div><div class="xl-command"><b>이름 정의</b><small>정의된 이름</small></div></div>
                 <div class="xl-formula"><span class="xl-name">B2</span><span class="xl-fx" aria-hidden="true">ƒx</span><span class="xl-expression">=DSUM(A1:D8,D1,B1:B2)</span></div>
-                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:28%"><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>인수 순서</b></td><td class=""><b>지정 예시 및 필수 요건</b></td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">1. Database</td><td class="xl-selected"><code>A1:D8</code><br>첫 행의 제목 필드 포함 필수</td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">2. Field</td><td class=""><code>D1</code> 또는 <code>4</code><br>계산할 근태점수 열</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">3. Criteria</td><td class=""><code>B1:B2</code><br>직위 / 과장 형태의 조건표</td></tr></tbody></table><div class="xl-tip">
+                <table class="xl-sheet"><colgroup><col style="width:30px"><col style="width:28%"><col></colgroup><thead><tr><th aria-label="모두 선택"></th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr class=""><th scope="row" class="xl-row ">1</th><td class=""><b>인수 순서</b></td><td class=""><b>지정 예시 및 필수 요건</b></td></tr><tr class=""><th scope="row" class="xl-row ">2</th><td class="">데이터베이스</td><td class="xl-selected"><code>A1:D8</code><br>첫 행의 제목 필드 포함 필수</td></tr><tr class=""><th scope="row" class="xl-row ">3</th><td class="">필드</td><td class=""><code>D1</code> 또는 <code>4</code><br>계산할 근태점수 열</td></tr><tr class=""><th scope="row" class="xl-row ">4</th><td class="">조건범위</td><td class=""><code>B1:B2</code><br>직위 / 과장 형태의 조건표</td></tr></tbody></table><div class="xl-tip">
                   💡 <strong>오답 주의</strong>: 데이터베이스 범위에서 첫 행의 제목(A1:D1)을 제외하고 지정하면 함수가 정상 동작하지 않습니다!
                 </div>
                 <div class="xl-sheet-tabs"><span aria-hidden="true">‹ ›</span><span class="xl-sheet-tab">인수 구조</span><span aria-hidden="true">＋</span></div>
@@ -1683,6 +1729,9 @@
     // Keyboard Navigation
     let lastKeyTime = 0;
     window.addEventListener('keydown', (e) => {
+      // Native Excel controls consume their own keyboard events.
+      if (e.target.closest('.excel-demo') && e.target.closest('input, select, button, textarea, [contenteditable]')) return;
+
       const now = Date.now();
       const code = e.code;
       const key = e.key;
@@ -1754,6 +1803,346 @@
     }
   </script>
 
+<!-- Excel interactive exercises -->
+<script>
+/* Standalone, lesson-specific Excel exercises. No external library or service. */
+(() => {
+  'use strict';
+  const people = [
+    ['김건우', '과장', '영업부', 73], ['정종찬', '과장', '생산부', 68],
+    ['김동하', '대리', '총무부', 98], ['박순례', '사원', '생산부', 65],
+    ['정종민', '과장', '관리부', 69], ['최성애', '사원', '관리부', 80],
+    ['이성균', '대리', '영업부', 86]
+  ];
+  const employeeHeaders = ['성명', '직위', '부서명', '근태점수'];
+  const getPanel = n => slides[n - 1].querySelector('.excel-demo');
+  const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const button = (id, label, active = false) => `<button type="button" id="${id}" class="morph-btn${active ? ' active' : ''}">${label}</button>`;
+  const select = (id, label, options, selected) => `<label>${label} <select id="${id}" aria-label="${label || '분류 조건'}">${options.map(v => `<option${v === selected ? ' selected' : ''}>${v}</option>`).join('')}</select></label>`;
+  const input = (id, label, value, attributes = '') => `<label>${label} <input id="${id}" value="${escape(value)}" ${attributes}></label>`;
+  function controls(panel, html) { panel.querySelector('.xl-ribbon').innerHTML = html; }
+  function feedback(panel, message, error = false) {
+    let tip = panel.querySelector('.xl-tip');
+    if (!tip) {
+      tip = document.createElement('div'); tip.className = 'xl-tip';
+      panel.querySelector('.xl-sheet-tabs').before(tip);
+    }
+    tip.setAttribute('role', 'status'); tip.setAttribute('aria-live', 'polite');
+    tip.textContent = message; tip.classList.toggle('xl-error', error);
+    panel.querySelector('.xl-status > span').textContent = error ? '입력 확인' : '준비 · 실습 결과 갱신';
+  }
+  function formula(panel, name, expression) {
+    panel.querySelector('.xl-name').textContent = name;
+    panel.querySelector('.xl-expression').textContent = expression;
+  }
+  function table(panel, headers, rows, options = {}) {
+    let element = options.element || panel.querySelector('.xl-sheet');
+    if (!element) {
+      element = document.createElement('table'); element.className = 'xl-sheet';
+      panel.querySelector('.xl-sheet-tabs').before(element);
+    }
+    const letters = headers.map((_, i) => options.letters?.[i] || String.fromCharCode(65 + i));
+    element.innerHTML = `<colgroup><col style="width:30px">${headers.map(() => '<col>').join('')}</colgroup><thead><tr><th aria-label="모두 선택"></th>${letters.map(x => `<th scope="col">${x}</th>`).join('')}</tr></thead><tbody><tr class="xl-header"><th scope="row" class="xl-row">${options.start || 1}</th>${headers.map(h => `<td>${escape(h)}</td>`).join('')}</tr>${rows.map((row, i) => {
+      const values = Array.isArray(row) ? row : row.values;
+      const number = row.number ?? (i + (options.start || 1) + 1);
+      return `<tr data-record="${i}" class="${row.match ? 'xl-match' : ''}${row.mismatch ? ' xl-mismatch' : ''}"${row.hidden ? ' hidden' : ''}><th scope="row" class="xl-row${options.filtered ? ' xl-filtered' : ''}">${number}</th>${values.map((v, j) => `<td${options.selected?.[0] === i && options.selected?.[1] === j ? ' class="xl-selected"' : ''}>${escape(v)}</td>`).join('')}</tr>`;
+    }).join('')}</tbody>`;
+    return element;
+  }
+  function scrollTable(element) {
+    const wrapper = document.createElement('div'); wrapper.className = 'xl-grid-viewport';
+    element.before(wrapper); wrapper.append(element); return wrapper;
+  }
+  function resultTable(panel) {
+    const element = document.createElement('table'); element.className = 'xl-sheet xl-result';
+    (panel.querySelector('.xl-tip') || panel.querySelector('.xl-sheet-tabs')).before(element); scrollTable(element); return element;
+  }
+  function active(panel, id) {
+    panel.querySelectorAll('.xl-ribbon .morph-btn').forEach(b => {
+      const selected = b.id === id; b.classList.toggle('active', selected);
+      b.setAttribute('aria-pressed', String(selected));
+    });
+  }
+  document.querySelectorAll('.excel-demo').forEach(p => p.classList.add('xl-live'));
+
+  // 03: Select an argument, include/exclude the title row, or use a field number.
+  {
+    const p = getPanel(3); let argument = 0;
+    controls(p, button('xl3-database','Database',true) + button('xl3-field','Field') + button('xl3-criteria','Criteria') + '<label><input id="xl3-header" type="checkbox" checked> 제목행 포함</label>' + select('xl3-field-value','필드',['D1','4'],'D1'));
+    const update = () => {
+      const included = p.querySelector('#xl3-header').checked;
+      const field = p.querySelector('#xl3-field-value').value;
+      const ranges = [included ? 'A1:D8' : 'A2:D8', field, 'B1:B2'];
+      const rows=p.querySelectorAll('.xl-sheet tbody tr');
+      rows[1].cells[2].innerHTML=`${ranges[0]}<br>${included?'첫 행의 제목 필드 포함 필수':'제목행 제외 · 필드명 확인 불가'}`;
+      rows[2].cells[2].innerHTML=`${field} (D1과 4는 동일)<br>계산할 근태점수 열`;
+      formula(p, ranges[argument], `=DSUM(${ranges.join(',')})`);
+      p.querySelectorAll('.xl-sheet .xl-selected').forEach(c => c.classList.remove('xl-selected'));
+      p.querySelectorAll('.xl-sheet tbody tr')[argument + 1].cells[2].classList.add('xl-selected');
+      active(p, ['xl3-database','xl3-field','xl3-criteria'][argument]);
+      const hints = ['A1:D8에서 제목행 A1:D1까지 포함해야 합니다.','D1과 열 번호 4는 같은 근태점수 열을 가리킵니다.',' 제목(직위)과 조건(과장)을 함께 포함한 B1:B2입니다.'];
+      feedback(p, included ? hints[argument] : '제목행 제외 → 계산할 필드명을 찾을 수 없습니다. 제목행을 다시 포함하세요.', !included);
+    };
+    ['database','field','criteria'].forEach((name, index) => p.querySelector(`#xl3-${name}`).addEventListener('click', () => { argument = index; update(); }));
+    p.querySelector('.xl-sheet').addEventListener('click', e => {
+      const row = e.target.closest('tr'); const index = row?.rowIndex - 2;
+      if (index >= 0 && index < 3) { argument = index; update(); }
+    });
+    p.addEventListener('change', update); update();
+  }
+
+  // 04: The result is calculated from the same seven source records as the lesson.
+  {
+    const p = getPanel(4); let fn = 'DSUM';
+    controls(p, button('xl4-sum','DSUM 합계',true) + button('xl4-average','DAVERAGE 평균') + select('xl4-field','필드',['D1','4'],'D1') + select('xl4-job','직위',['과장','대리','사원'],'과장'));
+    const update = () => {
+      const job = p.querySelector('#xl4-job').value;
+      const matches = people.filter(row => row[1] === job);
+      const sum = matches.reduce((total, row) => total + row[3], 0);
+      const result = fn === 'DSUM' ? sum : sum / matches.length;
+      table(p, employeeHeaders, people.map(row => ({values: row, match: row[1] === job})));
+      formula(p, 'D10', `=${fn}(A1:D8,${p.querySelector('#xl4-field').value},B1:B2)`);
+      active(p, fn === 'DSUM' ? 'xl4-sum' : 'xl4-average');
+      feedback(p, `${job} ${matches.length}명 · ${matches.map(row => row[3]).join(' + ')} = ${sum}${fn === 'DAVERAGE' ? ` / ${matches.length}` : ''} → ${fn} 결과 ${Number(result.toFixed(2))}`);
+    };
+    p.querySelector('#xl4-sum').addEventListener('click', () => { fn = 'DSUM'; update(); });
+    p.querySelector('#xl4-average').addEventListener('click', () => { fn = 'DAVERAGE'; update(); });
+    p.addEventListener('change', update); update();
+  }
+
+  // 05: Field/type changes drive both the formula and the comparison cell.
+  {
+    const p = getPanel(5);
+    controls(p, select('xl5-function','함수',['DCOUNT','DCOUNTA'],'DCOUNT') + select('xl5-field','필드',['A1','B1','C1','D1','4'],'D1'));
+    const update = () => {
+      const fn = p.querySelector('#xl5-function').value, field = p.querySelector('#xl5-field').value;
+      const index = field === '4' ? 3 : field.charCodeAt(0) - 65;
+      const values = people.filter(row => row[1] === '과장').map(row => row[index]);
+      const result = values.filter(value => fn === 'DCOUNT' ? typeof value === 'number' : value !== '' && value != null).length;
+      p.querySelectorAll('.xl-sheet .xl-selected').forEach(c => c.classList.remove('xl-selected'));
+      p.querySelectorAll('.xl-sheet tbody tr')[index + 1].cells[fn === 'DCOUNT' ? 2 : 3].classList.add('xl-selected');
+      formula(p, `${fn === 'DCOUNT' ? 'B' : 'C'}${index + 2}`, `=${fn}(A1:D8,${field},B1:B2)`);
+      feedback(p, `${fn}(${field}) = ${result} · ${fn === 'DCOUNT' ? '숫자만 계산' : '비어 있지 않은 값을 계산'} · 선택 필드: ${employeeHeaders[index]}`);
+    };
+    p.querySelector('.xl-sheet').addEventListener('click', e => {
+      const cell = e.target.closest('td'), row = cell?.parentElement;
+      const index = row?.rowIndex - 2;
+      if (index >= 0 && index < 4) {
+        p.querySelector('#xl5-field').value = String.fromCharCode(65+index) + '1';
+        if (cell.cellIndex > 1) p.querySelector('#xl5-function').value = cell.cellIndex === 2 ? 'DCOUNT' : 'DCOUNTA';
+        update();
+      }
+    });
+    p.addEventListener('change', update); update();
+  }
+
+  // 06: Full-row sorting versus sorting only the selected numeric column.
+  {
+    const p = getPanel(6), source = [people[2], people[0], people[1]];
+    controls(p, button('xl6-sort','정렬 실행') + button('xl6-reset','원본 복원') + input('xl6-levels','기준 개수 확인',1,'type="number" min="1" max="64" step="1" required'));
+    p.querySelector('.xl-dialog-body').innerHTML = '<div>근태점수 열만 선택했습니다. 정렬할 범위를 선택하세요.</div><label><input name="warn-opt" type="radio" value="expand" checked> 선택 영역 확장</label><label><input name="warn-opt" type="radio" value="column"> 현재 선택 영역으로 정렬</label>';
+    const grid = resultTable(p);
+    const reset = () => { table(p, ['성명','근태점수'], source.map(row => [row[0],row[3]]), {element:grid, letters:['A','D']}); formula(p,'D2:D4','선택한 근태점수 열'); feedback(p,'정렬 실행 후 성명과 점수가 같은 행으로 이동하는지 확인하세요.'); };
+    p.querySelector('#xl6-sort').addEventListener('click', () => {
+      const levels = p.querySelector('#xl6-levels');
+      if (!levels.validity.valid || !Number.isInteger(Number(levels.value))) { feedback(p,'정렬 기준은 정수 1~64개까지만 지정할 수 있습니다.',true); return; }
+      const expanded = p.querySelector('[name="warn-opt"]:checked').value === 'expand';
+      const sorted = [...source].sort((a,b) => a[3]-b[3]);
+      const result = expanded ? sorted.map(row => ({values:[row[0],row[3]],match:true})) : source.map((row,i) => ({values:[row[0],sorted[i][3]],mismatch:row[3] !== sorted[i][3]}));
+      table(p,['성명','근태점수'],result,{element:grid,letters:['A','D']});
+      formula(p,expanded ? 'A2:D4' : 'D2:D4','근태점수 오름차순');
+      feedback(p,expanded ? '선택 영역 확장 → 행 전체를 함께 정렬해 성명과 점수가 일치합니다.' : '현재 선택 영역 → 점수만 이동해 성명과 점수가 어긋납니다.',!expanded);
+    });
+    const checkLevels = () => {
+      const input = p.querySelector('#xl6-levels');
+      feedback(p,input.validity.valid ? `정렬 기준 ${input.value}개: 64개 이내입니다. 이 실습은 근태점수 1개 기준으로 정렬합니다.` : '64개 초과 또는 1개 미만은 지정할 수 없습니다.',!input.validity.valid);
+    };
+    p.querySelector('#xl6-levels').addEventListener('input',checkLevels);
+    p.querySelector('#xl6-levels').addEventListener('change',checkLevels);
+    p.querySelector('#xl6-reset').addEventListener('click',reset); reset();
+  }
+
+  // 07/09: Keep the blank last and expose both sort directions and the unsorted source.
+  {
+    const p = getPanel(7);
+    controls(p,button('xl7-asc','오름차순 ▲',true)+button('xl7-desc','내림차순 ▼'));
+    const update = mode => {
+      table(p,['순서','데이터 분류 및 예시'],sortData[mode].map((row,i) => ({values:[i+1,`${row.val} · ${row.type}`],match:row.val==='apple'})),{selected:[5,1]});
+      formula(p,'B2:B7',mode==='asc' ? '숫자 → 기호 → 소문자 → 대문자 → 한글 → 빈 셀' : '한글 → 대문자 → 소문자 → 기호 → 숫자 → 빈 셀');
+      active(p,`xl7-${mode}`); feedback(p,'방향을 바꿔도 빈 셀은 마지막입니다. 초록색 행은 영문 소문자입니다.');
+    };
+    ['asc','desc'].forEach(mode=>p.querySelector(`#xl7-${mode}`).addEventListener('click',()=>update(mode))); update('asc');
+    const p9 = getPanel(9);
+    p9.querySelector('.xl-ribbon').insertAdjacentHTML('beforeend',button('xl9-source','원본 순서'));
+    const update9 = mode => {
+      const data = mode === 'source' ? [sortData.asc[4],sortData.asc[0],sortData.asc[3],sortData.asc[1],sortData.asc[2],sortData.asc[5]] : sortData[mode];
+      data.forEach((row,i) => {document.getElementById(`s-val-${i+1}`).textContent=row.val;document.getElementById(`s-type-${i+1}`).textContent=row.type;});
+      active(p9,mode==='source'?'xl9-source':`btn-sort-${mode}`);
+      formula(p9,'B2:B7',mode==='source'?'원본: 사과, 7, Banana, !, apple, (빈 셀)':mode==='asc'?'오름차순: 작은 값 → 큰 값':'내림차순: 큰 값 → 작은 값');
+      feedback(p9,mode==='source'?'원본 순서입니다. 정렬 버튼을 눌러 데이터 이동을 비교하세요.':'정렬 완료 · 빈 셀은 양쪽 방향 모두 6번째에 남습니다.');
+    };
+    ['asc','desc'].forEach(mode=>p9.querySelector(`#btn-sort-${mode}`).addEventListener('click',()=>update9(mode)));
+    p9.querySelector('#xl9-source').addEventListener('click',()=>update9('source')); update9('asc');
+  }
+
+  // 10: Actual row hiding, cumulative column criteria, and the lesson shortcut.
+  {
+    const p = getPanel(10);
+    controls(p, '<label><input id="xl10-enabled" type="checkbox" checked> 자동 필터</label>' + select('xl10-dept','부서',['전체','영업부','생산부','총무부','관리부'],'영업부') + select('xl10-job','직위',['전체','과장','대리','사원'],'과장') + button('xl10-clear','해제'));
+    p.querySelector('.xl-filter-menu')?.remove(); p.querySelector('.xl-filter-note')?.remove();
+    scrollTable(p.querySelector('.xl-sheet'));
+    const update = () => {
+      const enabled = p.querySelector('#xl10-enabled').checked;
+      const dept = p.querySelector('#xl10-dept').value, job = p.querySelector('#xl10-job').value;
+      const matches = people.map(row => !enabled || (dept==='전체'||row[2]===dept) && (job==='전체'||row[1]===job));
+      const rows = people.map((row,i)=>({values:row,number:i+2,hidden:!matches[i],match:enabled&&matches[i]}));
+      table(p,employeeHeaders.map((header,i)=>header+(!enabled?'':(i===1&&job!=='전체'||i===2&&dept!=='전체')?' ⏷':' ▾')),rows,{filtered:enabled});
+      formula(p,'A1:D8',enabled?`부서명=${dept} AND 직위=${job}`:'필터 해제 · 원본 전체 표시');
+      feedback(p,`${matches.filter(Boolean).length}/7행 표시 · ${7-matches.filter(Boolean).length}행 숨김 (삭제 없음)${enabled?' · 서로 다른 열은 AND로 결합':''}`);
+    };
+    p.addEventListener('change',update);
+    p.querySelector('#xl10-clear').addEventListener('click',()=>{p.querySelector('#xl10-dept').value='전체';p.querySelector('#xl10-job').value='전체';update();});
+    window.addEventListener('keydown',e=>{
+      if(currentSlide===9&&e.ctrlKey&&e.shiftKey&&e.code==='KeyL') {e.preventDefault();p.querySelector('#xl10-enabled').checked=!p.querySelector('#xl10-enabled').checked;update();}
+    });
+    update();
+  }
+
+  // The parser accepts only an operator and a finite numeric literal; never eval input.
+  function numericCondition(value) {
+    const match = String(value).match(/^\s*(>=|<=|<>|>|<|=)?\s*(-?\d+(?:\.\d+)?)\s*$/);
+    if (!match || !Number.isFinite(Number(match[2]))) return null;
+    const number = Number(match[2]), op = match[1] || '=';
+    return n => ({'>=':n>=number,'<=':n<=number,'>':n>number,'<':n<number,'=':n===number,'<>':n!==number})[op];
+  }
+
+  // 11: Custom two-condition filtering, or top/bottom N items/percent (ties included).
+  {
+    const p = getPanel(11); let mode='custom';
+    controls(p,button('xl11-custom','사용자 지정',true)+button('xl11-top','상위 10 필터'));
+    p.querySelector('.xl-dialog-body').innerHTML = `<div id="xl11-custom-options">${input('xl11-first','조건 1','>=90','type="text"')}${input('xl11-second','조건 2','<=70','type="text"')}<div><label><input name="cust-filter" type="radio" value="and"> 그리고(AND)</label> <label><input name="cust-filter" type="radio" value="or" checked> 또는(OR)</label></div></div><div id="xl11-top-options" hidden>${select('xl11-direction','방향',['상위','하위'],'상위')}${input('xl11-count','개수',3,'type="number" min="1" max="500" step="1" required')}${select('xl11-unit','기준',['항목','퍼센트'],'항목')}</div>`;
+    const grid=resultTable(p);
+    const update=()=>{
+      let predicate, description;
+      p.querySelector('#xl11-custom-options').hidden=mode!=='custom';p.querySelector('#xl11-top-options').hidden=mode!=='top';
+      p.querySelector('.xl-dialog-title > span').textContent=mode==='custom'?'사용자 지정 자동 필터':'상위 10 자동 필터';
+      active(p,`xl11-${mode}`);
+      if(mode==='custom') {
+        const a=numericCondition(p.querySelector('#xl11-first').value), b=numericCondition(p.querySelector('#xl11-second').value);
+        if(!a||!b) {table(p,employeeHeaders,[],{element:grid});feedback(p,'조건은 >=90, <=70처럼 비교 연산자와 숫자로 입력하세요.',true);return;}
+        const and=p.querySelector('[name="cust-filter"]:checked').value==='and';
+        predicate=row=>and ? a(row[3])&&b(row[3]) : a(row[3])||b(row[3]);
+        description=`근태점수 ${p.querySelector('#xl11-first').value} ${and?'AND':'OR'} ${p.querySelector('#xl11-second').value}`;
+      } else {
+        const count=p.querySelector('#xl11-count'), percent=p.querySelector('#xl11-unit').value==='퍼센트';
+        count.max=percent?'100':'500';
+        if(!count.validity.valid||!Number.isInteger(Number(count.value))) {table(p,employeeHeaders,[],{element:grid});feedback(p,percent?'퍼센트는 정수 1~100으로 입력하세요.':'항목 개수는 정수 1~500으로 입력하세요.',true);return;}
+        const n=Math.min(people.length,percent?Math.ceil(people.length*Number(count.value)/100):Number(count.value));
+        const top=p.querySelector('#xl11-direction').value==='상위';
+        const sorted=people.map(row=>row[3]).sort((a,b)=>top?b-a:a-b);
+        const threshold=sorted[n-1]; predicate=row=>top?row[3]>=threshold:row[3]<=threshold;
+        description=`${top?'상위':'하위'} ${count.value}${percent?'%':'항목'} · 기준 점수 ${threshold}`;
+      }
+      const filtered=people.map((row,i)=>({values:row,number:i+2})).filter(row=>predicate(row.values));
+      table(p,employeeHeaders,filtered,{element:grid,filtered:true});formula(p,'D1',description);
+      feedback(p,`${description} → ${filtered.length}명 표시${filtered.length?'': ' · 두 조건을 동시에 만족하는 값이 없습니다.'}`);
+    };
+    ['custom','top'].forEach(m=>p.querySelector(`#xl11-${m}`).addEventListener('click',()=>{mode=m;update();}));
+    p.addEventListener('input',update);p.addEventListener('change',update);update();
+  }
+
+  // 12: Prepared criteria, same-sheet copy/current location, and duplicate removal.
+  {
+    const p=getPanel(12), sample=[...people.slice(0,6),[...people[0]]];
+    controls(p,button('xl12-run','고급 필터 실행')+'<label><input id="xl12-prepared" type="checkbox" checked> 조건 범위 작성됨</label>');
+    p.querySelector('.xl-dialog-body').innerHTML='<div class="xl-inline"><label><input name="xl12-location" type="radio" value="current"> 현재 위치</label><label><input name="xl12-location" type="radio" value="copy" checked> 다른 장소에 복사</label></div><div class="xl-dialog-grid"><span>목록 범위</span><span class="xl-field">$A$1:$D$8</span><span>조건 범위</span><span id="xl12-criteria" class="xl-field">$F$1:$G$2 · 영업부 / 과장</span><label for="xl12-target">복사 위치</label><input id="xl12-target" value="A12" type="text"></div><label><input id="xl12-unique" type="checkbox" checked> 동일한 레코드는 하나만</label>';
+    const grid=resultTable(p);
+    const update=()=>{
+      const copy=p.querySelector('[name="xl12-location"]:checked').value==='copy', target=p.querySelector('#xl12-target');
+      target.disabled=!copy;
+      const location=target.value.trim().toUpperCase();
+      const address=location.match(/^([A-Z]{1,3})([1-9]\d{0,6})$/);
+      const column=address?[...address[1]].reduce((n,c)=>n*26+c.charCodeAt(0)-64,0):0;
+      p.querySelector('#xl12-criteria').textContent=p.querySelector('#xl12-prepared').checked?'$F$1:$G$2 · 영업부 / 과장':'미작성';
+      if(!p.querySelector('#xl12-prepared').checked) {grid.hidden=true;feedback(p,'먼저 필드명과 조건값을 작성하세요. 조건 범위가 없으면 고급 필터를 실행할 수 없습니다.',true);return;}
+      if(copy&&(!address||column>16381||Number(address[2])>1048576)) {grid.hidden=true;feedback(p,'복사 위치는 현재 시트의 유효한 셀 주소를 입력하세요. 예: A12 (다른 시트 지정 불가).',true);return;}
+      // The exercise source occupies A1:D8; copied headers/results must not overwrite it or F1:G2 criteria.
+      if(copy&&((Number(address[2])<=8&&column<=4)||(Number(address[2])<=2&&column<=7&&column+3>=6))) {grid.hidden=true;feedback(p,'목록 또는 조건 범위와 겹칩니다. A12처럼 빈 셀을 지정하세요.',true);return;}
+      let filtered=sample.filter(row=>row[1]==='과장'&&row[2]==='영업부');
+      if(p.querySelector('#xl12-unique').checked) filtered=filtered.filter((row,i,all)=>all.findIndex(other=>JSON.stringify(row)===JSON.stringify(other))===i);
+      if(copy&&Number(address[2])+filtered.length>1048576) {grid.hidden=true;feedback(p,'복사 결과가 시트의 마지막 행을 넘습니다. 더 앞쪽 셀을 지정하세요.',true);return;}
+      grid.hidden=false;
+      const start=copy?Number(address[2]):1;
+      const startCol=copy?column:1;
+      const letter=n=>{let out='';for(;n;n=Math.floor((n-1)/26))out=String.fromCharCode(65+(n-1)%26)+out;return out;};
+      table(p,employeeHeaders,filtered,{element:grid,start,letters:employeeHeaders.map((_,i)=>letter(startCol+i))});
+      formula(p,copy?location:'A1:D8',`영업부 AND 과장 · ${p.querySelector('#xl12-unique').checked?'중복 제거':'중복 유지'}`);
+      feedback(p,`${copy?`현재 시트 ${location}에 복사`:'현재 위치에 필터'} → ${filtered.length}행 · 실습용 원본에는 김건우 행이 2번 있습니다.`);
+    };
+    p.querySelector('#xl12-run').addEventListener('click',update);p.addEventListener('change',update);update();
+  }
+
+  // 13/14: Editable criteria, same-row AND versus separate-row OR, with matching records.
+  [13,14].forEach(number=>{
+    const p=getPanel(number), and=number===13;
+    const products=[['식품',60000],['식품',30000],['가전',80000],['가전',20000]];
+    const scores=[65,70,79,80,85,89,90,95].map(value=>['점수',value]);
+    controls(p,and?select('xl13-preset','조건 예시',['식품이고 가격 >=50000','70 이상 90 이하','80점대'],'식품이고 가격 >=50000'):button('xl14-reset','예시 복원'));
+    const criteria=p.querySelector('.xl-sheet'), grid=resultTable(p); let range=false;
+    const build=()=>{
+      range=and&&p.querySelector('#xl13-preset').value!=='식품이고 가격 >=50000';
+      const eighty=range&&p.querySelector('#xl13-preset').value==='80점대';
+      const first=range?input(`xl${number}-first`,'',eighty?'>=80':'>=70','type="text" aria-label="첫 번째 점수 조건"'):select(`xl${number}-category`,'',['식품','가전'],'식품');
+      const second=input(`xl${number}-second`,'',range?(eighty?'<90':'<=90'):'>=50000','type="text" aria-label="두 번째 비교 조건"');
+      criteria.innerHTML=`<colgroup><col style="width:30px"><col><col></colgroup><thead><tr><th></th><th>F</th><th>G</th></tr></thead><tbody><tr class="xl-header"><th class="xl-row">1</th><td>${range?'점수':'분류'}</td><td>${range?'점수':'가격'}</td></tr><tr class="xl-match"><th class="xl-row">2</th><td class="xl-selected">${first}</td><td>${and?second:'(공백)'}</td></tr>${and?'':`<tr class="xl-match"><th class="xl-row">3</th><td class="xl-muted">(공백)</td><td>${second}</td></tr>`}</tbody>`;
+    };
+    const update=()=>{
+      const second=numericCondition(p.querySelector(`#xl${number}-second`).value);
+      const first=range?numericCondition(p.querySelector(`#xl${number}-first`).value):row=>row[0]===p.querySelector(`#xl${number}-category`).value;
+      if(!first||!second) {table(p,range?['항목','점수']:['분류','가격'],[],{element:grid,start:6});feedback(p,'조건은 >=50000, <90처럼 비교 연산자와 숫자로 입력하세요.',true);return;}
+      const dataset=range?scores:products;
+      const filtered=dataset.filter(row=>{
+        const a=range?first(row[1]):first(row),b=second(row[1]);return and?a&&b:a||b;
+      });
+      table(p,range?['항목','점수']:['분류','가격'],filtered,{element:grid,start:6});
+      formula(p,and?'F2:G2':'F2:G3',`${range?p.querySelector(`#xl${number}-first`).value:p.querySelector(`#xl${number}-category`).value} ${and?'AND':'OR'} ${p.querySelector(`#xl${number}-second`).value}`);
+      feedback(p,`${and?'같은 2행 → 모든 조건을 만족(AND)':'2행·3행 → 어느 하나라도 만족(OR)'} · ${filtered.length}/${dataset.length}건 추출`);
+    };
+    if(and)p.querySelector('#xl13-preset').addEventListener('change',()=>{build();update();});
+    else p.querySelector('#xl14-reset').addEventListener('click',()=>{build();update();});
+    p.addEventListener('input',update);p.addEventListener('change',update);build();update();
+  });
+
+  // The existing explanation cards also launch the corresponding right-hand exercise.
+  const click = id => document.getElementById(id).click();
+  const choose = (id,value) => {const e=document.getElementById(id);e.value=value;e.dispatchEvent(new Event('change',{bubbles:true}));};
+  const check = (id,checked) => {const e=document.getElementById(id);e.checked=checked;e.dispatchEvent(new Event('change',{bubbles:true}));};
+  const lessons = {
+    3:[()=>{check('xl3-header',true);click('xl3-database');},()=>{check('xl3-header',true);click('xl3-criteria');}],
+    4:[()=>{choose('xl4-job','과장');click('xl4-sum');},()=>{choose('xl4-job','과장');click('xl4-average');}],
+    5:[()=>{choose('xl5-field','D1');choose('xl5-function','DCOUNT');},()=>{choose('xl5-field','A1');choose('xl5-function','DCOUNTA');}],
+    6:[()=>choose('xl6-levels',64),()=>{getPanel(6).querySelector('[name="warn-opt"][value="column"]').click();click('xl6-sort');},()=>{getPanel(6).querySelector('[name="warn-opt"][value="expand"]').click();click('xl6-sort');}],
+    7:[()=>click('xl7-asc'),()=>click('xl7-desc')],
+    9:[()=>click('xl9-source'),()=>click('btn-sort-asc')],
+    10:[()=>check('xl10-enabled',false),()=>{choose('xl10-dept','영업부');choose('xl10-job','과장');check('xl10-enabled',true);}],
+    11:[()=>{click('xl11-top');choose('xl11-unit','항목');choose('xl11-count',10);},()=>{click('xl11-custom');choose('xl11-first','>=90');choose('xl11-second','<=70');getPanel(11).querySelector('[name="cust-filter"][value="or"]').click();}],
+    12:[()=>click('xl12-prepared'),()=>{check('xl12-prepared',true);choose('xl12-target','A12');getPanel(12).querySelector('[name="xl12-location"][value="copy"]').click();click('xl12-run');},()=>{check('xl12-prepared',true);check('xl12-unique',true);click('xl12-run');}],
+    13:[()=>choose('xl13-preset','식품이고 가격 >=50000'),()=>choose('xl13-preset','80점대')],
+    14:[()=>click('xl14-reset'),()=>choose('xl14-second','>=90000')]
+  };
+  Object.entries(lessons).forEach(([number,actions])=>{
+    slides[Number(number)-1].querySelectorAll('.left-col .info-card').forEach((card,index)=>{
+      if(!actions[index])return;
+      card.tabIndex=0;card.setAttribute('role','button');
+      card.setAttribute('aria-label',card.querySelector('.card-title').textContent.trim()+' · 오른쪽 실습 보기');
+      card.title='클릭하거나 Enter 키를 눌러 오른쪽 실습을 확인하세요.';
+      card.addEventListener('click',actions[index]);
+      card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();actions[index]();}});
+    });
+  });
+})();
+
+</script>
 </body>
 
 </html>
